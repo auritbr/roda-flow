@@ -158,41 +158,40 @@ function NoticiaDetail() {
 
       {/* Compartilhamento */}
       <section className="pb-14">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 rounded-2xl border border-border bg-card p-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <div className="eyebrow text-vermelho">Compartilhar</div>
-              <h3 className="mt-1 font-display text-lg font-bold">Ajude a divulgar esta notícia</h3>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <ShareBtn href={shareLinks.whatsapp} label="Compartilhar no WhatsApp" className="bg-verde text-white hover:brightness-95">
-                <WhatsAppIcon /> WhatsApp
-              </ShareBtn>
-              <ShareBtn href={shareLinks.facebook} label="Compartilhar no Facebook" className="bg-azul text-white hover:brightness-110">
-                <FacebookIcon /> Facebook
-              </ShareBtn>
-              <ShareBtn href={shareLinks.telegram} label="Compartilhar no Telegram" className="bg-primary text-primary-foreground hover:brightness-110">
-                <Send className="h-4 w-4" /> Telegram
-              </ShareBtn>
-              <ShareBtn href={shareLinks.email} label="Compartilhar por e-mail" className="bg-muted text-foreground hover:bg-muted/70">
-                <Mail className="h-4 w-4" /> E-mail
-              </ShareBtn>
-              <button
-                onClick={shareInstagram}
-                aria-label="Compartilhar no Instagram"
-                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white hover:brightness-105"
-                style={{ background: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)" }}
-              >
-                <Instagram className="h-4 w-4" /> Instagram
-              </button>
-              <button
-                onClick={copyLink}
-                aria-label="Copiar link"
-                className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-semibold hover:bg-muted"
-              >
-                <Link2 className="h-4 w-4" /> {copied ? "Link copiado!" : "Copiar link"}
-              </button>
-            </div>
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h3 className="font-display text-sm font-semibold text-muted-foreground mb-4">
+            Compartilhe esta notícia
+          </h3>
+          <div className="flex flex-wrap items-center gap-2">
+            <SharePill href={shareLinks.whatsapp} label="Compartilhar no WhatsApp" tone="text-verde">
+              <WhatsAppIcon /> WhatsApp
+            </SharePill>
+            <SharePill href={shareLinks.facebook} label="Compartilhar no Facebook" tone="text-azul">
+              <FacebookIcon /> Facebook
+            </SharePill>
+            <SharePill href={shareLinks.linkedin} label="Compartilhar no LinkedIn" tone="text-azul">
+              <LinkedInIcon /> LinkedIn
+            </SharePill>
+            <button
+              onClick={shareInstagram}
+              aria-label="Compartilhar no Instagram"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-vermelho hover:bg-muted hover:border-vermelho/40 focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            >
+              <Instagram className="h-4 w-4" /> Instagram
+            </button>
+            <SharePill href={shareLinks.telegram} label="Compartilhar no Telegram" tone="text-primary">
+              <Send className="h-4 w-4" /> Telegram
+            </SharePill>
+            <SharePill href={shareLinks.email} label="Compartilhar por e-mail" tone="text-foreground">
+              <Mail className="h-4 w-4" /> E-mail
+            </SharePill>
+            <button
+              onClick={copyLink}
+              aria-label="Copiar link"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted hover:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            >
+              <Link2 className="h-4 w-4" /> {copied ? "Link copiado!" : "Copiar link"}
+            </button>
           </div>
         </div>
       </section>
