@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InternalHero } from "@/components/site/InternalHero";
 import { DOCUMENTS } from "@/lib/site-data";
+import { FinalCta } from "@/components/site/FinalCta";
 import {
   Archive,
   ChevronDown,
