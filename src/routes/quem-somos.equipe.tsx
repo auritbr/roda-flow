@@ -28,7 +28,7 @@ function Equipe() {
         eyebrow="Institucional"
         title="Equipe"
         description="Um coletivo de coordenadores, mestres, educadores, artistas e colaboradores que sustentam a atuação do Ponto de Cultura."
-        image="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1623759126376-f3f1fb8c7f37?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Encontro de educadores e mestres"
         variant="vermelho"
       />
@@ -57,7 +57,7 @@ function Equipe() {
         eyebrow="Vamos juntos"
         title="Quer caminhar junto com a nossa atuação?"
         description="O trabalho do Ponto de Cultura é construído coletivamente. Entre em contato para saber mais sobre nossas ações, projetos e possibilidades de aproximação."
-        image="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=1400&q=80"
+        image="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1400&q=80"
         imageAlt="Roda de Capoeira em atividade comunitária"
         buttons={[
           { label: "Fale conosco", to: "/contato" },

@@ -49,7 +49,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground min-h-[460px] md:min-h-[560px] lg:min-h-[620px]">
       <img
-        src="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=2000&q=80"
+        src="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80"
         alt="Roda de Capoeira em atividade comunitária"
         className="absolute inset-0 h-full w-full object-cover object-center"
         loading="eager"
@@ -147,7 +147,7 @@ function Apresentacao() {
           <div className="absolute -top-3 -left-3 h-16 w-16 rounded-full border-2 border-ouro" aria-hidden />
           <div className="absolute -bottom-3 -right-3 h-20 w-20 rounded-full bg-laranja/20" aria-hidden />
           <img
-            src="https://images.unsplash.com/photo-1519683384663-1c317dd2e13c?auto=format&fit=crop&w=1200&q=80"
+            src="https://images.unsplash.com/photo-1777375430966-c028cf6e3293?auto=format&fit=crop&w=1200&q=80"
             alt="Berimbau em detalhe, símbolo da Capoeira"
             className="relative rounded-2xl object-cover aspect-[4/5] w-full shadow-xl"
             loading="lazy"
@@ -236,12 +236,12 @@ function ProjetosDestaque() {
 
 function Atuacao() {
   const cards = [
-    { category: "Oficinas", title: "Capoeira em processo formativo", image: "https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=1200&q=80", color: "azul" },
-    { category: "Rodas abertas", title: "Encontros no território", image: "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=1200&q=80", color: "vermelho" },
-    { category: "Musicalidade", title: "Instrumentos e cantos", image: "https://images.unsplash.com/photo-1519683384663-1c317dd2e13c?auto=format&fit=crop&w=1200&q=80", color: "ouro" },
-    { category: "Escolas", title: "Cultura nas escolas parceiras", image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80", color: "verde" },
-    { category: "Formação", title: "Educadores e mestres", image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=1200&q=80", color: "laranja" },
-    { category: "Comunidade", title: "Ações abertas ao público", image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=80", color: "azul" },
+    { category: "Oficinas", title: "Capoeira em processo formativo", image: "https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=1200&q=80", color: "azul" },
+    { category: "Rodas abertas", title: "Encontros no território", image: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1200&q=80", color: "vermelho" },
+    { category: "Musicalidade", title: "Instrumentos e cantos", image: "https://images.unsplash.com/photo-1777375430966-c028cf6e3293?auto=format&fit=crop&w=1200&q=80", color: "ouro" },
+    { category: "Escolas", title: "Cultura nas escolas parceiras", image: "https://images.unsplash.com/photo-1653476597388-b9a2d5f688d6?auto=format&fit=crop&w=1200&q=80", color: "verde" },
+    { category: "Formação", title: "Educadores e mestres", image: "https://images.unsplash.com/photo-1623759126376-f3f1fb8c7f37?auto=format&fit=crop&w=1200&q=80", color: "laranja" },
+    { category: "Comunidade", title: "Ações abertas ao público", image: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1200&q=80", color: "azul" },
   ] as const;
   const [showAll, setShowAll] = useState(false);
   const visible = showAll ? cards : cards.slice(0, 4);
@@ -396,7 +396,7 @@ function NoticiasRecentes() {
 function CTAFinal() {
   return (
     <section className="relative overflow-hidden bg-vermelho text-vermelho-foreground py-16 md:py-20">
-      <img src="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=2000&q=80" alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
+      <img src="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80" alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
       <div className="absolute inset-0 bg-gradient-to-br from-vermelho via-vermelho/90 to-primary/70" />
       <svg className="absolute right-0 top-0 h-full w-1/2 opacity-30" viewBox="0 0 400 400" aria-hidden>
         <circle cx="200" cy="200" r="180" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="4 12" />

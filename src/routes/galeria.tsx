@@ -41,7 +41,7 @@ function Galeria() {
         eyebrow="Registros"
         title="Galeria"
         description="Imagens de rodas, oficinas, apresentações, encontros e atividades comunitárias, organizadas por ano."
-        image="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Roda de Capoeira coletiva"
         variant="verde"
       />

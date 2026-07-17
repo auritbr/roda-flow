@@ -28,7 +28,7 @@ function QuemSomos() {
         eyebrow="Institucional"
         title="Quem Somos"
         description="Somos um Ponto de Cultura dedicado à valorização da Capoeira, à cultura afro-brasileira e ao fortalecimento comunitário no território."
-        image="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Roda de Capoeira em atividade comunitária"
         variant="primary"
         pattern="roda"
@@ -126,7 +126,7 @@ function QuemSomos() {
             </ul>
           </div>
           <div className="relative">
-            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80" alt="Atividade cultural aberta em espaço público" className="rounded-2xl object-cover aspect-video w-full shadow-lg" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1653476597388-b9a2d5f688d6?auto=format&fit=crop&w=1200&q=80" alt="Atividade cultural aberta em espaço público" className="rounded-2xl object-cover aspect-video w-full shadow-lg" loading="lazy" />
             <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full border-2 border-ouro" aria-hidden />
           </div>
         </div>
@@ -209,7 +209,7 @@ function QuemSomos() {
         eyebrow="A comunidade do Ponto"
         title="As pessoas que mantêm a roda viva"
         description="Conheça quem constrói, ensina, organiza e fortalece as ações do Ponto de Cultura por meio da Capoeira, da educação e da atuação comunitária."
-        image="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=1400&q=80"
+        image="https://images.unsplash.com/photo-1623759126376-f3f1fb8c7f37?auto=format&fit=crop&w=1400&q=80"
         imageAlt="Encontro coletivo do Ponto de Cultura"
         buttons={[{ label: "Conhecer a equipe", to: "/quem-somos/equipe" }]}
       />
