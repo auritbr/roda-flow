@@ -149,8 +149,6 @@ export const PROJECT_DETAILS: Record<string, {
   },
 };
 
-const _unused = [
-
 export const NEWS = [
   {
     slug: "roda-de-abertura-do-encontro-cultural",
