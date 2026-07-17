@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
 import { PROJECTS } from "@/lib/site-data";
+import { FinalCta } from "@/components/site/FinalCta";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/projetos/")({
