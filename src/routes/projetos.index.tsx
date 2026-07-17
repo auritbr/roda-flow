@@ -87,14 +87,18 @@ function Projetos() {
         </div>
       </section>
 
-      <section className="py-16 bg-muted/40">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <SectionTitle center eyebrow="Continue explorando" title="Quer conhecer nossa atuação de perto?" description="Entre em contato para saber mais sobre parcerias, participação e apoio às nossas ações." />
-          <Link to="/contato" className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
-            Fale com o Ponto de Cultura <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+      <FinalCta
+        variant="laranja"
+        eyebrow="Cultura em movimento"
+        title="A Capoeira segue abrindo caminhos"
+        description="Cada projeto fortalece experiências de formação, memória, musicalidade e convivência. Conheça as iniciativas do Ponto de Cultura e descubra como elas transformam o território."
+        image="https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=1400&q=80"
+        imageAlt="Movimento de Capoeira em atividade coletiva"
+        buttons={[
+          { label: "Fale conosco", to: "/contato" },
+          { label: "Ver galeria", to: "/galeria", variant: "outline" },
+        ]}
+      />
     </>
   );
 }
