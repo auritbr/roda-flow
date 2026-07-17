@@ -18,6 +18,30 @@ export function Footer() {
       <div className="absolute top-8 right-6 h-40 w-40 rounded-full border-2 border-ouro/40 opacity-40" aria-hidden />
       <div className="absolute top-20 right-16 h-24 w-24 rounded-full border-2 border-laranja/40 opacity-40" aria-hidden />
 
+      {/* pincelada / brush arc on the left */}
+      <svg
+        className="absolute -top-1 left-4 h-10 w-56 opacity-40 pointer-events-none"
+        viewBox="0 0 300 40"
+        aria-hidden
+      >
+        <path d="M0 30 Q 80 4 150 20 T 300 12" fill="none" stroke="var(--ouro)" strokeWidth="3" strokeLinecap="round" />
+        <path d="M20 36 Q 100 20 200 30 T 300 26" fill="none" stroke="var(--laranja)" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+      </svg>
+
+      {/* subtle diamond rhythm */}
+      <svg className="absolute bottom-24 left-8 h-6 w-40 opacity-30 pointer-events-none" viewBox="0 0 200 20" aria-hidden>
+        <g fill="var(--ouro)">
+          <rect x="6" y="6" width="8" height="8" transform="rotate(45 10 10)" />
+          <rect x="36" y="6" width="8" height="8" transform="rotate(45 40 10)" />
+          <rect x="66" y="6" width="8" height="8" transform="rotate(45 70 10)" />
+        </g>
+      </svg>
+
+      {/* bottom wavy separator */}
+      <svg className="absolute bottom-16 right-0 h-8 w-72 opacity-25 pointer-events-none" viewBox="0 0 400 30" aria-hidden>
+        <path d="M0 20 Q 50 4 100 18 T 200 14 T 300 18 T 400 12" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
