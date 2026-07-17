@@ -1,8 +1,8 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
+import { FinalCta } from "@/components/site/FinalCta";
 import { PROJECTS, PROJECT_DETAILS, GALLERY, PARTNERS } from "@/lib/site-data";
 import {
-  ArrowRight,
   Target,
   Users,
   MapPin,
@@ -11,6 +11,19 @@ import {
   Music,
   HeartHandshake,
   Quote,
+  BookOpen,
+  Drum,
+  Users2,
+  Landmark,
+  GraduationCap,
+  MapPinned,
+  Vote,
+  Feather,
+  ShieldCheck,
+  Heart,
+  Handshake,
+  History,
+  Sprout,
 } from "lucide-react";
 
 export const Route = createFileRoute("/projetos/$slug")({
