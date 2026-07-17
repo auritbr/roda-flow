@@ -1,8 +1,8 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
+import { FinalCta } from "@/components/site/FinalCta";
 import { PROJECTS, PROJECT_DETAILS, GALLERY, PARTNERS } from "@/lib/site-data";
 import {
-  ArrowRight,
   Target,
   Users,
   MapPin,
@@ -11,6 +11,19 @@ import {
   Music,
   HeartHandshake,
   Quote,
+  BookOpen,
+  Drum,
+  Users2,
+  Landmark,
+  GraduationCap,
+  MapPinned,
+  Vote,
+  Feather,
+  ShieldCheck,
+  Heart,
+  Handshake,
+  History,
+  Sprout,
 } from "lucide-react";
 
 export const Route = createFileRoute("/projetos/$slug")({
@@ -148,38 +161,92 @@ function ProjectDetail() {
         </section>
       )}
 
-      {/* Diferenciais */}
+      {/* Nesta ação, a Capoeira se expressa por meio de */}
       {details && (
-        <section className="py-16 bg-primary text-primary-foreground relative overflow-hidden">
-          <svg className="absolute -right-10 -top-10 h-72 w-72 opacity-20" viewBox="0 0 200 200" aria-hidden>
-            <circle cx="100" cy="100" r="80" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="6 10" />
-            <circle cx="100" cy="100" r="55" fill="none" stroke="var(--creme)" strokeWidth="1.5" />
+        <section className={`py-16 ${c.soft} relative overflow-hidden`}>
+          <svg className="absolute -right-10 -top-10 h-64 w-64 opacity-30" viewBox="0 0 200 200" aria-hidden>
+            <path d="M100 20 A 80 80 0 0 1 180 100" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className={c.text} />
+            <path d="M20 100 A 80 80 0 0 1 100 20" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className={c.text} />
           </svg>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-            <SectionTitle eyebrow="O que nos diferencia" title="Diferenciais do projeto" />
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {details.differentials.map((d, i) => (
-                <div key={i} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-6 backdrop-blur">
-                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-ouro text-primary font-bold">{i + 1}</div>
-                  <p className="mt-4 text-primary-foreground/90 leading-relaxed">{d}</p>
-                </div>
-              ))}
+          <svg className="absolute -left-10 bottom-10 h-40 w-40 opacity-40" viewBox="0 0 100 100" aria-hidden>
+            <path d="M0 80 Q 30 40 60 70 T 100 60" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className={c.text} />
+          </svg>
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionTitle
+              eyebrow="Identidade do projeto"
+              title="Nesta ação, a Capoeira se expressa por meio de"
+              description="Frentes que compõem a experiência viva desta iniciativa."
+            />
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {(() => {
+                const items = [
+                  { icon: GraduationCap, label: "Formação cultural", tint: "bg-azul" },
+                  { icon: Drum, label: "Musicalidade", tint: "bg-vermelho" },
+                  { icon: Users2, label: "Convivência", tint: "bg-laranja" },
+                  { icon: History, label: "Memória", tint: "bg-verde" },
+                  { icon: BookOpen, label: "Educação", tint: "bg-azul" },
+                  { icon: MapPinned, label: "Território", tint: "bg-vermelho" },
+                  { icon: Vote, label: "Participação coletiva", tint: "bg-ouro" },
+                  { icon: Feather, label: "Ancestralidade", tint: "bg-verde" },
+                ];
+                return items.map(({ icon: Icon, label, tint }, i) => (
+                  <article
+                    key={i}
+                    className="group relative overflow-hidden rounded-2xl bg-card border border-border p-5 hover:shadow-lg transition"
+                  >
+                    <svg className="absolute -right-4 -bottom-4 h-20 w-20 opacity-10" viewBox="0 0 80 80" aria-hidden>
+                      <circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 6" className={c.text} />
+                    </svg>
+                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${tint} text-white shadow-sm`}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 font-display font-bold text-foreground">{label}</h3>
+                    <svg className="mt-3 h-2.5 w-16" viewBox="0 0 80 10" aria-hidden>
+                      <path d="M2 6 Q 20 2 40 6 T 78 4" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className={c.text} />
+                    </svg>
+                  </article>
+                ));
+              })()}
             </div>
           </div>
         </section>
       )}
 
-      {/* Resultados */}
+      {/* Como esta iniciativa fortalece o território */}
       {details && (
-        <section className="py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <SectionTitle eyebrow="Resultados" title="Indicadores do projeto" />
-            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-              {details.results.map((r, i) => (
-                <div key={i} className={`rounded-2xl border ${c.border} p-5 bg-card`}>
-                  <div className={`eyebrow ${c.text}`}>{r.label}</div>
-                  <div className="mt-1 font-display text-2xl font-extrabold">{r.value}</div>
-                </div>
+        <section className="py-16 relative overflow-hidden">
+          <svg className="absolute left-0 top-10 h-40 w-40 opacity-20" viewBox="0 0 100 100" aria-hidden>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="4 6" />
+          </svg>
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionTitle
+              eyebrow="Impactos e frentes de atuação"
+              title="Como esta iniciativa fortalece o território"
+              description="Movimentos concretos que a Capoeira ativa a partir deste projeto."
+            />
+            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                { icon: Landmark, title: "Amplia o acesso à cultura", text: "Aproxima diferentes públicos das práticas culturais da Capoeira, com atividades abertas e continuadas." },
+                { icon: HeartHandshake, title: "Fortalece vínculos comunitários", text: "Estimula encontros, escuta e construção coletiva no território de atuação." },
+                { icon: Feather, title: "Valoriza saberes afro-brasileiros", text: "Reconhece e afirma a Capoeira como patrimônio cultural vivo e ancestral." },
+                { icon: Users2, title: "Promove encontros e convivência", text: "Cria espaços seguros de troca, formação e experimentação artística." },
+                { icon: Sprout, title: "Incentiva participação intergeracional", text: "Reúne crianças, jovens, adultos e mestres em uma mesma roda de saberes." },
+                { icon: ShieldCheck, title: "Preserva memórias e práticas culturais", text: "Registra e transmite tradições, cantos, movimentos e histórias do território." },
+              ].map((item, i) => (
+                <article
+                  key={i}
+                  className={`relative overflow-hidden rounded-2xl border ${c.border} bg-card p-6 hover:shadow-md transition`}
+                >
+                  <svg className="absolute -right-6 -top-6 h-24 w-24 opacity-15" viewBox="0 0 80 80" aria-hidden>
+                    <rect x="20" y="20" width="40" height="40" transform="rotate(45 40 40)" fill="none" stroke="currentColor" strokeWidth="2" className={c.text} />
+                  </svg>
+                  <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full ${c.soft} ${c.text}`}>
+                    <item.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 font-display text-lg font-bold">{item.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                </article>
               ))}
             </div>
           </div>
@@ -200,13 +267,6 @@ function ProjectDetail() {
           </div>
         </section>
       )}
-
-      {/* Equipe */}
-      <section className="py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Quem faz acontecer" title="Equipe envolvida" description="Nomes, funções e formações a serem inseridos conforme a composição atual da equipe do projeto." />
-        </div>
-      </section>
 
       {/* Galeria */}
       <section className="py-14 bg-muted/40">
@@ -235,18 +295,16 @@ function ProjectDetail() {
       </section>
 
       {/* CTA final */}
-      <section className={`py-16 ${c.bg} text-white relative overflow-hidden`}>
-        <svg className="absolute -left-10 -bottom-10 h-64 w-64 opacity-25" viewBox="0 0 200 200" aria-hidden>
-          <path d="M20 180 Q 100 20 180 180" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        </svg>
-        <div className="relative mx-auto max-w-3xl px-4 text-center">
-          <h2 className="font-display text-2xl md:text-3xl font-extrabold">Quer saber mais sobre este projeto?</h2>
-          <p className="mt-3 text-white/90">Entre em contato para conhecer nossa atuação, participar ou apoiar as ações.</p>
-          <Link to="/contato" className="mt-6 inline-flex items-center gap-2 rounded-full bg-white text-primary px-5 py-3 text-sm font-semibold hover:bg-white/90">
-            Fale conosco <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+      <FinalCta
+        variant={variant}
+        eyebrow="Aproxime-se desta ação"
+        title="Quer saber mais sobre esta iniciativa?"
+        description="Entre em contato para acompanhar as ações, conhecer melhor o projeto e se aproximar do trabalho desenvolvido pelo Ponto de Cultura."
+        buttons={[
+          { label: "Fale conosco", to: "/contato" },
+          { label: "Ver outros projetos", to: "/projetos", variant: "outline" },
+        ]}
+      />
     </>
   );
 }

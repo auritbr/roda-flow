@@ -51,6 +51,7 @@ function NoticiaDetail() {
   const shareLinks = {
     whatsapp: `https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
     telegram: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
     email: `mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(shareUrl)}`,
   };
@@ -157,41 +158,40 @@ function NoticiaDetail() {
 
       {/* Compartilhamento */}
       <section className="pb-14">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 rounded-2xl border border-border bg-card p-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <div className="eyebrow text-vermelho">Compartilhar</div>
-              <h3 className="mt-1 font-display text-lg font-bold">Ajude a divulgar esta notícia</h3>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <ShareBtn href={shareLinks.whatsapp} label="Compartilhar no WhatsApp" className="bg-verde text-white hover:brightness-95">
-                <WhatsAppIcon /> WhatsApp
-              </ShareBtn>
-              <ShareBtn href={shareLinks.facebook} label="Compartilhar no Facebook" className="bg-azul text-white hover:brightness-110">
-                <FacebookIcon /> Facebook
-              </ShareBtn>
-              <ShareBtn href={shareLinks.telegram} label="Compartilhar no Telegram" className="bg-primary text-primary-foreground hover:brightness-110">
-                <Send className="h-4 w-4" /> Telegram
-              </ShareBtn>
-              <ShareBtn href={shareLinks.email} label="Compartilhar por e-mail" className="bg-muted text-foreground hover:bg-muted/70">
-                <Mail className="h-4 w-4" /> E-mail
-              </ShareBtn>
-              <button
-                onClick={shareInstagram}
-                aria-label="Compartilhar no Instagram"
-                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white hover:brightness-105"
-                style={{ background: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)" }}
-              >
-                <Instagram className="h-4 w-4" /> Instagram
-              </button>
-              <button
-                onClick={copyLink}
-                aria-label="Copiar link"
-                className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-semibold hover:bg-muted"
-              >
-                <Link2 className="h-4 w-4" /> {copied ? "Link copiado!" : "Copiar link"}
-              </button>
-            </div>
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h3 className="font-display text-sm font-semibold text-muted-foreground mb-4">
+            Compartilhe esta notícia
+          </h3>
+          <div className="flex flex-wrap items-center gap-2">
+            <SharePill href={shareLinks.whatsapp} label="Compartilhar no WhatsApp" tone="text-verde">
+              <WhatsAppIcon /> WhatsApp
+            </SharePill>
+            <SharePill href={shareLinks.facebook} label="Compartilhar no Facebook" tone="text-azul">
+              <FacebookIcon /> Facebook
+            </SharePill>
+            <SharePill href={shareLinks.linkedin} label="Compartilhar no LinkedIn" tone="text-azul">
+              <LinkedInIcon /> LinkedIn
+            </SharePill>
+            <button
+              onClick={shareInstagram}
+              aria-label="Compartilhar no Instagram"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-vermelho hover:bg-muted hover:border-vermelho/40 focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            >
+              <Instagram className="h-4 w-4" /> Instagram
+            </button>
+            <SharePill href={shareLinks.telegram} label="Compartilhar no Telegram" tone="text-primary">
+              <Send className="h-4 w-4" /> Telegram
+            </SharePill>
+            <SharePill href={shareLinks.email} label="Compartilhar por e-mail" tone="text-foreground">
+              <Mail className="h-4 w-4" /> E-mail
+            </SharePill>
+            <button
+              onClick={copyLink}
+              aria-label="Copiar link"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted hover:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            >
+              <Link2 className="h-4 w-4" /> {copied ? "Link copiado!" : "Copiar link"}
+            </button>
           </div>
         </div>
       </section>
@@ -259,14 +259,14 @@ function NoticiaDetail() {
   );
 }
 
-function ShareBtn({ href, label, className, children }: { href: string; label: string; className?: string; children: React.ReactNode }) {
+function SharePill({ href, label, tone, children }: { href: string; label: string; tone?: string; children: React.ReactNode }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer noopener"
       aria-label={label}
-      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition ${className ?? ""}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-muted hover:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/40 transition ${tone ?? "text-foreground"}`}
     >
       {children}
     </a>
@@ -285,6 +285,14 @@ function FacebookIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
       <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H7.6V14h2.7v8h3.2Z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.55c0-1.32-.03-3.02-1.9-3.02-1.9 0-2.2 1.43-2.2 2.92V21h-4V9Z" />
     </svg>
   );
 }

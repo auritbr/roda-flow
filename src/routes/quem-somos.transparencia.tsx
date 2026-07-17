@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InternalHero } from "@/components/site/InternalHero";
 import { DOCUMENTS } from "@/lib/site-data";
+import { FinalCta } from "@/components/site/FinalCta";
 import {
   Archive,
   ChevronDown,
@@ -149,6 +150,17 @@ function Transparencia() {
           )}
         </div>
       </section>
+
+      <FinalCta
+        variant="azul"
+        eyebrow="Compromisso público"
+        title="Transparência também fortalece a confiança"
+        description="Se precisar de mais informações institucionais, documentos complementares ou esclarecimentos sobre nossas ações, estamos à disposição para atender."
+        buttons={[
+          { label: "Entrar em contato", to: "/contato" },
+          { label: "Ir para o acervo", href: "#", variant: "outline" },
+        ]}
+      />
     </>
   );
 }
