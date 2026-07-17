@@ -1,7 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
-import { ArrowRight, MapPin } from "lucide-react";
-import { PARTNERS } from "@/lib/site-data";
+import { MapPin } from "lucide-react";
+import { FinalCta } from "@/components/site/FinalCta";
 
 export const Route = createFileRoute("/quem-somos/")({
   head: () => ({
