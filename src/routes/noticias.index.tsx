@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { InternalHero } from "@/components/site/InternalHero";
 import { NEWS } from "@/lib/site-data";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 
 export const Route = createFileRoute("/noticias/")({
@@ -19,58 +19,64 @@ const PAGE_SIZE = 6;
 function Noticias() {
   const [cat, setCat] = useState("Todas");
   const [year, setYear] = useState("Todos");
+  const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
 
   const categories = useMemo(() => ["Todas", ...Array.from(new Set(NEWS.map((n) => n.category)))], []);
   const years = useMemo(() => ["Todos", ...Array.from(new Set(NEWS.map((n) => n.date)))], []);
 
-  const filtered = NEWS.filter((n) => (cat === "Todas" || n.category === cat) && (year === "Todos" || n.date === year));
-  const featured = filtered[0];
-  const rest = filtered.slice(1);
-  const totalPages = Math.max(1, Math.ceil(rest.length / PAGE_SIZE));
-  const paged = rest.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const q = query.trim().toLowerCase();
+  const filtered = NEWS.filter((n) =>
+    (cat === "Todas" || n.category === cat) &&
+    (year === "Todos" || n.date === year) &&
+    (q === "" || n.title.toLowerCase().includes(q) || n.excerpt.toLowerCase().includes(q))
+  );
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const paged = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
   return (
     <>
       <InternalHero
         eyebrow="Comunicação"
         title="Notícias"
-        description="Coberturas, coberturas de eventos, projetos e ações do Ponto de Cultura."
+        description="Coberturas de eventos, projetos e ações do Ponto de Cultura."
         image="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Encontro cultural comunitário"
         variant="ouro"
+        pattern="encontro"
       />
 
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Filtros */}
-          <div className="flex flex-wrap items-center gap-3">
-            <FilterSelect label="Categoria" value={cat} onChange={(v) => { setCat(v); setPage(1); }} options={categories} />
-            <FilterSelect label="Ano" value={year} onChange={(v) => { setYear(v); setPage(1); }} options={years} />
+          <div className="max-w-3xl">
+            <p className="text-muted-foreground leading-relaxed">
+              Acompanhe registros das nossas atividades — rodas, oficinas, encontros formativos, apresentações e ações no território.
+            </p>
           </div>
 
-          {/* Destaque */}
-          {featured && (
-            <Link to="/noticias/$slug" params={{ slug: featured.slug }} className="mt-8 group grid gap-6 md:grid-cols-2 rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lg transition">
-              <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden">
-                <img src={featured.image} alt="" className="h-full w-full object-cover group-hover:scale-105 transition duration-500" />
-              </div>
-              <div className="p-8 flex flex-col justify-center">
-                <div className="flex items-center gap-3 text-xs">
-                  <span className="eyebrow text-vermelho">{featured.category}</span>
-                  <span className="text-muted-foreground">{featured.date}</span>
-                </div>
-                <h2 className="mt-3 font-display text-2xl md:text-3xl font-extrabold leading-tight">{featured.title}</h2>
-                <p className="mt-3 text-muted-foreground">{featured.excerpt}</p>
-                <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                  Ler notícia <ArrowRight className="h-4 w-4" />
-                </span>
-              </div>
-            </Link>
-          )}
+          {/* Filtros + Busca */}
+          <div className="mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <FilterSelect label="Categoria" value={cat} onChange={(v) => { setCat(v); setPage(1); }} options={categories} />
+              <FilterSelect label="Ano" value={year} onChange={(v) => { setYear(v); setPage(1); }} options={years} />
+            </div>
+            <label className="relative w-full md:w-72">
+              <span className="sr-only">Buscar notícia</span>
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => { setQuery(e.target.value); setPage(1); }}
+                placeholder="Buscar notícia"
+                className="w-full rounded-full border border-border bg-card pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </label>
+          </div>
 
           {/* Grid */}
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {paged.map((n) => (
               <article key={n.slug} className="group flex flex-col rounded-2xl border border-border bg-card overflow-hidden hover:shadow-md transition">
                 <div className="aspect-[4/3] overflow-hidden">
@@ -89,22 +95,16 @@ function Noticias() {
                 </div>
               </article>
             ))}
+            {paged.length === 0 && (
+              <div className="col-span-full rounded-xl border border-dashed border-border p-10 text-center text-muted-foreground">
+                Nenhuma notícia encontrada com os filtros atuais.
+              </div>
+            )}
           </div>
 
-          {/* Paginação */}
+          {/* Paginação numérica */}
           {totalPages > 1 && (
-            <nav className="mt-10 flex items-center justify-center gap-2" aria-label="Paginação">
-              {Array.from({ length: totalPages }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setPage(i + 1)}
-                  aria-current={page === i + 1 ? "page" : undefined}
-                  className={`h-9 w-9 rounded-full text-sm font-semibold border ${page === i + 1 ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
-                >
-                  {i + 1}
-                </button>
-              ))}
-            </nav>
+            <Pagination page={currentPage} totalPages={totalPages} onChange={setPage} />
           )}
         </div>
       </section>
@@ -120,5 +120,56 @@ function FilterSelect({ label, value, onChange, options }: { label: string; valu
         {options.map((o) => <option key={o}>{o}</option>)}
       </select>
     </label>
+  );
+}
+
+function Pagination({ page, totalPages, onChange }: { page: number; totalPages: number; onChange: (n: number) => void }) {
+  const pages: (number | "…")[] = [];
+  const push = (v: number | "…") => pages.push(v);
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) push(i);
+  } else {
+    push(1);
+    if (page > 3) push("…");
+    const start = Math.max(2, page - 1);
+    const end = Math.min(totalPages - 1, page + 1);
+    for (let i = start; i <= end; i++) push(i);
+    if (page < totalPages - 2) push("…");
+    push(totalPages);
+  }
+
+  return (
+    <nav className="mt-12 flex items-center justify-center gap-1.5" aria-label="Paginação">
+      <button
+        onClick={() => onChange(Math.max(1, page - 1))}
+        disabled={page === 1}
+        aria-label="Página anterior"
+        className="h-9 w-9 inline-flex items-center justify-center rounded-full border border-border hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </button>
+      {pages.map((p, i) =>
+        p === "…" ? (
+          <span key={`e${i}`} className="px-2 text-muted-foreground select-none">…</span>
+        ) : (
+          <button
+            key={p}
+            onClick={() => onChange(p)}
+            aria-current={page === p ? "page" : undefined}
+            className={`h-9 w-9 rounded-full text-sm font-semibold border ${page === p ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
+          >
+            {p}
+          </button>
+        )
+      )}
+      <button
+        onClick={() => onChange(Math.min(totalPages, page + 1))}
+        disabled={page === totalPages}
+        aria-label="Próxima página"
+        className="h-9 w-9 inline-flex items-center justify-center rounded-full border border-border hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        <ChevronRight className="h-4 w-4" />
+      </button>
+    </nav>
   );
 }
