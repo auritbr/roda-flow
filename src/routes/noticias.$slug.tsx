@@ -44,7 +44,8 @@ function NoticiaDetail() {
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const [shareUrl, setShareUrl] = useState("");
+  useEffect(() => { setShareUrl(window.location.href); }, []);
   const shareText = news.title;
 
   const shareLinks = {
