@@ -144,47 +144,75 @@ function QuemSomos() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Trajetória" title="Nossa linha do tempo" center />
-          <ol className="mt-12 relative border-l-2 border-ouro/40 md:border-l-0 md:before:content-[''] md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-0.5 md:before:bg-ouro/40">
-            {TIMELINE.map((t, i) => (
-              <li key={i} className={`relative mb-10 pl-6 md:pl-0 md:grid md:grid-cols-2 md:gap-10 ${i % 2 === 1 ? "md:[&>div:first-child]:col-start-2" : ""}`}>
-                <div className={`md:${i % 2 === 0 ? "text-right md:pr-10" : "md:pl-10 md:col-start-2"} relative`}>
-                  <span className="absolute -left-[30px] md:left-auto md:right-auto top-1 h-4 w-4 rounded-full bg-ouro border-4 border-background md:relative md:mx-auto md:mb-3" />
-                  <div className="eyebrow text-laranja">{t.year}</div>
-                  <h3 className="mt-1 font-display text-lg font-bold">{t.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{t.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <section className="relative py-20 overflow-hidden bg-gradient-to-b from-background to-muted/30">
+        <svg className="absolute left-0 top-8 h-40 w-40 opacity-20" viewBox="0 0 200 200" aria-hidden>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="var(--azul)" strokeWidth="2" strokeDasharray="6 10" />
+        </svg>
+        <svg className="absolute right-0 bottom-10 h-48 w-48 opacity-25" viewBox="0 0 200 200" aria-hidden>
+          <path d="M20 180 Q 100 20 180 180" fill="none" stroke="var(--vermelho)" strokeWidth="3" strokeLinecap="round" />
+        </svg>
 
-      {/* Parceiros */}
-      <section className="py-16 bg-muted/40">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Parcerias" title="Redes e parceiros" center />
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {PARTNERS.map((p) => (
-              <div key={p.name} className="aspect-[3/2] rounded-xl border border-border bg-card flex items-center justify-center text-xs eyebrow text-muted-foreground">
-                {p.name}
-              </div>
-            ))}
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle eyebrow="Trajetória" title="Nossa linha do tempo" center description="Marcos que constroem a história viva do Ponto de Cultura." />
+
+          <div className="relative mt-16">
+            {/* Linha central desktop */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2" aria-hidden>
+              <svg className="h-full w-8" viewBox="0 0 32 1000" preserveAspectRatio="none">
+                <path d="M16 0 Q 28 250 16 500 T 16 1000" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="6 8" />
+              </svg>
+            </div>
+            {/* Linha lateral mobile */}
+            <div className="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-ouro/40" aria-hidden />
+
+            <ol className="space-y-10 md:space-y-16">
+              {TIMELINE.map((t, i) => {
+                const leftSide = i % 2 === 0;
+                const accent = ["text-vermelho", "text-azul", "text-laranja", "text-verde", "text-ouro"][i % 5];
+                const dot = ["bg-vermelho", "bg-azul", "bg-laranja", "bg-verde", "bg-ouro"][i % 5];
+                return (
+                  <li key={i} className="relative md:grid md:grid-cols-2 md:gap-12 md:items-center">
+                    {/* Marcador central desktop */}
+                    <span className={`hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-5 w-5 rounded-full ${dot} ring-4 ring-background z-10`} aria-hidden />
+                    {/* Marcador lateral mobile */}
+                    <span className={`md:hidden absolute left-4 top-3 -translate-x-1/2 h-4 w-4 rounded-full ${dot} ring-4 ring-background`} aria-hidden />
+
+                    <div className={`pl-10 md:pl-0 ${leftSide ? "md:pr-10 md:text-right" : "md:pl-10 md:col-start-2"}`}>
+                      <div className={`inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-bold ${accent}`}>
+                        <span className={`h-1.5 w-1.5 rounded-full ${dot}`} />
+                        {t.year}
+                      </div>
+                      <div className="mt-3 relative rounded-2xl border border-border bg-card p-5 shadow-sm hover:shadow-md transition">
+                        <svg className={`absolute ${leftSide ? "-right-2" : "-left-2"} top-4 h-8 w-8 opacity-70`} viewBox="0 0 30 30" aria-hidden>
+                          <rect x="10" y="10" width="10" height="10" transform="rotate(45 15 15)" fill="none" stroke="currentColor" strokeWidth="2" className={accent} />
+                        </svg>
+                        <h3 className="font-display text-lg font-bold">{t.title}</h3>
+                        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.text}</p>
+                        <svg className="mt-3 h-3 w-24" viewBox="0 0 100 12" aria-hidden>
+                          <path d="M2 8 Q 25 2 50 8 T 98 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className={accent} />
+                        </svg>
+                      </div>
+                    </div>
+                    {/* Espaço vazio do outro lado no desktop */}
+                    <div className={`hidden md:block ${leftSide ? "" : "md:col-start-1 md:row-start-1"}`} />
+                  </li>
+                );
+              })}
+            </ol>
           </div>
         </div>
       </section>
 
       {/* CTA Equipe */}
-      <section className="py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-display text-3xl font-extrabold">Conheça quem faz o Ponto de Cultura acontecer</h2>
-          <Link to="/quem-somos/equipe" className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
-            Ver a equipe <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+      <FinalCta
+        variant="primary"
+        eyebrow="A comunidade do Ponto"
+        title="As pessoas que mantêm a roda viva"
+        description="Conheça quem constrói, ensina, organiza e fortalece as ações do Ponto de Cultura por meio da Capoeira, da educação e da atuação comunitária."
+        image="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=1400&q=80"
+        imageAlt="Encontro coletivo do Ponto de Cultura"
+        buttons={[{ label: "Conhecer a equipe", to: "/quem-somos/equipe" }]}
+      />
     </>
   );
 }
