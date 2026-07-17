@@ -51,6 +51,19 @@ function Equipe() {
           </div>
         </div>
       </section>
+
+      <FinalCta
+        variant="vermelho"
+        eyebrow="Vamos juntos"
+        title="Quer caminhar junto com a nossa atuação?"
+        description="O trabalho do Ponto de Cultura é construído coletivamente. Entre em contato para saber mais sobre nossas ações, projetos e possibilidades de aproximação."
+        image="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=1400&q=80"
+        imageAlt="Roda de Capoeira em atividade comunitária"
+        buttons={[
+          { label: "Fale conosco", to: "/contato" },
+          { label: "Conheça os projetos", to: "/projetos", variant: "outline" },
+        ]}
+      />
     </>
   );
 }
