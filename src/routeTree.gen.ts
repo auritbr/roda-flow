@@ -9,38 +9,138 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as QuemSomosRouteImport } from './routes/quem-somos'
+import { Route as ProjetosRouteImport } from './routes/projetos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos.index'
+import { Route as ProjetosIndexRouteImport } from './routes/projetos.index'
+import { Route as QuemSomosTransparenciaRouteImport } from './routes/quem-somos.transparencia'
+import { Route as QuemSomosEquipeRouteImport } from './routes/quem-somos.equipe'
+import { Route as ProjetosSlugRouteImport } from './routes/projetos.$slug'
 
+const QuemSomosRoute = QuemSomosRouteImport.update({
+  id: '/quem-somos',
+  path: '/quem-somos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetosRoute = ProjetosRouteImport.update({
+  id: '/projetos',
+  path: '/projetos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuemSomosIndexRoute = QuemSomosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => QuemSomosRoute,
+} as any)
+const ProjetosIndexRoute = ProjetosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProjetosRoute,
+} as any)
+const QuemSomosTransparenciaRoute = QuemSomosTransparenciaRouteImport.update({
+  id: '/transparencia',
+  path: '/transparencia',
+  getParentRoute: () => QuemSomosRoute,
+} as any)
+const QuemSomosEquipeRoute = QuemSomosEquipeRouteImport.update({
+  id: '/equipe',
+  path: '/equipe',
+  getParentRoute: () => QuemSomosRoute,
+} as any)
+const ProjetosSlugRoute = ProjetosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProjetosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/projetos': typeof ProjetosRouteWithChildren
+  '/quem-somos': typeof QuemSomosRouteWithChildren
+  '/projetos/$slug': typeof ProjetosSlugRoute
+  '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
+  '/projetos/': typeof ProjetosIndexRoute
+  '/quem-somos/': typeof QuemSomosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/projetos/$slug': typeof ProjetosSlugRoute
+  '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
+  '/projetos': typeof ProjetosIndexRoute
+  '/quem-somos': typeof QuemSomosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/projetos': typeof ProjetosRouteWithChildren
+  '/quem-somos': typeof QuemSomosRouteWithChildren
+  '/projetos/$slug': typeof ProjetosSlugRoute
+  '/quem-somos/equipe': typeof QuemSomosEquipeRoute
+  '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
+  '/projetos/': typeof ProjetosIndexRoute
+  '/quem-somos/': typeof QuemSomosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/projetos'
+    | '/quem-somos'
+    | '/projetos/$slug'
+    | '/quem-somos/equipe'
+    | '/quem-somos/transparencia'
+    | '/projetos/'
+    | '/quem-somos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/projetos/$slug'
+    | '/quem-somos/equipe'
+    | '/quem-somos/transparencia'
+    | '/projetos'
+    | '/quem-somos'
+  id:
+    | '__root__'
+    | '/'
+    | '/projetos'
+    | '/quem-somos'
+    | '/projetos/$slug'
+    | '/quem-somos/equipe'
+    | '/quem-somos/transparencia'
+    | '/projetos/'
+    | '/quem-somos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjetosRoute: typeof ProjetosRouteWithChildren
+  QuemSomosRoute: typeof QuemSomosRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/quem-somos': {
+      id: '/quem-somos'
+      path: '/quem-somos'
+      fullPath: '/quem-somos'
+      preLoaderRoute: typeof QuemSomosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projetos': {
+      id: '/projetos'
+      path: '/projetos'
+      fullPath: '/projetos'
+      preLoaderRoute: typeof ProjetosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +148,79 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quem-somos/': {
+      id: '/quem-somos/'
+      path: '/'
+      fullPath: '/quem-somos/'
+      preLoaderRoute: typeof QuemSomosIndexRouteImport
+      parentRoute: typeof QuemSomosRoute
+    }
+    '/projetos/': {
+      id: '/projetos/'
+      path: '/'
+      fullPath: '/projetos/'
+      preLoaderRoute: typeof ProjetosIndexRouteImport
+      parentRoute: typeof ProjetosRoute
+    }
+    '/quem-somos/transparencia': {
+      id: '/quem-somos/transparencia'
+      path: '/transparencia'
+      fullPath: '/quem-somos/transparencia'
+      preLoaderRoute: typeof QuemSomosTransparenciaRouteImport
+      parentRoute: typeof QuemSomosRoute
+    }
+    '/quem-somos/equipe': {
+      id: '/quem-somos/equipe'
+      path: '/equipe'
+      fullPath: '/quem-somos/equipe'
+      preLoaderRoute: typeof QuemSomosEquipeRouteImport
+      parentRoute: typeof QuemSomosRoute
+    }
+    '/projetos/$slug': {
+      id: '/projetos/$slug'
+      path: '/$slug'
+      fullPath: '/projetos/$slug'
+      preLoaderRoute: typeof ProjetosSlugRouteImport
+      parentRoute: typeof ProjetosRoute
+    }
   }
 }
 
+interface ProjetosRouteChildren {
+  ProjetosSlugRoute: typeof ProjetosSlugRoute
+  ProjetosIndexRoute: typeof ProjetosIndexRoute
+}
+
+const ProjetosRouteChildren: ProjetosRouteChildren = {
+  ProjetosSlugRoute: ProjetosSlugRoute,
+  ProjetosIndexRoute: ProjetosIndexRoute,
+}
+
+const ProjetosRouteWithChildren = ProjetosRoute._addFileChildren(
+  ProjetosRouteChildren,
+)
+
+interface QuemSomosRouteChildren {
+  QuemSomosEquipeRoute: typeof QuemSomosEquipeRoute
+  QuemSomosTransparenciaRoute: typeof QuemSomosTransparenciaRoute
+  QuemSomosIndexRoute: typeof QuemSomosIndexRoute
+}
+
+const QuemSomosRouteChildren: QuemSomosRouteChildren = {
+  QuemSomosEquipeRoute: QuemSomosEquipeRoute,
+  QuemSomosTransparenciaRoute: QuemSomosTransparenciaRoute,
+  QuemSomosIndexRoute: QuemSomosIndexRoute,
+}
+
+const QuemSomosRouteWithChildren = QuemSomosRoute._addFileChildren(
+  QuemSomosRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjetosRoute: ProjetosRouteWithChildren,
+  QuemSomosRoute: QuemSomosRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
