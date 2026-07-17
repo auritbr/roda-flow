@@ -259,14 +259,14 @@ function NoticiaDetail() {
   );
 }
 
-function ShareBtn({ href, label, className, children }: { href: string; label: string; className?: string; children: React.ReactNode }) {
+function SharePill({ href, label, tone, children }: { href: string; label: string; tone?: string; children: React.ReactNode }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer noopener"
       aria-label={label}
-      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition ${className ?? ""}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-muted hover:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/40 transition ${tone ?? "text-foreground"}`}
     >
       {children}
     </a>
@@ -285,6 +285,14 @@ function FacebookIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
       <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H7.6V14h2.7v8h3.2Z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.55c0-1.32-.03-3.02-1.9-3.02-1.9 0-2.2 1.43-2.2 2.92V21h-4V9Z" />
     </svg>
   );
 }
