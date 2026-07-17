@@ -42,7 +42,7 @@ function Noticias() {
         eyebrow="Comunicação"
         title="Notícias"
         description="Coberturas de eventos, projetos e ações do Ponto de Cultura."
-        image="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1653476597388-b9a2d5f688d6?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Encontro cultural comunitário"
         variant="ouro"
         pattern="encontro"

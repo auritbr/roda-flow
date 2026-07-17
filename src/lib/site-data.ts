@@ -25,7 +25,7 @@ export const PROJECTS = [
     summary:
       "Formação continuada para crianças, adolescentes e jovens por meio da prática da Capoeira, articulando corpo, cultura e cidadania.",
     image:
-      "https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=1600&q=80",
     audience: "Crianças, adolescentes e jovens",
     area: "Educação e formação",
   },
@@ -37,7 +37,7 @@ export const PROJECTS = [
     summary:
       "Vivências de musicalidade, construção de instrumentos, cantos tradicionais e memória oral da cultura afro-brasileira.",
     image:
-      "https://images.unsplash.com/photo-1519683384663-1c317dd2e13c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1777375430966-c028cf6e3293?auto=format&fit=crop&w=1600&q=80",
     audience: "Comunidade em geral",
     area: "Cultura e musicalidade",
   },
@@ -49,7 +49,7 @@ export const PROJECTS = [
     summary:
       "Ações culturais, rodas abertas, encontros comunitários e preservação da história local do território de atuação.",
     image:
-      "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1600&q=80",
     audience: "Famílias e comunidade",
     area: "Território e memória",
   },
@@ -158,7 +158,7 @@ export const NEWS = [
     excerpt:
       "Participantes de diferentes territórios se reuniram na sede do Ponto de Cultura para a roda de abertura.",
     image:
-      "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "oficina-de-berimbau-para-jovens",
@@ -168,7 +168,7 @@ export const NEWS = [
     excerpt:
       "Vivência prática integrou construção do instrumento, musicalidade e história da Capoeira.",
     image:
-      "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1623759126376-f3f1fb8c7f37?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "capoeira-nas-escolas-do-territorio",
@@ -178,7 +178,7 @@ export const NEWS = [
     excerpt:
       "Atividades em escolas parceiras ampliam o acesso à prática cultural e educativa da Capoeira.",
     image:
-      "https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "encontro-de-mestres-e-educadores",
@@ -188,7 +188,7 @@ export const NEWS = [
     excerpt:
       "Roda de conversa aprofundou temas de metodologia, ancestralidade e prática comunitária.",
     image:
-      "https://images.unsplash.com/photo-1519683384663-1c317dd2e13c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1777375430966-c028cf6e3293?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "apresentacao-cultural-na-praca",
@@ -198,7 +198,7 @@ export const NEWS = [
     excerpt:
       "Atividade aberta ao público celebrou a Capoeira como expressão cultural e comunitária.",
     image:
-      "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1653476597388-b9a2d5f688d6?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "publicacao-registra-trajetoria",
@@ -208,7 +208,7 @@ export const NEWS = [
     excerpt:
       "Material reúne relatos, fotografias e reflexões sobre a atuação nos últimos anos.",
     image:
-      "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1600&q=80",
   },
 ];
 
@@ -235,14 +235,14 @@ export const DOCUMENTS = [
 ];
 
 export const GALLERY = [
-  { year: "2026", title: "Roda de abertura do encontro cultural", date: "Data a informar", image: "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=1600&q=80", alt: "Participantes formando uma roda de Capoeira", caption: "Participantes durante a roda realizada na sede do Ponto de Cultura.", credit: "Crédito a informar", category: "Roda de Capoeira" },
-  { year: "2026", title: "Oficina de musicalidade", date: "Data a informar", image: "https://images.unsplash.com/photo-1519683384663-1c317dd2e13c?auto=format&fit=crop&w=1600&q=80", alt: "Berimbau em detalhe", caption: "Vivência de musicalidade com instrumentos tradicionais.", credit: "Crédito a informar", category: "Oficina" },
-  { year: "2025", title: "Apresentação comunitária na praça", date: "Data a informar", image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1600&q=80", alt: "Apresentação cultural coletiva", caption: "Apresentação aberta ao público no território.", credit: "Crédito a informar", category: "Apresentação" },
-  { year: "2025", title: "Formação de educadores", date: "Data a informar", image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1600&q=80", alt: "Educadores em roda de conversa", caption: "Encontro formativo com educadores parceiros.", credit: "Crédito a informar", category: "Formação" },
-  { year: "2024", title: "Capoeira nas escolas", date: "Data a informar", image: "https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=1600&q=80", alt: "Atividade em escola parceira", caption: "Atividade realizada em escola do território.", credit: "Crédito a informar", category: "Escolas" },
-  { year: "2024", title: "Encontro de mestres", date: "Data a informar", image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=1600&q=80", alt: "Encontro comunitário de mestres", caption: "Roda de conversa entre mestres e educadores.", credit: "Crédito a informar", category: "Encontro" },
-  { year: "2023", title: "Roda comunitária de aniversário", date: "Data a informar", image: "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=1600&q=80", alt: "Roda coletiva de Capoeira", caption: "Celebração de aniversário do Ponto de Cultura.", credit: "Crédito a informar", category: "Roda de Capoeira" },
-  { year: "2023", title: "Vivência com famílias", date: "Data a informar", image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1600&q=80", alt: "Famílias participando de atividade", caption: "Atividade voltada às famílias do território.", credit: "Crédito a informar", category: "Comunidade" },
+  { year: "2026", title: "Roda de abertura do encontro cultural", date: "Data a informar", image: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1600&q=80", alt: "Participantes formando uma roda de Capoeira", caption: "Participantes durante a roda realizada na sede do Ponto de Cultura.", credit: "Crédito a informar", category: "Roda de Capoeira" },
+  { year: "2026", title: "Oficina de musicalidade", date: "Data a informar", image: "https://images.unsplash.com/photo-1777375430966-c028cf6e3293?auto=format&fit=crop&w=1600&q=80", alt: "Berimbau em detalhe", caption: "Vivência de musicalidade com instrumentos tradicionais.", credit: "Crédito a informar", category: "Oficina" },
+  { year: "2025", title: "Apresentação comunitária na praça", date: "Data a informar", image: "https://images.unsplash.com/photo-1653476597388-b9a2d5f688d6?auto=format&fit=crop&w=1600&q=80", alt: "Apresentação cultural coletiva", caption: "Apresentação aberta ao público no território.", credit: "Crédito a informar", category: "Apresentação" },
+  { year: "2025", title: "Formação de educadores", date: "Data a informar", image: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1600&q=80", alt: "Educadores em roda de conversa", caption: "Encontro formativo com educadores parceiros.", credit: "Crédito a informar", category: "Formação" },
+  { year: "2024", title: "Capoeira nas escolas", date: "Data a informar", image: "https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=1600&q=80", alt: "Atividade em escola parceira", caption: "Atividade realizada em escola do território.", credit: "Crédito a informar", category: "Escolas" },
+  { year: "2024", title: "Encontro de mestres", date: "Data a informar", image: "https://images.unsplash.com/photo-1623759126376-f3f1fb8c7f37?auto=format&fit=crop&w=1600&q=80", alt: "Encontro comunitário de mestres", caption: "Roda de conversa entre mestres e educadores.", credit: "Crédito a informar", category: "Encontro" },
+  { year: "2023", title: "Roda comunitária de aniversário", date: "Data a informar", image: "https://images.unsplash.com/photo-1641688587256-7b6549157cef?auto=format&fit=crop&w=1600&q=80", alt: "Roda coletiva de Capoeira", caption: "Celebração de aniversário do Ponto de Cultura.", credit: "Crédito a informar", category: "Roda de Capoeira" },
+  { year: "2023", title: "Vivência com famílias", date: "Data a informar", image: "https://images.unsplash.com/photo-1612633509783-1e1eff840487?auto=format&fit=crop&w=1600&q=80", alt: "Famílias participando de atividade", caption: "Atividade voltada às famílias do território.", credit: "Crédito a informar", category: "Comunidade" },
 ];
 
 export const TESTIMONIALS = [

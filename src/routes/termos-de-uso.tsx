@@ -18,7 +18,7 @@ function Termos() {
         eyebrow="Documento institucional"
         title="Termos de Uso"
         description="Regras e condições de utilização do site institucional."
-        image="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=2000&q=80"
         imageAlt=""
         variant="primary"
       />

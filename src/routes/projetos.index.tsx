@@ -27,7 +27,7 @@ function Projetos() {
         eyebrow="Ações estruturantes"
         title="Nossos Projetos"
         description="Iniciativas continuadas que articulam Capoeira, formação, cultura afro-brasileira, memória e comunidade."
-        image="https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Atividade cultural coletiva"
         variant="laranja"
         pattern="ginga"
@@ -92,7 +92,7 @@ function Projetos() {
         eyebrow="Cultura em movimento"
         title="A Capoeira segue abrindo caminhos"
         description="Cada projeto fortalece experiências de formação, memória, musicalidade e convivência. Conheça as iniciativas do Ponto de Cultura e descubra como elas transformam o território."
-        image="https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=1400&q=80"
+        image="https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=1400&q=80"
         imageAlt="Movimento de Capoeira em atividade coletiva"
         buttons={[
           { label: "Fale conosco", to: "/contato" },

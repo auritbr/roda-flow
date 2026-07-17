@@ -53,7 +53,7 @@ function Contato() {
         eyebrow="Fale conosco"
         title="Contato"
         description="Conte com nossa escuta. Estamos disponíveis para conversas, parcerias, oportunidades e visitas."
-        image="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=2000&q=80"
         imageAlt=""
         variant="azul"
       />

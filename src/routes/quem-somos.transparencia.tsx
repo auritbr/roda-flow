@@ -58,7 +58,7 @@ function Transparencia() {
         eyebrow="Institucional"
         title="Transparência"
         description="Compromisso público com clareza, responsabilidade e prestação de contas."
-        image="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Registros e documentos institucionais"
         variant="azul"
         pattern="territorio"

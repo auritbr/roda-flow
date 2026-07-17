@@ -18,7 +18,7 @@ function Politica() {
         eyebrow="Documento institucional"
         title="Política de Privacidade"
         description="Compromisso com a proteção de dados pessoais e conformidade com a Lei Geral de Proteção de Dados (LGPD)."
-        image="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=2000&q=80"
         imageAlt=""
         variant="primary"
       />
