@@ -55,6 +55,102 @@ export const PROJECTS = [
   },
 ];
 
+export const PROJECT_DETAILS: Record<string, {
+  intro: string;
+  objectives: { title: string; text: string }[];
+  activities: string[];
+  differentials: string[];
+  results: { label: string; value: string }[];
+  testimonial: { text: string; author: string; role: string };
+}> = {
+  "capoeira-para-todos": {
+    intro:
+      "O projeto Capoeira para Todos amplia o acesso à Capoeira como prática cultural, educativa e comunitária. A iniciativa oferece vivências formativas para crianças, adolescentes, jovens e demais participantes do território, unindo corpo, ritmo, disciplina, convivência e pertencimento. Mais do que ensinar movimentos, o projeto fortalece vínculos, valoriza saberes tradicionais e cria um espaço de aprendizado coletivo, respeito e construção de identidade.",
+    objectives: [
+      { title: "Ampliar o acesso", text: "Ampliar o acesso à Capoeira como prática cultural e educativa." },
+      { title: "Fortalecer vínculos", text: "Fortalecer vínculos comunitários e o sentido de pertencimento." },
+      { title: "Formar pela prática", text: "Estimular disciplina, escuta e convivência por meio da vivência corporal." },
+      { title: "Valorizar a cultura", text: "Valorizar a cultura afro-brasileira e seus saberes ancestrais." },
+    ],
+    activities: [
+      "Aulas regulares e vivências continuadas",
+      "Oficinas temáticas de corpo, ritmo e cultura",
+      "Rodas comunitárias e apresentações abertas",
+      "Encontros formativos com mestres e educadores",
+    ],
+    differentials: [
+      "Metodologia ancorada em tradição e escuta",
+      "Trabalho intergeracional no território",
+      "Ponte entre escola, família e comunidade",
+    ],
+    results: [
+      { label: "Participantes atendidos", value: "A informar" },
+      { label: "Oficinas realizadas", value: "A informar" },
+      { label: "Territórios cobertos", value: "A informar" },
+      { label: "Educadores envolvidos", value: "A informar" },
+    ],
+    testimonial: { text: "A Capoeira mudou minha relação com meu corpo, minha história e meu território.", author: "Nome do participante", role: "Aluno(a) do projeto" },
+  },
+  "ritmos-da-ancestralidade": {
+    intro:
+      "O projeto Ritmos da Ancestralidade aproxima participantes da musicalidade que sustenta a Capoeira e de outros saberes ligados à tradição oral, ao canto e aos instrumentos. Por meio de oficinas, rodas de conversa e experiências coletivas, a proposta valoriza berimbau, atabaque, pandeiro, cantigas e memórias compartilhadas, reconhecendo a música como parte essencial da formação cultural e da transmissão de conhecimentos.",
+    objectives: [
+      { title: "Musicalidade viva", text: "Valorizar a musicalidade da Capoeira como saber cultural." },
+      { title: "Tradição oral", text: "Fortalecer a tradição oral e o repertório de cantigas." },
+      { title: "Instrumentos", text: "Aproximar participantes do berimbau, atabaque e pandeiro." },
+      { title: "Memórias", text: "Preservar saberes, histórias e memórias culturais." },
+    ],
+    activities: [
+      "Oficinas de berimbau, atabaque e pandeiro",
+      "Vivências de canto e ladainhas",
+      "Rodas de conversa com mestres e mestras",
+      "Construção artesanal de instrumentos",
+    ],
+    differentials: [
+      "Escuta ativa e transmissão oral como método",
+      "Diálogo entre gerações de músicos",
+      "Registro sonoro e documental do processo",
+    ],
+    results: [
+      { label: "Oficinas musicais", value: "A informar" },
+      { label: "Instrumentos construídos", value: "A informar" },
+      { label: "Cantigas registradas", value: "A informar" },
+      { label: "Mestres convidados", value: "A informar" },
+    ],
+    testimonial: { text: "Aprender o berimbau é aprender a escutar a história que o instrumento carrega.", author: "Nome do participante", role: "Educando(a) musical" },
+  },
+  "roda-memoria-e-territorio": {
+    intro:
+      "O projeto Roda, Memória e Território articula ações culturais abertas, rodas comunitárias, encontros intergeracionais e registros de memória ligados à Capoeira e à história local. A proposta reconhece o território como espaço de construção coletiva e busca conectar passado e presente por meio de experiências que valorizam a presença da comunidade, os mestres, os trajetos culturais e os vínculos que sustentam a continuidade da tradição.",
+    objectives: [
+      { title: "Território vivo", text: "Fortalecer a relação entre Capoeira e território de atuação." },
+      { title: "Rodas abertas", text: "Promover rodas e encontros comunitários acessíveis." },
+      { title: "Memória", text: "Registrar memórias, trajetórias e histórias locais." },
+      { title: "Intergeracional", text: "Incentivar participação e diálogo entre gerações." },
+    ],
+    activities: [
+      "Rodas comunitárias em praças e espaços abertos",
+      "Encontros de mestres e educadores",
+      "Registros audiovisuais e escritos de memória",
+      "Caminhadas culturais pelo território",
+    ],
+    differentials: [
+      "Atuação em espaços públicos e comunitários",
+      "Escuta e registro da história oral",
+      "Ponte entre patrimônio cultural e vida cotidiana",
+    ],
+    results: [
+      { label: "Rodas realizadas", value: "A informar" },
+      { label: "Territórios visitados", value: "A informar" },
+      { label: "Depoimentos registrados", value: "A informar" },
+      { label: "Parceiros locais", value: "A informar" },
+    ],
+    testimonial: { text: "A roda é onde nossa história se encontra com o presente e ganha continuidade.", author: "Nome do participante", role: "Membro da comunidade" },
+  },
+};
+
+const _unused = [
+
 export const NEWS = [
   {
     slug: "roda-de-abertura-do-encontro-cultural",
