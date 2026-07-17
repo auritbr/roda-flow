@@ -14,7 +14,7 @@ import {
   Home,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/noticias/$slug")({
   loader: ({ params }) => {
