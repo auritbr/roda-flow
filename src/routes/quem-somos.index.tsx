@@ -31,12 +31,13 @@ function QuemSomos() {
         image="https://images.unsplash.com/photo-1526401485004-46910ecc8e51?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Roda de Capoeira em atividade comunitária"
         variant="primary"
+        pattern="roda"
       />
 
-      {/* Apresentação */}
+      {/* Quem Somos — apresentação */}
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="eyebrow text-laranja">Apresentação institucional</div>
+          <div className="eyebrow text-laranja">Quem Somos</div>
           <h2 className="mt-3 font-display text-3xl md:text-4xl font-extrabold">Uma organização cultural que educa através da Capoeira</h2>
           <div className="mt-6 space-y-4 text-muted-foreground leading-relaxed">
             <p>Texto de apresentação institucional a ser inserido. Fale sobre a natureza jurídica, o compromisso com a cultura popular, o pertencimento comunitário e os princípios que orientam a atuação.</p>
@@ -45,25 +46,68 @@ function QuemSomos() {
         </div>
       </section>
 
-      {/* Missão / Visão / Valores */}
-      <section className="py-16 bg-primary text-primary-foreground relative overflow-hidden">
-        <svg className="absolute -right-16 top-10 h-64 w-64 opacity-20" viewBox="0 0 200 200" aria-hidden>
-          <circle cx="100" cy="100" r="80" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="4 8" />
-        </svg>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-6 md:grid-cols-3">
-          {[
-            { icon: Target, title: "Missão", text: "Preservar, difundir e desenvolver a Capoeira como expressão cultural, educativa e comunitária." },
-            { icon: Eye, title: "Visão", text: "Ser referência cultural no território, articulando ancestralidade, formação e cidadania." },
-            { icon: Heart, title: "Valores", text: "Ancestralidade, respeito, coletividade, resistência cultural, educação e compromisso comunitário." },
-          ].map(({ icon: Icon, title, text }) => (
-            <div key={title} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-6 backdrop-blur">
-              <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-ouro text-primary">
-                <Icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 font-display text-xl font-bold">{title}</h3>
-              <p className="mt-2 text-sm text-primary-foreground/85 leading-relaxed">{text}</p>
-            </div>
-          ))}
+      {/* Missão / Visão / Valores — cards fortes com grafismos de Capoeira */}
+      <section className="py-20 bg-muted/40">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle eyebrow="Nossos princípios" title="Missão, Visão e Valores" center description="Os três eixos que orientam nossa atuação como Ponto de Cultura." />
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Missão",
+                bg: "bg-azul",
+                accent: "text-ouro",
+                text: "Promover a Capoeira como prática cultural, educativa e comunitária, fortalecendo vínculos, identidades, ancestralidade e cidadania por meio da formação, da convivência e da valorização da cultura afro-brasileira.",
+                art: (
+                  <svg viewBox="0 0 200 140" className="h-32 w-full" aria-hidden>
+                    <circle cx="100" cy="70" r="46" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="6 8" />
+                    <circle cx="100" cy="70" r="24" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <line x1="30" y1="120" x2="170" y2="120" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <polygon points="60,30 68,50 52,50" fill="currentColor" />
+                    <rect x="140" y="30" width="16" height="16" transform="rotate(45 148 38)" fill="currentColor" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Visão",
+                bg: "bg-vermelho",
+                accent: "text-ouro",
+                text: "Ser referência na preservação e difusão da Capoeira como patrimônio cultural vivo, ampliando oportunidades de formação, inclusão e transformação social em diálogo com o território e com as novas gerações.",
+                art: (
+                  <svg viewBox="0 0 200 140" className="h-32 w-full" aria-hidden>
+                    <path d="M20 100 Q 100 20 180 100" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                    <circle cx="100" cy="70" r="16" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <circle cx="100" cy="70" r="5" fill="currentColor" />
+                    <line x1="40" y1="120" x2="160" y2="120" stroke="currentColor" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" />
+                    <polygon points="30,40 40,55 50,40" fill="none" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Valores",
+                bg: "bg-laranja",
+                accent: "text-primary",
+                text: "Ancestralidade, respeito, coletividade, escuta, disciplina, pertencimento, diversidade, compromisso comunitário, valorização da cultura afro-brasileira e defesa da Capoeira como instrumento de educação e transformação.",
+                art: (
+                  <svg viewBox="0 0 200 140" className="h-32 w-full" aria-hidden>
+                    <path d="M100 30 L120 60 L100 40 L80 60 Z" fill="currentColor" />
+                    <path d="M60 90 Q 100 60 140 90" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                    <circle cx="60" cy="110" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <circle cx="140" cy="110" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <rect x="92" y="100" width="16" height="16" transform="rotate(45 100 108)" fill="none" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                ),
+              },
+            ].map((c) => (
+              <article key={c.title} className={`relative overflow-hidden rounded-3xl ${c.bg} text-white p-8 shadow-lg`}>
+                <svg className="absolute -right-10 -top-10 h-40 w-40 opacity-20" viewBox="0 0 100 100" aria-hidden>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 5" />
+                </svg>
+                <div className={`${c.accent}`}>{c.art}</div>
+                <h3 className="mt-4 font-display text-3xl font-extrabold">{c.title}</h3>
+                <p className="mt-3 text-white/90 leading-relaxed text-[15px]">{c.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
