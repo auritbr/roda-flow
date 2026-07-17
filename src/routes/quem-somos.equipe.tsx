@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InternalHero } from "@/components/site/InternalHero";
+import { FinalCta } from "@/components/site/FinalCta";
 import { TEAM } from "@/lib/site-data";
 
 export const Route = createFileRoute("/quem-somos/equipe")({
