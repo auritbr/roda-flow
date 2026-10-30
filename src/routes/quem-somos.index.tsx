@@ -121,7 +121,7 @@ function Principle({ title, children, className }: { title: string; children: Re
 
 function QuemSomos() {
   return <>
-    <InternalHero title="Quem Somos" eyebrow="Pontão de Cultura Motirô" image={PHOTOS.roda} imageAlt="Fotografia temporária de uma roda de capoeira" variant="primary" pattern="roda" compact />
+    <InternalHero title="Quem Somos" eyebrow="Institucional" description="Somos um Ponto de Cultura dedicado à valorização da Capoeira, à cultura afro-brasileira e ao fortalecimento comunitário no território." image={PHOTOS.roda} imageAlt="Roda de Capoeira em atividade comunitária" variant="primary" pattern="roda" />
 
     <section className="py-14 md:py-16">
       <div className={`${container} grid gap-10 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] lg:items-start`}>
@@ -195,6 +195,16 @@ function QuemSomos() {
       </article>)}</div>
     </div></section>
 
-    <FinalCta title="Conheça a Motirô" variant="primary" buttons={[{ label: "Conheça nossos projetos", to: "/projetos" }, { label: "Conheça nossa equipe", to: "/quem-somos/equipe" }]} />
+    <div className="[&>section]:py-8 [&>section>div>div>svg]:scale-75 [&>section>div>div>div.relative.grid]:gap-5 [&>section>div>div>div.relative.grid]:p-6 md:[&>section>div>div>div.relative.grid]:p-8 [&_h2]:mt-1 [&_p]:mt-3 [&_div.mt-6]:mt-4 [&_div.ring-1]:max-h-44 [&_div.ring-1]:aspect-[16/9]">
+      <FinalCta
+        variant="primary"
+        eyebrow="A comunidade do Ponto"
+        title="As pessoas que mantêm a roda viva"
+        description="Conheça quem constrói, ensina, organiza e fortalece as ações do Ponto de Cultura por meio da Capoeira, da educação e da atuação comunitária."
+        image="https://images.unsplash.com/photo-1623759126376-f3f1fb8c7f37?auto=format&fit=crop&w=1400&q=80"
+        imageAlt="Encontro coletivo do Ponto de Cultura"
+        buttons={[{ label: "Conhecer a equipe", to: "/quem-somos/equipe" }]}
+      />
+    </div>
   </>;
 }
