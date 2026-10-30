@@ -1,4 +1,4 @@
-- [ ] Centralizar as duas introduções sem alterar os cards de responsabilidades.
-- [ ] Inserir três retratos provisórios e abaixar o bloco textual.
-- [ ] Esconder biografias inicialmente e expandir os cards para cima, com teclado e base estável.
-- [ ] Verificar imagens, expansão e apresentação em computador, tablet e celular.
+- [x] Centralizar as duas introduções sem alterar os cards de responsabilidades.
+- [x] Inserir três retratos provisórios e abaixar o bloco textual.
+- [x] Esconder biografias inicialmente e expandir os cards para cima, com teclado e base estável.
+- [x] Verificar imagens, expansão e apresentação em computador, tablet e celular.

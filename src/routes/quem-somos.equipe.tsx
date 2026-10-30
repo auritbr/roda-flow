@@ -82,7 +82,7 @@ function TeamCard({ person, index }: { person: (typeof team)[number]; index: num
         <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 6" />
       </svg>
       <span className={`absolute left-5 top-5 rounded-full px-3 py-1 text-xs font-semibold ${person.color}`}>Retrato provisório</span>
-      <div className={`pointer-events-none absolute inset-x-0 bottom-0 ${person.color} transition-[height] duration-300 ${expanded ? "h-[58%]" : "h-[28%]"}`} />
+      <div className={`pointer-events-none absolute inset-x-0 bottom-0 ${person.color} transition-[height] duration-300 ${expanded ? "h-[66%]" : "h-[28%]"}`} />
       <div className={`absolute inset-x-5 transition-[bottom] duration-300 ease-out ${expanded ? "bottom-[42%] pb-3" : "bottom-5"}`}>
         <h3 className="font-display text-lg font-bold leading-tight">
           <Button variant="ghost" className="h-auto w-full justify-between gap-2 whitespace-normal p-0 text-left text-lg font-bold leading-tight text-inherit hover:bg-transparent hover:text-inherit focus-visible:ring-current" aria-expanded={expanded} aria-controls={panelId} onClick={() => setExpanded((value) => !value)}>
