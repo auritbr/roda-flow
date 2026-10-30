@@ -64,25 +64,28 @@ function TeamCard({ person, index }: { person: (typeof TEAM)[number]; index: num
   const [open, setOpen] = useState(false);
   const contentId = `team-details-${index}`;
   return (
-    <article className={`group relative flex aspect-[3/4] min-w-0 flex-col overflow-hidden rounded-2xl ${bgClass[person.bg]}`} data-team-card>
+    <article className={`group relative overflow-hidden rounded-2xl ${bgClass[person.bg]} aspect-[3/4] flex flex-col justify-end p-5`} data-team-card>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-grafite to-transparent opacity-30 mix-blend-multiply" />
       <svg className="pointer-events-none absolute right-3 top-3 h-16 w-16 opacity-30" viewBox="0 0 100 100" aria-hidden>
         <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 6" />
       </svg>
-      <Button variant="ghost" aria-label={person.name} aria-expanded={open} aria-controls={contentId} onClick={() => setOpen(value => !value)} className={`relative flex w-full shrink-0 flex-col gap-4 whitespace-normal rounded-2xl p-5 text-current hover:bg-transparent hover:text-current focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current ${open ? "h-auto items-start pb-3" : "h-full min-h-0 items-center justify-end"}`}>
-        {!open && (
-          <span className="relative min-h-0 w-3/4 flex-1 overflow-hidden rounded-lg">
-            <img src={portraits[index]} alt={`Retrato fictício temporário para ${person.name}; não é uma fotografia oficial`} width={768} height={1024} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-          </span>
-        )}
-        <span className="relative flex w-full items-center gap-2 text-left font-display text-lg font-bold leading-tight">
-          <span className="min-w-0">{person.name}</span>
-          <ChevronDown className={`size-4 shrink-0 transition-transform duration-200 motion-reduce:transition-none ${open ? "rotate-180" : ""}`} aria-hidden />
-        </span>
-      </Button>
-      <div id={contentId} hidden={!open} className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-5 text-sm leading-relaxed [scrollbar-width:thin] [scrollbar-color:currentColor_transparent]" data-team-content>
-        <p className="font-semibold">{person.role}</p>
-        <div className="mt-3 space-y-4">{person.bio.split("\n\n").map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
+      <img src={portraits[index]} alt={`Retrato fictício temporário para ${person.name}; não é uma fotografia oficial`} width={96} height={96} loading="lazy" className="absolute left-1/2 top-[26%] h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-current/50 object-cover" />
+      <div className="relative z-20">
+        <h3 className="mt-1 font-display text-lg font-bold leading-tight">
+          <Button variant="ghost" aria-label={person.name} aria-expanded={open} aria-controls={contentId} onClick={() => setOpen(value => !value)} className="inline-flex h-auto max-w-full items-center justify-start gap-2 whitespace-normal rounded-sm p-0 text-left font-display text-lg font-bold leading-tight text-current hover:bg-transparent hover:text-current focus-visible:ring-2 focus-visible:ring-current">
+            <span className="min-w-0">{person.name}</span>
+            <ChevronDown className={`size-4 shrink-0 transition-transform duration-300 ease-out motion-reduce:transition-none ${open ? "rotate-180" : ""}`} aria-hidden />
+          </Button>
+        </h3>
+      </div>
+      <div id={contentId} aria-hidden={!open} inert={!open} className={`absolute inset-x-0 bottom-16 flex max-h-[40%] flex-col px-5 transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none ${open ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`} data-team-panel>
+        <div className={`relative flex min-h-0 flex-col ${bgClass[person.bg]}`}>
+          <p className="shrink-0 pb-2 text-[15px] font-semibold leading-snug">{person.role}</p>
+          <div tabIndex={open ? 0 : -1} aria-label={`Descrição de ${person.name}`} className="min-h-0 overflow-y-auto overscroll-contain pb-3 text-sm leading-relaxed [scrollbar-width:none] [&::-webkit-scrollbar]:hidden focus-visible:outline-1 focus-visible:outline-current" data-team-content>
+            <div className="space-y-3">{person.bio.split("\n\n").map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
+          </div>
+          <div className={`pointer-events-none absolute inset-x-0 bottom-0 h-3 bg-gradient-to-t ${person.bg === "ouro" ? "from-ouro" : person.bg === "vermelho" ? "from-vermelho" : "from-azul"} to-transparent`} aria-hidden />
+        </div>
       </div>
     </article>
   );

@@ -11,4 +11,4 @@
 
 - Keep Motirô's institutional adaptation scoped to its requested leaf route and define page-specific editorial helpers there; this preserves approved shared components and untouched pages.
 - Scope compact final-CTA overrides to wrappers in the requested leaf routes instead of modifying FinalCta; other pages must retain their approved proportions.
-- Keep Equipe's content toggling inside fixed-aspect original cards and its custom CTA local to that leaf route; use internal scrolling instead of external expansion to preserve grid geometry, and leave shared cards and calls to action unchanged.
+- Reuse Equipe's historical card shell and photo slot; add details only as an absolutely positioned lower panel with internal text scrolling, preserving grid geometry, and keep its CTA local and unchanged.
