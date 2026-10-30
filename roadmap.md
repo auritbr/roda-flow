@@ -10,3 +10,5 @@
 - [x] Ajustar somente o CTA de Equipe e conferir cards, textos completos, teclado e proporções.
 - [x] Manter tamanho fixo dos cards de Equipe com troca interna de conteúdo, fotos integradas e sem texto final indesejado.
 - [x] Conferir dimensões antes/depois, textos completos e foto do CTA visível.
+- [ ] Reutilizar base histórica dos cards com foto original e painel inferior discreto, mantendo nome e foto visíveis.
+- [ ] Verificar limite do painel, dimensões fixas, rolagem, teclado e imagem do CTA sem redesenho.
