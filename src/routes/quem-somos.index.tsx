@@ -7,7 +7,6 @@ import type { ReactNode } from "react";
 const PHOTOS = {
   roda: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80",
   comunidade: "https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=1200&q=80",
-  musica: "https://images.unsplash.com/photo-1777375430966-c028cf6e3293?auto=format&fit=crop&w=1200&q=80",
 };
 
 const APRESENTACAO = [
@@ -93,7 +92,7 @@ export const Route = createFileRoute("/quem-somos/")({
 
 const container = "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8";
 function Paragraphs({ texts, className = "" }: { texts: string[]; className?: string }) {
-  return <div className={`space-y-5 text-base leading-relaxed ${className}`}>{texts.map(text => <p key={text}>{text}</p>)}</div>;
+  return <div className={`space-y-4 text-base leading-relaxed ${className}`}>{texts.map(text => <p key={text}>{text}</p>)}</div>;
 }
 function Movement({ className = "" }: { className?: string }) {
   return <svg className={`pointer-events-none ${className}`} viewBox="0 0 240 160" fill="none" aria-hidden="true">
@@ -105,16 +104,18 @@ function Movement({ className = "" }: { className?: string }) {
 }
 function Photo({ src, className = "" }: { src: string; className?: string }) {
   return <div className={`relative ${className}`}>
-    <img src={src} alt="Fotografia temporária de capoeira, não pertencente ao acervo oficial da Motirô" loading="lazy" className="relative aspect-[4/3] w-full rounded-lg object-cover" />
-    <Movement className="absolute -bottom-5 -right-3 h-28 w-40 text-ouro opacity-75" />
+    <img src={src} alt="Fotografia temporária de capoeira, não pertencente ao acervo oficial da Motirô" loading="lazy" className="relative aspect-[4/3] max-h-80 w-full rounded-2xl object-cover shadow-lg" />
+    <div className="pointer-events-none absolute -bottom-3 -left-3 h-16 w-16 rounded-full border-2 border-ouro" aria-hidden="true" />
   </div>;
 }
 function Principle({ title, children, className }: { title: string; children: ReactNode; className: string }) {
-  return <article className={`relative overflow-hidden rounded-3xl p-7 md:p-8 ${className}`}>
-    <Movement className="absolute -right-12 -top-8 h-40 w-56 opacity-20" />
-    <Movement className="relative mb-4 h-24 w-36 text-ouro" />
+  return <article className={`relative overflow-hidden rounded-3xl p-7 shadow-lg ${className}`}>
+    <svg className="absolute -right-10 -top-10 h-40 w-40 opacity-20" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 5" /></svg>
+    <svg viewBox="0 0 200 140" className="relative mb-4 h-16 w-24 text-ouro" fill="none" stroke="currentColor" aria-hidden="true">
+      {title === "Missão" ? <><circle cx="100" cy="70" r="46" strokeWidth="3" strokeDasharray="6 8" /><circle cx="100" cy="70" r="24" strokeWidth="2" /><path d="M30 120h140" strokeWidth="2" /></> : title === "Visão" ? <><path d="M20 100Q100 20 180 100" strokeWidth="3" /><circle cx="100" cy="70" r="16" strokeWidth="2" /><circle cx="100" cy="70" r="5" fill="currentColor" /><path d="M40 120h120" strokeDasharray="4 6" /></> : <><path d="M60 90Q100 60 140 90" strokeWidth="3" /><circle cx="60" cy="110" r="10" strokeWidth="2" /><circle cx="140" cy="110" r="10" strokeWidth="2" /><path d="m100 30 20 30-20-20-20 20Z" fill="currentColor" /></>}
+    </svg>
     <h3 className="relative font-display text-3xl font-extrabold">{title}</h3>
-    <div className="relative mt-5 text-base leading-relaxed">{children}</div>
+    <div className="relative mt-3 text-[15px] leading-relaxed">{children}</div>
   </article>;
 }
 
@@ -123,72 +124,77 @@ function QuemSomos() {
     <InternalHero title="Quem Somos" eyebrow="Pontão de Cultura Motirô" image={PHOTOS.roda} imageAlt="Fotografia temporária de uma roda de capoeira" variant="primary" pattern="roda" compact />
 
     <section className="py-14 md:py-16">
-      <div className={`${container} grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start`}>
+      <div className={`${container} grid gap-10 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] lg:items-start`}>
         <div><SectionTitle title="Apresentação Institucional" /><Paragraphs texts={APRESENTACAO} className="mt-7 text-muted-foreground" /></div>
-        <div className="space-y-8 lg:sticky lg:top-28"><Photo src={PHOTOS.comunidade} /><div className="flex items-center gap-5 border-t border-border pt-7" aria-hidden="true"><Users className="h-9 w-9 text-verde" /><BookOpen className="h-9 w-9 text-vermelho" /><Activity className="h-9 w-9 text-azul" /><Music2 className="h-9 w-9 text-laranja" /></div></div>
+        <div className="lg:pt-2"><Photo src={PHOTOS.comunidade} /></div>
       </div>
     </section>
 
     <section className="relative overflow-hidden bg-primary py-12 text-primary-foreground md:py-14">
-      <Movement className="absolute -right-14 -top-12 h-80 w-96 text-ouro opacity-20" />
-      <div className={`${container} relative grid items-center gap-10 lg:grid-cols-[1.6fr_1fr]`}>
+      <Movement className="absolute -right-8 -top-8 h-36 w-48 text-ouro opacity-20" />
+      <div className={`${container} relative`}>
         <div><h2 className="font-display text-3xl font-extrabold leading-tight">A Motirô como Pontão de Cultura</h2>
-          <div className="mt-7 space-y-5 text-base leading-relaxed">
+          <div className="mt-6 max-w-5xl space-y-4 text-base leading-relaxed">
             <p>A Motirô é certificada pelo Ministério da Cultura como <strong className="text-ouro text-xl font-extrabold">Pontão de Cultura desde 2017</strong>.</p>
             <p>Os Pontões de Cultura estão relacionados à articulação, à integração e ao fortalecimento de iniciativas culturais, ampliando as possibilidades de cooperação, intercâmbio de experiências e desenvolvimento de ações em rede.</p>
             <p>No caso da Motirô, esse reconhecimento está associado a uma trajetória construída a partir da capoeira e ampliada para diferentes campos da cultura, do esporte, da educação e da inclusão social.</p>
             <p className="border-l-4 border-ouro pl-5">A Motirô é o <strong className="text-ouro text-xl font-extrabold">único Pontão de Cultura do município de José de Freitas-PI</strong>.</p>
           </div>
-        </div><Photo src={PHOTOS.roda} />
-      </div>
-    </section>
-
-    <section className="py-14 md:py-16">
-      <div className={container}><SectionTitle title="História e Trajetória" />
-        <div className="relative mt-10 space-y-12 border-l-2 border-ouro/50 pl-6 md:pl-10">
-          {[HISTORIA.slice(0, 2), HISTORIA.slice(2, 5), HISTORIA.slice(5)].map((texts, i) => <div key={i} className="relative">
-            <span className="absolute -left-[33px] top-2 h-4 w-4 rounded-full bg-vermelho ring-4 ring-background md:-left-[49px]" aria-hidden="true" />
-            {i < 2 ? <div className="grid items-center gap-8 lg:grid-cols-2"><div className={i === 1 ? "lg:order-2" : ""}><Paragraphs texts={texts} className="text-muted-foreground" /></div><Photo src={i === 0 ? PHOTOS.musica : PHOTOS.comunidade} /></div> : <div className="border-t border-border pt-8"><Paragraphs texts={texts} className="max-w-4xl text-muted-foreground" /></div>}
-          </div>)}
         </div>
       </div>
     </section>
 
-    <section className="bg-azul/5 py-14 md:py-16"><div className={`${container} grid items-center gap-10 lg:grid-cols-[1fr_1.3fr]`}>
+    <section className="relative overflow-hidden py-14 md:py-16 bg-gradient-to-b from-background to-muted/30">
+      <div className={`${container} max-w-6xl`}><SectionTitle title="História e Trajetória" center />
+        <div className="relative mt-10">
+          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-ouro/40 md:hidden" aria-hidden="true" />
+          <svg className="absolute left-1/2 top-0 hidden h-full w-8 -translate-x-1/2 md:block" viewBox="0 0 32 1000" preserveAspectRatio="none" aria-hidden="true"><path d="M16 0Q28 250 16 500T16 1000" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="6 8" /></svg>
+          <div className="space-y-8 md:space-y-10">{[HISTORIA.slice(0, 2), HISTORIA.slice(2, 5), HISTORIA.slice(5)].map((texts, i) => <div key={i} className="relative pl-10 md:grid md:grid-cols-2 md:gap-12 md:pl-0">
+            <span className={`absolute left-4 top-6 h-4 w-4 -translate-x-1/2 rounded-full ring-4 ring-background md:left-1/2 ${["bg-vermelho", "bg-azul", "bg-laranja"][i]}`} aria-hidden="true" />
+            <div className={`relative rounded-2xl border border-border bg-card p-5 shadow-sm ${i % 2 ? "md:col-start-2" : "md:col-start-1"}`}>
+              <Paragraphs texts={texts} className="text-muted-foreground" />
+              <svg className={`mt-4 h-3 w-24 ${["text-vermelho", "text-azul", "text-laranja"][i]}`} viewBox="0 0 100 12" aria-hidden="true"><path d="M2 8Q25 2 50 8T98 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
+            </div>
+          </div>)}</div>
+        </div>
+      </div>
+    </section>
+
+    <section className="bg-azul/5 py-14 md:py-16"><div className={`${container} grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.65fr)]`}>
       <Photo src={PHOTOS.roda} /><div><SectionTitle title="Da roda de capoeira à transformação social" /><Paragraphs texts={TRANSFORMACAO} className="mt-7 text-muted-foreground" /></div>
     </div></section>
 
-    <section className="py-14 md:py-16"><div className={`${container} grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-center`}>
-      <div><SectionTitle title="Ampliação das atividades culturais e educativas" /><Paragraphs texts={AMPLIACAO} className="mt-7 text-muted-foreground" /></div>
-      <div className="relative grid grid-cols-3 gap-5 py-8" aria-hidden="true">{[Drama, BookOpen, Clapperboard, Volleyball, Activity, Music2].map((Icon, i) => <div key={i} className={`flex aspect-square items-center justify-center rounded-full ${["bg-vermelho/10 text-vermelho", "bg-verde/10 text-verde", "bg-azul/10 text-azul", "bg-laranja/10 text-laranja", "bg-ouro/20 text-foreground", "bg-vermelho/10 text-vermelho"][i]}`}><Icon className="h-10 w-10" strokeWidth={1.5} /></div>)}</div>
+    <section className="py-14 md:py-16"><div className={`${container} max-w-5xl`}>
+      <SectionTitle title="Ampliação das atividades culturais e educativas" /><Paragraphs texts={AMPLIACAO} className="mt-6 text-muted-foreground" />
+      <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-border pt-5" aria-hidden="true">{[Drama, BookOpen, Clapperboard, Volleyball, Activity, Music2].map((Icon, i) => <Icon key={i} className={`h-7 w-7 ${["text-vermelho", "text-verde", "text-azul", "text-laranja", "text-primary", "text-vermelho"][i]}`} strokeWidth={1.5} />)}</div>
     </div></section>
 
-    <section className="bg-verde/5 py-14 md:py-16"><div className={`${container} grid items-center gap-10 lg:grid-cols-[1fr_1.4fr]`}>
-      <Photo src={PHOTOS.comunidade} /><div><SectionTitle title="Inclusão e acolhimento" /><Paragraphs texts={INCLUSAO} className="mt-7 text-muted-foreground" /></div>
+    <section className="relative overflow-hidden bg-muted/40 py-14 md:py-16"><Movement className="absolute -right-10 bottom-0 h-28 w-40 text-verde opacity-20" /><div className={`${container} max-w-5xl`}>
+      <SectionTitle title="Inclusão e acolhimento" /><Paragraphs texts={INCLUSAO} className="mt-6 text-muted-foreground" />
     </div></section>
 
-    <section className="py-14 md:py-16"><div className={`${container} grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]`}>
+    <section className="py-14 md:py-16"><div className={`${container} grid items-center gap-10 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)]`}>
       <div><SectionTitle title="A sede histórica da Motirô" /><Paragraphs texts={SEDE} className="mt-7 text-muted-foreground" /></div>
-      <div role="img" aria-label="Espaço reservado para fotografias oficiais da sede histórica da Motirô" className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-lg border border-dashed border-border bg-muted/50">
-        <Movement className="absolute -left-8 -top-5 h-64 w-80 text-ouro opacity-35" /><Landmark className="h-20 w-20 text-primary/45" strokeWidth={1} /><Movement className="absolute -bottom-12 -right-10 h-64 w-80 text-vermelho opacity-20" />
+      <div role="img" aria-label="Espaço reservado para fotografias oficiais da sede histórica da Motirô" className="relative flex h-40 items-center justify-center overflow-hidden rounded-2xl border border-dashed border-border bg-muted/50">
+        <Landmark className="h-8 w-8 text-primary/45" strokeWidth={1.5} /><Movement className="absolute -bottom-6 -right-8 h-24 w-36 text-ouro opacity-25" />
       </div>
     </div></section>
 
     <section className="bg-muted/40 py-14 md:py-16"><div className={container}>
       <SectionTitle title="Missão, Visão e Valores" center />
-      <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1.8fr]">
+      <div className="mt-10 grid items-start gap-6 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1.35fr]">
         <Principle title="Missão" className="bg-azul text-azul-foreground"><p>Promover o desenvolvimento humano e comunitário por meio da cultura, do esporte e da educação, oferecendo oportunidades de participação, aprendizagem e inclusão social, com valorização da cultura afro-brasileira, da diversidade, da cidadania e da formação integral.</p></Principle>
         <Principle title="Visão" className="bg-vermelho text-vermelho-foreground"><p>Consolidar-se como referência em José de Freitas e no Piauí na promoção da cultura, do esporte, da educação e da inclusão social, ampliando oportunidades, fortalecendo a participação comunitária e contribuindo para a articulação e o desenvolvimento cultural.</p></Principle>
-        <Principle title="Valores" className="bg-laranja text-laranja-foreground md:col-span-2 xl:col-span-1"><ul className="grid gap-x-5 gap-y-3 sm:grid-cols-2">{VALORES.map(value => <li key={value} className="flex items-start gap-2"><span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-ouro" aria-hidden="true" /><span>{value}</span></li>)}</ul></Principle>
+        <Principle title="Valores" className="bg-laranja text-laranja-foreground md:col-span-2 xl:col-span-1"><ul className="grid gap-x-5 gap-y-2 sm:grid-cols-2">{VALORES.map(value => <li key={value} className="flex items-start gap-2"><span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-ouro" aria-hidden="true" /><span>{value}</span></li>)}</ul></Principle>
       </div>
     </div></section>
 
     <section className="py-14 md:py-16"><div className={container}><SectionTitle title="Principais áreas de atuação" description="A Motirô desenvolve suas ações em diferentes áreas, que se complementam." />
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{AREAS.map(({ title, text, icon: Icon, color }) => <article key={title} className={`relative overflow-hidden rounded-lg p-5 ${color}`}>
-        <Icon className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" /><h3 className="mt-4 font-display text-lg font-extrabold leading-snug text-foreground">{title}</h3><p className="mt-3 text-sm leading-relaxed text-foreground">{text}</p>
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{AREAS.map(({ title, text, icon: Icon, color }) => <article key={title} className={`relative overflow-hidden rounded-2xl p-5 ${color}`}>
+        <Icon className="h-7 w-7" strokeWidth={1.7} aria-hidden="true" /><h3 className="mt-3 font-display text-lg font-extrabold leading-snug text-foreground">{title}</h3><p className="mt-3 text-sm leading-relaxed text-foreground">{text}</p>
       </article>)}</div>
     </div></section>
 
-    <FinalCta title="Conheça a Motirô" variant="primary" image={PHOTOS.comunidade} imageAlt="Fotografia temporária de atividade comunitária de capoeira" buttons={[{ label: "Conheça nossos projetos", to: "/projetos" }, { label: "Conheça nossa equipe", to: "/quem-somos/equipe" }]} />
+    <FinalCta title="Conheça a Motirô" variant="primary" buttons={[{ label: "Conheça nossos projetos", to: "/projetos" }, { label: "Conheça nossa equipe", to: "/quem-somos/equipe" }]} />
   </>;
 }
