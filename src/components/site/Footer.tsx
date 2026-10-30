@@ -84,9 +84,9 @@ export function Footer() {
             <h3 className="font-display font-bold text-sm eyebrow text-ouro mb-4">Projetos</h3>
             <ul className="space-y-2 text-sm">
               <li><Link to="/projetos" className="hover:text-ouro">Todos os projetos</Link></li>
-              <li><Link to="/projetos/capoeira-para-todos" className="hover:text-ouro">Capoeira para Todos</Link></li>
-              <li><Link to="/projetos/ritmos-da-ancestralidade" className="hover:text-ouro">Ritmos da Ancestralidade</Link></li>
-              <li><Link to="/projetos/roda-memoria-e-territorio" className="hover:text-ouro">Roda, Memória e Território</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "capoeira-para-todos" }} className="hover:text-ouro">Capoeira para Todos</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "ritmos-da-ancestralidade" }} className="hover:text-ouro">Ritmos da Ancestralidade</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "roda-memoria-e-territorio" }} className="hover:text-ouro">Roda, Memória e Território</Link></li>
             </ul>
           </div>
 

@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep Motirô's institutional adaptation scoped to its requested leaf route and define page-specific editorial helpers there; this preserves approved shared components and untouched pages.

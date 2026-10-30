@@ -9,50 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
-import { Route as QuemSomosRouteImport } from './routes/quem-somos'
-import { Route as ProjetosRouteImport } from './routes/projetos'
-import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
-import { Route as NoticiasRouteImport } from './routes/noticias'
-import { Route as GaleriaRouteImport } from './routes/galeria'
-import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos.index'
-import { Route as ProjetosIndexRouteImport } from './routes/projetos.index'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as NoticiasRouteImport } from './routes/noticias'
+import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
+import { Route as ProjetosRouteImport } from './routes/projetos'
+import { Route as QuemSomosRouteImport } from './routes/quem-somos'
+import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as NoticiasIndexRouteImport } from './routes/noticias.index'
-import { Route as QuemSomosTransparenciaRouteImport } from './routes/quem-somos.transparencia'
-import { Route as QuemSomosEquipeRouteImport } from './routes/quem-somos.equipe'
-import { Route as ProjetosSlugRouteImport } from './routes/projetos.$slug'
 import { Route as NoticiasSlugRouteImport } from './routes/noticias.$slug'
+import { Route as ProjetosIndexRouteImport } from './routes/projetos.index'
+import { Route as ProjetosSlugRouteImport } from './routes/projetos.$slug'
+import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos.index'
+import { Route as QuemSomosEquipeRouteImport } from './routes/quem-somos.equipe'
+import { Route as QuemSomosTransparenciaRouteImport } from './routes/quem-somos.transparencia'
 
-const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
-  id: '/termos-de-uso',
-  path: '/termos-de-uso',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const QuemSomosRoute = QuemSomosRouteImport.update({
-  id: '/quem-somos',
-  path: '/quem-somos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjetosRoute = ProjetosRouteImport.update({
-  id: '/projetos',
-  path: '/projetos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
-  id: '/politica-de-privacidade',
-  path: '/politica-de-privacidade',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NoticiasRoute = NoticiasRouteImport.update({
-  id: '/noticias',
-  path: '/noticias',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GaleriaRoute = GaleriaRouteImport.update({
-  id: '/galeria',
-  path: '/galeria',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -60,29 +35,59 @@ const ContatoRoute = ContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
   getParentRoute: () => rootRouteImport,
 } as any)
-const QuemSomosIndexRoute = QuemSomosIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => QuemSomosRoute,
+const NoticiasRoute = NoticiasRouteImport.update({
+  id: '/noticias',
+  path: '/noticias',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const ProjetosIndexRoute = ProjetosIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ProjetosRoute,
+const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
+  id: '/politica-de-privacidade',
+  path: '/politica-de-privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetosRoute = ProjetosRouteImport.update({
+  id: '/projetos',
+  path: '/projetos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuemSomosRoute = QuemSomosRouteImport.update({
+  id: '/quem-somos',
+  path: '/quem-somos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
+  id: '/termos-de-uso',
+  path: '/termos-de-uso',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const NoticiasIndexRoute = NoticiasIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => NoticiasRoute,
 } as any)
-const QuemSomosTransparenciaRoute = QuemSomosTransparenciaRouteImport.update({
-  id: '/transparencia',
-  path: '/transparencia',
+const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NoticiasRoute,
+} as any)
+const ProjetosIndexRoute = ProjetosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProjetosRoute,
+} as any)
+const ProjetosSlugRoute = ProjetosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProjetosRoute,
+} as any)
+const QuemSomosIndexRoute = QuemSomosIndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => QuemSomosRoute,
 } as any)
 const QuemSomosEquipeRoute = QuemSomosEquipeRouteImport.update({
@@ -90,15 +95,10 @@ const QuemSomosEquipeRoute = QuemSomosEquipeRouteImport.update({
   path: '/equipe',
   getParentRoute: () => QuemSomosRoute,
 } as any)
-const ProjetosSlugRoute = ProjetosSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ProjetosRoute,
-} as any)
-const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => NoticiasRoute,
+const QuemSomosTransparenciaRoute = QuemSomosTransparenciaRouteImport.update({
+  id: '/transparencia',
+  path: '/transparencia',
+  getParentRoute: () => QuemSomosRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -214,46 +214,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/termos-de-uso': {
-      id: '/termos-de-uso'
-      path: '/termos-de-uso'
-      fullPath: '/termos-de-uso'
-      preLoaderRoute: typeof TermosDeUsoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/quem-somos': {
-      id: '/quem-somos'
-      path: '/quem-somos'
-      fullPath: '/quem-somos'
-      preLoaderRoute: typeof QuemSomosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projetos': {
-      id: '/projetos'
-      path: '/projetos'
-      fullPath: '/projetos'
-      preLoaderRoute: typeof ProjetosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/politica-de-privacidade': {
-      id: '/politica-de-privacidade'
-      path: '/politica-de-privacidade'
-      fullPath: '/politica-de-privacidade'
-      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/noticias': {
-      id: '/noticias'
-      path: '/noticias'
-      fullPath: '/noticias'
-      preLoaderRoute: typeof NoticiasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/galeria': {
-      id: '/galeria'
-      path: '/galeria'
-      fullPath: '/galeria'
-      preLoaderRoute: typeof GaleriaRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -263,26 +228,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/quem-somos/': {
-      id: '/quem-somos/'
-      path: '/'
-      fullPath: '/quem-somos/'
-      preLoaderRoute: typeof QuemSomosIndexRouteImport
-      parentRoute: typeof QuemSomosRoute
+    '/noticias': {
+      id: '/noticias'
+      path: '/noticias'
+      fullPath: '/noticias'
+      preLoaderRoute: typeof NoticiasRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/projetos/': {
-      id: '/projetos/'
-      path: '/'
-      fullPath: '/projetos/'
-      preLoaderRoute: typeof ProjetosIndexRouteImport
-      parentRoute: typeof ProjetosRoute
+    '/politica-de-privacidade': {
+      id: '/politica-de-privacidade'
+      path: '/politica-de-privacidade'
+      fullPath: '/politica-de-privacidade'
+      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projetos': {
+      id: '/projetos'
+      path: '/projetos'
+      fullPath: '/projetos'
+      preLoaderRoute: typeof ProjetosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quem-somos': {
+      id: '/quem-somos'
+      path: '/quem-somos'
+      fullPath: '/quem-somos'
+      preLoaderRoute: typeof QuemSomosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/termos-de-uso': {
+      id: '/termos-de-uso'
+      path: '/termos-de-uso'
+      fullPath: '/termos-de-uso'
+      preLoaderRoute: typeof TermosDeUsoRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/noticias/': {
       id: '/noticias/'
@@ -291,11 +277,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NoticiasIndexRouteImport
       parentRoute: typeof NoticiasRoute
     }
-    '/quem-somos/transparencia': {
-      id: '/quem-somos/transparencia'
-      path: '/transparencia'
-      fullPath: '/quem-somos/transparencia'
-      preLoaderRoute: typeof QuemSomosTransparenciaRouteImport
+    '/noticias/$slug': {
+      id: '/noticias/$slug'
+      path: '/$slug'
+      fullPath: '/noticias/$slug'
+      preLoaderRoute: typeof NoticiasSlugRouteImport
+      parentRoute: typeof NoticiasRoute
+    }
+    '/projetos/': {
+      id: '/projetos/'
+      path: '/'
+      fullPath: '/projetos/'
+      preLoaderRoute: typeof ProjetosIndexRouteImport
+      parentRoute: typeof ProjetosRoute
+    }
+    '/projetos/$slug': {
+      id: '/projetos/$slug'
+      path: '/$slug'
+      fullPath: '/projetos/$slug'
+      preLoaderRoute: typeof ProjetosSlugRouteImport
+      parentRoute: typeof ProjetosRoute
+    }
+    '/quem-somos/': {
+      id: '/quem-somos/'
+      path: '/'
+      fullPath: '/quem-somos/'
+      preLoaderRoute: typeof QuemSomosIndexRouteImport
       parentRoute: typeof QuemSomosRoute
     }
     '/quem-somos/equipe': {
@@ -305,19 +312,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuemSomosEquipeRouteImport
       parentRoute: typeof QuemSomosRoute
     }
-    '/projetos/$slug': {
-      id: '/projetos/$slug'
-      path: '/$slug'
-      fullPath: '/projetos/$slug'
-      preLoaderRoute: typeof ProjetosSlugRouteImport
-      parentRoute: typeof ProjetosRoute
-    }
-    '/noticias/$slug': {
-      id: '/noticias/$slug'
-      path: '/$slug'
-      fullPath: '/noticias/$slug'
-      preLoaderRoute: typeof NoticiasSlugRouteImport
-      parentRoute: typeof NoticiasRoute
+    '/quem-somos/transparencia': {
+      id: '/quem-somos/transparencia'
+      path: '/transparencia'
+      fullPath: '/quem-somos/transparencia'
+      preLoaderRoute: typeof QuemSomosTransparenciaRouteImport
+      parentRoute: typeof QuemSomosRoute
     }
   }
 }
