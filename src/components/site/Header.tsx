@@ -19,9 +19,9 @@ const NAV = [
     label: "Projetos",
     to: "/projetos",
     children: [
-      { label: "Capoeira para Todos", to: "/projetos/$slug", params: { slug: "capoeira-para-todos" } },
-      { label: "Ritmos da Ancestralidade", to: "/projetos/$slug", params: { slug: "ritmos-da-ancestralidade" } },
-      { label: "Roda, Memória e Território", to: "/projetos/$slug", params: { slug: "roda-memoria-e-territorio" } },
+      { label: "Capoeira para Todos", to: "/projetos/capoeira-para-todos" },
+      { label: "Ritmos da Ancestralidade", to: "/projetos/ritmos-da-ancestralidade" },
+      { label: "Roda, Memória e Território", to: "/projetos/roda-memoria-e-territorio" },
     ],
   },
   { label: "Notícias", to: "/noticias" },
@@ -84,9 +84,8 @@ export function Header() {
                     <div className="min-w-[240px] rounded-lg border border-border bg-card shadow-lg overflow-hidden">
                       {item.children.map((c) => (
                         <Link
-                          key={c.label}
+                          key={c.to}
                           to={c.to}
-                          params={"params" in c ? c.params : undefined}
                           activeProps={{ className: "bg-muted text-primary" }}
                           className="block px-4 py-2.5 text-sm hover:bg-muted transition-colors"
                         >
@@ -135,9 +134,8 @@ export function Header() {
                         <div className="pl-4 py-1 space-y-1 border-l-2 border-ouro ml-3">
                           {item.children.map((c) => (
                             <Link
-                              key={c.label}
+                              key={c.to}
                               to={c.to}
-                              params={"params" in c ? c.params : undefined}
                               onClick={() => setOpen(false)}
                               className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary"
                             >
