@@ -8,3 +8,5 @@
 - [x] Apresentar os três integrantes em accordions com retratos temporários e conferir abertura por clique e teclado.
 - [x] Restaurar os cards originais de Equipe com expansão junto ao nome e retratos temporários naturais.
 - [x] Ajustar somente o CTA de Equipe e conferir cards, textos completos, teclado e proporções.
+- [x] Manter tamanho fixo dos cards de Equipe com troca interna de conteúdo, fotos integradas e sem texto final indesejado.
+- [x] Conferir dimensões antes/depois, textos completos e foto do CTA visível.

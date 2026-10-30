@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { InternalHero } from "@/components/site/InternalHero";
 import { TEAM } from "@/lib/site-data";
@@ -50,42 +50,41 @@ function Equipe() {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3" data-team-grid>
-            {TEAM.map((p, i) => (
-              <Collapsible asChild key={p.name}>
-              <article className={`group relative overflow-hidden rounded-2xl ${bgClass[p.bg]}`} data-team-card>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-grafite to-transparent opacity-30 mix-blend-multiply" />
-                <svg className="pointer-events-none absolute right-3 top-3 h-16 w-16 opacity-30" viewBox="0 0 100 100" aria-hidden>
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 6" />
-                </svg>
-                <CollapsibleTrigger asChild>
-                  <Button variant="ghost" aria-label={p.name} className="relative flex aspect-[3/4] h-auto w-full flex-col items-start justify-end whitespace-normal rounded-2xl p-5 text-current hover:bg-transparent hover:text-current focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current [&[data-state=open]_.team-chevron]:rotate-180">
-                    <img src={portraits[i]} alt={`Retrato fictício temporário para ${p.name}; não é uma fotografia oficial`} width={768} height={1024} loading="lazy" className="absolute left-1/2 top-[26%] h-28 w-24 -translate-x-1/2 -translate-y-1/2 rounded-lg object-cover" />
-                    <span className="relative flex items-center gap-2 text-left font-display text-lg font-bold leading-tight">
-                      <span>{p.name}</span>
-                      <ChevronDown className="team-chevron size-4 shrink-0 transition-transform duration-200 motion-reduce:transition-none" aria-hidden />
-                    </span>
-                  </Button>
-                </CollapsibleTrigger>
-                <CollapsibleContent forceMount className="relative grid grid-rows-[0fr] transition-[grid-template-rows] duration-200 data-[state=open]:grid-rows-[1fr] motion-reduce:transition-none" data-team-content>
-                  <span className="min-h-0 overflow-hidden group-data-[state=closed]:invisible">
-                    <span className="block px-5 pb-5 text-sm leading-relaxed">
-                      <span className="block font-semibold">{p.role}</span>
-                      <span className="mt-3 block space-y-4">{p.bio.split("\n\n").map(paragraph => <span className="block" key={paragraph}>{paragraph}</span>)}</span>
-                    </span>
-                  </span>
-                </CollapsibleContent>
-              </article>
-              </Collapsible>
-            ))}
+            {TEAM.map((p, i) => <TeamCard key={p.name} person={p} index={i} />)}
           </div>
-          <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
-            As atribuições descritas são apresentações institucionais dos respectivos cargos e poderão ser ajustadas pela diretoria conforme as responsabilidades efetivamente exercidas.
-          </p>
         </div>
       </section>
 
       <EquipeCta />
     </>
+  );
+}
+
+function TeamCard({ person, index }: { person: (typeof TEAM)[number]; index: number }) {
+  const [open, setOpen] = useState(false);
+  const contentId = `team-details-${index}`;
+  return (
+    <article className={`group relative flex aspect-[3/4] min-w-0 flex-col overflow-hidden rounded-2xl ${bgClass[person.bg]}`} data-team-card>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-grafite to-transparent opacity-30 mix-blend-multiply" />
+      <svg className="pointer-events-none absolute right-3 top-3 h-16 w-16 opacity-30" viewBox="0 0 100 100" aria-hidden>
+        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 6" />
+      </svg>
+      <Button variant="ghost" aria-label={person.name} aria-expanded={open} aria-controls={contentId} onClick={() => setOpen(value => !value)} className={`relative flex w-full shrink-0 flex-col gap-4 whitespace-normal rounded-2xl p-5 text-current hover:bg-transparent hover:text-current focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current ${open ? "h-auto items-start pb-3" : "h-full min-h-0 items-center justify-end"}`}>
+        {!open && (
+          <span className="relative min-h-0 w-3/4 flex-1 overflow-hidden rounded-lg">
+            <img src={portraits[index]} alt={`Retrato fictício temporário para ${person.name}; não é uma fotografia oficial`} width={768} height={1024} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          </span>
+        )}
+        <span className="relative flex w-full items-center gap-2 text-left font-display text-lg font-bold leading-tight">
+          <span className="min-w-0">{person.name}</span>
+          <ChevronDown className={`size-4 shrink-0 transition-transform duration-200 motion-reduce:transition-none ${open ? "rotate-180" : ""}`} aria-hidden />
+        </span>
+      </Button>
+      <div id={contentId} hidden={!open} className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-5 text-sm leading-relaxed [scrollbar-width:thin] [scrollbar-color:currentColor_transparent]" data-team-content>
+        <p className="font-semibold">{person.role}</p>
+        <div className="mt-3 space-y-4">{person.bio.split("\n\n").map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
+      </div>
+    </article>
   );
 }
 
@@ -116,8 +115,8 @@ function EquipeCta() {
                 </Button>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-sm">
-              <img src={ctaPhoto.url} alt="Capoeiristas e músicos em atividade cultural em uma praça" width={1000} height={572} loading="lazy" className="aspect-[7/4] w-full rounded-2xl object-cover" />
+            <div className="relative mx-auto aspect-[7/4] w-full min-w-0 max-w-sm">
+              <img src={ctaPhoto.url} alt="Capoeiristas e músicos em atividade cultural em uma praça" width={1000} height={572} loading="eager" decoding="async" className="block h-full w-full rounded-2xl object-cover" />
               <span className="pointer-events-none absolute -bottom-2 -left-2 size-10 rounded-full border border-ouro/70" aria-hidden />
               <span className="pointer-events-none absolute -right-2 -top-2 size-3 rounded-full bg-ouro" aria-hidden />
             </div>
