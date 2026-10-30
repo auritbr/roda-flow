@@ -185,7 +185,7 @@ function QuemSomos() {
       <div className="mt-10 grid items-start gap-6 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1.35fr]">
         <Principle title="Missão" className="bg-azul text-azul-foreground"><p>Promover o desenvolvimento humano e comunitário por meio da cultura, do esporte e da educação, oferecendo oportunidades de participação, aprendizagem e inclusão social, com valorização da cultura afro-brasileira, da diversidade, da cidadania e da formação integral.</p></Principle>
         <Principle title="Visão" className="bg-vermelho text-vermelho-foreground"><p>Consolidar-se como referência em José de Freitas e no Piauí na promoção da cultura, do esporte, da educação e da inclusão social, ampliando oportunidades, fortalecendo a participação comunitária e contribuindo para a articulação e o desenvolvimento cultural.</p></Principle>
-        <Principle title="Valores" className="bg-laranja text-laranja-foreground md:col-span-2 xl:col-span-1"><ul className="grid gap-x-5 gap-y-2 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">{VALORES.map(value => <li key={value} className="flex items-start gap-2"><span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-ouro" aria-hidden="true" /><span>{value}</span></li>)}</ul></Principle>
+        <Principle title="Valores" className="bg-laranja text-laranja-foreground md:col-span-2 xl:col-span-1"><ul className="grid gap-x-5 gap-y-2 sm:grid-cols-2">{VALORES.map(value => <li key={value} className="flex items-start gap-2"><span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-ouro" aria-hidden="true" /><span>{value}</span></li>)}</ul></Principle>
       </div>
     </div></section>
 
