@@ -6,5 +6,5 @@
 - [x] Conferir textos integrais, três fotografias, proporções e navegação.
 - [x] Restaurar heroes e chamadas originais de Quem Somos e Equipe; compactar somente essas chamadas.
 - [x] Apresentar os três integrantes em accordions com retratos temporários e conferir abertura por clique e teclado.
-- [ ] Restaurar os cards originais de Equipe com expansão junto ao nome e retratos temporários naturais.
-- [ ] Ajustar somente o CTA de Equipe e conferir cards, textos completos, teclado e proporções.
+- [x] Restaurar os cards originais de Equipe com expansão junto ao nome e retratos temporários naturais.
+- [x] Ajustar somente o CTA de Equipe e conferir cards, textos completos, teclado e proporções.
