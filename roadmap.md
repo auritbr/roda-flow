@@ -1,3 +1,4 @@
-- [x] Adaptar exclusivamente a página de Equipe aos textos reais e três integrantes.
-- [x] Preservar hero, cards e CTA; adicionar introdução e responsabilidades compactas.
-- [x] Verificar expansão por teclado e apresentação em três tamanhos de tela.
+- [ ] Centralizar as duas introduções sem alterar os cards de responsabilidades.
+- [ ] Inserir três retratos provisórios e abaixar o bloco textual.
+- [ ] Esconder biografias inicialmente e expandir os cards para cima, com teclado e base estável.
+- [ ] Verificar imagens, expansão e apresentação em computador, tablet e celular.
