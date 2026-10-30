@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep Motirô's institutional adaptation scoped to its requested leaf route and define page-specific editorial helpers there; this preserves approved shared components and untouched pages.
+- Scope compact final-CTA overrides to wrappers in the requested leaf routes instead of modifying FinalCta; other pages must retain their approved proportions.
