@@ -1,3 +1,3 @@
-- [ ] Recriar somente os três cards com fotos integradas, grafismos culturais e hierarquia refinada.
-- [ ] Expandir biografias para baixo, sem cortes nem rolagem interna; preservar textos e restante da página.
-- [ ] Verificar cards abertos e fechados, teclado e grade em computador, tablet e celular.
+- [x] Recriar somente os três cards com fotos integradas, grafismos culturais e hierarquia refinada.
+- [x] Expandir biografias para baixo, sem cortes nem rolagem interna; preservar textos e restante da página.
+- [x] Verificar cards abertos e fechados, teclado e grade em computador, tablet e celular.

@@ -65,14 +65,14 @@ function TeamCard({ person, index }: { person: (typeof team)[number]; index: num
   return (
     <article className={`group isolate overflow-hidden rounded-2xl border border-current/10 shadow-sm ${person.color}`}>
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-        {person.photo && <img src={person.photo} alt="Retrato fictício provisório; não representa a pessoa integrante da equipe" className="h-full w-full object-cover object-[50%_25%]" loading="lazy" width={768} height={1024} />}
+        {person.photo && <img src={person.photo} alt="Retrato fictício provisório; não representa a pessoa integrante da equipe" className="h-full w-full object-cover object-[50%_10%]" loading="lazy" width={768} height={1024} />}
         <span className="absolute left-4 top-4 rounded-full border border-border/60 bg-background/90 px-3 py-1 text-[10px] font-semibold text-foreground backdrop-blur-sm">Retrato provisório</span>
         <svg className="pointer-events-none absolute -right-4 bottom-6 h-24 w-24 text-ouro" viewBox="0 0 100 100" aria-hidden="true">
           <circle cx="50" cy="50" r="39" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 6" />
           <path d="M20 64 A34 34 0 0 1 68 19" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
         </svg>
         <svg className={`pointer-events-none absolute inset-x-0 -bottom-px h-9 w-full ${person.color}`} viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 29 Q105 7 210 24 T400 13 V40 H0 Z" fill="currentColor" />
+          <path d="M0 29 Q105 7 210 24 T400 13 V40 H0 Z" fill={index === 0 ? "var(--primary)" : index === 1 ? "var(--vermelho)" : "var(--ouro)"} />
         </svg>
       </div>
       <div className="relative">
