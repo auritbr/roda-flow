@@ -14,7 +14,7 @@ const team: { name: string; role: string; distinction?: string; bio: string[]; c
     name: "Aerton Ezequiel Alves",
     role: "Coordenador Geral (presidente)",
     distinction: "Mestre Tingaúna",
-    color: "bg-azul text-azul-foreground",
+    color: "bg-primary text-primary-foreground",
     photo: provisionalMan,
     bio: [
       "Responsável pela coordenação geral da instituição, pelo acompanhamento das atividades, pela articulação institucional e pela orientação do trabalho cultural, esportivo e social da Motirô.",
@@ -63,43 +63,47 @@ function TeamCard({ person, index }: { person: (typeof team)[number]; index: num
   const [expanded, setExpanded] = useState(false);
   const panelId = `team-description-${index}`;
   return (
-    <div className="relative aspect-[3/4]">
-    <article className={`group absolute inset-x-0 bottom-0 overflow-hidden rounded-2xl ${person.color} p-5 transition-[height] duration-300 ease-out ${expanded ? "z-10 h-[calc(100%+1.5rem)]" : "h-full"}`}>
-      {person.photo ? (
-        <div className="absolute inset-x-0 top-0 h-[72%] overflow-hidden">
-          <img src={person.photo} alt="Retrato fictício provisório; não representa a pessoa integrante da equipe" className="h-full w-full object-cover object-top" loading="lazy" width={768} height={1024} />
-        </div>
-      ) : (
-        <svg className="absolute inset-x-0 top-8 mx-auto h-[45%] w-[65%] opacity-20" viewBox="0 0 160 180" aria-hidden="true">
-          <circle cx="80" cy="82" r="62" fill="none" stroke="currentColor" strokeWidth="2" />
-          <path d="M24 108 Q80 12 136 108 M38 123 Q80 53 122 123" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M80 61 L101 82 L80 103 L59 82 Z" fill="currentColor" />
-          <path d="M22 149 Q61 129 80 147 T138 146" fill="none" stroke="currentColor" strokeWidth="2" />
+    <article className={`group isolate overflow-hidden rounded-2xl border border-current/10 shadow-sm ${person.color}`}>
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+        {person.photo && <img src={person.photo} alt="Retrato fictício provisório; não representa a pessoa integrante da equipe" className="h-full w-full object-cover object-[50%_25%]" loading="lazy" width={768} height={1024} />}
+        <span className="absolute left-4 top-4 rounded-full border border-border/60 bg-background/90 px-3 py-1 text-[10px] font-semibold text-foreground backdrop-blur-sm">Retrato provisório</span>
+        <svg className="pointer-events-none absolute -right-4 bottom-6 h-24 w-24 text-ouro" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="39" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 6" />
+          <path d="M20 64 A34 34 0 0 1 68 19" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
         </svg>
-      )}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-grafite/25 to-transparent" />
-      <svg className="absolute right-3 top-3 h-16 w-16 opacity-30" viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 6" />
-      </svg>
-      <span className={`absolute left-5 top-5 rounded-full px-3 py-1 text-xs font-semibold ${person.color}`}>Retrato provisório</span>
-      <div className={`pointer-events-none absolute inset-x-0 bottom-0 ${person.color} transition-[height] duration-300 ${expanded ? "h-[66%]" : "h-[28%]"}`} />
-      <div className={`absolute inset-x-5 transition-[bottom] duration-300 ease-out ${expanded ? "bottom-[42%] pb-3" : "bottom-5"}`}>
-        <h3 className="font-display text-lg font-bold leading-tight">
-          <Button variant="ghost" className="h-auto w-full justify-between gap-2 whitespace-normal p-0 text-left text-lg font-bold leading-tight text-inherit hover:bg-transparent hover:text-inherit focus-visible:ring-current" aria-expanded={expanded} aria-controls={panelId} onClick={() => setExpanded((value) => !value)}>
-            <span>{person.name}</span>
-            <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
-          </Button>
-        </h3>
-        <div className="mt-2 text-xs font-bold leading-relaxed">{person.role}</div>
-        {person.distinction && <span className="mt-2 inline-block rounded-full border border-current/30 px-3 py-1 text-xs font-semibold">{person.distinction}</span>}
+        <svg className={`pointer-events-none absolute inset-x-0 -bottom-px h-9 w-full ${person.color}`} viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 29 Q105 7 210 24 T400 13 V40 H0 Z" fill="currentColor" />
+        </svg>
       </div>
-      <div id={panelId} inert={!expanded} aria-hidden={!expanded} className={`absolute inset-x-0 bottom-0 h-[42%] border-t border-current/20 ${person.color} px-5 pb-5 pt-3 transition-[transform,opacity] duration-300 ease-out ${expanded ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}>
-        <div tabIndex={expanded ? 0 : -1} role="region" aria-label={`Sobre ${person.name}`} className="h-full overflow-y-auto overscroll-contain rounded-sm pr-1 text-xs leading-relaxed focus-visible:outline focus-visible:outline-1 focus-visible:outline-current [scrollbar-width:thin]">
-          {person.bio.map((paragraph) => <p key={paragraph} className="mb-3 last:mb-0">{paragraph}</p>)}
+      <div className="relative">
+        <svg className="pointer-events-none absolute -left-8 bottom-0 h-32 w-32 opacity-[0.08]" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="48" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 5" />
+        </svg>
+        <div className="relative min-h-56 px-6 pb-7 pt-6">
+          <div className="mb-5 flex items-center gap-2 opacity-60" aria-hidden="true">
+            <span className="h-px w-8 bg-current" /><span className="h-1.5 w-1.5 rotate-45 bg-current" /><span className="h-1.5 w-1.5 rotate-45 border border-current" />
+          </div>
+          <h3 className="font-display text-lg font-bold leading-snug">
+            <Button variant="ghost" className="h-auto w-full items-start justify-between gap-3 whitespace-normal p-0 text-left font-display text-lg font-bold leading-snug text-inherit hover:bg-transparent hover:text-inherit focus-visible:ring-current" aria-expanded={expanded} aria-controls={panelId} onClick={() => setExpanded((value) => !value)}>
+              <span>{person.name}</span>
+              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-current/25 bg-current/5">
+                <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+              </span>
+            </Button>
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed opacity-85">{person.role}</p>
+          {person.distinction && <span className="mt-4 inline-flex rounded-full border border-current/25 px-3 py-1 text-xs font-medium">{person.distinction}</span>}
+        </div>
+        <div id={panelId} inert={!expanded} aria-hidden={!expanded} className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+          <div className="min-h-0 overflow-hidden" role="region" aria-label={`Sobre ${person.name}`}>
+            <div className="relative mx-6 border-t border-current/20 pb-7 pt-5 text-sm leading-relaxed">
+              {person.bio.map((paragraph) => <p key={paragraph} className="mb-4 last:mb-0">{paragraph}</p>)}
+            </div>
+          </div>
         </div>
       </div>
     </article>
-    </div>
   );
 }
 
@@ -121,7 +125,7 @@ function Equipe() {
             <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Um trabalho construído coletivamente</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">A trajetória da Motirô é construída pelo trabalho de sua equipe, dos participantes, das famílias, dos parceiros e da comunidade. Na organização institucional, diferentes responsabilidades se complementam para garantir o acompanhamento das atividades e a continuidade do trabalho cultural, esportivo e social.</p>
           </div>
-          <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid max-w-5xl items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((person, index) => <TeamCard key={person.name} person={person} index={index} />)}
           </div>
         </div>

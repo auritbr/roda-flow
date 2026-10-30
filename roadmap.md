@@ -1,4 +1,3 @@
-- [x] Centralizar as duas introduções sem alterar os cards de responsabilidades.
-- [x] Inserir três retratos provisórios e abaixar o bloco textual.
-- [x] Esconder biografias inicialmente e expandir os cards para cima, com teclado e base estável.
-- [x] Verificar imagens, expansão e apresentação em computador, tablet e celular.
+- [ ] Recriar somente os três cards com fotos integradas, grafismos culturais e hierarquia refinada.
+- [ ] Expandir biografias para baixo, sem cortes nem rolagem interna; preservar textos e restante da página.
+- [ ] Verificar cards abertos e fechados, teclado e grade em computador, tablet e celular.
