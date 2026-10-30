@@ -10,4 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the institutional team content and optional portrait slots local to the team route, so adapting that page cannot change shared content or other approved pages.
-- Team cards retain a fixed portrait aspect ratio; biographies expand inside a bounded lower panel using the shared Button and accessible disclosure state, so the grid never shifts.
+- Team card slots retain a fixed portrait aspect ratio; the bottom-anchored card grows upward on disclosure while its biography appears in a bounded lower panel using the shared Button and accessible state, so the grid and following content never shift.
