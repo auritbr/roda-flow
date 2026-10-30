@@ -75,7 +75,7 @@ function TeamCard({ person, index }: { person: (typeof team)[number]; index: num
       {person.distinction && <span className="absolute left-5 top-5 rounded-full border border-current/30 px-3 py-1 text-xs font-semibold">{person.distinction}</span>}
       <div className="absolute inset-x-5 bottom-[42%] pb-3">
         <h3 className="font-display text-lg font-bold leading-tight">
-          <Button variant="ghost" className="h-auto w-full justify-between gap-2 whitespace-normal p-0 text-left text-inherit hover:bg-transparent hover:text-inherit focus-visible:ring-current" aria-expanded={expanded} aria-controls={panelId} onClick={() => setExpanded((value) => !value)}>
+          <Button variant="ghost" className="h-auto w-full justify-between gap-2 whitespace-normal p-0 text-left text-lg font-bold leading-tight text-inherit hover:bg-transparent hover:text-inherit focus-visible:ring-current" aria-expanded={expanded} aria-controls={panelId} onClick={() => setExpanded((value) => !value)}>
             <span>{person.name}</span>
             <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
           </Button>
