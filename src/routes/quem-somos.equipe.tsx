@@ -53,7 +53,7 @@ function Equipe() {
                 <svg className="pointer-events-none absolute right-8 top-3 h-16 w-16 opacity-20" viewBox="0 0 100 100" aria-hidden>
                   <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 6" />
                 </svg>
-                <AccordionTrigger className="relative gap-3 p-4 sm:gap-5 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-current [&>svg]:text-current [&>svg]:motion-reduce:transition-none">
+                <AccordionTrigger aria-label={p.name} className="relative gap-3 p-4 sm:gap-5 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-current [&>svg]:text-current [&>svg]:motion-reduce:transition-none">
                   <span className="flex min-w-0 items-center gap-3 sm:gap-5">
                     <img src={portraits[i]} alt={`Retrato fictício temporário para ${p.name}; não é uma fotografia oficial`} width={816} height={816} loading="lazy" className="h-20 w-20 shrink-0 rounded-lg object-cover sm:h-24 sm:w-24" />
                     <span className="min-w-0 font-display text-base font-bold leading-snug sm:text-lg">{p.name}</span>
