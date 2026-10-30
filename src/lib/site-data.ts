@@ -213,14 +213,24 @@ export const NEWS = [
 ];
 
 export const TEAM = [
-  { name: "Nome do integrante", role: "Coordenação geral", bio: "Breve apresentação profissional a ser inserida.", bg: "azul" },
-  { name: "Nome do integrante", role: "Mestre de Capoeira", bio: "Breve apresentação profissional a ser inserida.", bg: "vermelho" },
-  { name: "Nome do integrante", role: "Contramestre", bio: "Breve apresentação profissional a ser inserida.", bg: "ouro" },
-  { name: "Nome do integrante", role: "Educador(a)", bio: "Breve apresentação profissional a ser inserida.", bg: "verde" },
-  { name: "Nome do integrante", role: "Produção cultural", bio: "Breve apresentação profissional a ser inserida.", bg: "laranja" },
-  { name: "Nome do integrante", role: "Administrativo", bio: "Breve apresentação profissional a ser inserida.", bg: "azul" },
-  { name: "Nome do integrante", role: "Comunicação", bio: "Breve apresentação profissional a ser inserida.", bg: "vermelho" },
-  { name: "Nome do integrante", role: "Colaborador(a)", bio: "Breve apresentação profissional a ser inserida.", bg: "ouro" },
+  {
+    name: "Aerton Ezequiel Alves",
+    role: "Coordenador Geral (presidente).",
+    bio: "Responsável pela coordenação geral da instituição, pelo acompanhamento das atividades, pela articulação institucional e pela orientação do trabalho cultural, esportivo e social da Motirô.\n\nConhecido na capoeira como Mestre Tingaúna, possui trajetória ligada à formação de praticantes e atletas, à gestão cultural e à defesa da capoeira como manifestação cultural e prática esportiva.",
+    bg: "azul",
+  },
+  {
+    name: "Yarema Leite R. de S. Alves",
+    role: "Secretária.",
+    bio: "Responsável pelas atividades de secretaria, organização de documentos e registros institucionais, além do apoio administrativo à gestão da entidade.",
+    bg: "vermelho",
+  },
+  {
+    name: "Anne Nathielle de Sousa Silva",
+    role: "Coordenadora Financeira.",
+    bio: "Responsável pela coordenação financeira, pela organização das informações de receitas e despesas e pelo acompanhamento dos recursos destinados às atividades e aos projetos da instituição.",
+    bg: "ouro",
+  },
 ] as const;
 
 export const DOCUMENTS = [
