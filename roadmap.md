@@ -1,0 +1,3 @@
+- [ ] Adaptar exclusivamente a página de Equipe aos textos reais e três integrantes.
+- [ ] Preservar hero, cards e CTA; adicionar introdução e responsabilidades compactas.
+- [ ] Verificar expansão por teclado e apresentação em três tamanhos de tela.
