@@ -27,3 +27,5 @@
 - Keep leadership and headquarters additions in dedicated about-local modules so new sections cannot modify approved institutional paragraphs or team cards.
 - Serve sports formation through an explicit static projects child route and browser-safe content/results module, keeping confirmed future results separate from initiative catalogs.
 - Keep institutional memory content, demonstrative archive items and fictional gallery placeholders in dedicated browser-safe modules; reuse the initiative lightbox with configurable headings and explicit fallback records to preserve other galleries and keep official records separate.
+- Keep agenda records and date/filter logic in a browser-safe module with separate official and demonstrative feeds; share event cards and details with home previews so future CMS records cannot leak demonstrations into real programming.
+- Keep new homepage institutional previews in dedicated home modules and reuse approved tokens and cultural graphics; fictional gallery assets stay separate from official gallery records to preserve institutional accuracy.

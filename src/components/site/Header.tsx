@@ -32,6 +32,7 @@ const NAV = [
     ],
   },
   { label: "Impacto Social", to: "/impacto-social" },
+  { label: "Agenda", to: "/agenda" },
   { label: "Notícias", to: "/noticias" },
   { label: "Galeria", to: "/galeria" },
 ] as const;
