@@ -14,3 +14,5 @@
 - [x] Corrigir a vírgula inicial e retirar qualquer legenda visível de Quem Somos, sem outras alterações.
 - [x] Organizar Equipe institucional com cards coloridos completos e Gestão e continuidade compacta, preservando introdução, hero e CTA.
 - [x] Conferir conteúdo e leitura em computador, tablet e celular; textos completos, fotos carregadas, sem expansão ou scroll interno.
+- [ ] Revisar somente o visual dos cards da Equipe com fundo claro, foto maior e acentos culturais discretos; decorar suavemente a introdução.
+- [ ] Conferir enquadramento e textos completos em computador, tablet e celular, preservando as demais seções.
