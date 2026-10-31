@@ -2,6 +2,3 @@
 - [x] Empilhar e alternar Teatro, Leitura, Cine e Dança preservando conteúdo e identidade.
 - [x] Tornar todas as imagens de Projetos portáveis para Vercel, com fallback discreto.
 - [x] Verificar imagens, alternância e leitura em computador, tablet e celular; arquivos também servidos por hospedagem estática independente.
-- [x] Compactar hero, apresentação, cards e espaçamentos somente da página inicial.
-- [x] Preservar ordem e textos das seções culturais, com ilustrações específicas dos instrumentos.
-- [x] Conferir navegação, proporções e ausência de cortes no computador, tablet e celular.
