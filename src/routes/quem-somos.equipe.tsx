@@ -12,7 +12,7 @@ const team: { name: string; role: string; distinction?: string; bio: string[]; c
     name: "Aerton Ezequiel Alves",
     role: "Coordenador Geral (presidente)",
     distinction: "Mestre Tingaúna",
-    color: "bg-primary text-primary-foreground",
+    color: "text-primary",
     photo: provisionalMan,
     bio: [
       "Responsável pela coordenação geral da instituição, pelo acompanhamento das atividades, pela articulação institucional e pela orientação do trabalho cultural, esportivo e social da Motirô.",
@@ -22,14 +22,14 @@ const team: { name: string; role: string; distinction?: string; bio: string[]; c
   {
     name: "Yarema Leite R. de S. Alves",
     role: "Secretária",
-    color: "bg-vermelho text-vermelho-foreground",
+    color: "text-vermelho",
     photo: provisionalWomanOne,
     bio: ["Responsável pelas atividades de secretaria, organização de documentos e registros institucionais, além do apoio administrativo à gestão da entidade."],
   },
   {
     name: "Anne Nathielle de Sousa Silva",
     role: "Coordenadora Financeira",
-    color: "bg-ouro text-ouro-foreground",
+    color: "text-ouro",
     photo: provisionalWomanTwo,
     bio: ["Responsável pela coordenação financeira, pela organização das informações de receitas e despesas e pelo acompanhamento dos recursos destinados às atividades e aos projetos da instituição."],
   },
@@ -60,23 +60,23 @@ export const Route = createFileRoute("/quem-somos/equipe")({
 function TeamCard({ person, index }: { person: (typeof team)[number]; index: number }) {
   const portraitPosition = ["object-[49%_45%]", "object-[48%_42%]", "object-[50%_44%]"][index];
   return (
-    <article className={`group relative h-full overflow-hidden rounded-2xl shadow-sm ${person.color}`}>
-      <div className="relative h-[180px] overflow-hidden bg-muted">
-        {person.photo && <img src={person.photo} alt="Retrato ilustrativo da equipe" className={`h-full w-full object-cover transition-transform duration-250 motion-safe:group-hover:scale-[1.02] ${portraitPosition}`} loading="lazy" width={1200} height={650} />}
-        <svg className={`pointer-events-none absolute -bottom-px left-0 h-5 w-full ${person.color.split(" ")[0].replace("bg-", "text-")}`} viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 19 Q95 27 190 15 T400 18 V24 H0Z" fill="currentColor" />
-        </svg>
+    <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-card text-card-foreground shadow-sm">
+      <div className="px-3 pt-3">
+        <div className="relative h-[280px] overflow-hidden rounded-xl bg-muted">
+          {person.photo && <img src={person.photo} alt={`Retrato ilustrativo para ${person.name}`} className={`h-full w-full object-cover ${portraitPosition}`} loading="lazy" width={1200} height={650} />}
+        </div>
       </div>
-      <div className="px-6 pb-6 pt-5">
-        <div className="sm:min-h-[132px]">
-          <h3 className="font-display text-lg font-bold leading-6 tracking-normal">{person.name}</h3>
-          <p className="mt-2 text-sm leading-5 opacity-90">{person.role}</p>
-          {person.distinction && <span className="mt-3 inline-flex rounded-full border border-current/35 bg-transparent px-3 py-1 text-xs font-semibold">{person.distinction}</span>}
+      <div className="flex flex-1 flex-col px-6 pb-7 pt-6 lg:px-7">
+        <div className="sm:min-h-[134px]">
+          <h3 className="font-display text-xl font-bold leading-7 tracking-normal">{person.name}</h3>
+          <p className={`mt-3 border-l-2 border-current pl-3 text-sm font-semibold leading-5 ${person.color}`}><span className={index === 2 ? "text-foreground" : undefined}>{person.role}</span></p>
+          {person.distinction && <span className="mt-3 inline-flex rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">{person.distinction}</span>}
         </div>
-        <div className="my-5 flex items-center gap-2 opacity-55" aria-hidden="true">
-          <span className="h-px w-7 bg-current" /><span className="size-1.5 rotate-45 border border-current" />
+        <div className={`mb-5 mt-6 flex items-center gap-2 ${person.color}`} aria-hidden="true">
+          <span className="h-px w-9 bg-current opacity-60" /><span className="size-1.5 rotate-45 border border-current opacity-70" />
         </div>
-        <div className="space-y-4 text-sm leading-relaxed">{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+        <div className="space-y-5 text-sm leading-7 text-muted-foreground">{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+        <svg className={`mt-auto h-9 w-24 shrink-0 pt-5 ${person.color}`} viewBox="0 0 96 20" aria-hidden="true"><path d="M2 14 Q24 2 48 12 T94 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" /></svg>
       </div>
     </article>
   );
@@ -96,6 +96,8 @@ function Equipe() {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative mx-auto mb-8 max-w-3xl text-center">
+            <svg className="pointer-events-none absolute -right-1 -top-9 h-20 w-20 text-ouro/25 sm:-right-8" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 6" /><path d="M19 52 A25 25 0 0 1 53 18" fill="none" stroke="currentColor" strokeWidth="1.5" /></svg>
+            <svg className="pointer-events-none absolute -bottom-8 left-0 h-6 w-20 text-vermelho/30 sm:left-5" viewBox="0 0 80 24" aria-hidden="true"><path d="M2 18 Q22 4 42 13 T78 9" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><rect x="36" y="7" width="5" height="5" transform="rotate(45 38.5 9.5)" fill="currentColor" /></svg>
             <div className="eyebrow text-laranja">Nossa equipe</div>
             <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Um trabalho construído coletivamente</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">A trajetória da Motirô é construída pelo trabalho de sua equipe, dos participantes, das famílias, dos parceiros e da comunidade. Na organização institucional, diferentes responsabilidades se complementam para garantir o acompanhamento das atividades e a continuidade do trabalho cultural, esportivo e social.</p>
