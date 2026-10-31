@@ -8,3 +8,6 @@
 - [x] Ajustar apresentação e história em Quem Somos sem alterar hero ou linha do tempo.
 - [x] Aplicar centralizações, inclusão integrada, selo, organização dos princípios e novo convite à equipe.
 - [x] Verificar os ajustes em computador, tablet e celular e executar os testes existentes.
+- [ ] Simplificar e centralizar o convite à equipe em Quem Somos, removendo a composição de três ícones.
+- [ ] Centralizar somente o cabeçalho de História e trajetória, preservando os cards abaixo.
+- [ ] Verificar os dois ajustes em computador, tablet e celular sem alterar as demais seções.

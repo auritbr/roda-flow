@@ -43,7 +43,7 @@ function QuemSomos() {
     </section>
     <section className="py-20 bg-muted/40">
       <div className={container}>
-        <SectionTitle eyebrow="História e trajetória" title="Da capoeira à construção de uma atuação mais ampla" />
+        <SectionTitle eyebrow="História e trajetória" title="Da capoeira à construção de uma atuação mais ampla" center />
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {[
             { title: "O início pela capoeira", paragraphs: content.history.slice(0, 2), tone: "border-azul/30 bg-azul/5", accent: "text-azul", icon: Music },
@@ -230,10 +230,10 @@ function QuemSomos() {
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{content.areas.map((card, i) => <CompactCard key={card.title} {...card} icon={areaIcons[i] ?? Network} index={i} />)}</div>
     </div></section>
     <section className="py-20 bg-muted/40"><div className={container}>
-      <SectionTitle eyebrow="Quem faz acontecer" title="Uma equipe que fortalece nossa trajetória" center />
-      <div className="mt-10 grid gap-8 md:grid-cols-[2fr_3fr] md:items-center">
-        <div className="relative flex min-h-48 items-center justify-center" aria-hidden="true"><div className="flex items-center -space-x-4"><span className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-background bg-primary text-primary-foreground"><Users className="h-7 w-7" /></span><span className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-background bg-vermelho text-vermelho-foreground"><HeartHandshake className="h-8 w-8" /></span><span className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-background bg-ouro text-ouro-foreground"><Network className="h-7 w-7" /></span></div><MovementMark className="absolute bottom-0 right-8 h-12 w-24" /></div>
-        <div><p className="leading-relaxed text-muted-foreground">Por trás de cada projeto, atividade e conquista da Motirô, existem pessoas comprometidas com a cultura, o esporte, a educação e o desenvolvimento da comunidade. Nossa equipe trabalha de forma coletiva para fortalecer a instituição, dar continuidade às ações que transformam vidas e manter viva a missão da Motirô.</p><Button asChild className="mt-6 rounded-full h-auto min-h-10 whitespace-normal"><Link to="/quem-somos/equipe">Conheça nossa equipe<ArrowRight aria-hidden="true" /></Link></Button></div>
+      <div className="mx-auto max-w-3xl text-center">
+        <SectionTitle eyebrow="Quem faz acontecer" title="Uma equipe que fortalece nossa trajetória" center />
+        <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-muted-foreground">Por trás de cada projeto, atividade e conquista da Motirô, existem pessoas comprometidas com a cultura, o esporte, a educação e o desenvolvimento da comunidade. Nossa equipe trabalha de forma coletiva para fortalecer a instituição, dar continuidade às ações que transformam vidas e manter viva a missão da Motirô.</p>
+        <Button asChild className="mt-8 rounded-full h-auto min-h-10 whitespace-normal"><Link to="/quem-somos/equipe">Conheça nossa equipe<ArrowRight aria-hidden="true" /></Link></Button>
       </div>
     </div></section>
     <FinalCta variant="primary" eyebrow="Nossa história continua" title="Cultura, esporte e educação seguem construindo novos caminhos" description="A trajetória da Motirô é feita de encontros, aprendizados, vínculos e oportunidades. Conheça nossos projetos e acompanhe as ações que continuam dando movimento a essa história." image="/images/quem-somos/roda.jpg" imageAlt="Encontro coletivo de capoeira — imagem ilustrativa" buttons={[{ label: "Conheça os projetos", to: "/projetos" }, { label: "Fale conosco", to: "/contato" }]} />
