@@ -44,7 +44,7 @@
 - [x] Ampliar menu Projetos com duas colunas e acesso a todas as iniciativas.
 - [x] Acrescentar liderança e espaços de atuação somente em Quem Somos.
 - [x] Criar Formação Esportiva e Conquistas sem resultados inventados e verificar todas as alterações.
-- [ ] Centralizar apresentação da sede e acrescentar fachada fictícia autorizada.
-- [ ] Simplificar submenu Projetos para lista vertical e centralizar seção final esportiva.
-- [ ] Criar Memória Institucional com acervo demonstrativo, galeria provisória e acesso em Quem Somos.
-- [ ] Verificar navegação, visualização, downloads e galeria nas telas usuais.
+- [x] Centralizar apresentação da sede e acrescentar fachada fictícia autorizada.
+- [x] Simplificar submenu Projetos para lista vertical e centralizar seção final esportiva.
+- [x] Criar Memória Institucional com acervo demonstrativo, galeria provisória e acesso em Quem Somos.
+- [x] Verificar navegação, visualização, downloads e galeria nas telas usuais.
