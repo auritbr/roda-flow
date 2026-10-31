@@ -18,3 +18,7 @@
 - [x] Conferir enquadramento e textos completos em computador, tablet e celular, preservando as demais seções.
 - [x] Limpar somente os cards da equipe, compactar os espaçamentos e alinhar pelo topo com alturas naturais.
 - [x] Conferir cards sem divisores, textos integrais e leitura em três tamanhos de tela.
+- [x] Corrigir somente textos finais da Equipe, preservando os cards aprovados e descrições de imagens apenas no alt.
+- [x] Organizar Galeria por ano e evento, com fotos agrupadas e lightbox acessível.
+- [x] Atualizar Parcerias e Transparência com textos oficiais, rede de apoio e acervo sem documentos fictícios.
+- [x] Atualizar links e preservar acesso pela rota antiga; verificar fluxos e telas.

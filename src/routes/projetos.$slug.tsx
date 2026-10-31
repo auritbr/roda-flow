@@ -40,6 +40,9 @@ export const Route = createFileRoute("/projetos/$slug")({
           { property: "og:title", content: loaderData.project.title },
           { property: "og:description", content: loaderData.project.summary },
           { property: "og:image", content: loaderData.project.image },
+          { name: "twitter:image", content: loaderData.project.image },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Projeto não encontrado" }, { name: "robots", content: "noindex" }],
   }),

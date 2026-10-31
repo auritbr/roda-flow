@@ -10,6 +10,12 @@ export const Route = createFileRoute("/contato")({
     meta: [
       { title: "Contato — Ponto de Cultura Capoeira" },
       { name: "description", content: "Entre em contato com o Ponto de Cultura. Telefone, WhatsApp, e-mail, endereço e formulário." },
+      { property: "og:title", content: "Contato — Motirô" },
+      { property: "og:description", content: "Entre em contato com a Motirô para conversar sobre ações, projetos e parcerias." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1200&h=630&q=80" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1200&h=630&q=80" },
     ],
   }),
   component: Contato,

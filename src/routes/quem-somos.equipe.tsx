@@ -127,7 +127,7 @@ function Equipe() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="eyebrow text-laranja">Gestão e continuidade</div>
             <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Diferentes funções, um mesmo compromisso</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">Coordenação, secretaria e gestão financeira atuam de forma complementar para garantir organização, acompanhamento das atividades, continuidade dos projetos e suporte ao trabalho cultural, esportivo e social desenvolvido pela Motirô.</p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">Coordenação, secretaria e gestão financeira atuam de forma complementar para garantir a organização institucional, o acompanhamento das atividades, a continuidade dos projetos e o suporte ao trabalho cultural, esportivo e social da Motirô.</p>
           </div>
           <div className="mx-auto mt-8 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {responsibilities.map(({ title, text, color, icon: Icon }) => (
@@ -145,7 +145,7 @@ function Equipe() {
         variant="vermelho"
         eyebrow="Vamos juntos"
         title="Quer caminhar junto com a nossa atuação?"
-        description="O trabalho do Ponto de Cultura é construído coletivamente. Entre em contato para saber mais sobre nossas ações, projetos e possibilidades de aproximação."
+        description="O trabalho da Motirô é construído coletivamente. Entre em contato para saber mais sobre nossas ações, projetos e possibilidades de aproximação."
         image="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1400&q=80"
         imageAlt="Roda de Capoeira em atividade comunitária"
         buttons={[

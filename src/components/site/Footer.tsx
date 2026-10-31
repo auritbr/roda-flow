@@ -74,7 +74,7 @@ export function Footer() {
               <li><Link to="/" className="hover:text-ouro">Início</Link></li>
               <li><Link to="/quem-somos" className="hover:text-ouro">Quem Somos</Link></li>
               <li><Link to="/quem-somos/equipe" className="hover:text-ouro">Equipe</Link></li>
-              <li><Link to="/quem-somos/transparencia" className="hover:text-ouro">Transparência</Link></li>
+              <li><Link to="/quem-somos/parcerias-e-transparencia" className="hover:text-ouro">Parcerias e Transparência</Link></li>
               <li><Link to="/noticias" className="hover:text-ouro">Notícias</Link></li>
               <li><Link to="/galeria" className="hover:text-ouro">Galeria</Link></li>
             </ul>
@@ -95,7 +95,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex gap-2"><MapPin className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span>{SITE.address}</span></li>
               <li className="flex gap-2"><Phone className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span>{SITE.phone}</span></li>
-              <li className="flex gap-2"><Mail className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span>{SITE.email}</span></li>
+              <li className="flex gap-2"><Mail className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span className="min-w-0 wrap-anywhere">{SITE.email}</span></li>
             </ul>
             <Link to="/contato" className="mt-5 inline-flex items-center rounded-full bg-ouro px-4 py-2 text-sm font-semibold text-primary hover:brightness-95">
               Fale conosco
@@ -108,7 +108,7 @@ export function Footer() {
           <div className="flex flex-wrap gap-4">
             <Link to="/politica-de-privacidade" className="hover:text-ouro">Política de Privacidade</Link>
             <Link to="/termos-de-uso" className="hover:text-ouro">Termos de Uso</Link>
-            <Link to="/quem-somos/transparencia" className="hover:text-ouro">Transparência</Link>
+            <Link to="/quem-somos/parcerias-e-transparencia" className="hover:text-ouro">Parcerias e Transparência</Link>
           </div>
         </div>
       </div>

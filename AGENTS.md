@@ -15,3 +15,6 @@
 - Serve projects overview photographs from versioned public/images/projetos files with exact lowercase filenames, rather than Lovable-only asset endpoints, so exports work on external hosts; use route-local image fallbacks.
 - Keep Quem Somos institutional content and presentation local to its index and dedicated modules; reuse approved hero, timeline graphics, principle cards and final CTA without changing shared components or other pages. Public image paths ensure external-host portability; unconfirmed certificate links and property contract terms stay unset.
 - Compose Quem Somos history blocks from the route-local official paragraph collection, keeping each paragraph in exactly one block to preserve complete content without duplication.
+- Keep gallery event grouping in its dedicated data module, preserving existing source records and filtering years dynamically so future photos do not require layout changes.
+- Keep partnership content and confirmed document metadata in a dedicated browser-safe module; an empty archive replaces provisional shared records until actual files are supplied, preventing fictitious downloads.
+- Preserve the legacy transparency URL with a permanent redirect to the partnerships page so existing inbound links remain valid.

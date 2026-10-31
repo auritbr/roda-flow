@@ -31,6 +31,8 @@ export const Route = createFileRoute("/noticias/$slug")({
           { property: "og:description", content: loaderData.news.excerpt },
           { property: "og:image", content: loaderData.news.image },
           { property: "og:type", content: "article" },
+          { name: "twitter:card", content: "summary_large_image" },
+          { name: "twitter:image", content: loaderData.news.image },
         ]
       : [{ title: "Notícia não encontrada" }, { name: "robots", content: "noindex" }],
   }),
