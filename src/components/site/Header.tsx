@@ -24,6 +24,7 @@ const NAV = [
       { label: "Roda, Memória e Território", to: "/projetos/$slug", params: { slug: "roda-memoria-e-territorio" } },
     ],
   },
+  { label: "Impacto Social", to: "/impacto-social" },
   { label: "Notícias", to: "/noticias" },
   { label: "Galeria", to: "/galeria" },
   { label: "Contato", to: "/contato" },
