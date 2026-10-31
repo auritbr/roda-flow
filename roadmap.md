@@ -37,6 +37,6 @@
 - [x] Atualizar oito páginas individuais com textos oficiais no modelo aprovado e links corretos.
 - [x] Remover dados fictícios, parceiros, depoimentos e galerias não autorizadas; preservar atribuições legais e imagens portáveis.
 - [x] Testar regras institucionais e verificar navegação e leitura nas oito páginas.
-- [ ] Corrigir os três acessos rápidos e simplificar o menu sem alterar seu visual.
-- [ ] Centralizar cabeçalhos das oito iniciativas e o texto de formação esportiva da Capoeira.
-- [ ] Preparar galerias antes dos CTAs, somente com registros autorizados, e testar lightbox e navegação.
+- [x] Corrigir os três acessos rápidos e simplificar o menu sem alterar seu visual.
+- [x] Centralizar cabeçalhos das oito iniciativas e o texto de formação esportiva da Capoeira.
+- [x] Preparar galerias antes dos CTAs, somente com registros autorizados, e testar lightbox e navegação.
