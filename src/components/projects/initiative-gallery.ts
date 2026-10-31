@@ -3,13 +3,14 @@ export type InitiativePhoto = {
   alt: string;
   caption?: string;
   authorized: boolean;
+  placeholder?: boolean;
 };
 
 // Only verified institutional records belong here. Reference images are not records.
 export const initiativeGalleries: Record<string, InitiativePhoto[]> = {};
 
 export function authorizedPhotos(photos: readonly InitiativePhoto[]) {
-  return photos.filter(photo => photo.authorized);
+  return photos.filter(photo => photo.authorized && !photo.placeholder);
 }
 
 export function galleryIndex(index: number, offset: number, count: number) {

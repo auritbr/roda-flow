@@ -40,3 +40,7 @@
 - [x] Corrigir os três acessos rápidos e simplificar o menu sem alterar seu visual.
 - [x] Centralizar cabeçalhos das oito iniciativas e o texto de formação esportiva da Capoeira.
 - [x] Preparar galerias antes dos CTAs, somente com registros autorizados, e testar lightbox e navegação.
+- [x] Adicionar seis imagens fictícias substituíveis por galeria, mantendo registros oficiais separados.
+- [x] Ampliar menu Projetos com duas colunas e acesso a todas as iniciativas.
+- [x] Acrescentar liderança e espaços de atuação somente em Quem Somos.
+- [x] Criar Formação Esportiva e Conquistas sem resultados inventados e verificar todas as alterações.

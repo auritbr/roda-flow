@@ -16,3 +16,6 @@ test("gallery navigation wraps in both directions", () => {
   assert.equal(galleryIndex(2, 1, 3), 0);
   assert.equal(galleryIndex(0, 1, 0), 0);
 });
+test("fictional placeholders never become official records even when flagged authorized", () => {
+  assert.deepEqual(authorizedPhotos([{ src: "fictional.jpg", alt: "Fictícia", authorized: true, placeholder: true }]), []);
+});

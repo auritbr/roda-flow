@@ -22,6 +22,7 @@ import { Route as NoticiasIndexRouteImport } from './routes/noticias.index'
 import { Route as NoticiasSlugRouteImport } from './routes/noticias.$slug'
 import { Route as ProjetosIndexRouteImport } from './routes/projetos.index'
 import { Route as ProjetosSlugRouteImport } from './routes/projetos.$slug'
+import { Route as ProjetosFormacaoEsportivaRouteImport } from './routes/projetos.formacao-esportiva'
 import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos.index'
 import { Route as QuemSomosEquipeRouteImport } from './routes/quem-somos.equipe'
 import { Route as QuemSomosParceriasETransparenciaRouteImport } from './routes/quem-somos.parcerias-e-transparencia'
@@ -92,6 +93,12 @@ const ProjetosSlugRoute = ProjetosSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ProjetosRoute,
 } as any)
+const ProjetosFormacaoEsportivaRoute =
+  ProjetosFormacaoEsportivaRouteImport.update({
+    id: '/formacao-esportiva',
+    path: '/formacao-esportiva',
+    getParentRoute: () => ProjetosRoute,
+  } as any)
 const QuemSomosIndexRoute = QuemSomosIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -126,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/projetos/$slug': typeof ProjetosSlugRoute
+  '/projetos/formacao-esportiva': typeof ProjetosFormacaoEsportivaRoute
   '/quem-somos/equipe': typeof QuemSomosEquipeRoute
   '/quem-somos/parcerias-e-transparencia': typeof QuemSomosParceriasETransparenciaRoute
   '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
@@ -142,6 +150,7 @@ export interface FileRoutesByTo {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/projetos/$slug': typeof ProjetosSlugRoute
+  '/projetos/formacao-esportiva': typeof ProjetosFormacaoEsportivaRoute
   '/quem-somos/equipe': typeof QuemSomosEquipeRoute
   '/quem-somos/parcerias-e-transparencia': typeof QuemSomosParceriasETransparenciaRoute
   '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
@@ -162,6 +171,7 @@ export interface FileRoutesById {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/projetos/$slug': typeof ProjetosSlugRoute
+  '/projetos/formacao-esportiva': typeof ProjetosFormacaoEsportivaRoute
   '/quem-somos/equipe': typeof QuemSomosEquipeRoute
   '/quem-somos/parcerias-e-transparencia': typeof QuemSomosParceriasETransparenciaRoute
   '/quem-somos/transparencia': typeof QuemSomosTransparenciaRoute
@@ -183,6 +193,7 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/noticias/$slug'
     | '/projetos/$slug'
+    | '/projetos/formacao-esportiva'
     | '/quem-somos/equipe'
     | '/quem-somos/parcerias-e-transparencia'
     | '/quem-somos/transparencia'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/noticias/$slug'
     | '/projetos/$slug'
+    | '/projetos/formacao-esportiva'
     | '/quem-somos/equipe'
     | '/quem-somos/parcerias-e-transparencia'
     | '/quem-somos/transparencia'
@@ -218,6 +230,7 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/noticias/$slug'
     | '/projetos/$slug'
+    | '/projetos/formacao-esportiva'
     | '/quem-somos/equipe'
     | '/quem-somos/parcerias-e-transparencia'
     | '/quem-somos/transparencia'
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjetosSlugRouteImport
       parentRoute: typeof ProjetosRoute
     }
+    '/projetos/formacao-esportiva': {
+      id: '/projetos/formacao-esportiva'
+      path: '/formacao-esportiva'
+      fullPath: '/projetos/formacao-esportiva'
+      preLoaderRoute: typeof ProjetosFormacaoEsportivaRouteImport
+      parentRoute: typeof ProjetosRoute
+    }
     '/quem-somos/': {
       id: '/quem-somos/'
       path: '/'
@@ -378,11 +398,13 @@ const NoticiasRouteWithChildren = NoticiasRoute._addFileChildren(
 
 interface ProjetosRouteChildren {
   ProjetosSlugRoute: typeof ProjetosSlugRoute
+  ProjetosFormacaoEsportivaRoute: typeof ProjetosFormacaoEsportivaRoute
   ProjetosIndexRoute: typeof ProjetosIndexRoute
 }
 
 const ProjetosRouteChildren: ProjetosRouteChildren = {
   ProjetosSlugRoute: ProjetosSlugRoute,
+  ProjetosFormacaoEsportivaRoute: ProjetosFormacaoEsportivaRoute,
   ProjetosIndexRoute: ProjetosIndexRoute,
 }
 
