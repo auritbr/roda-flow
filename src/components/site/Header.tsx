@@ -19,15 +19,14 @@ const NAV = [
     label: "Projetos",
     to: "/projetos",
     children: [
-      { label: "Capoeira para Todos", to: "/projetos/$slug", params: { slug: "capoeira-para-todos" } },
-      { label: "Ritmos da Ancestralidade", to: "/projetos/$slug", params: { slug: "ritmos-da-ancestralidade" } },
-      { label: "Roda, Memória e Território", to: "/projetos/$slug", params: { slug: "roda-memoria-e-territorio" } },
+      { label: "Além da Ginga", to: "/projetos/$slug", params: { slug: "alem-da-ginga" } },
+      { label: "Capoeira Motirô", to: "/projetos/$slug", params: { slug: "capoeira-motiro" } },
+      { label: "Teatro Motirô", to: "/projetos/$slug", params: { slug: "teatro-motiro" } },
     ],
   },
   { label: "Impacto Social", to: "/impacto-social" },
   { label: "Notícias", to: "/noticias" },
   { label: "Galeria", to: "/galeria" },
-  { label: "Contato", to: "/contato" },
 ] as const;
 
 export function Header() {
@@ -58,7 +57,6 @@ export function Header() {
             <LogoMark />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className="font-display text-[13px] font-extrabold tracking-tight text-primary">PONTO DE CULTURA</span>
-              <span className="text-[10px] eyebrow text-laranja">Capoeira · Memória · Território</span>
             </span>
           </Link>
 

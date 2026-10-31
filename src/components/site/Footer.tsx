@@ -49,7 +49,6 @@ export function Footer() {
               <LogoMark />
               <div>
                 <div className="font-display font-extrabold text-sm tracking-tight">PONTO DE CULTURA</div>
-                <div className="eyebrow text-ouro text-[10px]">Capoeira · Memória · Território</div>
               </div>
             </div>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
@@ -84,9 +83,9 @@ export function Footer() {
             <h3 className="font-display font-bold text-sm eyebrow text-ouro mb-4">Projetos</h3>
             <ul className="space-y-2 text-sm">
               <li><Link to="/projetos" className="hover:text-ouro">Todos os projetos</Link></li>
-              <li><Link to="/projetos/$slug" params={{ slug: "capoeira-para-todos" }} className="hover:text-ouro">Capoeira para Todos</Link></li>
-              <li><Link to="/projetos/$slug" params={{ slug: "ritmos-da-ancestralidade" }} className="hover:text-ouro">Ritmos da Ancestralidade</Link></li>
-              <li><Link to="/projetos/$slug" params={{ slug: "roda-memoria-e-territorio" }} className="hover:text-ouro">Roda, Memória e Território</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "alem-da-ginga" }} className="hover:text-ouro">Além da Ginga</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "capoeira-motiro" }} className="hover:text-ouro">Capoeira Motirô</Link></li>
+              <li><Link to="/projetos/$slug" params={{ slug: "teatro-motiro" }} className="hover:text-ouro">Teatro Motirô</Link></li>
             </ul>
           </div>
 

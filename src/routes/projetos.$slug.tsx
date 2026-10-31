@@ -4,6 +4,7 @@ import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
 import { FinalCta } from "@/components/site/FinalCta";
 import { initiativeForSlug, legacyProjectDestinations, legacyOverviewSlugs } from "@/components/projects/detail-content";
 import { ProgramReach } from "@/components/projects/ProgramReach";
+import { InitiativeGallery } from "@/components/projects/InitiativeGallery";
 import { ImageAttribution } from "@/components/projects/ImageAttribution";
 import { activities } from "@/components/projects/activities";
 import { Target, Users, MapPin, Compass, Sparkles, Music, HeartHandshake, BookOpen, Drum, History, GraduationCap, Feather, type LucideIcon } from "lucide-react";
@@ -79,6 +80,7 @@ function ProjectDetail() {
       {/* Sobre o projeto */}
       <section className="pb-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
           <div className={`eyebrow ${c.text}`}>{project.aboutLabel}</div>
           <h2 className="mt-2 font-display text-3xl md:text-4xl font-extrabold relative inline-block">
             {project.title}
@@ -86,6 +88,7 @@ function ProjectDetail() {
               <path d="M2 8 Q 40 2 80 8 T 158 6" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" className={c.text} />
             </svg>
           </h2>
+          </div>
           <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed text-lg">{project.paragraphs.map(text => <p key={text}>{text}</p>)}</div>
         </div>
       </section>
@@ -97,7 +100,7 @@ function ProjectDetail() {
             <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 10" className={c.text} />
           </svg>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-            <SectionTitle eyebrow="O que buscamos" title={project.reach ? "Objetivos do programa" : "Objetivos da iniciativa"} />
+            <SectionTitle center eyebrow="O que buscamos" title={project.reach ? "Objetivos do programa" : "Objetivos da iniciativa"} />
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {details.objectives.map((o, i) => (
                 <article key={i} className={`relative rounded-2xl ${c.bg} ${c.foreground} p-6 shadow-lg overflow-hidden`}>
@@ -129,7 +132,8 @@ function ProjectDetail() {
 
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionTitle
-              eyebrow="Experiências da iniciativa"
+              center
+              eyebrow={project.reach ? "Frentes de atuação" : "Experiências da iniciativa"}
               title={details.practices.title}
               description={details.practices.text}
             />
@@ -161,17 +165,19 @@ function ProjectDetail() {
         </section>
       )}
 
-      {project.feature && <section className="relative overflow-hidden py-16"><div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><SectionTitle eyebrow={project.feature.eyebrow} title={project.feature.title} /><div className="mt-6 space-y-4 text-muted-foreground leading-relaxed">{project.feature.paragraphs.map(text => <p key={text}>{text}</p>)}</div></div></section>}
-      {project.highlights && <section className="py-16"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><SectionTitle eyebrow="Expressão e formação" title="Ações em destaque" /><div className="mt-10 grid gap-5 md:grid-cols-2">{project.highlights.map(item => <article key={item.title} className={`relative overflow-hidden rounded-2xl border ${c.border} bg-card p-6`}><h3 className="font-display text-lg font-bold">{item.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p></article>)}</div></div></section>}
+      {project.feature && <section className="relative overflow-hidden py-16"><div className="mx-auto max-w-[850px] px-4 sm:px-6 lg:px-8"><SectionTitle center eyebrow={project.feature.eyebrow} title={project.feature.title} /><div className={`mt-6 space-y-4 text-muted-foreground leading-relaxed ${project.slug === "capoeira-motiro" ? "text-center" : ""}`}>{project.feature.paragraphs.map(text => <p key={text}>{text}</p>)}</div></div></section>}
+      {project.highlights && <section className="py-16"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><SectionTitle center eyebrow="Expressão e formação" title="Ações em destaque" /><div className="mt-10 grid gap-5 md:grid-cols-2">{project.highlights.map(item => <article key={item.title} className={`relative overflow-hidden rounded-2xl border ${c.border} bg-card p-6`}><h3 className="font-display text-lg font-bold">{item.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p></article>)}</div></div></section>}
       {project.reach && <ProgramReach />}
-      {project.audience && <section className="py-10"><div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><SectionTitle eyebrow="Participação" title="Público" description={project.audience} /></div></section>}
+      {project.audience && <section className="py-10"><div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><SectionTitle center eyebrow="Participação" title="Público" description={project.audience} /></div></section>}
+
+      <InitiativeGallery key={project.slug} slug={project.slug} />
 
       {/* CTA final */}
       <FinalCta
         variant={variant}
         eyebrow="Aproxime-se desta ação"
         title="Quer saber mais sobre esta iniciativa?"
-        description={project.independent ? "Entre em contato para conhecer melhor a iniciativa e obter informações sobre participação, critérios e organização das atividades." : "Entre em contato para conhecer melhor esta iniciativa, acompanhar suas ações e saber mais sobre as possibilidades de participação."}
+        description="Entre em contato para conhecer melhor esta iniciativa, acompanhar suas ações e saber mais sobre as possibilidades de participação."
         buttons={[
           { label: "Fale conosco", to: "/contato" },
           { label: "Ver outros projetos", to: "/projetos", variant: "outline" },

@@ -21,6 +21,9 @@ describe("Institutional initiative rules", () => {
   test("cinema access is free", () => {
     assert.equal(initiativeForSlug("cine-motiro")?.facts.find(fact => fact.label === "Acesso")?.text, "Exibições gratuitas");
   });
+  test("handball audience remains conditional on team-organized age groups", () => {
+    assert.equal(initiativeForSlug("handebol-motiro")?.audience, "Crianças, adolescentes e jovens, conforme as faixas etárias e as categorias organizadas pela equipe responsável.");
+  });
   test("no initiative declares an unconfirmed current status", () => {
     for (const item of initiatives) assert.equal(item.facts.some(fact => fact.label === "Situação"), false);
   });

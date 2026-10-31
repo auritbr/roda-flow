@@ -89,7 +89,7 @@ O projeto demonstra o potencial do teatro como ferramenta de reflexão, prevenç
     ]),
     highlights: [
       { title: "Teatro e Consciência", text: "Iniciativa socioeducativa que utiliza a linguagem teatral para abordar questões relevantes à formação de crianças e adolescentes." },
-      { title: "Entre a Ilusão e a Razão", text: "Atividade lançada em maio de 2026 e apresentada em diferentes escolas, com público médio aproximado de 200 estudantes." },
+      { title: "Entre a Ilusão e a Razão", text: "Lançada em maio de 2026 e apresentada em diferentes escolas, com público médio aproximado de 200 estudantes." },
     ],
   },
   {
@@ -148,7 +148,7 @@ Essas manifestações permitem trabalhar musicalidade, ritmo, movimento, memóri
     summary: "Uma iniciativa que amplia as possibilidades de participação esportiva e utiliza o handebol como espaço de aprendizagem, disciplina, cooperação e desenvolvimento.",
     color: "azul", image: image("handebol-motiro"), alt: "Atletas com bolas de handebol em uma quadra esportiva",
     facts: facts([["Público", "Crianças, adolescentes e jovens"], ["Área", "Esporte e formação"], territory]),
-    aboutLabel: "Sobre a atividade", paragraphs: paragraphs(`O handebol integra a atuação esportiva da Motirô, ampliando as oportunidades de participação de crianças e adolescentes que se identificam com modalidades esportivas além da capoeira.
+    aboutLabel: "Sobre a iniciativa", paragraphs: paragraphs(`O handebol integra a atuação esportiva da Motirô, ampliando as oportunidades de participação de crianças e adolescentes que se identificam com modalidades esportivas além da capoeira.
 
 Por meio da prática do handebol, a iniciativa busca contribuir para o desenvolvimento físico, motor e social dos participantes, estimulando a cooperação, a disciplina, o respeito às regras, a responsabilidade e o trabalho em equipe.
 
@@ -164,7 +164,7 @@ O handebol faz parte da atuação da Motirô na promoção do esporte como ferra
       ["Promover disciplina", "Trabalhar disciplina, respeito às regras e compromisso."],
       ["Criar experiências esportivas", "Possibilitar participação em treinamentos, jogos e competições conforme a organização da atividade."],
     ]),
-    practices: { title: "Prática esportiva e aprendizagem", items: ["Treinamentos", "Fundamentos do handebol", "Trabalho em equipe", "Jogos", "Desenvolvimento motor", "Experiências esportivas"] },
+    practices: { title: "Práticas que compõem a formação esportiva", items: ["Treinamentos", "Fundamentos do handebol", "Trabalho em equipe", "Jogos", "Desenvolvimento motor", "Experiências esportivas"] },
     audience: "Crianças, adolescentes e jovens, conforme as faixas etárias e as categorias organizadas pela equipe responsável.",
   },
   {
