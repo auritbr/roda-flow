@@ -1,0 +1,14 @@
+export const sportContent = {
+  hero: "A Motirô desenvolve um trabalho de formação esportiva que permite aos participantes avançar da iniciação à participação em competições, articulando desenvolvimento humano, cultura, disciplina e desempenho esportivo.",
+  introduction: ["A Motirô desenvolve um trabalho de formação esportiva que permite aos participantes avançar da iniciação à participação em competições.", "A formação esportiva faz parte de um trabalho mais amplo de desenvolvimento humano, cultural e social, no qual disciplina, convivência, dedicação e aprendizagem caminham junto ao desenvolvimento técnico."],
+  trajectory: "Ao longo da trajetória da instituição, atletas participaram de campeonatos locais, estaduais, nacionais e internacionais, levando o nome de José de Freitas e do Piauí a diferentes espaços de competição.",
+  formation: ["O desenvolvimento esportivo na Motirô está associado à formação humana, cultural e social dos participantes.", "A prática esportiva contribui para o desenvolvimento de disciplina, responsabilidade, convivência, respeito às regras, trabalho coletivo, persistência e reconhecimento das próprias capacidades."],
+  capoeira: ["Por meio do Capoeira Motirô, os participantes encontram oportunidades de desenvolvimento esportivo.", "Os praticantes podem avançar da iniciação ao treinamento competitivo, participando de graduações, festivais e campeonatos em diferentes níveis.", "Atletas formados ou preparados no ambiente da Motirô já representaram José de Freitas e o Piauí em competições locais, estaduais, nacionais e internacionais."],
+  handball: ["O handebol também integra a atuação esportiva da Motirô, contribuindo para o desenvolvimento físico, motor e social dos participantes e estimulando cooperação, disciplina, responsabilidade e trabalho em equipe.", "A prática pode criar oportunidades de participação em treinamentos, jogos, competições e outras experiências esportivas, conforme a organização da atividade."],
+  results: "Os registros oficiais de competições, categorias, colocações e resultados esportivos serão organizados e publicados conforme a atualização das informações de cada temporada.",
+  impact: ["A experiência da Motirô demonstra que um trabalho de base comunitária pode ampliar o acesso ao esporte, contribuir para a educação e criar oportunidades para a formação de atletas.", "O desenvolvimento esportivo não substitui a dimensão social do trabalho. Ao contrário, integra uma proposta que articula inclusão, formação humana, cultura, convivência e oportunidades."],
+};
+export type SportResult = { year: number; competition: string; modality: string; category: string; result: string };
+export const officialSportResults: SportResult[] = [];
+export const competitionScopes = ["Local", "Estadual", "Nacional", "Internacional"];
+export const formationValues = ["Disciplina", "Responsabilidade", "Convivência", "Persistência", "Trabalho em equipe", "Desenvolvimento técnico"];

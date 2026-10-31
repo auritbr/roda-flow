@@ -22,6 +22,12 @@ const NAV = [
       { label: "Além da Ginga", to: "/projetos/$slug", params: { slug: "alem-da-ginga" } },
       { label: "Capoeira Motirô", to: "/projetos/$slug", params: { slug: "capoeira-motiro" } },
       { label: "Teatro Motirô", to: "/projetos/$slug", params: { slug: "teatro-motiro" } },
+      { label: "Oficina da Leitura", to: "/projetos/$slug", params: { slug: "oficina-da-leitura" } },
+      { label: "Cine Motirô", to: "/projetos/$slug", params: { slug: "cine-motiro" } },
+      { label: "Dança, ritmo e tradição", to: "/projetos/$slug", params: { slug: "danca" } },
+      { label: "Handebol Motirô", to: "/projetos/$slug", params: { slug: "handebol-motiro" } },
+      { label: "Brincando e Crescendo Juntos", to: "/projetos/$slug", params: { slug: "brincando-e-crescendo-juntos" } },
+      { label: "Formação esportiva e conquistas", to: "/projetos/formacao-esportiva" },
     ],
   },
   { label: "Impacto Social", to: "/impacto-social" },
@@ -80,7 +86,8 @@ export function Header() {
                     className="invisible absolute left-0 top-full pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
                     role="menu"
                   >
-                    <div className="min-w-[240px] rounded-lg border border-border bg-card shadow-lg overflow-hidden">
+                    <div className={cn("rounded-lg border border-border bg-card shadow-lg overflow-hidden", item.label === "Projetos" ? "w-[600px] max-w-[calc(100vw-2rem)] p-4" : "min-w-[240px]")}>
+                      {item.label === "Projetos" ? <><div className="grid grid-cols-2 gap-4">{["Projetos e cultura", "Esporte e inclusão"].map((heading, group) => <div key={heading}><div className="eyebrow mb-2 px-3 text-laranja">{heading}</div>{item.children.slice(group === 0 ? 0 : 5, group === 0 ? 5 : undefined).map(c => <Link key={c.label} to={c.to} params={"params" in c ? c.params : undefined} activeProps={{ className: "bg-muted text-primary" }} className="block rounded-md px-3 py-2.5 text-sm hover:bg-muted transition-colors">{c.label}</Link>)}</div>)}</div><Link to="/projetos" className="mt-3 block border-t border-border px-3 pt-4 text-sm font-semibold text-primary hover:underline">Ver todos os projetos</Link></> : <>
                       {item.children.map((c) => (
                         <Link
                           key={c.label}
@@ -92,6 +99,7 @@ export function Header() {
                           {c.label}
                         </Link>
                       ))}
+                      </>}
                     </div>
                   </div>
                 )}
@@ -116,7 +124,7 @@ export function Header() {
         </div>
 
         {open && (
-          <div className="lg:hidden border-t border-border bg-background">
+          <div className="lg:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-background">
             <nav className="mx-auto max-w-7xl px-4 py-4 space-y-1" aria-label="Menu mobile">
               {NAV.map((item) => (
                 <div key={item.label}>
@@ -143,6 +151,7 @@ export function Header() {
                               {c.label}
                             </Link>
                           ))}
+                          {item.label === "Projetos" && <Link to="/projetos" onClick={() => setOpen(false)} className="block px-3 py-2 text-sm font-semibold text-primary">Ver todos os projetos</Link>}
                         </div>
                       )}
                     </>
