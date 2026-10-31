@@ -22,6 +22,6 @@
 - [x] Organizar Galeria por ano e evento, com fotos agrupadas e lightbox acessível.
 - [x] Atualizar Parcerias e Transparência com textos oficiais, rede de apoio e acervo sem documentos fictícios.
 - [x] Atualizar links e preservar acesso pela rota antiga; verificar fluxos e telas.
-- [ ] Remover breadcrumb e introdução redundante apenas em Parcerias e Transparência.
-- [ ] Simplificar parceiros com espaços para logos oficiais e devolver seis exemplos explícitos no acervo.
-- [ ] Verificar acordeões, visualização e download demonstrativos e leitura em três telas.
+- [x] Remover breadcrumb e introdução redundante apenas em Parcerias e Transparência.
+- [x] Simplificar parceiros com espaços para logos oficiais e devolver seis exemplos explícitos no acervo.
+- [x] Verificar acordeões, visualização e download demonstrativos e leitura em três telas.
