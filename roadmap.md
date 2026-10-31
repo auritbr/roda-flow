@@ -1,3 +1,3 @@
-- [ ] Restaurar somente os cards compactos coloridos com enquadramento proporcional dos retratos.
-- [ ] Revelar as biografias pela seta, expandindo apenas o card clicado para baixo.
-- [ ] Verificar alturas fechadas iguais, enquadramento e interação em computador, tablet e celular.
+- [x] Restaurar somente os cards compactos coloridos com enquadramento proporcional dos retratos.
+- [x] Revelar as biografias pela seta, expandindo apenas o card clicado para baixo.
+- [x] Verificar alturas fechadas iguais, enquadramento e interação em computador, tablet e celular.
