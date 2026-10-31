@@ -146,7 +146,7 @@ Essas manifestações permitem trabalhar musicalidade, ritmo, movimento, memóri
   {
     slug: "handebol-motiro", title: "Handebol Motirô", eyebrow: "Atividade esportiva", subtitle: "Esporte, formação e trabalho em equipe",
     summary: "Uma iniciativa que amplia as possibilidades de participação esportiva e utiliza o handebol como espaço de aprendizagem, disciplina, cooperação e desenvolvimento.",
-    color: "azul", image: image("handebol-motiro"), alt: "Quadra esportiva para a prática do handebol",
+    color: "azul", image: image("handebol-motiro"), alt: "Atletas com bolas de handebol em uma quadra esportiva",
     facts: facts([["Público", "Crianças, adolescentes e jovens"], ["Área", "Esporte e formação"], territory]),
     aboutLabel: "Sobre a atividade", paragraphs: paragraphs(`O handebol integra a atuação esportiva da Motirô, ampliando as oportunidades de participação de crianças e adolescentes que se identificam com modalidades esportivas além da capoeira.
 

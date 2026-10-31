@@ -1,4 +1,5 @@
-import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect, useRouter, type ErrorComponentProps } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
 import { FinalCta } from "@/components/site/FinalCta";
 import { initiativeForSlug, legacyProjectDestinations, legacyOverviewSlugs } from "@/components/projects/detail-content";
@@ -29,7 +30,14 @@ export const Route = createFileRoute("/projetos/$slug")({
       : [{ title: "Projeto não encontrado" }, { name: "robots", content: "noindex" }],
   }),
   component: ProjectDetail,
+  notFoundComponent: () => <section className="mx-auto max-w-4xl px-4 py-24"><SectionTitle title="Iniciativa não encontrada" /><Button asChild className="mt-6 rounded-full"><Link to="/projetos">Ver projetos</Link></Button></section>,
+  errorComponent: ProjectError,
 });
+
+function ProjectError({ reset }: ErrorComponentProps) {
+  const router = useRouter();
+  return <section className="mx-auto max-w-4xl px-4 py-24"><SectionTitle title="Esta iniciativa não carregou" /><Button className="mt-6 rounded-full" onClick={() => { void router.invalidate(); reset(); }}>Tentar novamente</Button></section>;
+}
 
 const colorMap: Record<"azul" | "ouro" | "vermelho" | "verde", { bg: string; foreground: string; text: string; border: string; soft: string; pattern: "roda" | "berimbau" | "ginga" }> = {
   azul: { bg: "bg-azul", foreground: "text-primary-foreground", text: "text-azul", border: "border-azul/30", soft: "bg-azul/10", pattern: "roda" },
