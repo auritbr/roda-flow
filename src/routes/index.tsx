@@ -18,14 +18,15 @@ import {
 import { NEWS } from "@/lib/site-data";
 import { initiatives } from "@/components/projects/detail-content";
 import { SectionTitle } from "@/components/site/InternalHero";
+import { HomeAgenda, HomeGallery, HomePartnerships } from "@/components/home/InstitutionalPreviews";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ponto de Cultura Capoeira — Início" },
-      { name: "description", content: "Capoeira, cultura afro-brasileira, educação e memória. Conheça nossos projetos e ações comunitárias." },
+      { title: "Motirô — Cultura, esporte, educação e comunidade" },
+      { name: "description", content: "Conheça a Motirô, Pontão de Cultura de José de Freitas, Piauí, e suas iniciativas culturais, esportivas, educativas e comunitárias." },
       { property: "og:title", content: "Motirô — Cultura, capoeira e comunidade" },
-      { property: "og:description", content: "Capoeira, cultura afro-brasileira, educação e memória. Conheça nossos projetos e ações comunitárias." },
+      { property: "og:description", content: "Conheça a Motirô, Pontão de Cultura de José de Freitas, Piauí, e suas iniciativas culturais, esportivas, educativas e comunitárias." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1200&h=630&q=80" },
@@ -43,10 +44,13 @@ function Home() {
       <Apresentacao />
       <Pilares />
       <ProjetosDestaque />
+      <HomeAgenda />
+      <NoticiasRecentes />
       <Atuacao />
       <CapoeiraEmMovimento />
       <Instrumentos />
-      <NoticiasRecentes />
+      <HomeGallery />
+      <HomePartnerships />
       <CTAFinal />
     </>
   );
@@ -84,7 +88,7 @@ function Hero() {
             <span className="text-ouro">transforma territórios</span>
           </h1>
           <p className="mt-4 max-w-xl text-sm md:text-base text-primary-foreground/90 leading-relaxed">
-            Um Ponto de Cultura dedicado à valorização da Capoeira, da cultura afro-brasileira, da educação, da memória e do fortalecimento comunitário.
+            Uma instituição cultural, esportiva, educativa e comunitária de José de Freitas, no Piauí, reconhecida pelo Ministério da Cultura como Pontão de Cultura.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link to="/quem-somos" className="inline-flex items-center gap-2 rounded-full bg-ouro px-5 py-2.5 text-sm font-semibold text-primary hover:brightness-95 transition">
@@ -115,12 +119,6 @@ function Divider() {
 }
 
 function Apresentacao() {
-  const stats = [
-    { label: "Ano de fundação", value: "Ano a informar" },
-    { label: "Território de atuação", value: "Cidade / UF" },
-    { label: "Participantes", value: "Nº a informar" },
-    { label: "Ações realizadas", value: "Nº a informar" },
-  ];
   return (
     <section className="py-14 md:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-[1fr_42%] lg:items-center">
@@ -131,24 +129,17 @@ function Apresentacao() {
           </h2>
           <div className="mt-4 space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
             <p>
-              A Capoeira reúne corpo, música, memória, educação e pertencimento. Por meio de ações culturais, formativas e comunitárias, o Ponto de Cultura mantém viva essa tradição e cria novos caminhos para crianças, jovens, adultos e famílias.
+              A Motirô é uma instituição cultural, esportiva, educativa e comunitária de José de Freitas, no Piauí, com mais de duas décadas de atuação. Reconhecida pelo Ministério da Cultura como Pontão de Cultura, construiu sua trajetória promovendo o acesso à cultura, ao esporte e à educação e contribuindo para o desenvolvimento social da comunidade.
             </p>
             <p>
-              Atuamos na formação de novas gerações, no fortalecimento de mestres e educadores e na presença cultural em nosso território.
+              Sua história tem raízes na capoeira, manifestação cultural afro-brasileira que permanece viva por meio do Capoeira Motirô, projeto dedicado à formação cultural e esportiva de praticantes e atletas.
             </p>
+            <p>Essa trajetória se ampliou e deu origem a uma atuação diversificada, reunida no Além da Ginga, iniciativa que integra diferentes atividades da instituição, como capoeira, teatro, leitura, cinema, handebol, dança, musicalidade, oficinas e ações de inclusão social.</p>
           </div>
           <Link to="/quem-somos" className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
             Conheça nossa história <ArrowRight className="h-4 w-4" />
           </Link>
 
-          <dl className="mt-8 grid grid-cols-2 gap-3">
-            {stats.map((s) => (
-              <div key={s.label} className="rounded-xl border border-border bg-card p-3">
-                <dt className="eyebrow text-vermelho text-[10px]">{s.label}</dt>
-                <dd className="mt-1 font-display text-base md:text-lg font-bold text-foreground">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
         <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto w-full">
           <div className="absolute -top-3 -left-3 h-16 w-16 rounded-full border-2 border-ouro" aria-hidden />
