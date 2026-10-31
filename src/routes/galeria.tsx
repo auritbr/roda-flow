@@ -31,11 +31,6 @@ function Galeria() {
     <InternalHero eyebrow="Registros" title="Galeria" description="Imagens de rodas, oficinas, apresentações, encontros e atividades comunitárias, organizadas por ano." image={heroImage} imageAlt="Roda de Capoeira coletiva" variant="verde" />
     <section className="py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 max-w-2xl">
-          <div className="eyebrow text-laranja">Memória em imagens</div>
-          <h2 className="mt-3 font-display text-2xl font-extrabold md:text-3xl">Registros da Motirô</h2>
-          <p className="mt-4 leading-relaxed text-muted-foreground">Rodas, oficinas, apresentações, encontros e atividades comunitárias, reunidos por ano e galeria.</p>
-        </div>
         <div aria-label="Ano da galeria" className="flex flex-wrap gap-2 border-b border-border">
           {galleryYears.map((y) => <Button key={y} variant="ghost" aria-pressed={year === y} onClick={() => { setYear(y); setLightbox(null); }} className={`relative h-auto rounded-none px-4 py-2.5 font-semibold ${year === y ? "text-primary" : "text-muted-foreground"}`}>{y}{year === y && <span className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-ouro" />}</Button>)}
         </div>

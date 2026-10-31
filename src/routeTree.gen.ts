@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as ImpactoSocialRouteImport } from './routes/impacto-social'
 import { Route as NoticiasRouteImport } from './routes/noticias'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as ProjetosRouteImport } from './routes/projetos'
@@ -39,6 +40,11 @@ const ContatoRoute = ContatoRouteImport.update({
 const GaleriaRoute = GaleriaRouteImport.update({
   id: '/galeria',
   path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactoSocialRoute = ImpactoSocialRouteImport.update({
+  id: '/impacto-social',
+  path: '/impacto-social',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NoticiasRoute = NoticiasRouteImport.update({
@@ -112,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
+  '/impacto-social': typeof ImpactoSocialRoute
   '/noticias': typeof NoticiasRouteWithChildren
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRouteWithChildren
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
+  '/impacto-social': typeof ImpactoSocialRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
+  '/impacto-social': typeof ImpactoSocialRoute
   '/noticias': typeof NoticiasRouteWithChildren
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRouteWithChildren
@@ -166,6 +175,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contato'
     | '/galeria'
+    | '/impacto-social'
     | '/noticias'
     | '/politica-de-privacidade'
     | '/projetos'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contato'
     | '/galeria'
+    | '/impacto-social'
     | '/politica-de-privacidade'
     | '/termos-de-uso'
     | '/noticias/$slug'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contato'
     | '/galeria'
+    | '/impacto-social'
     | '/noticias'
     | '/politica-de-privacidade'
     | '/projetos'
@@ -218,6 +230,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContatoRoute: typeof ContatoRoute
   GaleriaRoute: typeof GaleriaRoute
+  ImpactoSocialRoute: typeof ImpactoSocialRoute
   NoticiasRoute: typeof NoticiasRouteWithChildren
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   ProjetosRoute: typeof ProjetosRouteWithChildren
@@ -246,6 +259,13 @@ declare module '@tanstack/react-router' {
       path: '/galeria'
       fullPath: '/galeria'
       preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impacto-social': {
+      id: '/impacto-social'
+      path: '/impacto-social'
+      fullPath: '/impacto-social'
+      preLoaderRoute: typeof ImpactoSocialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/noticias': {
@@ -392,6 +412,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
   GaleriaRoute: GaleriaRoute,
+  ImpactoSocialRoute: ImpactoSocialRoute,
   NoticiasRoute: NoticiasRouteWithChildren,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   ProjetosRoute: ProjetosRouteWithChildren,

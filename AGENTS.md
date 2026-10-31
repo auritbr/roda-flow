@@ -18,3 +18,5 @@
 - Keep gallery event grouping in its dedicated data module, preserving existing source records and filtering years dynamically so future photos do not require layout changes.
 - Keep partnership content, optional official logos, confirmed document metadata and explicitly flagged demonstrations in the dedicated browser-safe module; never mix demonstrations into official records, and limit example downloads to clearly labeled plain-text previews without legal data.
 - Preserve the legacy transparency URL with a permanent redirect to the partnerships page so existing inbound links remain valid.
+- Keep Impacto Social official paragraphs and context-tagged numeric records in its own content module, with separate tests for each scope, so historical reach cannot be conflated with yearly or period-specific attendance.
+- Use the shared CulturalBackdrop only as an aria-hidden, noninteractive background layer; keep approved content spacing and card interiors unchanged when adding cultural identity.
