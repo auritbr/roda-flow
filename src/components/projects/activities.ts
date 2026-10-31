@@ -24,13 +24,13 @@ export const activities: readonly Activity[] = [
   {
     key: "capoeira", title: "Capoeira Motirô", eyebrow: "Tradição, formação e esporte",
     image: "/images/projetos/capoeira-motiro.jpg", alt: "Praticantes de capoeira com instrumentos em roda pública",
-    color: "bg-card", accent: "text-vermelho", slug: "capoeira-para-todos",
+    color: "bg-card", accent: "text-vermelho", slug: "capoeira-motiro",
     paragraphs: [...capoeiraParagraphs, "Por meio das aulas e dos encontros, os participantes têm contato com movimentos, musicalidade, instrumentos, história, disciplina, respeito, cooperação, convivência, transmissão de saberes entre gerações e valorização da ancestralidade."],
     tags: capoeiraTags,
     highlights: [{ title: "Formação esportiva", text: "Além da dimensão cultural e educativa, o Capoeira Motirô possibilita o avanço da iniciação ao treinamento competitivo, com participação em graduações, festivais e campeonatos. Atletas formados ou preparados no ambiente da Motirô já representaram José de Freitas e o Piauí em competições locais, estaduais, nacionais e internacionais." }],
   },
   ...arts.map((art, index): Activity => ({
-    ...art, image: `/images/projetos/${images[index]}.jpg`, alt: alts[index],
+    ...art, image: `/images/projetos/${images[index]}.jpg`, alt: alts[index], slug: ["teatro-motiro", "oficina-da-leitura", "cine-motiro", "danca"][index],
     highlights: art.key === "theatre" ? [
       { title: "Teatro e Consciência", text: "Iniciativa socioeducativa que utiliza a linguagem teatral para abordar questões relevantes à formação de crianças e adolescentes." },
       { title: "Entre a Ilusão e a Razão", text: theatreLaunchText },
@@ -39,7 +39,7 @@ export const activities: readonly Activity[] = [
   })),
   {
     key: "handball", title: "Handebol Motirô", eyebrow: "Esporte, formação e trabalho em equipe",
-    image: "/images/projetos/handebol-motiro.jpg", alt: "Jovens atletas com bolas de handebol em uma quadra esportiva",
+    image: "/images/projetos/handebol-motiro.jpg", alt: "Jovens atletas com bolas de handebol em uma quadra esportiva", slug: "handebol-motiro",
     color: "bg-azul/10", accent: "text-azul",
     paragraphs: [
       "O handebol integra a atuação esportiva da Motirô, ampliando as oportunidades de participação de crianças e adolescentes que se identificam com modalidades esportivas além da capoeira.",
@@ -54,7 +54,7 @@ export const activities: readonly Activity[] = [
   },
   {
     key: "inclusion", title: "Brincando e Crescendo Juntos", eyebrow: "Inclusão, acolhimento e desenvolvimento", independent: true,
-    image: "/images/projetos/brincando-crescendo-juntos.jpg", alt: "Crianças participando de uma atividade artística em um encontro cultural",
+    image: "/images/projetos/inclusao-materiais.jpg", alt: "Materiais de expressão criativa sobre uma mesa, ilustração sem pessoas", slug: "brincando-e-crescendo-juntos",
     color: "bg-verde/10", accent: "text-verde",
     paragraphs: [
       "O Brincando e Crescendo Juntos é uma iniciativa da Motirô voltada especificamente a crianças autistas, desenvolvida com o propósito de ampliar oportunidades de participação, convivência e desenvolvimento.",
@@ -64,8 +64,6 @@ export const activities: readonly Activity[] = [
     ],
     highlights: [{ text: "O Brincando e Crescendo Juntos integra o compromisso social da Motirô com a diversidade e a inclusão e possui identidade própria, independente do Além da Ginga." }],
     audience: "Crianças autistas, conforme os critérios de participação e a organização definidos pela iniciativa.",
-    tags: ["Ampliar oportunidades de participação", "Promover convivência e interação social", "Respeitar diferentes ritmos de desenvolvimento", "Valorizar capacidades e formas de expressão", "Incentivar ambientes acolhedores", "Fortalecer o diálogo com as famílias", "Contribuir para uma comunidade mais inclusiva"],
-    credit: { author: "Joe Mabel", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Children%27s_art_activities_-_2018_Romanian_Cultural_Festival_at_Maryhill_Museum_of_Art.jpg" },
   },
 ];
 

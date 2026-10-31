@@ -1,11 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
 import { ActivityTags, InformationCard, MovementMark, Paragraphs } from "@/components/projects/OverviewElements";
-import { civicThemes, programInfo, programParagraphs, reachText } from "@/components/projects/overview-content";
+import { civicThemes, programInfo, programParagraphs } from "@/components/projects/overview-content";
+import { ProgramReach } from "@/components/projects/ProgramReach";
+import { Button } from "@/components/ui/button";
 import { ActivityList } from "@/components/projects/ActivityList";
 import { ProjectImage } from "@/components/projects/ProjectImage";
 import { FinalCta } from "@/components/site/FinalCta";
-import { BookOpen, CircleUserRound, Drama, Film, Footprints, HeartHandshake, MapPin, MessagesSquare, Music, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
+import { ArrowRight, CircleUserRound, HeartHandshake, MessagesSquare, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
 
 const title = "Projetos e iniciativas — Motirô";
 const description = "Conheça Além da Ginga, Capoeira Motirô e as iniciativas de cultura, esporte, educação e formação cidadã da Motirô.";
@@ -63,6 +65,7 @@ function Projetos() {
               <SectionTitle eyebrow="Programa abrangente" title="Além da Ginga" />
               <div className="mt-5"><Paragraphs paragraphs={programParagraphs} /></div>
               <p className="mt-5 border-l-2 border-ouro pl-4 text-sm leading-relaxed text-foreground">O Além da Ginga está associado à trajetória iniciada por volta do ano 2000 e à ampliação progressiva do trabalho comunitário da Motirô.</p>
+              <Button asChild className="mt-5 rounded-full"><Link to="/projetos/$slug" params={{ slug: "alem-da-ginga" }}>Conhecer Além da Ginga<ArrowRight aria-hidden="true" /></Link></Button>
             </div>
             <div className="relative">
               <div className="relative">
@@ -76,12 +79,7 @@ function Projetos() {
         </div>
       </section>
 
-      <section className="bg-primary py-8 text-primary-foreground">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:flex-row sm:items-start sm:px-6 lg:px-8">
-          <MapPin className="size-8 shrink-0 text-ouro" strokeWidth={1.5} aria-hidden="true" />
-          <div><h2 className="font-display text-xl font-bold">Uma atuação presente em diferentes núcleos</h2><p className="mt-3 max-w-5xl text-sm leading-relaxed text-primary-foreground/90">{reachText}</p></div>
-        </div>
-      </section>
+      <ProgramReach overview />
 
       <ActivityList />
 
@@ -92,13 +90,6 @@ function Projetos() {
             <Paragraphs paragraphs={["A Motirô também realiza ou articula atividades educativas voltadas à discussão de temas relevantes para a comunidade.", "Esses encontros ampliam o conhecimento dos participantes e estimulam a reflexão sobre questões presentes em suas realidades, fortalecendo a cidadania, a convivência e a participação social."]} />
           </div>
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{civicThemes.map((theme, i) => <InformationCard key={theme.title} {...theme} icon={civicIcons[i]} />)}</div>
-        </div>
-      </section>
-
-      <section className="py-12">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <SectionTitle center eyebrow="Uma atuação integrada" title="Cada atividade amplia as possibilidades de aprender e participar" description="Capoeira, teatro, leitura, cinema, dança, esporte, formação cidadã e iniciativas de inclusão fazem parte de uma atuação que reconhece diferentes interesses, capacidades e formas de participação. Essas experiências podem dialogar entre si, criando oportunidades mais amplas de aprendizagem, expressão, convivência e desenvolvimento humano." />
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3 text-primary" aria-hidden="true">{[Footprints, Drama, BookOpen, Film, Music, MessagesSquare].map((Icon, i) => <div key={i} className="flex items-center gap-3"><Icon className="size-7" strokeWidth={1.5} />{i < 5 && <span className="h-px w-5 bg-ouro" />}</div>)}</div>
         </div>
       </section>
 
