@@ -16,5 +16,5 @@
 - Keep Quem Somos institutional content and presentation local to its index and dedicated modules; reuse approved hero, timeline graphics, principle cards and final CTA without changing shared components or other pages. Public image paths ensure external-host portability; unconfirmed certificate links and property contract terms stay unset.
 - Compose Quem Somos history blocks from the route-local official paragraph collection, keeping each paragraph in exactly one block to preserve complete content without duplication.
 - Keep gallery event grouping in its dedicated data module, preserving existing source records and filtering years dynamically so future photos do not require layout changes.
-- Keep partnership content and confirmed document metadata in a dedicated browser-safe module; an empty archive replaces provisional shared records until actual files are supplied, preventing fictitious downloads.
+- Keep partnership content, optional official logos, confirmed document metadata and explicitly flagged demonstrations in the dedicated browser-safe module; never mix demonstrations into official records, and limit example downloads to clearly labeled plain-text previews without legal data.
 - Preserve the legacy transparency URL with a permanent redirect to the partnerships page so existing inbound links remain valid.
