@@ -4,6 +4,7 @@ import { FinalCta } from "@/components/site/FinalCta";
 import { Button } from "@/components/ui/button";
 import { AboutPhoto, CompactCard, MovementMark, Paragraphs } from "@/components/about/Elements";
 import * as content from "@/components/about/content";
+import { LeadershipSection, SpacesSection } from "@/components/about/InstitutionalAdditions";
 import { ArrowRight, Award, BookOpen, Drama, Film, HeartHandshake, Landmark, Music, Network, ShieldCheck, Sparkles, Trophy, Users, Volleyball } from "lucide-react";
 
 export const Route = createFileRoute("/quem-somos/")({
@@ -146,6 +147,7 @@ function QuemSomos() {
         </div>
       </div>
     </div></section>
+    <SpacesSection />
     <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground"><MovementMark className="absolute -right-6 top-4 h-32 w-56 opacity-30" /><div className={container}>
       <div className="relative mx-auto max-w-3xl text-center">
         <div><div className="eyebrow text-ouro">Reconhecimento</div><h2 className="mt-3 font-display text-3xl md:text-4xl font-extrabold">Pontão de Cultura desde {content.institutionalFacts.certificationYear}</h2><Paragraphs items={content.recognition} className="mt-6 text-primary-foreground/90" />
@@ -159,6 +161,7 @@ function QuemSomos() {
       <Paragraphs items={content.publicPolicies} className="mx-auto mt-8 max-w-3xl space-y-5 text-center" />
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">{["Cultura", "Esporte", "Patrimônio imaterial", "Inclusão social", "Participação comunitária"].map((title, i) => <CompactCard key={title} title={title} icon={[Music, Trophy, Landmark, HeartHandshake, Users][i] ?? Users} index={i} />)}</div>
     </div></section>
+      <LeadershipSection />
       {/* Missão / Visão / Valores — cards fortes com grafismos de Capoeira */}
       <section className="py-20 bg-muted/40">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
