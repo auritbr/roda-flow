@@ -35,21 +35,27 @@ function QuemSomos() {
     />
     <section className="py-20">
       <div className={container}>
-        <SectionTitle eyebrow="Quem somos" title="Uma história que começou na roda e cresceu com a comunidade" center />
-        <div className="mt-10 grid gap-8 md:grid-cols-[3fr_2fr] md:items-center">
-          <Paragraphs items={content.introduction} className="text-center" />
-          <div className="relative mx-auto w-full max-w-md"><AboutPhoto src="/images/quem-somos/roda.jpg" alt="Participantes em uma atividade coletiva de capoeira" /><MovementMark className="absolute -bottom-5 right-3 h-14 w-24" /></div>
+        <div className="grid gap-10 md:grid-cols-[3fr_2fr] md:items-center lg:gap-16">
+          <div><SectionTitle eyebrow="Quem somos" title="Uma história que começou na roda e cresceu com a comunidade" /><Paragraphs items={content.introduction} className="mt-6" /></div>
+          <div className="relative mx-auto w-full max-w-sm"><AboutPhoto src="/images/quem-somos/roda.jpg" alt="Participantes em uma atividade coletiva de capoeira" /><MovementMark className="absolute -bottom-5 right-3 h-14 w-24" /></div>
         </div>
       </div>
     </section>
     <section className="py-20 bg-muted/40">
       <div className={container}>
         <SectionTitle eyebrow="História e trajetória" title="Da capoeira à construção de uma atuação mais ampla" />
-        <div className="mt-10 grid gap-10 lg:grid-cols-2">
-          <Paragraphs items={content.history.slice(0, 2)} />
-          <div className="border-l-2 border-ouro pl-6"><MovementMark className="mb-4 h-14 w-28" /><Paragraphs items={content.history.slice(2, 3)} /></div>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {[
+            { title: "O início pela capoeira", paragraphs: content.history.slice(0, 2), tone: "border-azul/30 bg-azul/5", accent: "text-azul", icon: Music },
+            { title: "Uma história construída entre gerações", paragraphs: content.history.slice(2, 3), tone: "border-vermelho/30 bg-vermelho/5", accent: "text-vermelho", icon: Users },
+            { title: "Novas possibilidades", paragraphs: content.history.slice(3, 4), tone: "border-verde/30 bg-verde/5", accent: "text-verde", icon: Sparkles },
+            { title: "Uma atuação que se tornou mais ampla", paragraphs: content.history.slice(4), tone: "border-ouro/40 bg-ouro/10", accent: "text-primary", icon: Network },
+          ].map(({ title, paragraphs, tone, accent, icon: Icon }) => <article key={title} className={`relative h-full overflow-hidden rounded-xl border p-6 lg:p-8 ${tone}`}>
+            <div className={`mb-5 flex items-center justify-between ${accent}`}><Icon className="h-6 w-6" strokeWidth={1.6} aria-hidden="true" /><MovementMark className={`h-10 w-20 ${accent}`} /></div>
+            <h3 className="font-display text-xl font-bold leading-snug">{title}</h3>
+            <Paragraphs items={paragraphs} className="mt-4 text-sm" />
+          </article>)}
         </div>
-        <div className="mt-8 grid gap-8 lg:grid-cols-2"><Paragraphs items={content.history.slice(3, 4)} /><Paragraphs items={content.history.slice(4)} /></div>
       </div>
     </section>
       {/* Timeline */}
@@ -123,7 +129,7 @@ function QuemSomos() {
       </div>
     </section>
     <section className="py-20 bg-muted/40"><div className={container}>
-      <SectionTitle eyebrow="Novas possibilidades" title="Cultura, educação e esporte em diferentes linguagens" description="Com o amadurecimento do trabalho, a Motirô passou a desenvolver outras iniciativas para atender aos diferentes interesses e necessidades da comunidade." />
+      <SectionTitle eyebrow="Novas possibilidades" title="Cultura, educação e esporte em diferentes linguagens" description="Com o amadurecimento do trabalho, a Motirô passou a desenvolver outras iniciativas para atender aos diferentes interesses e necessidades da comunidade." center />
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{content.activities.map((card, i) => <CompactCard key={card.title} {...card} icon={activityIcons[i] ?? Sparkles} index={i} />)}</div>
     </div></section>
     <section className="py-20"><div className={container}>
@@ -131,7 +137,6 @@ function QuemSomos() {
         <div><SectionTitle eyebrow="Inclusão e acolhimento" title="Criar oportunidades para diferentes formas de participar" /><Paragraphs items={content.inclusion} className="mt-6" /></div>
         <div className="self-center"><MovementMark className="mb-4 text-vermelho" /><div className="grid gap-3 sm:grid-cols-2">{content.inclusionHighlights.map((title, i) => <CompactCard key={title} title={title} icon={i % 2 ? Users : HeartHandshake} index={i} />)}</div></div>
       </div>
-      <p className="mt-8 border-l-2 border-ouro pl-5 text-muted-foreground leading-relaxed">A atuação comunitária inclui ainda ações de prevenção ao uso de drogas e acolhimento de pessoas que buscam reconstruir suas trajetórias pessoais e sociais.</p>
     </div></section>
     <section className="py-20 bg-muted/40"><div className={container}>
       <div className="grid gap-10 md:grid-cols-[3fr_2fr] md:items-center">
@@ -142,23 +147,23 @@ function QuemSomos() {
       </div>
     </div></section>
     <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground"><MovementMark className="absolute -right-6 top-4 h-32 w-56 opacity-30" /><div className={container}>
-      <div className="relative grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-center">
+      <div className="relative mx-auto max-w-3xl text-center">
         <div><div className="eyebrow text-ouro">Reconhecimento</div><h2 className="mt-3 font-display text-3xl md:text-4xl font-extrabold">Pontão de Cultura desde {content.institutionalFacts.certificationYear}</h2><Paragraphs items={content.recognition} className="mt-6 text-primary-foreground/90" />
           {content.institutionalFacts.certificateUrl && <Button asChild variant="secondary" className="mt-6"><a href={content.institutionalFacts.certificateUrl}>Ver certificado</a></Button>}
         </div>
-        <div className="border-l-2 border-ouro pl-7 py-4"><Award className="mb-5 h-9 w-9 text-ouro" aria-hidden="true" /><h3 className="font-display text-2xl font-bold">Único Pontão de Cultura de José de Freitas</h3><p className="mt-4 leading-relaxed text-primary-foreground/90">A Motirô é o único Pontão de Cultura do município de José de Freitas, no Piauí.</p></div>
+        <div className="mx-auto mt-9 flex w-fit max-w-[90%] items-center gap-3 rounded-xl border border-ouro/40 bg-ouro px-5 py-4 text-ouro-foreground shadow-sm"><Award className="h-7 w-7 shrink-0" strokeWidth={1.6} aria-hidden="true" /><h3 className="font-display text-base font-bold leading-snug sm:text-lg">Único Pontão de Cultura de José de Freitas</h3></div>
       </div>
     </div></section>
     <section className="py-20"><div className={container}>
-      <SectionTitle eyebrow="Articulação institucional" title="A Motirô e as políticas públicas" />
-      <div className="mt-8 grid gap-8 lg:grid-cols-2"><Paragraphs items={content.publicPolicies.slice(0, 2)} /><Paragraphs items={content.publicPolicies.slice(2)} /></div>
+      <SectionTitle eyebrow="Articulação institucional" title="A Motirô e as políticas públicas" center />
+      <Paragraphs items={content.publicPolicies} className="mx-auto mt-8 max-w-3xl space-y-5 text-center" />
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">{["Cultura", "Esporte", "Patrimônio imaterial", "Inclusão social", "Participação comunitária"].map((title, i) => <CompactCard key={title} title={title} icon={[Music, Trophy, Landmark, HeartHandshake, Users][i] ?? Users} index={i} />)}</div>
     </div></section>
       {/* Missão / Visão / Valores — cards fortes com grafismos de Capoeira */}
       <section className="py-20 bg-muted/40">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle eyebrow="Nossos princípios" title="Missão, Visão e Valores" center description="Os três eixos que orientam nossa atuação." />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
             {[
               {
                 title: "Missão",
@@ -206,13 +211,13 @@ function QuemSomos() {
                 ),
               },
             ].map((c) => (
-              <article key={c.title} className={`relative overflow-hidden rounded-3xl ${c.bg} p-8 shadow-lg`}>
+              <article key={c.title} className={`relative overflow-hidden rounded-3xl ${c.bg} p-8 shadow-lg ${c.title === "Valores" ? "md:col-span-2" : "h-full"}`}>
                 <svg className="absolute -right-10 -top-10 h-40 w-40 opacity-20" viewBox="0 0 100 100" aria-hidden>
                   <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 5" />
                 </svg>
                 <div className={`${c.accent}`}>{c.art}</div>
                 <h3 className="mt-4 font-display text-3xl font-extrabold">{c.title}</h3>
-                {c.title === "Valores" ? <ul className="mt-4 space-y-2 text-sm leading-relaxed">{content.values.map(value => <li key={value} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-current" aria-hidden="true" /><span>{value}</span></li>)}</ul> : <p className="mt-3 leading-relaxed text-[15px]">{c.text}</p>}
+                {c.title === "Valores" ? <ul className="mt-4 grid gap-x-8 gap-y-3 text-sm leading-relaxed sm:grid-cols-2 lg:grid-cols-3">{content.values.map(value => <li key={value} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-current" aria-hidden="true" /><span>{value}</span></li>)}</ul> : <p className="mt-3 leading-relaxed text-[15px]">{c.text}</p>}
               </article>
             ))}
           </div>
@@ -221,14 +226,14 @@ function QuemSomos() {
 
 
     <section className="py-20"><div className={container}>
-      <SectionTitle eyebrow="Áreas de atuação" title="Diferentes frentes que se complementam" description="A Motirô desenvolve suas ações em diferentes áreas, que se complementam e ampliam as possibilidades de participação da comunidade." />
+      <SectionTitle eyebrow="Áreas de atuação" title="Diferentes frentes que se complementam" description="A Motirô desenvolve suas ações em diferentes áreas, que se complementam e ampliam as possibilidades de participação da comunidade." center />
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{content.areas.map((card, i) => <CompactCard key={card.title} {...card} icon={areaIcons[i] ?? Network} index={i} />)}</div>
     </div></section>
     <section className="py-20 bg-muted/40"><div className={container}>
-      <SectionTitle eyebrow="Quem faz acontecer" title="Uma equipe que transforma trabalho coletivo em continuidade" description="A organização da Motirô reúne pessoas responsáveis pela coordenação, pelos registros institucionais, pela gestão financeira e pelo acompanhamento das atividades que fazem parte de sua atuação cultural, esportiva e social." center />
+      <SectionTitle eyebrow="Quem faz acontecer" title="Uma equipe que fortalece nossa trajetória" center />
       <div className="mt-10 grid gap-8 md:grid-cols-[2fr_3fr] md:items-center">
         <div className="relative flex min-h-48 items-center justify-center" aria-hidden="true"><div className="flex items-center -space-x-4"><span className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-background bg-primary text-primary-foreground"><Users className="h-7 w-7" /></span><span className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-background bg-vermelho text-vermelho-foreground"><HeartHandshake className="h-8 w-8" /></span><span className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-background bg-ouro text-ouro-foreground"><Network className="h-7 w-7" /></span></div><MovementMark className="absolute bottom-0 right-8 h-12 w-24" /></div>
-        <div><h3 className="font-display text-2xl font-bold">Conheça quem ajuda a manter a Motirô em movimento</h3><p className="mt-4 leading-relaxed text-muted-foreground">Coordenação, organização institucional e gestão se complementam para acompanhar projetos, atividades e relações construídas com a comunidade.</p><Button asChild className="mt-6 rounded-full h-auto min-h-10 whitespace-normal"><Link to="/quem-somos/equipe">Conhecer a equipe<ArrowRight aria-hidden="true" /></Link></Button></div>
+        <div><p className="leading-relaxed text-muted-foreground">Por trás de cada projeto, atividade e conquista da Motirô, existem pessoas comprometidas com a cultura, o esporte, a educação e o desenvolvimento da comunidade. Nossa equipe trabalha de forma coletiva para fortalecer a instituição, dar continuidade às ações que transformam vidas e manter viva a missão da Motirô.</p><Button asChild className="mt-6 rounded-full h-auto min-h-10 whitespace-normal"><Link to="/quem-somos/equipe">Conheça nossa equipe<ArrowRight aria-hidden="true" /></Link></Button></div>
       </div>
     </div></section>
     <FinalCta variant="primary" eyebrow="Nossa história continua" title="Cultura, esporte e educação seguem construindo novos caminhos" description="A trajetória da Motirô é feita de encontros, aprendizados, vínculos e oportunidades. Conheça nossos projetos e acompanhe as ações que continuam dando movimento a essa história." image="/images/quem-somos/roda.jpg" imageAlt="Encontro coletivo de capoeira — imagem ilustrativa" buttons={[{ label: "Conheça os projetos", to: "/projetos" }, { label: "Fale conosco", to: "/contato" }]} />
