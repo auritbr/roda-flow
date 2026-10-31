@@ -1,110 +1,76 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InternalHero } from "@/components/site/InternalHero";
-import { GALLERY } from "@/lib/site-data";
-import { useMemo, useState, useEffect, useCallback } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { eventGalleries, galleryYears, galleriesForYear } from "@/components/site/gallery-data";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import * as Dialog from "@radix-ui/react-dialog";
+import { Button } from "@/components/ui/button";
 
+const heroImage = "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80";
 export const Route = createFileRoute("/galeria")({
-  head: () => ({
-    meta: [
-      { title: "Galeria — Ponto de Cultura Capoeira" },
-      { name: "description", content: "Registros fotográficos de rodas, oficinas, apresentações e encontros do Ponto de Cultura." },
-    ],
-  }),
+  head: () => ({ meta: [
+    { title: "Galeria Motirô — Registros e encontros" },
+    { name: "description", content: "Registros fotográficos de rodas, oficinas, apresentações e encontros da Motirô, organizados por ano e galeria." },
+    { property: "og:title", content: "Galeria Motirô — Registros e encontros" },
+    { property: "og:description", content: "Registros fotográficos de rodas, oficinas, apresentações e encontros da Motirô, organizados por ano e galeria." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { property: "og:image", content: heroImage },
+    { name: "twitter:image", content: heroImage },
+  ] }),
   component: Galeria,
 });
 
 function Galeria() {
-  const years = useMemo(() => Array.from(new Set(GALLERY.map((g) => g.year))).sort((a, b) => b.localeCompare(a)), []);
-  const [year, setYear] = useState(years[0]);
-  const items = GALLERY.filter((g) => g.year === year);
-  const [lightbox, setLightbox] = useState<number | null>(null);
-
-  const close = useCallback(() => setLightbox(null), []);
-  const prev = useCallback(() => setLightbox((i) => (i === null ? null : (i - 1 + items.length) % items.length)), [items.length]);
-  const next = useCallback(() => setLightbox((i) => (i === null ? null : (i + 1) % items.length)), [items.length]);
-
-  useEffect(() => {
-    if (lightbox === null) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "ArrowRight") next();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [lightbox, close, prev, next]);
-
-  return (
-    <>
-      <InternalHero
-        eyebrow="Registros"
-        title="Galeria"
-        description="Imagens de rodas, oficinas, apresentações, encontros e atividades comunitárias, organizadas por ano."
-        image="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Roda de Capoeira coletiva"
-        variant="verde"
-      />
-
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Year tabs */}
-          <div role="tablist" aria-label="Ano da galeria" className="flex flex-wrap gap-2 border-b border-border">
-            {years.map((y) => (
-              <button
-                key={y}
-                role="tab"
-                aria-selected={year === y}
-                onClick={() => setYear(y)}
-                className={`relative px-4 py-2.5 text-sm font-semibold transition ${year === y ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
-              >
-                {y}
-                {year === y && <span className="absolute inset-x-2 -bottom-px h-0.5 bg-ouro rounded-full" />}
-              </button>
-            ))}
-          </div>
-
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((g, i) => (
-              <figure key={g.title + i} className="group">
-                <div className="eyebrow text-vermelho">{g.category}</div>
-                <h3 className="mt-1 font-display font-bold leading-snug">{g.title}</h3>
-                <button
-                  onClick={() => setLightbox(i)}
-                  className="mt-3 block w-full aspect-[4/3] overflow-hidden rounded-xl border border-border focus-visible:ring-2 focus-visible:ring-primary"
-                  aria-label={`Ampliar imagem: ${g.title}`}
-                >
-                  <img src={g.image} alt={g.alt} className="h-full w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
-                </button>
-                <figcaption className="mt-2 text-sm text-muted-foreground">{g.caption}</figcaption>
-                <div className="mt-1 text-xs text-muted-foreground/80">{g.date} · {g.credit}</div>
-              </figure>
-            ))}
-          </div>
+  const [year, setYear] = useState(galleryYears[0] ?? "");
+  const [lightbox, setLightbox] = useState<{ gallery: (typeof eventGalleries)[number]; index: number } | null>(null);
+  const items = galleriesForYear(year);
+  const photo = lightbox?.gallery.images[lightbox.index];
+  const navigate = (offset: number) => setLightbox((current) => current ? { ...current, index: (current.index + offset + current.gallery.images.length) % current.gallery.images.length } : null);
+  return <>
+    <InternalHero eyebrow="Registros" title="Galeria" description="Imagens de rodas, oficinas, apresentações, encontros e atividades comunitárias, organizadas por ano." image={heroImage} imageAlt="Roda de Capoeira coletiva" variant="verde" />
+    <section className="py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 max-w-2xl">
+          <div className="eyebrow text-laranja">Memória em imagens</div>
+          <h2 className="mt-3 font-display text-2xl font-extrabold md:text-3xl">Registros da Motirô</h2>
+          <p className="mt-4 leading-relaxed text-muted-foreground">Rodas, oficinas, apresentações, encontros e atividades comunitárias, reunidos por ano e galeria.</p>
         </div>
-      </section>
-
-      {lightbox !== null && (
-        <div role="dialog" aria-modal="true" aria-label="Visualização da imagem" className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 p-4">
-          <button aria-label="Fechar" onClick={close} className="absolute top-4 right-4 text-white rounded-full p-2 hover:bg-white/10">
-            <X className="h-6 w-6" />
-          </button>
-          <button aria-label="Anterior" onClick={prev} className="absolute left-4 md:left-8 text-white rounded-full p-2 hover:bg-white/10">
-            <ChevronLeft className="h-7 w-7" />
-          </button>
-          <button aria-label="Próxima" onClick={next} className="absolute right-4 md:right-8 text-white rounded-full p-2 hover:bg-white/10">
-            <ChevronRight className="h-7 w-7" />
-          </button>
-          <figure className="max-w-5xl w-full">
-            <img src={items[lightbox].image} alt={items[lightbox].alt} className="max-h-[75vh] w-full object-contain" />
-            <figcaption className="mt-4 text-center text-white">
-              <div className="font-display font-bold">{items[lightbox].title}</div>
-              <div className="text-sm text-white/80">{items[lightbox].caption}</div>
-              <div className="text-xs text-white/60 mt-1">{items[lightbox].date} · {items[lightbox].credit}</div>
+        <div aria-label="Ano da galeria" className="flex flex-wrap gap-2 border-b border-border">
+          {galleryYears.map((y) => <Button key={y} variant="ghost" aria-pressed={year === y} onClick={() => { setYear(y); setLightbox(null); }} className={`relative h-auto rounded-none px-4 py-2.5 font-semibold ${year === y ? "text-primary" : "text-muted-foreground"}`}>{y}{year === y && <span className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-ouro" />}</Button>)}
+        </div>
+        <div className="mt-10 space-y-12" aria-live="polite">
+          {items.map((gallery) => <section key={gallery.title} aria-label={gallery.title}>
+            <h3 className="font-display text-xl font-bold leading-snug md:text-2xl">{gallery.title}</h3>
+            <svg className="mt-2 h-4 w-16 text-vermelho" viewBox="0 0 64 16" aria-hidden="true"><path d="M2 12 Q24 0 62 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+            <div className="mt-5 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {gallery.images.map((image, index) => <Button key={image.src + index} variant="ghost" onClick={() => setLightbox({ gallery, index })} className="group block aspect-[4/3] h-auto w-full overflow-hidden rounded-xl border border-border p-0" aria-label={`Ampliar foto ${index + 1} de ${gallery.title}`}>
+                <img src={image.src} alt={image.alt} className="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:scale-[1.02]" loading="lazy" />
+              </Button>)}
+            </div>
+          </section>)}
+        </div>
+      </div>
+    </section>
+    <Dialog.Root open={lightbox !== null} onOpenChange={(open) => { if (!open) setLightbox(null); }}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-[80] bg-grafite/95" />
+        <Dialog.Content className="fixed inset-0 z-[81] flex items-center justify-center p-4 text-primary-foreground outline-none" aria-describedby={undefined} onKeyDown={(e) => { if (e.key === "ArrowLeft") { e.preventDefault(); navigate(-1); } if (e.key === "ArrowRight") { e.preventDefault(); navigate(1); } }}>
+          <Dialog.Close asChild><Button variant="ghost" size="icon" className="absolute right-4 top-4 rounded-full text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground" aria-label="Fechar"><X /></Button></Dialog.Close>
+          {lightbox && photo && <figure className="w-full max-w-5xl">
+            <img src={photo.src} alt={photo.alt} className="max-h-[70vh] w-full object-contain" />
+            <figcaption className="mt-4 text-center">
+              <Dialog.Title className="font-display text-lg font-bold">{lightbox.gallery.title}</Dialog.Title>
+              {photo.caption && <p className="mt-2 text-sm text-primary-foreground/80">{photo.caption}</p>}
+              <div className="mt-3 flex items-center justify-center gap-4">
+                <Button variant="ghost" size="icon" aria-label="Anterior" onClick={() => navigate(-1)} className="rounded-full hover:bg-primary-foreground/10 hover:text-primary-foreground"><ChevronLeft /></Button>
+                <span className="text-sm">{lightbox.index + 1} / {lightbox.gallery.images.length}</span>
+                <Button variant="ghost" size="icon" aria-label="Próxima" onClick={() => navigate(1)} className="rounded-full hover:bg-primary-foreground/10 hover:text-primary-foreground"><ChevronRight /></Button>
+              </div>
             </figcaption>
-          </figure>
-        </div>
-      )}
-    </>
-  );
+          </figure>}
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  </>;
 }
