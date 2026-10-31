@@ -23,7 +23,8 @@ const activityIcons = [Drama, BookOpen, Film, Volleyball, Music, ShieldCheck];
 const areaIcons = [Music, BookOpen, Trophy, Drama, Film, HeartHandshake, ShieldCheck, Network];
 
 function QuemSomos() {
-  return <>
+  return <div className="motiro-about">
+    <style>{`body:has(.motiro-about) footer li span { overflow-wrap: anywhere; min-width: 0; } .motiro-about h1, .motiro-about h2, .motiro-about h3 { letter-spacing: 0; }`}</style>
     <InternalHero
       eyebrow="Quem somos"
       title="Uma trajetória construída com cultura, esporte e comunidade"
@@ -231,5 +232,5 @@ function QuemSomos() {
       </div>
     </div></section>
     <FinalCta variant="primary" eyebrow="Nossa história continua" title="Cultura, esporte e educação seguem construindo novos caminhos" description="A trajetória da Motirô é feita de encontros, aprendizados, vínculos e oportunidades. Conheça nossos projetos e acompanhe as ações que continuam dando movimento a essa história." image="/images/quem-somos/roda.jpg" imageAlt="Encontro coletivo de capoeira — imagem ilustrativa" buttons={[{ label: "Conheça os projetos", to: "/projetos" }, { label: "Fale conosco", to: "/contato" }]} />
-  </>;
+  </div>;
 }
