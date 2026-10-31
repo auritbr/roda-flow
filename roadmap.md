@@ -1,4 +1,4 @@
-- [x] Adaptar somente Projetos com os textos oficiais e preservar hero, identidade e CTA.
-- [x] Destacar Além da Ginga, Capoeira Motirô e organizar artes, leitura, cinema, dança e formação cidadã.
-- [x] Inserir fotografias reais provisórias relacionadas às atividades.
-- [x] Verificar links, leitura integral e organização em computador, tablet e celular.
+- [x] Remover créditos visuais e fotografia dos encontros formativos.
+- [x] Empilhar e alternar Teatro, Leitura, Cine e Dança preservando conteúdo e identidade.
+- [x] Tornar todas as imagens de Projetos portáveis para Vercel, com fallback discreto.
+- [x] Verificar imagens, alternância e leitura em computador, tablet e celular; arquivos também servidos por hospedagem estática independente.
