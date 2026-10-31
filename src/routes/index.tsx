@@ -69,11 +69,11 @@ function Hero() {
             <Sparkles className="h-3 w-3" /> Pontão de Cultura
           </div>
           <h1 className="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.05]">
-            Capoeira que preserva histórias e{" "}
-            <span className="text-ouro">transforma territórios</span>
+            Cultura, esporte e educação que{" "}
+            <span className="text-ouro">transformam caminhos</span>
           </h1>
           <p className="mt-4 max-w-xl text-sm md:text-base text-primary-foreground/90 leading-relaxed">
-            Uma instituição cultural, esportiva, educativa e comunitária de José de Freitas, no Piauí, reconhecida pelo Ministério da Cultura como Pontão de Cultura.
+            Há mais de duas décadas, a Motirô cria oportunidades de aprendizagem, convivência e desenvolvimento em José de Freitas, unindo cultura, esporte, educação e inclusão social.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link to="/quem-somos" className="inline-flex items-center gap-2 rounded-full bg-ouro px-5 py-2.5 text-sm font-semibold text-primary hover:brightness-95 transition">
