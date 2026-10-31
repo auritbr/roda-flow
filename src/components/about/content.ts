@@ -6,7 +6,7 @@ export const institutionalFacts = {
 } as const;
 
 export const introduction = [
-  "A Motirô é uma instituição cultural, esportiva, educativa e comunitária de José de Freitas, no Piauí. Sua trajetória começou por volta do ano 2000 a partir do trabalho com a capoeira, utilizada desde o início como instrumento de formação, convivência, disciplina, musicalidade, história e transformação social.",
+  "A Motirô é uma instituição cultural, esportiva, educativa e comunitária de José de Freitas, no Piauí. Sua trajetória começou por volta do ano 2000, a partir do trabalho com a capoeira, utilizada desde o início como instrumento de formação, convivência, disciplina, musicalidade, história e transformação social.",
   "Com o passar dos anos, a instituição ampliou suas atividades e passou a reunir outras linguagens, como teatro, leitura, cinema, handebol, dança, musicalidade, oficinas e ações educativas. Essa expansão consolidou uma atuação mais ampla, articulando cultura, esporte, educação, inclusão social e participação comunitária.",
 ];
 export const history = [
