@@ -25,3 +25,7 @@
 - [x] Remover breadcrumb e introdução redundante apenas em Parcerias e Transparência.
 - [x] Simplificar parceiros com espaços para logos oficiais e devolver seis exemplos explícitos no acervo.
 - [x] Verificar acordeões, visualização e download demonstrativos e leitura em três telas.
+- [ ] Refinar somente textos, repetições e grafismos de fundo em Parcerias e Transparência.
+- [ ] Retirar somente a introdução da Galeria, mantendo seletor e galerias.
+- [ ] Criar Impacto Social com textos oficiais, contribuições, imagens portáveis e números contextualizados; incluir no menu.
+- [ ] Testar os três recortes numéricos e verificar navegação, fotos e leitura em três telas.
