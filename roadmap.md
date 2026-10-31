@@ -48,6 +48,6 @@
 - [x] Simplificar submenu Projetos para lista vertical e centralizar seção final esportiva.
 - [x] Criar Memória Institucional com acervo demonstrativo, galeria provisória e acesso em Quem Somos.
 - [x] Verificar navegação, visualização, downloads e galeria nas telas usuais.
-- [ ] Criar Agenda mensal com filtros, lista, detalhes acessíveis e exemplos separados da programação oficial.
-- [ ] Atualizar apresentação da home e adicionar prévias de Agenda, Galeria e Parcerias preservando seções aprovadas.
-- [ ] Testar datas, filtros e próximos três eventos; verificar navegação e telas desktop/mobile.
+- [x] Criar Agenda mensal com filtros, lista, detalhes acessíveis e exemplos separados da programação oficial.
+- [x] Atualizar apresentação da home e adicionar prévias de Agenda, Galeria e Parcerias preservando seções aprovadas.
+- [x] Testar datas, filtros e próximos três eventos; verificar navegação e telas desktop/mobile.
