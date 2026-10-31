@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { InternalHero } from "@/components/site/InternalHero";
 import { FinalCta } from "@/components/site/FinalCta";
-import provisionalMan from "@/assets/team-placeholder-man.jpg";
-import provisionalWomanOne from "@/assets/team-placeholder-woman-one.jpg";
-import provisionalWomanTwo from "@/assets/team-placeholder-woman-two.jpg";
+import provisionalMan from "@/assets/team-portrait-man-wide.jpg";
+import provisionalWomanOne from "@/assets/team-portrait-woman-one-wide.jpg";
+import provisionalWomanTwo from "@/assets/team-portrait-woman-two-wide.jpg";
 
 const heroImage = "https://images.unsplash.com/photo-1623759126376-f3f1fb8c7f37?auto=format&fit=crop&w=2000&q=80";
 const team: { name: string; role: string; distinction?: string; bio: string[]; color: string; photo?: string }[] = [
@@ -57,35 +60,34 @@ export const Route = createFileRoute("/quem-somos/equipe")({
 });
 
 function TeamCard({ person, index }: { person: (typeof team)[number]; index: number }) {
-  const accent = ["text-primary", "text-vermelho", "text-ouro"][index];
-  const badge = ["bg-primary/10 text-primary", "bg-vermelho/10 text-vermelho", "bg-ouro/15 text-ouro-foreground"][index];
+  const [expanded, setExpanded] = useState(false);
+  const portraitPosition = ["object-[49%_45%]", "object-[48%_42%]", "object-[50%_44%]"][index];
+  const descriptionId = `team-description-${index}`;
   return (
-    <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card text-card-foreground shadow-sm">
-      <div className="relative p-3 pb-0">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
-          {person.photo && <img src={person.photo} alt="Retrato fictício provisório; não representa a pessoa integrante da equipe" className="h-full w-full object-cover object-[50%_5%]" loading="lazy" width={768} height={1024} />}
-          <span className="absolute left-3 top-3 rounded-full border border-border/60 bg-card/95 px-3 py-1 text-[10px] font-medium text-card-foreground">Retrato provisório</span>
-        </div>
-        <svg className={`pointer-events-none absolute bottom-0 right-1 h-16 w-16 ${accent}`} viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M10 52 A32 32 0 0 1 54 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          <path d="M20 54 A24 24 0 0 1 54 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 5" />
+    <article className={`group relative self-start overflow-hidden rounded-2xl shadow-sm transition-[transform,box-shadow] duration-250 motion-safe:hover:-translate-y-1 hover:shadow-lg ${person.color}`}>
+      <div className="relative h-[180px] overflow-hidden bg-muted">
+        {person.photo && <img src={person.photo} alt="Retrato ilustrativo da equipe" className={`h-full w-full object-cover transition-transform duration-250 motion-safe:group-hover:scale-[1.02] ${portraitPosition}`} loading="lazy" width={1200} height={650} />}
+        <svg className={`pointer-events-none absolute -bottom-px left-0 h-5 w-full ${person.color.split(" ")[0].replace("bg-", "text-")}`} viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 19 Q95 27 190 15 T400 18 V24 H0Z" fill="currentColor" />
         </svg>
       </div>
-      <div className="flex flex-1 flex-col px-6 pb-6 pt-6">
-        <div className="sm:min-h-28">
-          <h3 className="font-display text-lg font-bold leading-snug">{person.name}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{person.role}</p>
-          {person.distinction && <span className={`mt-3 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${badge}`}>{person.distinction}</span>}
+      <div className="relative h-[228px] px-6 pt-7">
+        <h3 className="min-h-12 font-display text-lg font-bold leading-6 tracking-normal">{person.name}</h3>
+        <p className="mt-2 min-h-10 text-sm leading-5 opacity-90">{person.role}</p>
+        {person.distinction && <span className="mt-3 inline-flex rounded-full border border-current/35 bg-current/5 px-3 py-1 text-xs font-semibold">{person.distinction}</span>}
+        <div className="absolute bottom-6 left-6 flex items-center gap-2 opacity-55" aria-hidden="true">
+          <span className="h-px w-7 bg-current" /><span className="size-1.5 rotate-45 border border-current" />
         </div>
-        <div className={`my-5 flex items-center gap-3 ${accent}`} aria-hidden="true">
-          <span className="h-px w-9 bg-current" /><span className="h-1.5 w-1.5 rotate-45 border border-current" /><span className="h-px flex-1 bg-border/70" />
+        <Button type="button" variant="ghost" size="icon" className="absolute bottom-4 right-5 size-9 rounded-full border border-current/30 bg-transparent text-inherit hover:bg-current/10 hover:text-inherit focus-visible:ring-current" aria-label={`${expanded ? "Recolher" : "Expandir"} descrição de ${person.name}`} title={expanded ? "Recolher descrição" : "Expandir descrição"} aria-expanded={expanded} aria-controls={descriptionId} onClick={() => setExpanded((value) => !value)}>
+          <ChevronDown className={`transition-transform duration-250 ${expanded ? "rotate-180" : ""}`} aria-hidden="true" />
+        </Button>
+      </div>
+      <div id={descriptionId} aria-hidden={!expanded} inert={!expanded} className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+        <div className="min-h-0 overflow-hidden">
+          <div className="mx-6 border-t border-current/25 pb-6 pt-5 text-sm leading-relaxed">
+            <div className="space-y-4">{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+          </div>
         </div>
-        <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
-          {person.bio.map((paragraph, paragraphIndex) => <p key={paragraph} className={paragraphIndex === 0 ? "text-card-foreground/90" : ""}>{paragraph}</p>)}
-        </div>
-        <svg className={`mt-auto h-8 w-20 self-end pt-4 ${accent}`} viewBox="0 0 80 16" aria-hidden="true">
-          <path d="M2 11 Q20 0 40 8 T78 4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
       </div>
     </article>
   );
