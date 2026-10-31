@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgendaRouteImport } from './routes/agenda'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as ImpactoSocialRouteImport } from './routes/impacto-social'
@@ -32,6 +33,11 @@ import { Route as QuemSomosTransparenciaRouteImport } from './routes/quem-somos.
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgendaRoute = AgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -129,6 +135,7 @@ const QuemSomosTransparenciaRoute = QuemSomosTransparenciaRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/impacto-social': typeof ImpactoSocialRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/impacto-social': typeof ImpactoSocialRoute
@@ -169,6 +177,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/impacto-social': typeof ImpactoSocialRoute
@@ -192,6 +201,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agenda'
     | '/contato'
     | '/galeria'
     | '/impacto-social'
@@ -213,6 +223,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/agenda'
     | '/contato'
     | '/galeria'
     | '/impacto-social'
@@ -231,6 +242,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/agenda'
     | '/contato'
     | '/galeria'
     | '/impacto-social'
@@ -253,6 +265,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgendaRoute: typeof AgendaRoute
   ContatoRoute: typeof ContatoRoute
   GaleriaRoute: typeof GaleriaRoute
   ImpactoSocialRoute: typeof ImpactoSocialRoute
@@ -271,6 +284,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agenda': {
+      id: '/agenda'
+      path: '/agenda'
+      fullPath: '/agenda'
+      preLoaderRoute: typeof AgendaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -452,6 +472,7 @@ const QuemSomosRouteWithChildren = QuemSomosRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgendaRoute: AgendaRoute,
   ContatoRoute: ContatoRoute,
   GaleriaRoute: GaleriaRoute,
   ImpactoSocialRoute: ImpactoSocialRoute,
