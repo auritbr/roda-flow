@@ -5,6 +5,6 @@
 - [x] Completar somente Quem Somos com textos oficiais e seções na ordem solicitada, preservando o visual aprovado.
 - [x] Preparar fotos portáveis, sede sem imagem fictícia e reconhecimento sem certificado ou prazo inventados.
 - [x] Verificar leitura, navegação e informações institucionais em computador, tablet e celular.
-- [ ] Ajustar apresentação e história em Quem Somos sem alterar hero ou linha do tempo.
-- [ ] Aplicar centralizações, inclusão integrada, selo, organização dos princípios e novo convite à equipe.
-- [ ] Verificar os ajustes em computador, tablet e celular e executar os testes existentes.
+- [x] Ajustar apresentação e história em Quem Somos sem alterar hero ou linha do tempo.
+- [x] Aplicar centralizações, inclusão integrada, selo, organização dos princípios e novo convite à equipe.
+- [x] Verificar os ajustes em computador, tablet e celular e executar os testes existentes.
