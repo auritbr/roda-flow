@@ -1,24 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import {
-  ArrowRight,
-  Sparkles,
-  Users,
-  BookOpen,
-  MapPin,
-  Music2,
-  Activity,
-  Mic2,
-  Landmark,
-  HeartHandshake,
-  Music,
-  Drum,
-  CircleDot,
-} from "lucide-react";
+import { ArrowRight, Sparkles, BookOpen, Music2, Activity, HeartHandshake } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { NEWS } from "@/lib/site-data";
 import { initiatives } from "@/components/projects/detail-content";
 import { SectionTitle } from "@/components/site/InternalHero";
-import { HomeAgenda, HomeGallery, HomePartnerships } from "@/components/home/InstitutionalPreviews";
+import { HomeAgenda, HomeGallery, HomePartnerships, HomeTrajectory, HomeImpact } from "@/components/home/InstitutionalPreviews";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,9 +32,8 @@ function Home() {
       <ProjetosDestaque />
       <HomeAgenda />
       <NoticiasRecentes />
-      <Atuacao />
-      <CapoeiraEmMovimento />
-      <Instrumentos />
+      <HomeTrajectory />
+      <HomeImpact />
       <HomeGallery />
       <HomePartnerships />
       <CTAFinal />
@@ -81,7 +66,7 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full bg-ouro/20 border border-ouro/40 px-3 py-1 text-xs eyebrow text-ouro">
-            <Sparkles className="h-3 w-3" /> Ponto de Cultura
+            <Sparkles className="h-3 w-3" /> Pontão de Cultura
           </div>
           <h1 className="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.05]">
             Capoeira que preserva histórias e{" "}
@@ -158,10 +143,10 @@ function Apresentacao() {
 
 function Pilares() {
   const pilares = [
-    { icon: Users, title: "Capoeira e formação", text: "Prática regular, graduação, corpo e ancestralidade em processos formativos continuados.", color: "azul" },
-    { icon: Music2, title: "Cultura afro-brasileira", text: "Musicalidade, cantos, instrumentos e memória oral das tradições afro-brasileiras.", color: "ouro" },
-    { icon: BookOpen, title: "Educação e cidadania", text: "Ações educativas que articulam Capoeira, escola, cidadania e direitos culturais.", color: "vermelho" },
-    { icon: MapPin, title: "Memória e território", text: "Presença comunitária, rodas abertas e preservação da história local.", color: "verde" },
+    { icon: Music2, title: "Cultura", text: "Capoeira, teatro, dança, audiovisual, musicalidade e valorização das manifestações culturais afro-brasileiras e populares.", color: "bg-azul text-azul-foreground" },
+    { icon: BookOpen, title: "Educação", text: "Leitura, escrita, formação cidadã, oficinas e experiências educativas que estimulam conhecimento, criatividade e participação.", color: "bg-ouro text-ouro-foreground" },
+    { icon: Activity, title: "Esporte", text: "Formação esportiva, capoeira, handebol, treinamento e oportunidades de desenvolvimento físico, técnico e social.", color: "bg-vermelho text-vermelho-foreground" },
+    { icon: HeartHandshake, title: "Inclusão", text: "Ações voltadas à convivência, ao respeito às diferenças e à ampliação das oportunidades de participação.", color: "bg-verde text-verde-foreground" },
   ] as const;
   return (
     <section className="bg-primary text-primary-foreground py-16 md:py-20 relative overflow-hidden">
@@ -170,15 +155,16 @@ function Pilares() {
       </svg>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
-          <div className="eyebrow text-ouro">Pilares</div>
-          <h2 className="mt-3 font-display text-2xl md:text-3xl lg:text-4xl font-extrabold">Como atuamos</h2>
+          <div className="eyebrow text-ouro">Como atuamos</div>
+          <h2 className="mt-3 font-display text-2xl md:text-3xl lg:text-4xl font-extrabold">Cultura, esporte, educação e inclusão</h2>
+          <p className="mt-4 text-sm md:text-base leading-relaxed text-primary-foreground/80">A atuação da Motirô reúne diferentes áreas que se complementam e ampliam as possibilidades de participação, aprendizagem e desenvolvimento.</p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {pilares.map((p) => {
             const Icon = p.icon;
             return (
               <div key={p.title} className="group relative rounded-2xl bg-primary-foreground/5 border border-primary-foreground/15 p-5 backdrop-blur hover:bg-primary-foreground/10 transition">
-                <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full bg-${p.color} text-${p.color}-foreground`}>
+                <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full ${p.color}`}>
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-3 font-display text-base font-bold">{p.title}</h3>
@@ -211,7 +197,7 @@ function ProjetosDestaque() {
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img src={p.image} alt="" className="h-full w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
                 <div className={`absolute inset-0 bg-gradient-to-t from-${p.color}/80 via-${p.color}/20 to-transparent`} />
-                <div className={`absolute top-3 left-3 rounded-full bg-${p.color} text-${p.color}-foreground px-2.5 py-1 text-[10px] eyebrow`}>
+                <div className={`absolute top-3 left-3 rounded-full ${p.color} px-2.5 py-1 text-[10px] eyebrow`}>
                   {p.eyebrow}
                 </div>
               </div>
@@ -234,133 +220,9 @@ function ProjetosDestaque() {
   );
 }
 
-function Atuacao() {
-  const cards = [
-    { category: "Oficinas", title: "Capoeira em processo formativo", image: "https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=1200&q=80", color: "azul" },
-    { category: "Rodas abertas", title: "Encontros no território", image: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1200&q=80", color: "vermelho" },
-    { category: "Musicalidade", title: "Instrumentos e cantos", image: "https://images.unsplash.com/photo-1777375430966-c028cf6e3293?auto=format&fit=crop&w=1200&q=80", color: "ouro" },
-    { category: "Escolas", title: "Cultura nas escolas parceiras", image: "https://images.unsplash.com/photo-1653476597388-b9a2d5f688d6?auto=format&fit=crop&w=1200&q=80", color: "verde" },
-    { category: "Formação", title: "Educadores e mestres", image: "https://images.unsplash.com/photo-1623759126376-f3f1fb8c7f37?auto=format&fit=crop&w=1200&q=80", color: "laranja" },
-    { category: "Comunidade", title: "Ações abertas ao público", image: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1200&q=80", color: "azul" },
-  ] as const;
-  const [showAll, setShowAll] = useState(false);
-  const visible = showAll ? cards : cards.slice(0, 4);
-  return (
-    <section className="py-16 md:py-20 bg-muted/40">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle eyebrow="Atuação" title="Nossa presença no território" description="Ações realizadas com continuidade, integrando cultura, educação e comunidade." />
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {visible.map((c) => (
-            <div key={c.title} className="group relative overflow-hidden rounded-xl border border-border h-[280px] sm:h-[300px] lg:h-[320px]">
-              <img src={c.image} alt="" className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
-              <div className={`absolute inset-0 bg-gradient-to-t from-${c.color}/95 via-${c.color}/45 to-transparent`} />
-              <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
-                <div className="eyebrow text-white/85 text-[10px]">{c.category}</div>
-                <h3 className="mt-1 font-display text-base font-bold leading-tight">{c.title}</h3>
-              </div>
-            </div>
-          ))}
-        </div>
-        {!showAll && cards.length > 4 && (
-          <div className="mt-8 flex justify-center">
-            <button
-              onClick={() => setShowAll(true)}
-              className="inline-flex items-center gap-2 rounded-full border-2 border-primary/30 bg-background px-5 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition"
-            >
-              Conheça todas as frentes de atuação <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function CapoeiraEmMovimento() {
-  const blocos = [
-    { icon: Activity, title: "Corpo e movimento", text: "A ginga, os golpes, as esquivas e os jogos desenvolvem consciência corporal, disciplina e expressão.", color: "azul" },
-    { icon: Mic2, title: "Música e oralidade", text: "Berimbau, atabaque, pandeiro, cantos e histórias conduzem a roda e transmitem conhecimentos.", color: "ouro" },
-    { icon: Landmark, title: "Memória e ancestralidade", text: "Os saberes dos mestres, das comunidades e das gerações anteriores orientam a continuidade da tradição.", color: "vermelho" },
-    { icon: HeartHandshake, title: "Comunidade e pertencimento", text: "A roda cria vínculos, acolhe diferentes gerações e fortalece a relação entre cultura e território.", color: "verde" },
-  ] as const;
-  return (
-    <section className="relative py-16 md:py-20 overflow-hidden">
-      <svg className="absolute -left-10 top-10 h-40 w-40 opacity-20" viewBox="0 0 200 200" aria-hidden>
-        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="3 8" />
-        <path d="M20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--vermelho)" strokeWidth="2" />
-      </svg>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-        <SectionTitle eyebrow="Uma cultura viva" title="Capoeira em movimento" description="A Capoeira se mantém viva quando seus saberes circulam entre gerações. Corpo, música, memória, oralidade e convivência se encontram em experiências que fortalecem identidades e ampliam o acesso à cultura afro-brasileira." />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {blocos.map((b) => {
-            const Icon = b.icon;
-            return (
-              <div key={b.title} className="relative rounded-2xl border border-border bg-card p-5 hover:shadow-md transition">
-                <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full bg-${b.color} text-${b.color}-foreground`}>
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-3 font-display text-base font-bold leading-snug">{b.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.text}</p>
-                <svg className="absolute right-3 top-3 h-6 w-6 opacity-60" viewBox="0 0 24 24" aria-hidden>
-                  <rect x="8" y="8" width="8" height="8" transform="rotate(45 12 12)" fill={`var(--${b.color})`} />
-                </svg>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Instrumentos() {
-  const items = [
-    { icon: Music, name: "Berimbau", text: "Conduz o ritmo, orienta o jogo e ocupa posição central na musicalidade da roda." },
-    { icon: Drum, name: "Atabaque", text: "Marca a pulsação e acrescenta profundidade ao conjunto de instrumentos." },
-    { icon: CircleDot, name: "Pandeiro", text: "Complementa o ritmo com leveza, variações e respostas sonoras." },
-    { icon: Music2, name: "Agogô", text: "Acrescenta timbres metálicos e reforça a organização rítmica." },
-    { icon: Activity, name: "Reco-reco", text: "Produz textura sonora e amplia a riqueza musical da roda." },
-    { icon: Sparkles, name: "Caxixi", text: "Integrado ao berimbau, participa da construção do ritmo e de suas variações." },
-  ];
-  return (
-    <section className="relative py-16 md:py-20 bg-creme/50 overflow-hidden" style={{ backgroundColor: "color-mix(in oklab, var(--ouro) 10%, var(--background))" }}>
-      <svg className="absolute -right-20 -bottom-20 h-96 w-96 opacity-15" viewBox="0 0 200 200" aria-hidden>
-        <circle cx="100" cy="100" r="90" fill="none" stroke="var(--vermelho)" strokeWidth="2" strokeDasharray="4 10" />
-        <path d="M10 100 Q 100 -20 190 100" fill="none" stroke="var(--primary)" strokeWidth="3" strokeLinecap="round" />
-      </svg>
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle eyebrow="Ritmo e tradição" title="Instrumentos que conduzem a roda" description="A musicalidade organiza o jogo, preserva histórias e conecta cada participante ao ritmo coletivo da Capoeira." />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it, i) => {
-            const Icon = it.icon;
-            const accents = ["vermelho", "ouro", "azul", "laranja", "verde", "primary"] as const;
-            const c = accents[i % accents.length];
-            return (
-              <div key={it.name} className="group relative rounded-2xl border border-border bg-card p-5 hover:shadow-md transition">
-                <div className="flex items-center gap-3">
-                  <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full bg-${c}/15`} style={{ color: `var(--${c})` }}>
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-display text-lg font-bold">{it.name}</h3>
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{it.text}</p>
-                <div className={`mt-4 h-1 w-10 rounded-full`} style={{ backgroundColor: `var(--${c})` }} />
-              </div>
-            );
-          })}
-        </div>
-        <div className="mt-10 flex justify-center">
-          <Link to="/projetos" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
-            Conheça nossos projetos <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function NoticiasRecentes() {
-  const items = NEWS.slice(0, 3);
+  // Legacy examples are tagged locally; this cannot turn them into official news.
+  const items = NEWS.slice(0, 3).map(item => ({ ...item, demonstration: true }));
   return (
     <section className="py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -377,12 +239,12 @@ function NoticiasRecentes() {
               <div className="p-5 flex-1 flex flex-col">
                 <div className="flex items-center gap-3 text-xs">
                   <span className="eyebrow text-laranja">{n.category}</span>
-                  <span className="text-muted-foreground">{n.date}</span>
+                  <span className="text-muted-foreground">{n.demonstration ? "Conteúdo demonstrativo" : n.date}</span>
                 </div>
                 <h3 className="mt-2 font-display text-base font-bold leading-snug">{n.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{n.excerpt}</p>
                 <Link to="/noticias/$slug" params={{ slug: n.slug }} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-                  Ler notícia <ArrowRight className="h-4 w-4" />
+                  Ver exemplo <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </article>
@@ -403,20 +265,16 @@ function CTAFinal() {
         <circle cx="200" cy="200" r="120" fill="none" stroke="var(--ouro)" strokeWidth="1.5" />
       </svg>
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <div className="eyebrow text-ouro">Participe</div>
+        <div className="eyebrow text-ouro">Faça parte dessa história</div>
         <h2 className="mt-3 font-display text-2xl md:text-4xl font-extrabold leading-tight">
-          Cada roda fortalece uma história coletiva
+          Cultura, esporte e educação continuam criando novos caminhos
         </h2>
         <p className="mt-3 max-w-2xl mx-auto text-sm md:text-base text-vermelho-foreground/90">
-          Conheça, acompanhe e participe das ações que mantêm viva a Capoeira em nosso território.
+          Conheça os projetos da Motirô, acompanhe suas ações e descubra diferentes formas de se aproximar desse trabalho.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Link to="/contato" className="inline-flex items-center gap-2 rounded-full bg-ouro text-primary px-5 py-2.5 text-sm font-semibold hover:brightness-95">
-            Fale conosco <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link to="/projetos" className="inline-flex items-center gap-2 rounded-full border-2 border-vermelho-foreground/40 bg-vermelho-foreground/10 px-5 py-2.5 text-sm font-semibold hover:bg-vermelho-foreground/20">
-            Conheça os projetos
-          </Link>
+          <Button asChild className="rounded-full bg-ouro text-primary hover:bg-ouro/90"><Link to="/projetos">Conheça os projetos <ArrowRight className="h-4 w-4" /></Link></Button>
+          <Button asChild variant="outline" className="rounded-full border-vermelho-foreground/40 bg-vermelho-foreground/10 text-vermelho-foreground hover:bg-vermelho-foreground/20 hover:text-vermelho-foreground"><Link to="/contato">Fale conosco</Link></Button>
         </div>
       </div>
     </section>
