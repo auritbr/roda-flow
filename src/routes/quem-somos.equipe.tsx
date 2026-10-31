@@ -59,11 +59,16 @@ export const Route = createFileRoute("/quem-somos/equipe")({
 
 function TeamCard({ person, index }: { person: (typeof team)[number]; index: number }) {
   const portraitPosition = ["object-[49%_45%]", "object-[48%_42%]", "object-[50%_44%]"][index];
+  const portraitAccent = ["text-primary", "text-vermelho", "text-ouro"][index];
   return (
     <article className="overflow-hidden rounded-2xl border border-border/40 bg-card text-card-foreground shadow-sm motion-safe:transition-[transform,box-shadow] motion-safe:duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-md">
       <div className="px-3 pt-3">
         <div className="relative h-[280px] overflow-hidden rounded-xl bg-muted">
           {person.photo && <img src={person.photo} alt={`Retrato ilustrativo para ${person.name}`} className={`h-full w-full object-cover ${portraitPosition}`} loading="lazy" width={1200} height={650} />}
+          <svg className="pointer-events-none absolute -bottom-px left-0 h-8 w-full" viewBox="0 0 360 32" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 24 C100 35 220 6 360 15 V32 H0 Z" className="fill-card" />
+            <path d="M205 25 C260 10 318 7 360 15 V23 C313 15 262 17 205 25 Z" className={`fill-current opacity-25 ${portraitAccent}`} />
+          </svg>
         </div>
       </div>
       <div className="px-6 pb-8 pt-6 lg:px-7">
