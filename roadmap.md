@@ -51,3 +51,6 @@
 - [x] Criar Agenda mensal com filtros, lista, detalhes acessíveis e exemplos separados da programação oficial.
 - [x] Atualizar apresentação da home e adicionar prévias de Agenda, Galeria e Parcerias preservando seções aprovadas.
 - [x] Testar datas, filtros e próximos três eventos; verificar navegação e telas desktop/mobile.
+- [ ] Revisar home com pilares amplos, trajetória, prévia de impacto e CTA; simplificar Parcerias e retirar seções repetitivas sem alterar páginas protegidas.
+- [ ] Tornar Agenda semanal por padrão, alternância mensal, navegação por período e cards compactos somente nesta página.
+- [ ] Testar datas e verificar fluxos, notícias demonstrativas e leitura desktop/mobile.

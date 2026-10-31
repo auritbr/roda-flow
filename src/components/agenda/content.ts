@@ -1,4 +1,4 @@
-import { addDays, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from "date-fns";
+import { addDays, addMonths, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 export const categories = ["Capoeira", "Teatro", "Cinema", "Oficinas", "Esporte", "Comunidade"] as const;
@@ -28,6 +28,22 @@ export const categoryStyles: Record<Category, string> = {
 export function parseDay(day: string) { return new Date(`${day}T12:00:00`); }
 export function dateLabel(day: string) { return format(parseDay(day), "EEEE, d 'de' MMMM 'de' yyyy", { locale: ptBR }); }
 export function monthLabel(day: string) { return format(parseDay(day), "MMMM yyyy", { locale: ptBR }); }
+export type PeriodMode = "week" | "month";
+export const defaultPeriodMode: PeriodMode = "week";
+export function weekDays(day: string) {
+  const start = startOfWeek(parseDay(day), { weekStartsOn: 0 });
+  return Array.from({ length: 7 }, (_, index) => format(addDays(start, index), "yyyy-MM-dd"));
+}
+export function weekLabel(day: string) {
+  const days = weekDays(day);
+  const start = parseDay(days[0]);
+  const end = parseDay(days[6]);
+  const startFormat = start.getFullYear() === end.getFullYear() ? "d MMM" : "d MMM yyyy";
+  return `${format(start, startFormat, { locale: ptBR })} — ${format(end, "d MMM yyyy", { locale: ptBR })}`;
+}
+export function movePeriod(day: string, mode: PeriodMode, amount: number) {
+  return format(mode === "week" ? addDays(parseDay(day), amount * 7) : addMonths(parseDay(day), amount), "yyyy-MM-dd");
+}
 export function calendarDays(month: string) {
   const start = startOfWeek(startOfMonth(parseDay(month)), { weekStartsOn: 0 });
   const end = endOfWeek(endOfMonth(parseDay(month)), { weekStartsOn: 0 });

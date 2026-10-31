@@ -5,15 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { categoryStyles, dateLabel, parseDay, type AgendaEvent } from "./content";
 
-export function EventCard({ event, onSelect }: { event: AgendaEvent; onSelect: (event: AgendaEvent) => void }) {
-  return <article className="flex gap-4 rounded-xl border border-border bg-card p-5 shadow-sm">
-    <time dateTime={event.date} aria-label={dateLabel(event.date)} className={`flex h-20 w-16 shrink-0 flex-col items-center justify-center rounded-lg ${categoryStyles[event.category]}`}>
-      <span className="font-display text-3xl font-extrabold">{format(parseDay(event.date), "dd")}</span>
+export function EventCard({ event, onSelect, compact = false }: { event: AgendaEvent; onSelect: (event: AgendaEvent) => void; compact?: boolean }) {
+  return <article className={`flex rounded-xl border border-border bg-card shadow-sm ${compact ? "gap-3 p-3.5" : "gap-4 p-5"}`}>
+    <time dateTime={event.date} aria-label={dateLabel(event.date)} className={`flex shrink-0 flex-col items-center justify-center rounded-lg ${compact ? "h-16 w-14" : "h-20 w-16"} ${categoryStyles[event.category]}`}>
+      <span className={`font-display font-extrabold ${compact ? "text-2xl" : "text-3xl"}`}>{format(parseDay(event.date), "dd")}</span>
       <span className="text-xs font-semibold uppercase">{format(parseDay(event.date), "MMM", { locale: ptBR })}</span>
     </time>
     <div className="min-w-0 flex-1"><p className="text-xs font-semibold text-muted-foreground">{event.category}</p>
-      <h3 className="mt-1 font-display text-lg font-bold leading-snug">{event.title}</h3>
-      <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground"><Clock className="size-4 shrink-0" />{event.startTime}{event.endTime && ` – ${event.endTime}`}</p>
+      <h3 className={`mt-1 font-display font-bold leading-snug ${compact ? "text-base" : "text-lg"}`}>{event.title}</h3>
+      <p className={`${compact ? "mt-1" : "mt-2"} flex items-center gap-2 text-sm text-muted-foreground`}><Clock className="size-4 shrink-0" />{event.startTime}{event.endTime && ` – ${event.endTime}`}</p>
       {event.location?.name && <p className="mt-1 flex items-center gap-2 text-sm text-muted-foreground"><MapPin className="size-4 shrink-0" />{event.location.name}</p>}
       <Button variant="link" className="mt-2 h-auto p-0" onClick={() => onSelect(event)}>Ver atividade <ArrowRight /></Button>
     </div>
