@@ -29,7 +29,7 @@ const team: { name: string; role: string; distinction?: string; bio: string[]; c
   {
     name: "Anne Nathielle de Sousa Silva",
     role: "Coordenadora Financeira",
-    color: "text-ouro",
+    color: "text-ouro-foreground",
     photo: provisionalWomanTwo,
     bio: ["Responsável pela coordenação financeira, pela organização das informações de receitas e despesas e pelo acompanhamento dos recursos destinados às atividades e aos projetos da instituição."],
   },
@@ -60,23 +60,19 @@ export const Route = createFileRoute("/quem-somos/equipe")({
 function TeamCard({ person, index }: { person: (typeof team)[number]; index: number }) {
   const portraitPosition = ["object-[49%_45%]", "object-[48%_42%]", "object-[50%_44%]"][index];
   return (
-    <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-card text-card-foreground shadow-sm">
+    <article className="overflow-hidden rounded-2xl border border-border/40 bg-card text-card-foreground shadow-sm motion-safe:transition-[transform,box-shadow] motion-safe:duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-md">
       <div className="px-3 pt-3">
         <div className="relative h-[280px] overflow-hidden rounded-xl bg-muted">
           {person.photo && <img src={person.photo} alt={`Retrato ilustrativo para ${person.name}`} className={`h-full w-full object-cover ${portraitPosition}`} loading="lazy" width={1200} height={650} />}
         </div>
       </div>
-      <div className="flex flex-1 flex-col px-6 pb-7 pt-6 lg:px-7">
-        <div className="sm:min-h-[134px]">
+      <div className="px-6 pb-8 pt-6 lg:px-7">
+        <div>
           <h3 className="font-display text-xl font-bold leading-7 tracking-normal">{person.name}</h3>
-          <p className={`mt-3 border-l-2 border-current pl-3 text-sm font-semibold leading-5 ${person.color}`}><span className={index === 2 ? "text-foreground" : undefined}>{person.role}</span></p>
-          {person.distinction && <span className="mt-3 inline-flex rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">{person.distinction}</span>}
+          <p className={`mt-2 text-base font-semibold leading-6 ${person.color}`}>{person.role}</p>
+          {person.distinction && <span className="mt-3 inline-flex rounded-full bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">{person.distinction}</span>}
         </div>
-        <div className={`mb-5 mt-6 flex items-center gap-2 ${person.color}`} aria-hidden="true">
-          <span className="h-px w-9 bg-current opacity-60" /><span className="size-1.5 rotate-45 border border-current opacity-70" />
-        </div>
-        <div className="space-y-5 text-sm leading-7 text-muted-foreground">{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-        <svg className={`mt-auto h-9 w-24 shrink-0 pt-5 ${person.color}`} viewBox="0 0 96 20" aria-hidden="true"><path d="M2 14 Q24 2 48 12 T94 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" /></svg>
+        <div className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
       </div>
     </article>
   );
@@ -112,7 +108,7 @@ function Equipe() {
             <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Responsabilidades que sustentam a atuação da Motirô</h2>
             <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-muted-foreground">A equipe institucional reúne diferentes responsabilidades de coordenação, organização administrativa e gestão financeira, contribuindo para a continuidade das atividades, dos projetos e da atuação comunitária da Motirô.</p>
           </div>
-          <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid max-w-6xl items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((person, index) => <TeamCard key={person.name} person={person} index={index} />)}
           </div>
         </div>
