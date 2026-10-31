@@ -39,7 +39,7 @@ export const activities: readonly Activity[] = [
   })),
   {
     key: "handball", title: "Handebol Motirô", eyebrow: "Esporte, formação e trabalho em equipe",
-    image: "/images/projetos/handebol-motiro.jpg", alt: "Adolescentes em uma partida de handebol de areia",
+    image: "/images/projetos/handebol-motiro.jpg", alt: "Jovens atletas com bolas de handebol em uma quadra esportiva",
     color: "bg-azul/10", accent: "text-azul",
     paragraphs: [
       "O handebol integra a atuação esportiva da Motirô, ampliando as oportunidades de participação de crianças e adolescentes que se identificam com modalidades esportivas além da capoeira.",
@@ -50,7 +50,7 @@ export const activities: readonly Activity[] = [
     highlights: [{ text: "Esporte como ferramenta de educação, convivência e desenvolvimento humano." }],
     audience: "Crianças, adolescentes e jovens, conforme as faixas etárias e as categorias organizadas pela equipe responsável.",
     tags: ["Trabalho em equipe", "Disciplina", "Formação esportiva", "Convivência", "Desenvolvimento motor"],
-    credit: { author: "Marcus Cyron", license: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:Beach_handball_at_the_2018_Summer_Youth_Olympics_%E2%80%93_Girls_Preliminary_Round_%E2%80%93_ARG-HKG_029.jpg" },
+    credit: { author: "Voltmetro", license: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:2016_Women%27s_Junior_World_Handball_Championship_-_Group_A_-_HUN_vs_NOR_-_(084).jpg" },
   },
   {
     key: "inclusion", title: "Brincando e Crescendo Juntos", eyebrow: "Inclusão, acolhimento e desenvolvimento", independent: true,
