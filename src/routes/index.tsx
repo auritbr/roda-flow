@@ -15,7 +15,8 @@ import {
   Drum,
   CircleDot,
 } from "lucide-react";
-import { PROJECTS, NEWS } from "@/lib/site-data";
+import { NEWS } from "@/lib/site-data";
+import { initiatives } from "@/components/projects/detail-content";
 import { SectionTitle } from "@/components/site/InternalHero";
 
 export const Route = createFileRoute("/")({
@@ -202,6 +203,8 @@ function Pilares() {
 }
 
 function ProjetosDestaque() {
+  const featured = ["alem-da-ginga", "capoeira-motiro", "teatro-motiro"]
+    .flatMap(slug => initiatives.filter(item => item.slug === slug));
   return (
     <section className="py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -212,13 +215,13 @@ function ProjetosDestaque() {
           </Link>
         </div>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {PROJECTS.map((p) => (
+          {featured.map((p) => (
             <article key={p.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm hover:shadow-lg transition">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img src={p.image} alt="" className="h-full w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
                 <div className={`absolute inset-0 bg-gradient-to-t from-${p.color}/80 via-${p.color}/20 to-transparent`} />
                 <div className={`absolute top-3 left-3 rounded-full bg-${p.color} text-${p.color}-foreground px-2.5 py-1 text-[10px] eyebrow`}>
-                  {p.area}
+                  {p.eyebrow}
                 </div>
               </div>
               <div className="flex-1 p-5">
