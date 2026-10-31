@@ -101,7 +101,7 @@ export function Header() {
                         </Link>
                       ))}
                       {item.label === "Projetos" && <Link to="/projetos" className="block px-4 py-2.5 text-sm font-semibold text-primary hover:bg-muted transition-colors">Ver todos os projetos</Link>}
-                      </>}
+                      </>
                     </div>
                   </div>
                 )}
