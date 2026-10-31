@@ -16,5 +16,5 @@
 - [x] Conferir conteúdo e leitura em computador, tablet e celular; textos completos, fotos carregadas, sem expansão ou scroll interno.
 - [x] Revisar somente o visual dos cards da Equipe com fundo claro, foto maior e acentos culturais discretos; decorar suavemente a introdução.
 - [x] Conferir enquadramento e textos completos em computador, tablet e celular, preservando as demais seções.
-- [ ] Limpar somente os cards da equipe, compactar os espaçamentos e alinhar pelo topo com alturas naturais.
-- [ ] Conferir cards sem divisores, textos integrais e leitura em três tamanhos de tela.
+- [x] Limpar somente os cards da equipe, compactar os espaçamentos e alinhar pelo topo com alturas naturais.
+- [x] Conferir cards sem divisores, textos integrais e leitura em três tamanhos de tela.
