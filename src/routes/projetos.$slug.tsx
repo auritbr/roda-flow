@@ -1,123 +1,114 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect, useRouter, type ErrorComponentProps } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
 import { FinalCta } from "@/components/site/FinalCta";
-import { PROJECTS, PROJECT_DETAILS, GALLERY, PARTNERS } from "@/lib/site-data";
-import {
-  Target,
-  Users,
-  MapPin,
-  Compass,
-  Sparkles,
-  Music,
-  HeartHandshake,
-  Quote,
-  BookOpen,
-  Drum,
-  Users2,
-  Landmark,
-  GraduationCap,
-  MapPinned,
-  Vote,
-  Feather,
-  ShieldCheck,
-  Heart,
-  Handshake,
-  History,
-  Sprout,
-} from "lucide-react";
+import { initiativeForSlug, legacyProjectDestinations, legacyOverviewSlugs } from "@/components/projects/detail-content";
+import { ProgramReach } from "@/components/projects/ProgramReach";
+import { ImageAttribution } from "@/components/projects/ImageAttribution";
+import { activities } from "@/components/projects/activities";
+import { Target, Users, MapPin, Compass, Sparkles, Music, HeartHandshake, BookOpen, Drum, History, GraduationCap, Feather, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/projetos/$slug")({
   loader: ({ params }) => {
-    const project = PROJECTS.find((p) => p.slug === params.slug);
+    const destination = legacyProjectDestinations[params.slug];
+    if (destination) throw redirect({ to: "/projetos/$slug", params: { slug: destination }, statusCode: 301 });
+    if (legacyOverviewSlugs.includes(params.slug)) throw redirect({ to: "/projetos", statusCode: 301 });
+    const project = initiativeForSlug(params.slug);
     if (!project) throw notFound();
     return { project };
   },
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.project.title} — Projetos` },
+          { title: `${loaderData.project.title} — Motirô` },
           { name: "description", content: loaderData.project.summary },
-          { property: "og:title", content: loaderData.project.title },
+          { property: "og:title", content: `${loaderData.project.title} — Motirô` },
           { property: "og:description", content: loaderData.project.summary },
-          { property: "og:image", content: loaderData.project.image },
-          { name: "twitter:image", content: loaderData.project.image },
           { property: "og:type", content: "website" },
           { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Projeto não encontrado" }, { name: "robots", content: "noindex" }],
   }),
   component: ProjectDetail,
+  notFoundComponent: () => <section className="mx-auto max-w-4xl px-4 py-24"><SectionTitle title="Iniciativa não encontrada" /><Button asChild className="mt-6 rounded-full"><Link to="/projetos">Ver projetos</Link></Button></section>,
+  errorComponent: ProjectError,
 });
 
-const colorMap: Record<string, { bg: string; text: string; border: string; soft: string; pattern: "roda" | "berimbau" | "ginga" }> = {
-  azul: { bg: "bg-azul", text: "text-azul", border: "border-azul/30", soft: "bg-azul/10", pattern: "roda" },
-  ouro: { bg: "bg-ouro", text: "text-ouro", border: "border-ouro/40", soft: "bg-ouro/15", pattern: "berimbau" },
-  vermelho: { bg: "bg-vermelho", text: "text-vermelho", border: "border-vermelho/30", soft: "bg-vermelho/10", pattern: "ginga" },
+function ProjectError({ reset }: ErrorComponentProps) {
+  const router = useRouter();
+  return <section className="mx-auto max-w-4xl px-4 py-24"><SectionTitle title="Esta iniciativa não carregou" /><Button className="mt-6 rounded-full" onClick={() => { void router.invalidate(); reset(); }}>Tentar novamente</Button></section>;
+}
+
+const colorMap: Record<"azul" | "ouro" | "vermelho" | "verde", { bg: string; foreground: string; text: string; border: string; soft: string; pattern: "roda" | "berimbau" | "ginga" }> = {
+  azul: { bg: "bg-azul", foreground: "text-primary-foreground", text: "text-azul", border: "border-azul/30", soft: "bg-azul/10", pattern: "roda" },
+  ouro: { bg: "bg-ouro", foreground: "text-ouro-foreground", text: "text-ouro", border: "border-ouro/40", soft: "bg-ouro/15", pattern: "berimbau" },
+  vermelho: { bg: "bg-vermelho", foreground: "text-primary-foreground", text: "text-vermelho", border: "border-vermelho/30", soft: "bg-vermelho/10", pattern: "ginga" },
+  verde: { bg: "bg-verde", foreground: "text-primary-foreground", text: "text-verde", border: "border-verde/30", soft: "bg-verde/10", pattern: "roda" },
 };
 
 function ProjectDetail() {
   const { project } = Route.useLoaderData();
-  const variant = project.color as "azul" | "ouro" | "vermelho";
+  const variant = project.color;
   const c = colorMap[variant];
-  const details = PROJECT_DETAILS[project.slug];
+  const details = project;
+  const credit = activities.find(item => item.slug === project.slug)?.credit;
 
   return (
     <>
       <InternalHero
-        eyebrow="Projeto"
+        eyebrow={project.eyebrow}
         title={project.title}
-        description={project.tagline}
+        description={project.subtitle}
         image={project.image}
-        imageAlt=""
+        imageAlt={project.alt}
         variant={variant}
         pattern={c.pattern}
-      />
+      >
+        <p className="max-w-2xl text-base leading-relaxed text-primary-foreground/90">{project.summary}</p>
+        {project.independent && <span className="mt-4 inline-flex rounded-full bg-primary-foreground/15 px-3 py-1 text-xs font-semibold">Iniciativa independente</span>}
+        {credit && <div className="relative mt-4 h-10"><ImageAttribution {...credit} /></div>}
+      </InternalHero>
 
       {/* Informações principais */}
       <section className="py-14">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-          <Info icon={Users} label="Público" text={project.audience} color={c} />
-          <Info icon={Target} label="Área" text={project.area} color={c} />
-          <Info icon={MapPin} label="Território" text="Cidade / UF a informar" color={c} />
-          <Info icon={Compass} label="Situação" text="Em andamento" color={c} />
+          {project.facts.map(fact => <Info key={fact.label} icon={fact.label === "Público" ? Users : fact.label === "Território" ? MapPin : fact.label === "Área" ? Target : Compass} label={fact.label} text={fact.text} color={c} />)}
         </div>
       </section>
 
       {/* Sobre o projeto */}
       <section className="pb-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className={`eyebrow ${c.text}`}>Sobre o projeto</div>
+          <div className={`eyebrow ${c.text}`}>{project.aboutLabel}</div>
           <h2 className="mt-2 font-display text-3xl md:text-4xl font-extrabold relative inline-block">
             {project.title}
             <svg className="absolute -bottom-3 left-0 h-3 w-32" viewBox="0 0 160 12" aria-hidden>
               <path d="M2 8 Q 40 2 80 8 T 158 6" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" className={c.text} />
             </svg>
           </h2>
-          <p className="mt-8 text-muted-foreground leading-relaxed text-lg">
-            {details?.intro ?? project.summary}
-          </p>
+          <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed text-lg">{project.paragraphs.map(text => <p key={text}>{text}</p>)}</div>
         </div>
       </section>
 
       {/* Objetivos — cards fortes com cor de destaque */}
-      {details && (
+      {details.objectives.length > 0 && (
         <section className={`py-16 ${c.soft} relative overflow-hidden`}>
           <svg className="absolute -left-10 -top-10 h-64 w-64 opacity-30" viewBox="0 0 200 200" aria-hidden>
             <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 10" className={c.text} />
           </svg>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-            <SectionTitle eyebrow="O que buscamos" title="Objetivos do projeto" />
+            <SectionTitle eyebrow="O que buscamos" title={project.reach ? "Objetivos do programa" : "Objetivos da iniciativa"} />
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {details.objectives.map((o, i) => (
-                <article key={i} className={`relative rounded-2xl ${c.bg} text-white p-6 shadow-lg overflow-hidden`}>
+                <article key={i} className={`relative rounded-2xl ${c.bg} ${c.foreground} p-6 shadow-lg overflow-hidden`}>
                   <svg className="absolute -right-6 -bottom-6 h-24 w-24 opacity-25" viewBox="0 0 100 100" aria-hidden>
                     <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 6" />
                   </svg>
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-ouro font-bold">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-current/10 font-bold">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <h3 className="mt-4 font-display text-lg font-bold">{o.title}</h3>
-                  <p className="mt-2 text-sm text-white/90 leading-relaxed">{o.text}</p>
+                  <p className="mt-2 text-sm opacity-90 leading-relaxed">{o.text}</p>
                 </article>
               ))}
             </div>
@@ -125,47 +116,8 @@ function ProjectDetail() {
         </section>
       )}
 
-      {/* Metodologia + Atividades */}
-      {details && (
-        <section className="py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-2">
-            <div>
-              <div className={`eyebrow ${c.text}`}>Como funciona</div>
-              <h2 className="mt-2 font-display text-2xl md:text-3xl font-extrabold">Metodologia</h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                O trabalho é conduzido em ciclos formativos, com aulas regulares, oficinas temáticas e encontros comunitários. A metodologia articula corpo, ritmo, escuta e memória, respeitando os saberes tradicionais da Capoeira e o contexto do território.
-              </p>
-              <div className="mt-6 grid grid-cols-3 gap-3">
-                {[
-                  { icon: Sparkles, label: "Vivência" },
-                  { icon: Music, label: "Musicalidade" },
-                  { icon: HeartHandshake, label: "Comunidade" },
-                ].map(({ icon: Icon, label }) => (
-                  <div key={label} className={`rounded-xl border ${c.border} p-4 text-center`}>
-                    <Icon className={`h-5 w-5 mx-auto ${c.text}`} />
-                    <div className="mt-2 text-xs font-semibold">{label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <div className={`eyebrow ${c.text}`}>Na prática</div>
-              <h2 className="mt-2 font-display text-2xl md:text-3xl font-extrabold">Atividades desenvolvidas</h2>
-              <ul className="mt-6 space-y-3">
-                {details.activities.map((a) => (
-                  <li key={a} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
-                    <span className={`mt-1 inline-block h-2.5 w-2.5 rounded-full ${c.bg}`} />
-                    <span className="text-sm">{a}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Nesta ação, a Capoeira se expressa por meio de */}
-      {details && (
+      {/* Experiências confirmadas de cada iniciativa */}
+      {details.practices && (
         <section className={`py-16 ${c.soft} relative overflow-hidden`}>
           <svg className="absolute -right-10 -top-10 h-64 w-64 opacity-30" viewBox="0 0 200 200" aria-hidden>
             <path d="M100 20 A 80 80 0 0 1 180 100" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className={c.text} />
@@ -177,22 +129,15 @@ function ProjectDetail() {
 
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionTitle
-              eyebrow="Identidade do projeto"
-              title="Nesta ação, a Capoeira se expressa por meio de"
-              description="Frentes que compõem a experiência viva desta iniciativa."
+              eyebrow="Experiências da iniciativa"
+              title={details.practices.title}
+              description={details.practices.text}
             />
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {(() => {
-                const items = [
-                  { icon: GraduationCap, label: "Formação cultural", tint: "bg-azul" },
-                  { icon: Drum, label: "Musicalidade", tint: "bg-vermelho" },
-                  { icon: Users2, label: "Convivência", tint: "bg-laranja" },
-                  { icon: History, label: "Memória", tint: "bg-verde" },
-                  { icon: BookOpen, label: "Educação", tint: "bg-azul" },
-                  { icon: MapPinned, label: "Território", tint: "bg-vermelho" },
-                  { icon: Vote, label: "Participação coletiva", tint: "bg-ouro" },
-                  { icon: Feather, label: "Ancestralidade", tint: "bg-verde" },
-                ];
+                const icons = [GraduationCap, Drum, Users, History, BookOpen, Music, HeartHandshake, Feather, Sparkles, Target];
+                const tints = ["bg-azul text-primary-foreground", "bg-vermelho text-primary-foreground", "bg-laranja text-primary-foreground", "bg-verde text-primary-foreground"];
+                const items = details.practices.items.map((label, index) => ({ label, icon: icons[index % icons.length], tint: tints[index % tints.length] }));
                 return items.map(({ icon: Icon, label, tint }, i) => (
                   <article
                     key={i}
@@ -201,7 +146,7 @@ function ProjectDetail() {
                     <svg className="absolute -right-4 -bottom-4 h-20 w-20 opacity-10" viewBox="0 0 80 80" aria-hidden>
                       <circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 6" className={c.text} />
                     </svg>
-                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${tint} text-white shadow-sm`}>
+                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${tint} shadow-sm`}>
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-4 font-display font-bold text-foreground">{label}</h3>
@@ -216,93 +161,17 @@ function ProjectDetail() {
         </section>
       )}
 
-      {/* Como esta iniciativa fortalece o território */}
-      {details && (
-        <section className="py-16 relative overflow-hidden">
-          <svg className="absolute left-0 top-10 h-40 w-40 opacity-20" viewBox="0 0 100 100" aria-hidden>
-            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="4 6" />
-          </svg>
-          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <SectionTitle
-              eyebrow="Impactos e frentes de atuação"
-              title="Como esta iniciativa fortalece o território"
-              description="Movimentos concretos que a Capoeira ativa a partir deste projeto."
-            />
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { icon: Landmark, title: "Amplia o acesso à cultura", text: "Aproxima diferentes públicos das práticas culturais da Capoeira, com atividades abertas e continuadas." },
-                { icon: HeartHandshake, title: "Fortalece vínculos comunitários", text: "Estimula encontros, escuta e construção coletiva no território de atuação." },
-                { icon: Feather, title: "Valoriza saberes afro-brasileiros", text: "Reconhece e afirma a Capoeira como patrimônio cultural vivo e ancestral." },
-                { icon: Users2, title: "Promove encontros e convivência", text: "Cria espaços seguros de troca, formação e experimentação artística." },
-                { icon: Sprout, title: "Incentiva participação intergeracional", text: "Reúne crianças, jovens, adultos e mestres em uma mesma roda de saberes." },
-                { icon: ShieldCheck, title: "Preserva memórias e práticas culturais", text: "Registra e transmite tradições, cantos, movimentos e histórias do território." },
-              ].map((item, i) => (
-                <article
-                  key={i}
-                  className={`relative overflow-hidden rounded-2xl border ${c.border} bg-card p-6 hover:shadow-md transition`}
-                >
-                  <svg className="absolute -right-6 -top-6 h-24 w-24 opacity-15" viewBox="0 0 80 80" aria-hidden>
-                    <rect x="20" y="20" width="40" height="40" transform="rotate(45 40 40)" fill="none" stroke="currentColor" strokeWidth="2" className={c.text} />
-                  </svg>
-                  <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full ${c.soft} ${c.text}`}>
-                    <item.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-4 font-display text-lg font-bold">{item.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Depoimento */}
-      {details && (
-        <section className={`py-16 ${c.soft}`}>
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-            <Quote className={`h-8 w-8 mx-auto ${c.text}`} />
-            <blockquote className="mt-4 font-display text-xl md:text-2xl font-bold leading-snug">
-              "{details.testimonial.text}"
-            </blockquote>
-            <div className="mt-4 text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">{details.testimonial.author}</span> — {details.testimonial.role}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Galeria */}
-      <section className="py-14 bg-muted/40">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Registros" title="Galeria do projeto" />
-          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-            {GALLERY.slice(0, 8).map((g) => (
-              <figure key={g.title} className="aspect-square overflow-hidden rounded-xl">
-                <img src={g.image} alt={g.alt} className="h-full w-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Parceiros */}
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Rede" title="Parceiros e apoiadores" center />
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {PARTNERS.slice(0, 4).map((p) => (
-              <div key={p.name} className="aspect-[3/2] rounded-xl border border-border bg-card flex items-center justify-center text-xs eyebrow text-muted-foreground">{p.name}</div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {project.feature && <section className="relative overflow-hidden py-16"><div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><SectionTitle eyebrow={project.feature.eyebrow} title={project.feature.title} /><div className="mt-6 space-y-4 text-muted-foreground leading-relaxed">{project.feature.paragraphs.map(text => <p key={text}>{text}</p>)}</div></div></section>}
+      {project.highlights && <section className="py-16"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><SectionTitle eyebrow="Expressão e formação" title="Ações em destaque" /><div className="mt-10 grid gap-5 md:grid-cols-2">{project.highlights.map(item => <article key={item.title} className={`relative overflow-hidden rounded-2xl border ${c.border} bg-card p-6`}><h3 className="font-display text-lg font-bold">{item.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p></article>)}</div></div></section>}
+      {project.reach && <ProgramReach />}
+      {project.audience && <section className="py-10"><div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><SectionTitle eyebrow="Participação" title="Público" description={project.audience} /></div></section>}
 
       {/* CTA final */}
       <FinalCta
         variant={variant}
         eyebrow="Aproxime-se desta ação"
         title="Quer saber mais sobre esta iniciativa?"
-        description="Entre em contato para acompanhar as ações, conhecer melhor o projeto e se aproximar do trabalho desenvolvido pelo Ponto de Cultura."
+        description={project.independent ? "Entre em contato para conhecer melhor a iniciativa e obter informações sobre participação, critérios e organização das atividades." : "Entre em contato para conhecer melhor esta iniciativa, acompanhar suas ações e saber mais sobre as possibilidades de participação."}
         buttons={[
           { label: "Fale conosco", to: "/contato" },
           { label: "Ver outros projetos", to: "/projetos", variant: "outline" },
@@ -312,7 +181,7 @@ function ProjectDetail() {
   );
 }
 
-function Info({ icon: Icon, label, text, color }: { icon: any; label: string; text: string; color: { text: string; border: string } }) {
+function Info({ icon: Icon, label, text, color }: { icon: LucideIcon; label: string; text: string; color: { text: string; border: string } }) {
   return (
     <div className={`rounded-xl border ${color.border} bg-card p-4`}>
       <div className={`flex items-center gap-2 ${color.text}`}>

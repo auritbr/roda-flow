@@ -33,3 +33,7 @@
 - [x] Organizar sete iniciativas em três páginas somente na listagem de Projetos, mantendo destaque e frentes transversais.
 - [x] Adicionar conteúdo oficial de Handebol e iniciativa independente de inclusão com imagens coerentes de referência.
 - [x] Testar limites, independência e navegação da paginação; verificar fotos e leitura nas duas páginas.
+- [x] Refinar Projetos: núcleos compactos, tags, somente listagem paginada e CTA após encontros.
+- [x] Atualizar oito páginas individuais com textos oficiais no modelo aprovado e links corretos.
+- [x] Remover dados fictícios, parceiros, depoimentos e galerias não autorizadas; preservar atribuições legais e imagens portáveis.
+- [x] Testar regras institucionais e verificar navegação e leitura nas oito páginas.

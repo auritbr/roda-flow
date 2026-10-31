@@ -15,7 +15,7 @@ export const capoeiraParagraphs = [
   "O Capoeira Motirô é o projeto específico de capoeira da instituição e uma das principais expressões de sua trajetória.",
   "Iniciado por volta do ano 2000, oferece atividades de capoeira e cultura afro-brasileira, principalmente para crianças e adolescentes, utilizando essa manifestação como instrumento de educação, desenvolvimento pessoal, formação esportiva e inclusão social.",
 ];
-export const capoeiraTags = ["Aulas de capoeira", "Musicalidade", "Instrumentos", "Rodas", "Oficinas", "Apresentações", "Festivais", "Formação esportiva"];
+export const capoeiraTags = ["Capoeira", "Musicalidade", "Rodas", "Formação esportiva", "Cultura afro-brasileira"];
 export const arts = [
   { key: "theatre", title: "Teatro Motirô", color: "bg-vermelho/10", accent: "text-vermelho", paragraphs: [
     "O Teatro Motirô representa a atuação da instituição no campo das artes cênicas e da expressão artística.",

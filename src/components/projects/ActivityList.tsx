@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { SectionTitle } from "@/components/site/InternalHero";
 import { ActivityTags, MovementMark, Paragraphs } from "./OverviewElements";
 import { ProjectImage } from "./ProjectImage";
+import { ImageAttribution } from "./ImageAttribution";
 import { ACTIVITIES_PER_PAGE, activitiesForPage, activityPageCount } from "./activities";
 
 const icons = [Footprints, Drama, BookOpen, Film, Music, Users, HeartHandshake];
@@ -35,8 +36,8 @@ export function ActivityList() {
               <div className="relative h-56 overflow-hidden md:h-auto md:min-h-80 md:flex-1">
                 <ProjectImage src={activity.image} alt={activity.alt} className="h-full w-full object-cover md:absolute md:inset-0" icon={Icon} />
                 <MovementMark className="absolute bottom-2 right-4 h-12 w-24 text-ouro" />
+                {activity.credit && <ImageAttribution {...activity.credit} />}
               </div>
-              {activity.credit && <figcaption className="relative shrink-0 bg-card px-4 py-2 text-xs leading-5 text-muted-foreground">Fotografia de referência · <a href={activity.credit.url} target="_blank" rel="noreferrer" className="underline underline-offset-2">{activity.credit.author} · {activity.credit.license}</a></figcaption>}
             </figure>
             <div className="min-w-0 p-6 lg:p-8">
               {activity.eyebrow && <div className={`eyebrow ${activity.accent}`}>{activity.eyebrow}</div>}
