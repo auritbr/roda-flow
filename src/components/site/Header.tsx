@@ -83,7 +83,7 @@ export function Header() {
                 </Link>
                 {"children" in item && item.children && (
                   <div
-                    className="invisible absolute left-0 top-full pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+                    className={cn("invisible absolute top-full pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100", item.label === "Projetos" ? "left-1/2 -translate-x-1/2" : "left-0")}
                     role="menu"
                   >
                     <div className={cn("rounded-lg border border-border bg-card shadow-lg overflow-hidden", item.label === "Projetos" ? "w-[600px] max-w-[calc(100vw-2rem)] p-4" : "min-w-[240px]")}>
