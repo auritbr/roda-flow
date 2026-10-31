@@ -92,7 +92,6 @@ export function Header() {
                         <Link
                           key={c.label}
                           to={c.to}
-                          params={"params" in c ? c.params : undefined}
                           activeProps={{ className: "bg-muted text-primary" }}
                           className="block px-4 py-2.5 text-sm hover:bg-muted transition-colors"
                         >
