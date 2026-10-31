@@ -76,8 +76,10 @@ function Projetos() {
               <p className="mt-5 border-l-2 border-ouro pl-4 text-sm leading-relaxed text-foreground">O Além da Ginga está associado à trajetória iniciada por volta do ano 2000 e à ampliação progressiva do trabalho comunitário da Motirô.</p>
             </div>
             <div className="relative">
-              <img src={capoeiraPhoto.url} alt="Capoeira e musicalidade em encontro cultural coletivo" className="aspect-[4/3] max-h-80 w-full rounded-2xl object-cover" loading="lazy" />
-              <MovementMark className="absolute -bottom-4 right-5 h-14 w-28 text-vermelho" />
+              <div className="relative">
+                <img src={capoeiraPhoto.url} alt="Capoeira e musicalidade em encontro cultural coletivo" className="aspect-[4/3] max-h-80 w-full rounded-2xl object-cover" loading="lazy" />
+                <MovementMark className="absolute -bottom-4 right-5 h-14 w-28 text-vermelho" />
+              </div>
               <div className="mt-7 text-primary"><ActivityTags items={["Capoeira", "Teatro", "Leitura", "Cinema", "Dança", "Formação cidadã"]} /></div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-- [ ] Adaptar somente Projetos com os textos oficiais e preservar hero, identidade e CTA.
-- [ ] Destacar Além da Ginga, Capoeira Motirô e organizar artes, leitura, cinema, dança e formação cidadã.
-- [ ] Inserir fotografias reais provisórias relacionadas às atividades.
-- [ ] Verificar links, leitura integral e organização em computador, tablet e celular.
+- [x] Adaptar somente Projetos com os textos oficiais e preservar hero, identidade e CTA.
+- [x] Destacar Além da Ginga, Capoeira Motirô e organizar artes, leitura, cinema, dança e formação cidadã.
+- [x] Inserir fotografias reais provisórias relacionadas às atividades.
+- [x] Verificar links, leitura integral e organização em computador, tablet e celular.
