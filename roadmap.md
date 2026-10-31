@@ -2,3 +2,6 @@
 - [x] Empilhar e alternar Teatro, Leitura, Cine e Dança preservando conteúdo e identidade.
 - [x] Tornar todas as imagens de Projetos portáveis para Vercel, com fallback discreto.
 - [x] Verificar imagens, alternância e leitura em computador, tablet e celular; arquivos também servidos por hospedagem estática independente.
+- [x] Completar somente Quem Somos com textos oficiais e seções na ordem solicitada, preservando o visual aprovado.
+- [x] Preparar fotos portáveis, sede sem imagem fictícia e reconhecimento sem certificado ou prazo inventados.
+- [x] Verificar leitura, navegação e informações institucionais em computador, tablet e celular.
