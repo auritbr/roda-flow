@@ -45,6 +45,7 @@ export const inclusion = [
   "A inclusão faz parte da experiência da Motirô. Ao longo de sua trajetória, as atividades receberam pessoas com diferentes condições físicas, intelectuais e sociais.",
   "A instituição também desenvolveu uma iniciativa específica voltada a crianças autistas, denominada Brincando e Crescendo Juntos, além de promover a participação de pessoas com deficiência em outras atividades.",
   "O objetivo é ampliar as possibilidades de convivência, respeitar as particularidades de cada participante e criar ambientes nos quais as pessoas possam desenvolver suas capacidades e construir vínculos.",
+  "A atuação comunitária inclui ainda ações de prevenção ao uso de drogas e acolhimento de pessoas que buscam reconstruir suas trajetórias pessoais e sociais.",
 ];
 export const inclusionHighlights = ["Respeito às diferenças", "Convivência", "Participação", "Acolhimento", "Desenvolvimento de capacidades", "Fortalecimento de vínculos"];
 export const headquarters = [
