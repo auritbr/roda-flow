@@ -7,7 +7,6 @@ import { ProjectImage } from "@/components/projects/ProjectImage";
 import { FinalCta } from "@/components/site/FinalCta";
 import { ArrowRight, BookOpen, CircleUserRound, Drama, Film, Footprints, HeartHandshake, MapPin, MessagesSquare, Music, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
 
-const heroImage = "/images/projetos/capoeira-motiro.jpg";
 const title = "Projetos e iniciativas — Motirô";
 const description = "Conheça Além da Ginga, Capoeira Motirô e as iniciativas de cultura, esporte, educação e formação cidadã da Motirô.";
 
@@ -38,7 +37,7 @@ function Projetos() {
         eyebrow="Projetos e iniciativas"
         title="Cultura, esporte e educação em movimento"
         description="A Motirô desenvolve projetos e atividades que conectam capoeira, artes, leitura, audiovisual, esporte, formação cidadã e inclusão social, ampliando oportunidades de aprendizagem, convivência e participação comunitária."
-        image={heroImage}
+        image="/images/projetos/capoeira-motiro.jpg"
         imageAlt="Atividade cultural coletiva"
         variant="laranja"
         pattern="ginga"
@@ -143,7 +142,7 @@ function Projetos() {
         eyebrow="Cultura que cria caminhos"
         title="Cada atividade pode abrir uma nova possibilidade"
         description="A Motirô transforma cultura, esporte e educação em oportunidades de aprendizagem, convivência e desenvolvimento. Conheça nossas ações e descubra diferentes formas de se aproximar desse trabalho."
-        image={heroImage}
+        image="/images/projetos/capoeira-motiro.jpg"
         imageAlt="Movimento de Capoeira em atividade coletiva"
         buttons={[
           { label: "Fale conosco", to: "/contato" },
