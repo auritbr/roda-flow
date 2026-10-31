@@ -31,12 +31,12 @@ export function ActivityList() {
           const flip = globalIndex % 2 === 1;
           const Icon = icons[globalIndex] ?? Users;
           return <article key={activity.key} className={`grid items-center overflow-hidden rounded-2xl border border-border ${activity.color} ${flip ? "md:grid-cols-[1.3fr_0.7fr] lg:grid-cols-[1.15fr_0.85fr]" : "md:grid-cols-[0.7fr_1.3fr] lg:grid-cols-[0.85fr_1.15fr]"}`}>
-            <figure className={`relative h-full min-w-0 ${flip ? "md:order-2" : ""}`}>
-              <div className="relative h-56 overflow-hidden md:h-full md:min-h-80">
+            <figure className={`relative flex h-full min-w-0 flex-col ${flip ? "md:order-2" : ""}`}>
+              <div className="relative h-56 overflow-hidden md:h-auto md:min-h-80 md:flex-1">
                 <ProjectImage src={activity.image} alt={activity.alt} className="h-full w-full object-cover md:absolute md:inset-0" icon={Icon} />
                 <MovementMark className="absolute bottom-2 right-4 h-12 w-24 text-ouro" />
               </div>
-              {activity.credit && <figcaption className="relative bg-card px-4 py-2 text-xs leading-5 text-muted-foreground">Fotografia de referência · <a href={activity.credit.url} target="_blank" rel="noreferrer" className="underline underline-offset-2">{activity.credit.author} · {activity.credit.license}</a></figcaption>}
+              {activity.credit && <figcaption className="relative shrink-0 bg-card px-4 py-2 text-xs leading-5 text-muted-foreground">Fotografia de referência · <a href={activity.credit.url} target="_blank" rel="noreferrer" className="underline underline-offset-2">{activity.credit.author} · {activity.credit.license}</a></figcaption>}
             </figure>
             <div className="min-w-0 p-6 lg:p-8">
               {activity.eyebrow && <div className={`eyebrow ${activity.accent}`}>{activity.eyebrow}</div>}
