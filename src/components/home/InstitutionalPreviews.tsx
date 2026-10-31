@@ -26,7 +26,7 @@ export function HomeGallery() {
   return <section className="py-12 md:py-16"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <SectionTitle eyebrow="Registros" title="Momentos que fazem parte da nossa história" description="Rodas, oficinas, apresentações, encontros e atividades comunitárias registrados ao longo da trajetória da Motirô." center />
     <p className="mt-3 text-center text-xs text-muted-foreground">Imagens ilustrativas provisórias.</p>
-    <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2">{previewPhotos.map((photo, i) => <div key={photo.src} className={`overflow-hidden rounded-xl ${i === 0 ? "md:col-span-2 md:row-span-2" : ""} ${i >= 4 ? "hidden md:block" : ""}`}><img src={photo.src} alt={photo.alt} loading="lazy" className={`h-full w-full object-cover ${i === 0 ? "aspect-[4/3] md:aspect-auto" : "aspect-[4/3]"}`} /></div>)}</div>
+    <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-6 md:grid-rows-2">{previewPhotos.map((photo, i) => <div key={photo.src} className={`overflow-hidden rounded-xl ${i === 0 ? "md:col-span-3 md:row-span-2" : i === 5 ? "md:col-span-2" : ""} ${i >= 4 ? "hidden md:block" : ""}`}><img src={photo.src} alt={photo.alt} loading="lazy" className={`h-full w-full object-cover ${i === 0 ? "aspect-[4/3] md:aspect-auto" : i === 5 ? "aspect-[4/3] md:aspect-[8/3]" : "aspect-[4/3]"}`} /></div>)}</div>
     <div className="mt-6 text-center"><Button asChild variant="outline" className="rounded-full"><Link to="/galeria">Ver galeria <ArrowRight /></Link></Button></div>
   </div></section>;
 }

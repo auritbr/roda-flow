@@ -173,6 +173,7 @@
     left: 0;
     max-width: none;
     transform: none;
+    translate: none;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
