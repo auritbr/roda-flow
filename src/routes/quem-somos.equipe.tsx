@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Network, Files, ChartNoAxesCombined } from "lucide-react";
 import { InternalHero } from "@/components/site/InternalHero";
 import { FinalCta } from "@/components/site/FinalCta";
 import provisionalMan from "@/assets/team-portrait-man-wide.jpg";
@@ -38,9 +36,9 @@ const team: { name: string; role: string; distinction?: string; bio: string[]; c
 ];
 
 const responsibilities = [
-  { title: "Coordenação", text: "Acompanhamento das atividades, articulação institucional e orientação do trabalho cultural, esportivo e social.", color: "bg-azul text-azul-foreground" },
-  { title: "Organização institucional", text: "Documentos, registros e apoio administrativo necessários ao funcionamento e à gestão da entidade.", color: "bg-vermelho text-vermelho-foreground" },
-  { title: "Gestão financeira", text: "Organização das informações de receitas, despesas e recursos destinados às atividades e aos projetos.", color: "bg-ouro text-ouro-foreground" },
+  { title: "Coordenação", text: "Articulação institucional e acompanhamento das atividades.", color: "text-primary", icon: Network },
+  { title: "Organização administrativa", text: "Documentos, registros e apoio à gestão da entidade.", color: "text-vermelho", icon: Files },
+  { title: "Gestão financeira", text: "Organização de receitas, despesas e recursos dos projetos.", color: "text-primary", icon: ChartNoAxesCombined },
 ];
 
 export const Route = createFileRoute("/quem-somos/equipe")({
@@ -60,34 +58,25 @@ export const Route = createFileRoute("/quem-somos/equipe")({
 });
 
 function TeamCard({ person, index }: { person: (typeof team)[number]; index: number }) {
-  const [expanded, setExpanded] = useState(false);
   const portraitPosition = ["object-[49%_45%]", "object-[48%_42%]", "object-[50%_44%]"][index];
-  const descriptionId = `team-description-${index}`;
   return (
-    <article className={`group relative self-start overflow-hidden rounded-2xl shadow-sm transition-[transform,box-shadow] duration-250 motion-safe:hover:-translate-y-1 hover:shadow-lg ${person.color}`}>
+    <article className={`group relative h-full overflow-hidden rounded-2xl shadow-sm ${person.color}`}>
       <div className="relative h-[180px] overflow-hidden bg-muted">
         {person.photo && <img src={person.photo} alt="Retrato ilustrativo da equipe" className={`h-full w-full object-cover transition-transform duration-250 motion-safe:group-hover:scale-[1.02] ${portraitPosition}`} loading="lazy" width={1200} height={650} />}
         <svg className={`pointer-events-none absolute -bottom-px left-0 h-5 w-full ${person.color.split(" ")[0].replace("bg-", "text-")}`} viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0 19 Q95 27 190 15 T400 18 V24 H0Z" fill="currentColor" />
         </svg>
       </div>
-      <div className="relative h-[228px] px-6 pt-7">
-        <h3 className="min-h-12 font-display text-lg font-bold leading-6 tracking-normal">{person.name}</h3>
-        <p className="mt-2 min-h-10 text-sm leading-5 opacity-90">{person.role}</p>
-        {person.distinction && <span className="mt-3 inline-flex rounded-full border border-current/35 bg-current/5 px-3 py-1 text-xs font-semibold">{person.distinction}</span>}
-        <div className="absolute bottom-6 left-6 flex items-center gap-2 opacity-55" aria-hidden="true">
+      <div className="px-6 pb-6 pt-5">
+        <div className="sm:min-h-[132px]">
+          <h3 className="font-display text-lg font-bold leading-6 tracking-normal">{person.name}</h3>
+          <p className="mt-2 text-sm leading-5 opacity-90">{person.role}</p>
+          {person.distinction && <span className="mt-3 inline-flex rounded-full border border-current/35 bg-transparent px-3 py-1 text-xs font-semibold">{person.distinction}</span>}
+        </div>
+        <div className="my-5 flex items-center gap-2 opacity-55" aria-hidden="true">
           <span className="h-px w-7 bg-current" /><span className="size-1.5 rotate-45 border border-current" />
         </div>
-        <Button type="button" variant="ghost" size="icon" className="absolute bottom-4 right-5 size-9 rounded-full border border-current/30 bg-transparent text-inherit hover:bg-current/10 hover:text-inherit focus-visible:ring-current" aria-label={`${expanded ? "Recolher" : "Expandir"} descrição de ${person.name}`} title={expanded ? "Recolher descrição" : "Expandir descrição"} aria-expanded={expanded} aria-controls={descriptionId} onClick={() => setExpanded((value) => !value)}>
-          <ChevronDown className={`transition-transform duration-250 ${expanded ? "rotate-180" : ""}`} aria-hidden="true" />
-        </Button>
-      </div>
-      <div id={descriptionId} aria-hidden={!expanded} inert={!expanded} className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-        <div className="min-h-0 overflow-hidden">
-          <div className="mx-6 border-t border-current/25 pb-6 pt-5 text-sm leading-relaxed">
-            <div className="space-y-4">{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-          </div>
-        </div>
+        <div className="space-y-4 text-sm leading-relaxed">{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
       </div>
     </article>
   );
@@ -111,7 +100,17 @@ function Equipe() {
             <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Um trabalho construído coletivamente</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">A trajetória da Motirô é construída pelo trabalho de sua equipe, dos participantes, das famílias, dos parceiros e da comunidade. Na organização institucional, diferentes responsabilidades se complementam para garantir o acompanhamento das atividades e a continuidade do trabalho cultural, esportivo e social.</p>
           </div>
-          <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        </div>
+      </section>
+
+      <section className="pb-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-10 max-w-3xl text-center">
+            <div className="eyebrow text-laranja">Equipe institucional</div>
+            <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Responsabilidades que sustentam a atuação da Motirô</h2>
+            <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-muted-foreground">A equipe institucional reúne diferentes responsabilidades de coordenação, organização administrativa e gestão financeira, contribuindo para a continuidade das atividades, dos projetos e da atuação comunitária da Motirô.</p>
+          </div>
+          <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((person, index) => <TeamCard key={person.name} person={person} index={index} />)}
           </div>
         </div>
@@ -124,19 +123,16 @@ function Equipe() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <div className="eyebrow text-laranja">Gestão e continuidade</div>
-            <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Responsabilidades que se complementam</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">A organização institucional reúne diferentes frentes de trabalho que ajudam a manter as atividades, os projetos e a atuação comunitária da Motirô em funcionamento.</p>
+            <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Diferentes funções, um mesmo compromisso</h2>
+            <p className="mt-4 leading-relaxed text-muted-foreground">Coordenação, secretaria e gestão financeira atuam de forma complementar para garantir organização, acompanhamento das atividades, continuidade dos projetos e suporte ao trabalho cultural, esportivo e social desenvolvido pela Motirô.</p>
           </div>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {responsibilities.map((item, index) => (
-              <article key={item.title} className={`relative overflow-hidden rounded-2xl p-6 ${item.color}`}>
-                <svg className="mb-4 h-10 w-10 opacity-70" viewBox="0 0 48 48" aria-hidden="true">
-                  {index === 0 ? <><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 4" /><circle cx="24" cy="24" r="6" fill="none" stroke="currentColor" strokeWidth="2" /></> : index === 1 ? <><path d="M9 12 Q24 2 39 12 M9 24 Q24 14 39 24 M9 36 Q24 26 39 36" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></> : <><path d="M7 35 L17 25 L27 30 L41 12 M7 41 H41" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><circle cx="17" cy="25" r="3" fill="currentColor" /><circle cx="27" cy="30" r="3" fill="currentColor" /></>}
-                </svg>
-                <svg className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 opacity-15" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="2" /></svg>
-                <h3 className="font-display text-lg font-bold leading-tight">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed opacity-90">{item.text}</p>
-              </article>
+          <div className="mx-auto mt-8 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {responsibilities.map(({ title, text, color, icon: Icon }) => (
+              <div key={title} className={`text-center ${color}`}>
+                <Icon className="mx-auto h-6 w-6" strokeWidth={1.6} aria-hidden="true" />
+                <h3 className="mt-3 font-display text-base font-bold leading-tight">{title}</h3>
+                <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">{text}</p>
+              </div>
             ))}
           </div>
         </div>
