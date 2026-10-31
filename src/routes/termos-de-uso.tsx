@@ -6,6 +6,12 @@ export const Route = createFileRoute("/termos-de-uso")({
     meta: [
       { title: "Termos de Uso — Ponto de Cultura Capoeira" },
       { name: "description", content: "Termos de uso do site institucional do Ponto de Cultura." },
+      { property: "og:title", content: "Termos de Uso — Motirô" },
+      { property: "og:description", content: "Termos de uso do site institucional da Motirô." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1200&h=630&q=80" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1200&h=630&q=80" },
     ],
   }),
   component: Termos,

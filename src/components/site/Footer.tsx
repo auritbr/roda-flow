@@ -95,7 +95,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex gap-2"><MapPin className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span>{SITE.address}</span></li>
               <li className="flex gap-2"><Phone className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span>{SITE.phone}</span></li>
-              <li className="flex gap-2"><Mail className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span>{SITE.email}</span></li>
+              <li className="flex gap-2"><Mail className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span className="min-w-0 wrap-anywhere">{SITE.email}</span></li>
             </ul>
             <Link to="/contato" className="mt-5 inline-flex items-center rounded-full bg-ouro px-4 py-2 text-sm font-semibold text-primary hover:brightness-95">
               Fale conosco

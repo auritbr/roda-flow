@@ -23,6 +23,12 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Ponto de Cultura Capoeira — Início" },
       { name: "description", content: "Capoeira, cultura afro-brasileira, educação e memória. Conheça nossos projetos e ações comunitárias." },
+      { property: "og:title", content: "Motirô — Cultura, capoeira e comunidade" },
+      { property: "og:description", content: "Capoeira, cultura afro-brasileira, educação e memória. Conheça nossos projetos e ações comunitárias." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1200&h=630&q=80" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1200&h=630&q=80" },
     ],
   }),
   component: Home,

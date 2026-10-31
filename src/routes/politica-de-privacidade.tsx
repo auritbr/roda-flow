@@ -6,6 +6,12 @@ export const Route = createFileRoute("/politica-de-privacidade")({
     meta: [
       { title: "Política de Privacidade — Ponto de Cultura Capoeira" },
       { name: "description", content: "Política de Privacidade e tratamento de dados pessoais em conformidade com a LGPD." },
+      { property: "og:title", content: "Política de Privacidade — Motirô" },
+      { property: "og:description", content: "Política de Privacidade e tratamento de dados pessoais da Motirô." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1200&h=630&q=80" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1628375385872-f2f937986c91?auto=format&fit=crop&w=1200&h=630&q=80" },
     ],
   }),
   component: Politica,
