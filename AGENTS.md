@@ -10,4 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the institutional team content and optional portrait slots local to the team route, so adapting that page cannot change shared content or other approved pages.
-- Team cards are static editorial cards with inset portrait frames and fully visible biographies in natural document flow; stretch each grid row for balanced heights, without disclosure, internal scrolling or text truncation.
+- Team cards keep a fixed-size closed portrait and identity area, with independent local disclosure state and natural downward biography expansion; align grid items to the start so opening one card never stretches its neighbors.
