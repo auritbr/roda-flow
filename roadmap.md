@@ -1,4 +1,4 @@
-- [ ] Remover créditos visuais e fotografia dos encontros formativos.
-- [ ] Empilhar e alternar Teatro, Leitura, Cine e Dança preservando conteúdo e identidade.
-- [ ] Tornar todas as imagens de Projetos portáveis para Vercel, com fallback discreto.
-- [ ] Verificar imagens, alternância e leitura em computador, tablet e celular.
+- [x] Remover créditos visuais e fotografia dos encontros formativos.
+- [x] Empilhar e alternar Teatro, Leitura, Cine e Dança preservando conteúdo e identidade.
+- [x] Tornar todas as imagens de Projetos portáveis para Vercel, com fallback discreto.
+- [x] Verificar imagens, alternância e leitura em computador, tablet e celular; arquivos também servidos por hospedagem estática independente.
