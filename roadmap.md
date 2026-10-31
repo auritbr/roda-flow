@@ -29,3 +29,7 @@
 - [x] Retirar somente a introdução da Galeria, mantendo seletor e galerias.
 - [x] Criar Impacto Social com textos oficiais, contribuições, imagens portáveis e números contextualizados; incluir no menu.
 - [x] Testar os três recortes numéricos e verificar navegação, fotos e leitura em três telas.
+- [x] Finalizar textos de Impacto Social preservando estrutura e alt sem legendas.
+- [x] Organizar sete iniciativas em três páginas somente na listagem de Projetos, mantendo destaque e frentes transversais.
+- [x] Adicionar conteúdo oficial de Handebol e iniciativa independente de inclusão com imagens coerentes de referência.
+- [x] Testar limites, independência e navegação da paginação; verificar fotos e leitura nas duas páginas.

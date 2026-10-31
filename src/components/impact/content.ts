@@ -1,5 +1,5 @@
 export const introduction = [
-  "O trabalho da Motirô vai além da realização de oficinas e treinamentos. Sua contribuição está relacionada à construção de oportunidades de desenvolvimento humano, participação cultural e convivência comunitária.",
+  "A atuação da Motirô está relacionada à construção de oportunidades de desenvolvimento humano, participação cultural e convivência comunitária.",
   "Por meio de suas atividades, a instituição amplia o acesso à cultura, ao esporte e à educação para pessoas que nem sempre encontram essas oportunidades em outros espaços.",
 ];
 export const contributions = [
@@ -23,7 +23,7 @@ export const youth = [
 ];
 export const inclusion = [
   "A Motirô busca ampliar a participação de pessoas com deficiência em suas atividades e desenvolver experiências de convivência respeitosas e inclusivas.",
-  "Além da participação em diferentes iniciativas, há registro de uma proposta específica voltada a crianças autistas, o Brincando e Crescendo Juntos.",
+  "Além da participação de pessoas com deficiência em diferentes iniciativas, a Motirô também desenvolveu uma proposta específica voltada a crianças autistas, denominada Brincando e Crescendo Juntos.",
 ];
 export const citizenship = [
   "A cultura permite compreender histórias, reconhecer identidades, desenvolver formas de expressão e participar da vida coletiva.",
