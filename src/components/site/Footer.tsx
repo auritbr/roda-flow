@@ -74,7 +74,7 @@ export function Footer() {
               <li><Link to="/" className="hover:text-ouro">Início</Link></li>
               <li><Link to="/quem-somos" className="hover:text-ouro">Quem Somos</Link></li>
               <li><Link to="/quem-somos/equipe" className="hover:text-ouro">Equipe</Link></li>
-              <li><Link to="/quem-somos/transparencia" className="hover:text-ouro">Transparência</Link></li>
+              <li><Link to="/quem-somos/parcerias-e-transparencia" className="hover:text-ouro">Parcerias e Transparência</Link></li>
               <li><Link to="/noticias" className="hover:text-ouro">Notícias</Link></li>
               <li><Link to="/galeria" className="hover:text-ouro">Galeria</Link></li>
             </ul>
@@ -108,7 +108,7 @@ export function Footer() {
           <div className="flex flex-wrap gap-4">
             <Link to="/politica-de-privacidade" className="hover:text-ouro">Política de Privacidade</Link>
             <Link to="/termos-de-uso" className="hover:text-ouro">Termos de Uso</Link>
-            <Link to="/quem-somos/transparencia" className="hover:text-ouro">Transparência</Link>
+            <Link to="/quem-somos/parcerias-e-transparencia" className="hover:text-ouro">Parcerias e Transparência</Link>
           </div>
         </div>
       </div>
