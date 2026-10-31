@@ -26,3 +26,4 @@
 - Use the shared CulturalBackdrop only as an aria-hidden, noninteractive background layer; keep approved content spacing and card interiors unchanged when adding cultural identity.
 - Keep leadership and headquarters additions in dedicated about-local modules so new sections cannot modify approved institutional paragraphs or team cards.
 - Serve sports formation through an explicit static projects child route and browser-safe content/results module, keeping confirmed future results separate from initiative catalogs.
+- Keep institutional memory content, demonstrative archive items and fictional gallery placeholders in dedicated browser-safe modules; reuse the initiative lightbox with configurable headings and explicit fallback records to preserve other galleries and keep official records separate.
