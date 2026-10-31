@@ -165,3 +165,8 @@
 @utility ring-arc {
   position: relative;
 }
+
+/* Only the homepage hero adapts to shorter laptop/tablet viewports. */
+@media (min-width: 640px) and (max-height: 800px) {
+  .home-hero { min-height: 500px; }
+}

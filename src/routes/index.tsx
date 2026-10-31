@@ -11,18 +11,23 @@ import {
   Mic2,
   Landmark,
   HeartHandshake,
-  Music,
-  Drum,
-  CircleDot,
 } from "lucide-react";
 import { PROJECTS, NEWS } from "@/lib/site-data";
 import { SectionTitle } from "@/components/site/InternalHero";
+import { Button } from "@/components/ui/button";
+import { InstrumentDrawing } from "@/components/site/InstrumentDrawing";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ponto de Cultura Capoeira — Início" },
+      { title: "Motirô — Capoeira, cultura e movimento" },
       { name: "description", content: "Capoeira, cultura afro-brasileira, educação e memória. Conheça nossos projetos e ações comunitárias." },
+      { property: "og:title", content: "Motirô — Capoeira, cultura e movimento" },
+      { property: "og:description", content: "Capoeira, cultura afro-brasileira, educação e memória. Conheça nossos projetos e ações comunitárias." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80" },
     ],
   }),
   component: Home,
@@ -47,7 +52,7 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-primary text-primary-foreground min-h-[460px] md:min-h-[560px] lg:min-h-[620px]">
+    <section className="home-hero relative flex items-center overflow-hidden bg-primary text-primary-foreground min-h-[400px] sm:min-h-[500px] lg:min-h-[560px] xl:min-h-[600px]">
       <img
         src="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80"
         alt="Roda de Capoeira em atividade comunitária"
@@ -55,24 +60,24 @@ function Hero() {
         loading="eager"
       />
       <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-vermelho/50" />
-      <svg className="absolute -right-16 -top-16 h-[340px] w-[340px] opacity-40" viewBox="0 0 400 400" aria-hidden>
+      <svg className="absolute -right-16 -top-16 h-56 w-56 md:h-[300px] md:w-[300px] opacity-40" viewBox="0 0 400 400" aria-hidden>
         <circle cx="200" cy="200" r="180" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="2 10" />
         <circle cx="200" cy="200" r="130" fill="none" stroke="var(--creme)" strokeWidth="1.5" opacity="0.5" />
         <path d="M60 200 A 140 140 0 0 1 340 200" fill="none" stroke="var(--laranja)" strokeWidth="3" strokeLinecap="round" />
       </svg>
-      <svg className="absolute -left-12 bottom-0 h-56 w-56 opacity-40" viewBox="0 0 300 300" aria-hidden>
+      <svg className="absolute -left-12 bottom-0 h-36 w-36 md:h-48 md:w-48 opacity-40" viewBox="0 0 300 300" aria-hidden>
         <path d="M20 260 Q 150 40 280 260" fill="none" stroke="var(--ouro)" strokeWidth="3" strokeLinecap="round" />
         <circle cx="150" cy="150" r="6" fill="var(--ouro)" />
         <circle cx="90" cy="200" r="4" fill="var(--laranja)" />
         <circle cx="220" cy="200" r="4" fill="var(--laranja)" />
       </svg>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12 lg:py-14">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full bg-ouro/20 border border-ouro/40 px-3 py-1 text-xs eyebrow text-ouro">
             <Sparkles className="h-3 w-3" /> Ponto de Cultura
           </div>
-          <h1 className="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.05]">
+          <h1 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-normal">
             Capoeira que preserva histórias e{" "}
             <span className="text-ouro">transforma territórios</span>
           </h1>
@@ -95,7 +100,7 @@ function Hero() {
 
 function Divider() {
   return (
-    <div className="relative h-12 overflow-hidden bg-background" aria-hidden>
+    <div className="relative h-8 overflow-hidden bg-background" aria-hidden>
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1200 60" preserveAspectRatio="none">
         <path d="M0 40 Q 300 -10 600 30 T 1200 20" fill="none" stroke="var(--ouro)" strokeWidth="2" />
         <path d="M0 50 Q 300 10 600 40 T 1200 30" fill="none" stroke="var(--laranja)" strokeWidth="1.5" strokeDasharray="3 8" />
@@ -115,8 +120,8 @@ function Apresentacao() {
     { label: "Ações realizadas", value: "Nº a informar" },
   ];
   return (
-    <section className="py-14 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-[1fr_42%] lg:items-center">
+    <section className="py-10 md:py-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-[1fr_42%] md:items-center">
         <div>
           <div className="eyebrow text-laranja">Quem somos</div>
           <h2 className="mt-3 font-display text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight">
@@ -143,13 +148,13 @@ function Apresentacao() {
             ))}
           </dl>
         </div>
-        <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto w-full">
-          <div className="absolute -top-3 -left-3 h-16 w-16 rounded-full border-2 border-ouro" aria-hidden />
-          <div className="absolute -bottom-3 -right-3 h-20 w-20 rounded-full bg-laranja/20" aria-hidden />
+        <div className="relative max-w-md mx-auto md:mx-0 md:ml-auto w-full">
+          <div className="absolute -top-2 -left-2 h-12 w-12 rounded-full border-2 border-ouro" aria-hidden />
+          <div className="absolute -bottom-2 -right-2 h-14 w-14 rounded-full bg-laranja/20" aria-hidden />
           <img
             src="https://images.unsplash.com/photo-1777375430966-c028cf6e3293?auto=format&fit=crop&w=1200&q=80"
             alt="Berimbau em detalhe, símbolo da Capoeira"
-            className="relative rounded-2xl object-cover aspect-[4/5] w-full shadow-xl"
+            className="relative rounded-xl object-cover aspect-[4/3] max-h-[330px] w-full shadow-lg"
             loading="lazy"
           />
         </div>
@@ -166,7 +171,7 @@ function Pilares() {
     { icon: MapPin, title: "Memória e território", text: "Presença comunitária, rodas abertas e preservação da história local.", color: "verde" },
   ] as const;
   return (
-    <section className="bg-primary text-primary-foreground py-16 md:py-20 relative overflow-hidden">
+    <section className="bg-primary text-primary-foreground py-12 md:py-14 relative overflow-hidden">
       <svg className="absolute -right-12 top-10 h-48 w-48 opacity-20" viewBox="0 0 200 200" aria-hidden>
         <circle cx="100" cy="100" r="80" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="4 8" />
       </svg>
@@ -175,7 +180,7 @@ function Pilares() {
           <div className="eyebrow text-ouro">Pilares</div>
           <h2 className="mt-3 font-display text-2xl md:text-3xl lg:text-4xl font-extrabold">Como atuamos</h2>
         </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {pilares.map((p) => {
             const Icon = p.icon;
             return (
@@ -197,7 +202,7 @@ function Pilares() {
 
 function ProjetosDestaque() {
   return (
-    <section className="py-16 md:py-20">
+    <section className="py-12 md:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between flex-wrap gap-4">
           <SectionTitle eyebrow="Projetos" title="Iniciativas em destaque" description="Ações estruturantes que articulam formação, cultura e comunidade." />
@@ -208,14 +213,14 @@ function ProjetosDestaque() {
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {PROJECTS.map((p) => (
             <article key={p.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm hover:shadow-lg transition">
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative h-44 lg:h-48 overflow-hidden">
                 <img src={p.image} alt="" className="h-full w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
                 <div className={`absolute inset-0 bg-gradient-to-t from-${p.color}/80 via-${p.color}/20 to-transparent`} />
                 <div className={`absolute top-3 left-3 rounded-full bg-${p.color} text-${p.color}-foreground px-2.5 py-1 text-[10px] eyebrow`}>
                   {p.area}
                 </div>
               </div>
-              <div className="flex-1 p-5">
+              <div className="flex-1 p-4">
                 <h3 className="font-display text-lg font-bold leading-snug">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.summary}</p>
                 <Link
@@ -246,16 +251,16 @@ function Atuacao() {
   const [showAll, setShowAll] = useState(false);
   const visible = showAll ? cards : cards.slice(0, 4);
   return (
-    <section className="py-16 md:py-20 bg-muted/40">
+    <section className="py-12 md:py-14 bg-muted/40">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle eyebrow="Atuação" title="Nossa presença no território" description="Ações realizadas com continuidade, integrando cultura, educação e comunidade." />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {visible.map((c) => (
             <div key={c.title} className="group relative overflow-hidden rounded-xl border border-border h-[280px] sm:h-[300px] lg:h-[320px]">
-              <img src={c.image} alt="" className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <img src={c.image} alt={c.title} className="absolute inset-0 h-full w-full object-cover group-hover:scale-[1.02] transition duration-300" loading="lazy" />
               <div className={`absolute inset-0 bg-gradient-to-t from-${c.color}/95 via-${c.color}/45 to-transparent`} />
-              <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
-                <div className="eyebrow text-white/85 text-[10px]">{c.category}</div>
+              <div className={`absolute inset-0 flex flex-col justify-end p-4 text-${c.color}-foreground`}>
+                <div className="eyebrow opacity-85 text-[10px]">{c.category}</div>
                 <h3 className="mt-1 font-display text-base font-bold leading-tight">{c.title}</h3>
               </div>
             </div>
@@ -263,12 +268,13 @@ function Atuacao() {
         </div>
         {!showAll && cards.length > 4 && (
           <div className="mt-8 flex justify-center">
-            <button
+            <Button
+              variant="outline"
               onClick={() => setShowAll(true)}
-              className="inline-flex items-center gap-2 rounded-full border-2 border-primary/30 bg-background px-5 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition"
+              className="h-auto whitespace-normal rounded-full border-2 border-primary/30 px-5 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
             >
               Conheça todas as frentes de atuação <ArrowRight className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
         )}
       </div>
@@ -284,14 +290,14 @@ function CapoeiraEmMovimento() {
     { icon: HeartHandshake, title: "Comunidade e pertencimento", text: "A roda cria vínculos, acolhe diferentes gerações e fortalece a relação entre cultura e território.", color: "verde" },
   ] as const;
   return (
-    <section className="relative py-16 md:py-20 overflow-hidden">
+    <section className="relative py-12 md:py-14 overflow-hidden">
       <svg className="absolute -left-10 top-10 h-40 w-40 opacity-20" viewBox="0 0 200 200" aria-hidden>
         <circle cx="100" cy="100" r="80" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeDasharray="3 8" />
         <path d="M20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--vermelho)" strokeWidth="2" />
       </svg>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         <SectionTitle eyebrow="Uma cultura viva" title="Capoeira em movimento" description="A Capoeira se mantém viva quando seus saberes circulam entre gerações. Corpo, música, memória, oralidade e convivência se encontram em experiências que fortalecem identidades e ampliam o acesso à cultura afro-brasileira." />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {blocos.map((b) => {
             const Icon = b.icon;
             return (
@@ -315,44 +321,45 @@ function CapoeiraEmMovimento() {
 
 function Instrumentos() {
   const items = [
-    { icon: Music, name: "Berimbau", text: "Conduz o ritmo, orienta o jogo e ocupa posição central na musicalidade da roda." },
-    { icon: Drum, name: "Atabaque", text: "Marca a pulsação e acrescenta profundidade ao conjunto de instrumentos." },
-    { icon: CircleDot, name: "Pandeiro", text: "Complementa o ritmo com leveza, variações e respostas sonoras." },
-    { icon: Music2, name: "Agogô", text: "Acrescenta timbres metálicos e reforça a organização rítmica." },
-    { icon: Activity, name: "Reco-reco", text: "Produz textura sonora e amplia a riqueza musical da roda." },
-    { icon: Sparkles, name: "Caxixi", text: "Integrado ao berimbau, participa da construção do ritmo e de suas variações." },
-  ];
+    { name: "Berimbau", text: "Conduz o ritmo, orienta o jogo e ocupa posição central na musicalidade da roda." },
+    { name: "Atabaque", text: "Marca a pulsação e acrescenta profundidade ao conjunto de instrumentos." },
+    { name: "Pandeiro", text: "Complementa o ritmo com leveza, variações e respostas sonoras." },
+    { name: "Agogô", text: "Acrescenta timbres metálicos e reforça a organização rítmica." },
+    { name: "Reco-reco", text: "Produz textura sonora e amplia a riqueza musical da roda." },
+    { name: "Caxixi", text: "Integrado ao berimbau, participa da construção do ritmo e de suas variações." },
+  ] as const;
   return (
-    <section className="relative py-16 md:py-20 bg-creme/50 overflow-hidden" style={{ backgroundColor: "color-mix(in oklab, var(--ouro) 10%, var(--background))" }}>
-      <svg className="absolute -right-20 -bottom-20 h-96 w-96 opacity-15" viewBox="0 0 200 200" aria-hidden>
+    <section className="relative py-12 md:py-14 bg-ouro/10 overflow-hidden">
+      <svg className="absolute -right-16 -bottom-16 h-56 w-56 md:h-80 md:w-80 opacity-15" viewBox="0 0 200 200" aria-hidden>
         <circle cx="100" cy="100" r="90" fill="none" stroke="var(--vermelho)" strokeWidth="2" strokeDasharray="4 10" />
         <path d="M10 100 Q 100 -20 190 100" fill="none" stroke="var(--primary)" strokeWidth="3" strokeLinecap="round" />
       </svg>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle eyebrow="Ritmo e tradição" title="Instrumentos que conduzem a roda" description="A musicalidade organiza o jogo, preserva histórias e conecta cada participante ao ritmo coletivo da Capoeira." />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it, i) => {
-            const Icon = it.icon;
             const accents = ["vermelho", "ouro", "azul", "laranja", "verde", "primary"] as const;
             const c = accents[i % accents.length];
             return (
               <div key={it.name} className="group relative rounded-2xl border border-border bg-card p-5 hover:shadow-md transition">
                 <div className="flex items-center gap-3">
-                  <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full bg-${c}/15`} style={{ color: `var(--${c})` }}>
-                    <Icon className="h-5 w-5" />
+                  <div className={`inline-flex items-center justify-center text-${c}`}>
+                    <InstrumentDrawing name={it.name} />
                   </div>
                   <h3 className="font-display text-lg font-bold">{it.name}</h3>
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{it.text}</p>
-                <div className={`mt-4 h-1 w-10 rounded-full`} style={{ backgroundColor: `var(--${c})` }} />
+                <div className={`mt-4 h-1 w-10 rounded-full bg-${c}`} />
               </div>
             );
           })}
         </div>
-        <div className="mt-10 flex justify-center">
-          <Link to="/projetos" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+        <div className="mt-7 flex justify-center">
+          <Button asChild className="h-10 rounded-full px-5">
+          <Link to="/projetos">
             Conheça nossos projetos <ArrowRight className="h-4 w-4" />
           </Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -362,7 +369,7 @@ function Instrumentos() {
 function NoticiasRecentes() {
   const items = NEWS.slice(0, 3);
   return (
-    <section className="py-16 md:py-20">
+    <section className="py-12 md:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between flex-wrap gap-4">
           <SectionTitle eyebrow="Notícias" title="Últimas atualizações" />
@@ -371,10 +378,10 @@ function NoticiasRecentes() {
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {items.map((n) => (
             <article key={n.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm hover:shadow-md transition">
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative h-44 lg:h-48 overflow-hidden">
                 <img src={n.image} alt="" className="h-full w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
               </div>
-              <div className="p-5 flex-1 flex flex-col">
+              <div className="p-4 flex-1 flex flex-col">
                 <div className="flex items-center gap-3 text-xs">
                   <span className="eyebrow text-laranja">{n.category}</span>
                   <span className="text-muted-foreground">{n.date}</span>
@@ -395,7 +402,7 @@ function NoticiasRecentes() {
 
 function CTAFinal() {
   return (
-    <section className="relative overflow-hidden bg-vermelho text-vermelho-foreground py-16 md:py-20">
+    <section className="relative overflow-hidden bg-vermelho text-vermelho-foreground py-12 md:py-14">
       <img src="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=2000&q=80" alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
       <div className="absolute inset-0 bg-gradient-to-br from-vermelho via-vermelho/90 to-primary/70" />
       <svg className="absolute right-0 top-0 h-full w-1/2 opacity-30" viewBox="0 0 400 400" aria-hidden>
