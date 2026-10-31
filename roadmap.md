@@ -11,3 +11,6 @@
 - [x] Simplificar e centralizar o convite à equipe em Quem Somos, removendo a composição de três ícones.
 - [x] Centralizar somente o cabeçalho de História e trajetória, preservando os cards abaixo.
 - [x] Verificar os dois ajustes em computador, tablet e celular sem alterar as demais seções.
+- [x] Corrigir a vírgula inicial e retirar qualquer legenda visível de Quem Somos, sem outras alterações.
+- [x] Organizar Equipe institucional com cards coloridos completos e Gestão e continuidade compacta, preservando introdução, hero e CTA.
+- [x] Conferir conteúdo e leitura em computador, tablet e celular; textos completos, fotos carregadas, sem expansão ou scroll interno.

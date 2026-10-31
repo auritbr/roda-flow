@@ -236,6 +236,6 @@ function QuemSomos() {
         <Button asChild className="mt-8 rounded-full h-auto min-h-10 whitespace-normal"><Link to="/quem-somos/equipe">Conheça nossa equipe<ArrowRight aria-hidden="true" /></Link></Button>
       </div>
     </div></section>
-    <FinalCta variant="primary" eyebrow="Nossa história continua" title="Cultura, esporte e educação seguem construindo novos caminhos" description="A trajetória da Motirô é feita de encontros, aprendizados, vínculos e oportunidades. Conheça nossos projetos e acompanhe as ações que continuam dando movimento a essa história." image="/images/quem-somos/roda.jpg" imageAlt="Encontro coletivo de capoeira — imagem ilustrativa" buttons={[{ label: "Conheça os projetos", to: "/projetos" }, { label: "Fale conosco", to: "/contato" }]} />
+    <FinalCta variant="primary" eyebrow="Nossa história continua" title="Cultura, esporte e educação seguem construindo novos caminhos" description="A trajetória da Motirô é feita de encontros, aprendizados, vínculos e oportunidades. Conheça nossos projetos e acompanhe as ações que continuam dando movimento a essa história." image="/images/quem-somos/roda.jpg" imageAlt="Encontro coletivo de capoeira" buttons={[{ label: "Conheça os projetos", to: "/projetos" }, { label: "Fale conosco", to: "/contato" }]} />
   </div>;
 }
