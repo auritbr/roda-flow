@@ -12,6 +12,7 @@ const NAV = [
     children: [
       { label: "Quem Somos", to: "/quem-somos" },
       { label: "Equipe", to: "/quem-somos/equipe" },
+      { label: "Memória Institucional", to: "/memoria-institucional" },
       { label: "Parcerias e Transparência", to: "/quem-somos/parcerias-e-transparencia" },
     ],
   },
@@ -86,18 +87,20 @@ export function Header() {
                     className={cn("invisible absolute top-full pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100", item.label === "Projetos" ? "left-1/2 -translate-x-1/2" : "left-0")}
                     role="menu"
                   >
-                    <div className={cn("rounded-lg border border-border bg-card shadow-lg overflow-hidden", item.label === "Projetos" ? "w-[600px] max-w-[calc(100vw-2rem)] p-4" : "min-w-[240px]")}>
-                      {item.label === "Projetos" ? <><div className="grid grid-cols-2 gap-4">{["Projetos e cultura", "Esporte e inclusão"].map((heading, group) => <div key={heading}><div className="eyebrow mb-2 px-3 text-laranja">{heading}</div>{item.children.slice(group === 0 ? 0 : 5, group === 0 ? 5 : undefined).map(c => <Link key={c.label} to={c.to} params={"params" in c ? c.params : undefined} activeProps={{ className: "bg-muted text-primary" }} className="block rounded-md px-3 py-2.5 text-sm hover:bg-muted transition-colors">{c.label}</Link>)}</div>)}</div><Link to="/projetos" className="mt-3 block border-t border-border px-3 pt-4 text-sm font-semibold text-primary hover:underline">Ver todos os projetos</Link></> : <>
+                    <div className={cn("rounded-lg border border-border bg-card shadow-lg overflow-hidden", item.label === "Projetos" ? "w-[300px] max-w-[calc(100vw-2rem)]" : "min-w-[240px]")}>
+                      <>
                       {item.children.map((c) => (
                         <Link
                           key={c.label}
                           to={c.to}
+                          params={"params" in c ? c.params : undefined}
                           activeProps={{ className: "bg-muted text-primary" }}
                           className="block px-4 py-2.5 text-sm hover:bg-muted transition-colors"
                         >
                           {c.label}
                         </Link>
                       ))}
+                      {item.label === "Projetos" && <Link to="/projetos" className="block px-4 py-2.5 text-sm font-semibold text-primary hover:bg-muted transition-colors">Ver todos os projetos</Link>}
                       </>}
                     </div>
                   </div>
