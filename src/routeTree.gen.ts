@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as ImpactoSocialRouteImport } from './routes/impacto-social'
+import { Route as MemoriaInstitucionalRouteImport } from './routes/memoria-institucional'
 import { Route as NoticiasRouteImport } from './routes/noticias'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as ProjetosRouteImport } from './routes/projetos'
@@ -46,6 +47,11 @@ const GaleriaRoute = GaleriaRouteImport.update({
 const ImpactoSocialRoute = ImpactoSocialRouteImport.update({
   id: '/impacto-social',
   path: '/impacto-social',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoriaInstitucionalRoute = MemoriaInstitucionalRouteImport.update({
+  id: '/memoria-institucional',
+  path: '/memoria-institucional',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NoticiasRoute = NoticiasRouteImport.update({
@@ -126,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/impacto-social': typeof ImpactoSocialRoute
+  '/memoria-institucional': typeof MemoriaInstitucionalRoute
   '/noticias': typeof NoticiasRouteWithChildren
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRouteWithChildren
@@ -146,6 +153,7 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/impacto-social': typeof ImpactoSocialRoute
+  '/memoria-institucional': typeof MemoriaInstitucionalRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
@@ -164,6 +172,7 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/impacto-social': typeof ImpactoSocialRoute
+  '/memoria-institucional': typeof MemoriaInstitucionalRoute
   '/noticias': typeof NoticiasRouteWithChildren
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRouteWithChildren
@@ -186,6 +195,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/galeria'
     | '/impacto-social'
+    | '/memoria-institucional'
     | '/noticias'
     | '/politica-de-privacidade'
     | '/projetos'
@@ -206,6 +216,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/galeria'
     | '/impacto-social'
+    | '/memoria-institucional'
     | '/politica-de-privacidade'
     | '/termos-de-uso'
     | '/noticias/$slug'
@@ -223,6 +234,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/galeria'
     | '/impacto-social'
+    | '/memoria-institucional'
     | '/noticias'
     | '/politica-de-privacidade'
     | '/projetos'
@@ -244,6 +256,7 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   GaleriaRoute: typeof GaleriaRoute
   ImpactoSocialRoute: typeof ImpactoSocialRoute
+  MemoriaInstitucionalRoute: typeof MemoriaInstitucionalRoute
   NoticiasRoute: typeof NoticiasRouteWithChildren
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   ProjetosRoute: typeof ProjetosRouteWithChildren
@@ -279,6 +292,13 @@ declare module '@tanstack/react-router' {
       path: '/impacto-social'
       fullPath: '/impacto-social'
       preLoaderRoute: typeof ImpactoSocialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memoria-institucional': {
+      id: '/memoria-institucional'
+      path: '/memoria-institucional'
+      fullPath: '/memoria-institucional'
+      preLoaderRoute: typeof MemoriaInstitucionalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/noticias': {
@@ -435,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   GaleriaRoute: GaleriaRoute,
   ImpactoSocialRoute: ImpactoSocialRoute,
+  MemoriaInstitucionalRoute: MemoriaInstitucionalRoute,
   NoticiasRoute: NoticiasRouteWithChildren,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   ProjetosRoute: ProjetosRouteWithChildren,

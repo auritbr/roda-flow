@@ -1,7 +1,8 @@
 import portrait from "@/assets/team-portrait-man-wide.jpg";
+import headquartersPlaceholder from "@/assets/headquarters-placeholder.jpg";
 import { SectionTitle } from "@/components/site/InternalHero";
 import { Button } from "@/components/ui/button";
-import { MapPin, Navigation, Landmark } from "lucide-react";
+import { MapPin, Navigation } from "lucide-react";
 import { MovementMark, Paragraphs } from "./Elements";
 import { leadership, leadershipFacts, spaces, headquartersAddress, directionsUrl, headquartersPhotos } from "./additions-content";
 
@@ -20,10 +21,10 @@ export function LeadershipSection() {
 export function SpacesSection() {
   return <section className="py-20"><div className={container}>
     <SectionTitle center eyebrow="Presença no território" title="Sede e espaços de atuação" />
-    <Paragraphs items={spaces} className="mx-auto mt-6 max-w-3xl" />
+    <Paragraphs items={spaces} className="mx-auto mt-6 max-w-3xl text-center" />
     <div className="mt-10 grid items-center gap-8 md:grid-cols-[3fr_2fr]">
-      <div className="relative flex min-h-72 items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted/40" data-image-status="awaiting-official-photos">
-        {headquartersPhotos.length ? <div className="grid w-full gap-3 sm:grid-cols-2">{headquartersPhotos.map(photo => <img key={photo.src} {...photo} loading="lazy" className="aspect-[4/3] w-full rounded-xl object-cover" />)}</div> : <><MovementMark className="absolute -left-4 bottom-4 h-32 w-64 text-ouro/40" /><Landmark className="size-14 text-primary/60" strokeWidth={1.2} aria-hidden="true" /><svg viewBox="0 0 200 200" className="absolute -right-8 -top-8 size-48 text-vermelho/20" aria-hidden="true"><circle cx="100" cy="100" r="75" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="8 12" /></svg></>}
+      <div className="relative flex min-h-72 items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted/40" data-image-status={headquartersPhotos.length ? "official" : "fictional-placeholder"}>
+        {headquartersPhotos.length ? <div className="grid w-full gap-3 sm:grid-cols-2">{headquartersPhotos.map(photo => <img key={photo.src} {...photo} loading="lazy" className="aspect-[4/3] w-full rounded-xl object-cover" />)}</div> : <img src={headquartersPlaceholder} alt="Ilustração fictícia provisória de fachada histórica de um espaço cultural; não representa a sede real da Motirô" width={1200} height={800} loading="lazy" className="aspect-[3/2] w-full object-cover" />}
       </div>
       <div><MapPin className="mb-4 size-6 text-vermelho" aria-hidden="true" /><h3 className="font-display text-xl font-bold">Sede da Motirô</h3><address className="mt-4 not-italic leading-relaxed text-muted-foreground">{headquartersAddress.street}<br />{headquartersAddress.neighborhood}<br />{headquartersAddress.city}<br />CEP {headquartersAddress.postcode}</address><Button asChild className="mt-6 rounded-full"><a href={directionsUrl} target="_blank" rel="noopener noreferrer">Como chegar<Navigation aria-hidden="true" /></a></Button></div>
     </div>
