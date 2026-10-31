@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InternalHero } from "@/components/site/InternalHero";
 import { FinalCta } from "@/components/site/FinalCta";
+import { CulturalBackdrop } from "@/components/site/CulturalBackdrop";
 import { Button } from "@/components/ui/button";
 import { archiveCategories, demonstrationDocuments, demonstrationText, publicDocuments, supportNetwork, type DemonstrationDocument } from "@/components/site/partnership-content";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -36,8 +37,9 @@ function ParceriasTransparencia() {
   }
   return <>
     <InternalHero eyebrow="Gestão, parceria e compromisso" title="Parcerias e Transparência" description="A continuidade das ações da Motirô é construída por meio do trabalho comunitário, da atuação institucional e da articulação com parceiros e mecanismos de apoio." image={heroImage} imageAlt="Atividade cultural coletiva" variant="azul" pattern="territorio" compact />
-    <section className="py-16">
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-16">
+      <CulturalBackdrop />
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <div className="eyebrow text-laranja">Parcerias e financiamento</div>
         <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Articulações que ajudam a manter o trabalho em movimento</h2>
         <div className="mx-auto mt-5 max-w-3xl space-y-4 leading-relaxed text-muted-foreground">
@@ -46,20 +48,20 @@ function ParceriasTransparencia() {
         </div>
       </div>
     </section>
-    <section className="bg-muted/40 py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-muted/40 py-16">
+      <CulturalBackdrop variant="connections" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <div className="eyebrow text-laranja">Rede de apoio</div>
           <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight md:text-3xl">Parcerias que fortalecem projetos e oportunidades</h2>
-          <p className="mt-4 leading-relaxed text-muted-foreground">Diferentes mecanismos de fomento e articulações institucionais contribuíram, em momentos distintos, para o desenvolvimento das ações da Motirô.</p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">Ao longo de sua trajetória, a Motirô estabeleceu articulações e contou com diferentes mecanismos de apoio relacionados ao desenvolvimento de suas ações culturais, esportivas, educativas e sociais.</p>
         </div>
         <div className="mx-auto mt-10 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {supportNetwork.map((partner) => <article key={partner.title} className="flex flex-col items-center rounded-2xl border border-border/60 bg-card px-5 py-7 text-center motion-safe:transition-shadow motion-safe:duration-200 hover:shadow-sm">
             <div className="flex h-28 w-full items-center justify-center">
-              {partner.logo ? <img src={partner.logo} alt={partner.title} className="max-h-20 max-w-full object-contain" loading="lazy" /> : <span className={`font-display font-semibold leading-snug text-primary ${partner.acronym ? "text-2xl" : "text-lg"}`}>{partner.acronym ?? partner.title}</span>}
+              {partner.logo ? <img src={partner.logo} alt={partner.title} className="max-h-20 max-w-full object-contain" loading="lazy" /> : <h3 className={`font-display font-semibold leading-snug text-primary ${partner.acronym ? "text-2xl" : "text-lg"}`}>{partner.acronym ?? partner.title}</h3>}
             </div>
-            {partner.acronym && <h3 className="mt-3 text-sm font-semibold leading-6">{partner.title}</h3>}
-            {!partner.acronym && <h3 className="sr-only">{partner.title}</h3>}
+            {(partner.acronym || partner.logo) && <p className="mt-3 text-sm font-semibold leading-6">{partner.title}</p>}
             <p className="mt-3 text-xs leading-5 text-muted-foreground">{partner.kind}</p>
           </article>)}
         </div>
@@ -69,7 +71,7 @@ function ParceriasTransparencia() {
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-primary"><Archive className="size-3.5" aria-hidden="true" />Acervo</span>
         <h2 className="mt-4 font-display text-3xl font-extrabold md:text-5xl">Acervo institucional</h2>
-        <p className="mt-4 leading-relaxed text-muted-foreground">Acesse documentos, relatórios, portfólios, certidões e registros institucionais organizados por categoria para facilitar a consulta pública.</p>
+        <p className="mt-4 leading-relaxed text-muted-foreground">Acesse documentos, relatórios, informações sobre projetos apoiados, instrumentos de fomento e registros institucionais organizados por categoria para facilitar a consulta pública.</p>
         <div className="relative mt-8" aria-hidden="true"><svg className="absolute -top-6 left-1/4 h-8 w-24 text-ouro opacity-40" viewBox="0 0 120 30"><path d="M0 20 Q40 0 80 20 T120 15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg><svg className="absolute -top-3 right-1/4 size-6 text-laranja opacity-50" viewBox="0 0 30 30"><rect x="10" y="10" width="10" height="10" transform="rotate(45 15 15)" fill="currentColor" /></svg></div>
       </div>
       <div className="mx-auto mt-10 max-w-4xl space-y-4 px-4 sm:px-6 lg:px-8">
