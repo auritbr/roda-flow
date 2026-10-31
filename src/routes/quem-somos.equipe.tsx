@@ -72,7 +72,7 @@ function TeamCard({ person, index }: { person: (typeof team)[number]; index: num
         </svg>
       </div>
       <div className="flex flex-1 flex-col px-6 pb-6 pt-6">
-        <div className="sm:min-h-36">
+        <div className="sm:min-h-28">
           <h3 className="font-display text-lg font-bold leading-snug">{person.name}</h3>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{person.role}</p>
           {person.distinction && <span className={`mt-3 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${badge}`}>{person.distinction}</span>}

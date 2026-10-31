@@ -1,3 +1,3 @@
-- [ ] Recriar somente os cards como peças editoriais claras com fotos e grafismos discretos.
-- [ ] Exibir biografias completas sem interação, cortes ou rolagem interna.
-- [ ] Verificar a grade e a leitura em computador, tablet e celular.
+- [x] Recriar somente os cards como peças editoriais claras com fotos e grafismos discretos.
+- [x] Exibir biografias completas sem interação, cortes ou rolagem interna.
+- [x] Verificar a grade e a leitura em computador, tablet e celular.
