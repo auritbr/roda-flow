@@ -1,102 +1,162 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { InternalHero, SectionTitle } from "@/components/site/InternalHero";
-import { PROJECTS } from "@/lib/site-data";
+import { Button } from "@/components/ui/button";
+import { ActivityTags, InformationCard, MovementMark, Paragraphs } from "@/components/projects/OverviewElements";
+import { arts, capoeiraParagraphs, capoeiraTags, civicThemes, programInfo, programParagraphs, reachText, theatreLaunchText } from "@/components/projects/overview-content";
+import capoeiraPhoto from "@/assets/projects-capoeira.jpg.asset.json";
+import theatrePhoto from "@/assets/projects-theatre.jpg.asset.json";
+import readingPhoto from "@/assets/projects-reading-community.jpg.asset.json";
+import cinemaPhoto from "@/assets/projects-cinema.jpg.asset.json";
+import dancePhoto from "@/assets/projects-samba-de-roda.jpg.asset.json";
+import conversationPhoto from "@/assets/projects-conversation.jpg.asset.json";
 import { FinalCta } from "@/components/site/FinalCta";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen, CircleUserRound, Drama, Film, Footprints, HeartHandshake, MapPin, MessagesSquare, Music, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
+
+const heroImage = "https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=2000&q=80";
+const title = "Projetos e iniciativas — Motirô";
+const description = "Conheça Além da Ginga, Capoeira Motirô e as iniciativas de cultura, esporte, educação e formação cidadã da Motirô.";
 
 export const Route = createFileRoute("/projetos/")({
   head: () => ({
     meta: [
-      { title: "Nossos Projetos — Ponto de Cultura Capoeira" },
-      { name: "description", content: "Iniciativas culturais e educativas que articulam Capoeira, formação, memória e território." },
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: heroImage },
+      { name: "twitter:image", content: heroImage },
     ],
   }),
   component: Projetos,
 });
 
-const colorMap: Record<string, { bg: string; text: string; ring: string; soft: string }> = {
-  azul: { bg: "bg-azul", text: "text-azul", ring: "from-azul/85", soft: "bg-azul/10" },
-  ouro: { bg: "bg-ouro", text: "text-ouro", ring: "from-ouro/85", soft: "bg-ouro/15" },
-  vermelho: { bg: "bg-vermelho", text: "text-vermelho", ring: "from-vermelho/85", soft: "bg-vermelho/10" },
-};
+const artImages = [theatrePhoto.url, readingPhoto.url, cinemaPhoto.url, dancePhoto.url];
+const artImageAlts = ["Expressão cênica em apresentação teatral", "Crianças participando de leitura e contação de histórias", "Sala de exibição cinematográfica", "Samba de roda com dança e instrumentos tradicionais"];
+const artIcons = [Drama, BookOpen, Film, Music];
+const infoIcons = [Users, Sparkles, Target, HeartHandshake];
+const civicIcons = [MessagesSquare, CircleUserRound, ShieldCheck, HeartHandshake];
 
 function Projetos() {
   return (
     <>
       <InternalHero
-        eyebrow="Ações estruturantes"
-        title="Nossos Projetos"
-        description="Iniciativas continuadas que articulam Capoeira, formação, cultura afro-brasileira, memória e comunidade."
-        image="https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=2000&q=80"
+        eyebrow="Projetos e iniciativas"
+        title="Cultura, esporte e educação em movimento"
+        description="A Motirô desenvolve projetos e atividades que conectam capoeira, artes, leitura, audiovisual, esporte, formação cidadã e inclusão social, ampliando oportunidades de aprendizagem, convivência e participação comunitária."
+        image={heroImage}
         imageAlt="Atividade cultural coletiva"
         variant="laranja"
         pattern="ginga"
       />
 
-      <section className="py-20">
+      <section className="py-14">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <div className="eyebrow text-vermelho">Nossa atuação</div>
           <h2 className="mt-2 font-display text-3xl md:text-4xl font-extrabold relative inline-block">
-            Cultura viva, formação e território
+            Diferentes caminhos, um mesmo propósito
             <svg className="absolute -bottom-3 left-0 right-0 mx-auto h-3 w-40" viewBox="0 0 160 12" aria-hidden>
               <path d="M2 8 Q 40 2 80 8 T 158 6" fill="none" stroke="var(--ouro)" strokeWidth="4" strokeLinecap="round" />
             </svg>
           </h2>
           <p className="mt-6 text-muted-foreground leading-relaxed">
-            Nossos projetos articulam Capoeira, memória, formação, musicalidade, convivência e ação comunitária. Cada iniciativa fortalece o território e amplia o acesso à cultura afro-brasileira por meio de experiências coletivas, educativas e transformadoras.
+            A atuação da Motirô reúne diferentes linguagens e experiências que se complementam. A partir de uma trajetória iniciada com a capoeira, a instituição ampliou progressivamente suas ações, construindo oportunidades de formação cultural, esportiva, educativa e social para a comunidade.
           </p>
         </div>
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-14 space-y-10">
-          {PROJECTS.map((p, i) => {
-            const c = colorMap[p.color];
-            const flip = i % 2 === 1;
-            return (
-              <article key={p.slug} className={`grid gap-6 md:grid-cols-2 items-stretch rounded-3xl border border-border bg-card overflow-hidden ${flip ? "md:[&>div:first-child]:order-2" : ""}`}>
-                <div className="relative aspect-[4/3] md:aspect-auto">
-                  <img src={p.image} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-                  <div className={`absolute inset-0 bg-gradient-to-tr ${c.ring} via-transparent to-transparent mix-blend-multiply`} />
-                  {/* Molduras geométricas */}
-                  <svg className="absolute right-4 top-4 h-20 w-20 opacity-80" viewBox="0 0 80 80" aria-hidden>
-                    <circle cx="40" cy="40" r="30" fill="none" stroke="var(--creme)" strokeWidth="2" strokeDasharray="4 6" />
-                    <rect x="30" y="30" width="20" height="20" transform="rotate(45 40 40)" fill="none" stroke="var(--ouro)" strokeWidth="2" />
-                  </svg>
-                  <svg className="absolute left-4 bottom-4 h-16 w-32 opacity-90" viewBox="0 0 160 60" aria-hidden>
-                    <path d="M0 40 Q 40 0 80 40 T 160 30" fill="none" stroke="var(--ouro)" strokeWidth="3" strokeLinecap="round" />
-                  </svg>
-                  <span className={`absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full ${c.bg} text-white px-3 py-1 text-xs font-semibold shadow`}>
-                    <span className="h-1.5 w-1.5 rounded-full bg-white" /> Projeto {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <div className="p-8 md:p-10 flex flex-col">
-                  <div className={`inline-block eyebrow ${c.text}`}>{p.area}</div>
-                  <h2 className="mt-2 font-display text-2xl md:text-3xl font-extrabold">{p.title}</h2>
-                  <p className="mt-1 text-sm text-muted-foreground italic">{p.tagline}</p>
-                  <p className="mt-4 text-muted-foreground leading-relaxed">{p.summary}</p>
-                  <dl className="mt-5 grid grid-cols-2 gap-3 text-sm">
-                    <div className={`rounded-xl ${c.soft} p-3`}><dt className={`eyebrow ${c.text}`}>Público</dt><dd className="mt-0.5 font-semibold">{p.audience}</dd></div>
-                    <div className={`rounded-xl ${c.soft} p-3`}><dt className={`eyebrow ${c.text}`}>Área</dt><dd className="mt-0.5 font-semibold">{p.area}</dd></div>
-                  </dl>
-                  <Link to="/projetos/$slug" params={{ slug: p.slug }} className={`mt-6 inline-flex self-start items-center gap-2 rounded-full ${c.bg} px-5 py-2.5 text-sm font-semibold text-white hover:brightness-95`}>
-                    Conheça o projeto <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </article>
-            );
-          })}
+      </section>
+
+      <section className="relative overflow-hidden bg-ouro/10 py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
+            <div>
+              <SectionTitle eyebrow="Programa abrangente" title="Além da Ginga" />
+              <div className="mt-5"><Paragraphs paragraphs={programParagraphs} /></div>
+              <p className="mt-5 border-l-2 border-ouro pl-4 text-sm leading-relaxed text-foreground">O Além da Ginga está associado à trajetória iniciada por volta do ano 2000 e à ampliação progressiva do trabalho comunitário da Motirô.</p>
+            </div>
+            <div className="relative">
+              <div className="relative">
+                <img src={capoeiraPhoto.url} alt="Capoeira e musicalidade em encontro cultural coletivo" className="aspect-[4/3] max-h-80 w-full rounded-2xl object-cover" loading="lazy" />
+                <MovementMark className="absolute -bottom-4 right-5 h-14 w-28 text-vermelho" />
+              </div>
+              <div className="mt-7 text-primary"><ActivityTags items={["Capoeira", "Teatro", "Leitura", "Cinema", "Dança", "Formação cidadã"]} /></div>
+            </div>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{programInfo.map((info, i) => <InformationCard key={info.title} {...info} icon={infoIcons[i]} />)}</div>
+        </div>
+      </section>
+
+      <section className="bg-primary py-8 text-primary-foreground">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:flex-row sm:items-start sm:px-6 lg:px-8">
+          <MapPin className="size-8 shrink-0 text-ouro" strokeWidth={1.5} aria-hidden="true" />
+          <div><h2 className="font-display text-xl font-bold">Uma atuação presente em diferentes núcleos</h2><p className="mt-3 max-w-5xl text-sm leading-relaxed text-primary-foreground/90">{reachText}</p></div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle center eyebrow="Projetos e atividades" title="Múltiplas linguagens para ampliar oportunidades" description="A Motirô desenvolve atividades que articulam cultura, esporte, educação, criatividade, expressão e convivência comunitária." />
+          <article className="mt-10 grid overflow-hidden rounded-3xl border border-border bg-card md:grid-cols-[0.85fr_1.15fr]">
+            <div className="relative min-h-64 md:min-h-0">
+              <img src={capoeiraPhoto.url} alt="Praticantes de capoeira com instrumentos em roda pública" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
+              <MovementMark className="absolute bottom-5 left-5 h-16 w-32 text-ouro" />
+            </div>
+            <div className="p-6 md:p-8">
+              <div className="eyebrow text-vermelho">Tradição, formação e esporte</div>
+              <h3 className="mt-2 font-display text-2xl font-extrabold md:text-3xl">Capoeira Motirô</h3>
+              <div className="mt-4"><Paragraphs paragraphs={capoeiraParagraphs} /></div>
+              <div className="mt-5 text-primary"><ActivityTags items={capoeiraTags} /></div>
+              <p className="mt-5 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">Os participantes têm contato com movimentos, musicalidade, instrumentos, história, disciplina, respeito, cooperação e convivência, além da transmissão de saberes entre gerações e da valorização da ancestralidade e da cultura afro-brasileira.</p>
+              <Button asChild className="mt-5 h-auto whitespace-normal rounded-full px-5 py-2.5"><Link to="/projetos/$slug" params={{ slug: "capoeira-para-todos" }}>Conhecer Capoeira Motirô <ArrowRight aria-hidden="true" /></Link></Button>
+            </div>
+          </article>
+          <div className="my-8 grid gap-6 border-y border-border py-7 md:grid-cols-2">
+            <div className="flex gap-4"><Footprints className="mt-1 size-7 shrink-0 text-laranja" aria-hidden="true" /><div><h3 className="font-display text-xl font-bold">Da iniciação à formação esportiva</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Além da dimensão cultural e educativa, o Capoeira Motirô desenvolve a formação esportiva dos praticantes. Os atletas podem avançar da iniciação ao treinamento competitivo, participando de graduações, festivais e campeonatos em diferentes níveis.</p></div></div>
+            <div className="flex items-center gap-4 border-l-2 border-ouro pl-5"><p className="text-sm font-medium leading-relaxed">Atletas formados ou preparados no ambiente da Motirô já representaram José de Freitas e o Piauí em competições locais, estaduais, nacionais e internacionais.</p></div>
+          </div>
+          <div className="grid items-start gap-6 md:grid-cols-2">
+            {arts.map((art, i) => { const Icon = artIcons[i]; const horizontal = art.key === "theatre" || art.key === "dance"; return <article key={art.key} className={`overflow-hidden rounded-2xl border border-border ${art.color} ${horizontal ? "md:col-span-2 md:grid md:grid-cols-[0.7fr_1.3fr]" : ""}`}>
+              <div className={`relative h-44 overflow-hidden ${horizontal ? "md:h-full md:min-h-64" : ""}`}><img src={artImages[i]} alt={artImageAlts[i]} className="h-full w-full object-cover" loading="lazy" /><MovementMark className="absolute bottom-2 right-4 h-12 w-24 text-ouro" /></div>
+              <div className="p-6"><div className="mb-4 flex items-center gap-3"><Icon className={`size-7 shrink-0 ${art.accent}`} strokeWidth={1.5} aria-hidden="true" /><h3 className="font-display text-xl font-extrabold">{art.title}</h3></div><Paragraphs paragraphs={art.paragraphs} />
+                {art.key === "theatre" && <div className="mt-5 space-y-4 border-t border-vermelho/20 pt-4"><div><h4 className="font-display text-sm font-bold text-vermelho">Teatro e Consciência</h4><p className="mt-1 text-sm leading-relaxed text-muted-foreground">Iniciativa socioeducativa que utiliza a linguagem teatral para abordar questões relevantes à formação de crianças e adolescentes.</p></div><div><h4 className="font-display text-sm font-bold text-vermelho">Entre a Ilusão e a Razão</h4><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{theatreLaunchText}</p></div></div>}
+                {art.key === "dance" && <div className="mt-5 text-verde"><ActivityTags items={["Maculelê", "Samba de roda", "Danças populares", "Musicalidade", "Memória cultural"]} /></div>}
+              </div>
+            </article>; })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-vermelho/5 py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle center eyebrow="Formação cidadã" title="Palestras e encontros formativos" />
+          <div className="mt-7 grid items-center gap-7 md:grid-cols-[0.65fr_1.35fr]">
+            <figure><img src={conversationPhoto.url} alt="Participantes em encontro educativo com diálogo e escuta" className="h-48 w-full rounded-2xl object-cover" loading="lazy" /><figcaption className="mt-2 text-xs text-muted-foreground">Foto ilustrativa: Adriano Amaral/SMED PMPA.</figcaption></figure>
+            <Paragraphs paragraphs={["A Motirô também realiza ou articula atividades educativas voltadas à discussão de temas relevantes para a comunidade.", "Esses encontros ampliam o conhecimento dos participantes e estimulam a reflexão sobre questões presentes em suas realidades, fortalecendo a cidadania, a convivência e a participação social."]} />
+          </div>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{civicThemes.map((theme, i) => <InformationCard key={theme.title} {...theme} icon={civicIcons[i]} />)}</div>
+        </div>
+      </section>
+
+      <section className="py-12">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <SectionTitle center eyebrow="Uma atuação integrada" title="Cada atividade amplia as possibilidades de aprender e participar" description="Capoeira, teatro, leitura, cinema, dança, esporte e formação cidadã fazem parte de uma atuação que busca reconhecer diferentes interesses e formas de participação. As atividades podem dialogar entre si, criando experiências mais amplas de aprendizagem, expressão, convivência e desenvolvimento humano." />
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3 text-primary" aria-hidden="true">{[Footprints, Drama, BookOpen, Film, Music, MessagesSquare].map((Icon, i) => <div key={i} className="flex items-center gap-3"><Icon className="size-7" strokeWidth={1.5} />{i < 5 && <span className="h-px w-5 bg-ouro" />}</div>)}</div>
+          <p className="mt-6 text-xs leading-relaxed text-muted-foreground">Fotografias ilustrativas. Leitura: Sérgio Louruz/SMAMS PMPA. Samba de roda: acervo IPAC/Bahia.</p>
         </div>
       </section>
 
       <FinalCta
         variant="laranja"
-        eyebrow="Cultura em movimento"
-        title="A Capoeira segue abrindo caminhos"
-        description="Cada projeto fortalece experiências de formação, memória, musicalidade e convivência. Conheça as iniciativas do Ponto de Cultura e descubra como elas transformam o território."
+        eyebrow="Cultura que cria caminhos"
+        title="Cada atividade pode abrir uma nova possibilidade"
+        description="A Motirô transforma cultura, esporte e educação em oportunidades de aprendizagem, convivência e desenvolvimento. Conheça nossas ações e descubra diferentes formas de se aproximar desse trabalho."
         image="https://images.unsplash.com/photo-1583166614297-a97b68d5cead?auto=format&fit=crop&w=1400&q=80"
         imageAlt="Movimento de Capoeira em atividade coletiva"
         buttons={[
           { label: "Fale conosco", to: "/contato" },
-          { label: "Ver galeria", to: "/galeria", variant: "outline" },
+          { label: "Conheça nossa trajetória", to: "/quem-somos", variant: "outline" },
         ]}
       />
     </>

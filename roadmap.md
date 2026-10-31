@@ -1,3 +1,4 @@
-- [x] Restaurar somente os cards compactos coloridos com enquadramento proporcional dos retratos.
-- [x] Revelar as biografias pela seta, expandindo apenas o card clicado para baixo.
-- [x] Verificar alturas fechadas iguais, enquadramento e interação em computador, tablet e celular.
+- [x] Adaptar somente Projetos com os textos oficiais e preservar hero, identidade e CTA.
+- [x] Destacar Além da Ginga, Capoeira Motirô e organizar artes, leitura, cinema, dança e formação cidadã.
+- [x] Inserir fotografias reais provisórias relacionadas às atividades.
+- [x] Verificar links, leitura integral e organização em computador, tablet e celular.
