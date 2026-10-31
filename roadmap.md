@@ -1,3 +1,3 @@
-- [x] Recriar somente os cards como peças editoriais claras com fotos e grafismos discretos.
-- [x] Exibir biografias completas sem interação, cortes ou rolagem interna.
-- [x] Verificar a grade e a leitura em computador, tablet e celular.
+- [x] Restaurar somente os cards compactos coloridos com enquadramento proporcional dos retratos.
+- [x] Revelar as biografias pela seta, expandindo apenas o card clicado para baixo.
+- [x] Verificar alturas fechadas iguais, enquadramento e interação em computador, tablet e celular.
