@@ -1,7 +1,7 @@
 // Shared site data — provisional content, easy to edit.
 export const SITE = {
-  name: "Ponto de Cultura Capoeira",
-  short: "Ponto de Cultura",
+  name: "Motirô",
+  short: "Motirô",
   tagline: "Capoeira que preserva histórias e transforma territórios",
   whatsapp: "5586994490190",
   whatsappMessage: "Olá! Gostaria de saber mais sobre a Motirô.",
