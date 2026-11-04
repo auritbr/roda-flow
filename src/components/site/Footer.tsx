@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/site-data";
 import { LogoMark } from "./Header";
 
-const EMAIL = "acermotiro@gmail.com";
-const PHONE = "(86) 99449-0190";
-const WHATSAPP = `https://wa.me/5586994490190?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre a Motirô.")}`;
-const ADDRESS = "Rua Robert Freitas Júnior, 1214, Centro, José de Freitas-PI, CEP 64110-000";
+const EMAIL = SITE.email;
+const PHONE = SITE.phone;
+const WHATSAPP = SITE.whatsappUrl;
+const ADDRESS = SITE.address;
 
 const P = "/projetos/$slug" as const;
 const COLUMNS = [

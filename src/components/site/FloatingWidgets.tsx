@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 /* ---------------- WhatsApp ---------------- */
 export function WhatsAppButton() {
-  const href = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(SITE.whatsappMessage)}`;
+  const href = SITE.whatsappUrl;
   return (
     <a
       href={href}
