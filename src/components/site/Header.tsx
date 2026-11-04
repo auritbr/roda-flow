@@ -154,7 +154,7 @@ export function Header() {
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="Menu principal">
             {NAV.map((item) => (
-              <div key={item.label} className="relative group">
+              <div key={item.label} className="relative group" onKeyDown={(e) => { if (e.key === "Escape") (document.activeElement as HTMLElement | null)?.blur(); }}>
                 <Link
                   to={item.to}
                   activeOptions={{ exact: item.to === "/" }}
