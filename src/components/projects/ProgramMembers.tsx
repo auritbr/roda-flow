@@ -20,7 +20,7 @@ export function ProgramMembers({ otherFronts }: { otherFronts: readonly string[]
           </div>
         </article>)}
       </div>
-      <div className="mx-auto mt-10 max-w-3xl text-center text-primary"><p className="mb-3 text-sm font-semibold text-foreground">O programa também contempla</p><ActivityTags items={otherFronts} /></div>
+      <div className="mx-auto mt-10 max-w-3xl text-center text-primary [&_ul]:justify-center"><p className="mb-3 text-sm font-semibold text-foreground">O programa também contempla</p><ActivityTags items={otherFronts} /></div>
     </div>
   </section>;
 }
