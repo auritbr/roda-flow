@@ -74,9 +74,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico?v=motiro-2026" },
-      { rel: "icon", type: "image/png", href: "/favicon-32x32.png?v=motiro-2026", sizes: "32x32" },
-      { rel: "icon", type: "image/png", href: "/favicon-16x16.png?v=motiro-2026", sizes: "16x16" },
+      { rel: "icon", href: "/favicon.ico?v=motiro-white-20261104" },
+      { rel: "icon", type: "image/png", href: "/favicon-32x32.png?v=motiro-white-20261104", sizes: "32x32" },
+      { rel: "icon", type: "image/png", href: "/favicon-16x16.png?v=motiro-white-20261104", sizes: "16x16" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png?v=motiro-2026", sizes: "180x180" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
