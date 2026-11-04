@@ -10,7 +10,8 @@ export const SITE = {
   address: "Endereço a informar — Cidade / UF",
   hours: "Segunda a sexta, das 9h às 18h",
   social: {
-    instagram: "https://instagram.com/",
+    instagram: "https://www.instagram.com/motiro.cult.esp/",
+    tiktok: "https://www.tiktok.com/@motiro.cult.esp",
     facebook: "https://facebook.com/",
     youtube: "https://youtube.com/",
   },
