@@ -6,11 +6,14 @@ import { SectionTitle } from "@/components/site/InternalHero";
 import { ActivityTags, MovementMark, Paragraphs } from "./OverviewElements";
 import { ProjectImage } from "./ProjectImage";
 import { ImageAttribution } from "./ImageAttribution";
-import { ACTIVITIES_PER_PAGE, activitiesForPage, activityPageCount } from "./activities";
+import { ACTIVITIES_PER_PAGE, pageCount, pageOf, type Activity } from "./activities";
 
-const icons = [Footprints, Drama, BookOpen, Film, Music, Users, HeartHandshake];
+const icons: Record<string, typeof Users> = { capoeira: Footprints, theatre: Drama, reading: BookOpen, cinema: Film, dance: Music, handball: Users, inclusion: HeartHandshake };
 
-export function ActivityList() {
+type Props = { items: readonly Activity[]; id: string; eyebrow: string; title: string; description: string; nested?: boolean; label: string };
+
+export function ActivityList({ items, id, eyebrow, title, description, nested, label }: Props) {
+  const activityPageCount = pageCount(items);
   const [page, setPage] = useState(1);
   const heading = useRef<HTMLDivElement>(null);
   function changePage(next: number) {
@@ -21,16 +24,16 @@ export function ActivityList() {
     target.focus({ preventScroll: true });
     target.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }
-  return <section className="py-16" aria-labelledby="activities-title">
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div ref={heading} tabIndex={-1} id="activities-title" className="scroll-mt-28 outline-none focus-visible:ring-2 focus-visible:ring-ring">
-        <SectionTitle center eyebrow="Projetos e atividades" title="Múltiplas linguagens para ampliar oportunidades" description="A Motirô desenvolve atividades que articulam cultura, esporte, educação, criatividade, expressão, inclusão e convivência comunitária." />
+  return <section className={nested ? "pb-16 pt-4" : "py-16"} aria-labelledby={id}>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className={nested ? "ml-1 border-l-2 border-ouro/60 pl-4 sm:ml-4 sm:pl-8 lg:ml-10 lg:pl-10" : ""}>
+      <div ref={heading} tabIndex={-1} id={id} className="scroll-mt-28 outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        <SectionTitle center={!nested} eyebrow={eyebrow} title={title} description={description} />
       </div>
-      <div className="mt-10 space-y-8" id="activity-results">
-        {activitiesForPage(page).map((activity, index) => {
+      <div className="mt-10 space-y-8" id={`${id}-results`}>
+        {pageOf(items, page).map((activity, index) => {
           const globalIndex = (page - 1) * ACTIVITIES_PER_PAGE + index;
           const flip = globalIndex % 2 === 1;
-          const Icon = icons[globalIndex] ?? Users;
+          const Icon = icons[activity.key] ?? Users;
           return <article key={activity.key} className={`grid items-center overflow-hidden rounded-2xl border border-border ${activity.color} ${flip ? "md:grid-cols-[1.3fr_0.7fr] lg:grid-cols-[1.15fr_0.85fr]" : "md:grid-cols-[0.7fr_1.3fr] lg:grid-cols-[0.85fr_1.15fr]"}`}>
             <figure className={`relative flex h-full min-w-0 flex-col ${flip ? "md:order-2" : ""}`}>
               <div className="relative h-56 overflow-hidden md:h-auto md:min-h-80 md:flex-1">
@@ -52,12 +55,12 @@ export function ActivityList() {
           </article>;
         })}
       </div>
-      <nav aria-label="Paginação de projetos e atividades" className="mt-10 flex items-center justify-center gap-2">
-        <Button variant="outline" size="icon" aria-label="Página anterior" aria-controls="activity-results" disabled={page === 1} onClick={() => changePage(page - 1)}><ChevronLeft aria-hidden="true" /></Button>
-        {Array.from({ length: activityPageCount }, (_, index) => index + 1).map((number) => <Button key={number} variant={page === number ? "default" : "outline"} size="icon" aria-label={`Página ${number}`} aria-current={page === number ? "page" : undefined} aria-controls="activity-results" onClick={() => changePage(number)}>{number}</Button>)}
-        <Button variant="outline" size="icon" aria-label="Próxima página" aria-controls="activity-results" disabled={page === activityPageCount} onClick={() => changePage(page + 1)}><ChevronRight aria-hidden="true" /></Button>
+      {activityPageCount > 1 && <><nav aria-label={`Paginação: ${label}`} className="mt-10 flex items-center justify-center gap-2">
+        <Button variant="outline" size="icon" aria-label="Página anterior" aria-controls={`${id}-results`} disabled={page === 1} onClick={() => changePage(page - 1)}><ChevronLeft aria-hidden="true" /></Button>
+        {Array.from({ length: activityPageCount }, (_, index) => index + 1).map((number) => <Button key={number} variant={page === number ? "default" : "outline"} size="icon" aria-label={`Página ${number}`} aria-current={page === number ? "page" : undefined} aria-controls={`${id}-results`} onClick={() => changePage(number)}>{number}</Button>)}
+        <Button variant="outline" size="icon" aria-label="Próxima página" aria-controls={`${id}-results`} disabled={page === activityPageCount} onClick={() => changePage(page + 1)}><ChevronRight aria-hidden="true" /></Button>
       </nav>
-      <p role="status" className="sr-only">Página {page} de {activityPageCount}</p>
-    </div>
+      <p role="status" className="sr-only">Página {page} de {activityPageCount}</p></>}
+    </div></div>
   </section>;
 }
