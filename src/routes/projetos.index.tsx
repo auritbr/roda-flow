@@ -4,11 +4,11 @@ import { ActivityTags, InformationCard, MovementMark, Paragraphs } from "@/compo
 import { civicThemes, programInfo, programParagraphs } from "@/components/projects/overview-content";
 import { ProgramReach } from "@/components/projects/ProgramReach";
 import { Button } from "@/components/ui/button";
-import { ActivityList } from "@/components/projects/ActivityList";
+import { CompactProjectCard } from "@/components/projects/CompactProjectCard";
 import { otherInitiatives, programActivities } from "@/components/projects/activities";
 import { ProjectImage } from "@/components/projects/ProjectImage";
 import { FinalCta } from "@/components/site/FinalCta";
-import { ArrowRight, CircleUserRound, HeartHandshake, MessagesSquare, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
+import { ArrowRight, Footprints, CircleUserRound, HeartHandshake, MessagesSquare, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
 
 const title = "Projetos e iniciativas — Motirô";
 const description = "Conheça Além da Ginga, Capoeira Motirô e as iniciativas de cultura, esporte, educação e formação cidadã da Motirô.";
@@ -59,10 +59,10 @@ function Projetos() {
 
       </section>
 
-      <section className="relative overflow-hidden bg-ouro/10 py-14">
+      <section className="relative overflow-hidden bg-ouro/10 py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
-            <div>
+            <div className="max-w-2xl">
               <SectionTitle eyebrow="Programa abrangente" title="Além da Ginga" />
               <div className="mt-5"><Paragraphs paragraphs={programParagraphs} /></div>
               <p className="mt-5 border-l-2 border-ouro pl-4 text-sm leading-relaxed text-foreground">O Além da Ginga está associado à trajetória iniciada por volta do ano 2000 e à ampliação progressiva do trabalho comunitário da Motirô.</p>
@@ -73,25 +73,35 @@ function Projetos() {
                 <ProjectImage src="/images/projetos/alem-da-ginga.jpg" alt="Capoeira e musicalidade em encontro cultural coletivo" className="aspect-[4/3] max-h-80 w-full rounded-2xl object-cover" icon={Users} />
                 <MovementMark className="absolute -bottom-4 right-5 h-14 w-28 text-vermelho" />
               </div>
-              <div className="mt-7 text-primary"><ActivityTags items={["Capoeira", "Teatro", "Leitura", "Cinema", "Dança", "Formação cidadã"]} /></div>
+              <div className="mt-6 text-muted-foreground [&_li]:border-border [&_li]:bg-card/60 [&_li]:py-0.5 [&_li]:text-[11px]"><ActivityTags items={["Capoeira", "Teatro", "Leitura", "Cinema", "Dança", "Formação cidadã"]} /></div>
             </div>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{programInfo.map((info, i) => <InformationCard key={info.title} {...info} icon={infoIcons[i]} />)}</div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{programInfo.map((info, i) => <InformationCard key={info.title} {...info} icon={infoIcons[i]} />)}</div>
         </div>
-        <div className="mt-6">
-          <ActivityList nested items={programActivities} id="program-activities" label="projetos do Além da Ginga" eyebrow="Dentro do Além da Ginga" title="Projetos e atividades que integram o programa" description="O Além da Ginga reúne diferentes linguagens culturais, educativas e esportivas desenvolvidas pela Motirô, permitindo que os participantes encontrem diferentes formas de aprender, conviver e desenvolver suas capacidades." />
+        <div className="mx-auto mt-12 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="ml-1 border-l-2 border-ouro/50 pl-5 sm:ml-4 sm:pl-8 lg:ml-8 lg:pl-10">
+            <div className="eyebrow text-laranja">Dentro do Além da Ginga</div>
+            <h3 className="mt-2 font-display text-2xl font-bold md:text-[1.7rem]">Projetos e atividades que integram o programa</h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">O Além da Ginga reúne diferentes linguagens culturais, educativas e esportivas desenvolvidas pela Motirô, permitindo que os participantes encontrem diferentes formas de aprender, conviver e desenvolver suas capacidades.</p>
+            <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{programActivities.map(item => <CompactProjectCard key={item.key} item={item} />)}</div>
+          </div>
         </div>
       </section>
 
       <ProgramReach overview />
 
-      <ActivityList items={otherInitiatives} id="other-initiatives" label="outras iniciativas" eyebrow="Outras iniciativas" title="Projetos com identidade própria" description="Além das ações reunidas no Além da Ginga, a Motirô também desenvolve outras iniciativas com organização e propostas próprias." />
-
-      <section className="pb-14">
+      <section className="py-16 md:py-20" aria-labelledby="other-initiatives">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-start gap-4 rounded-2xl border border-azul/30 bg-azul/10 p-6 sm:flex-row sm:items-center sm:justify-between">
-            <div><div className="eyebrow text-azul">Página temática</div><h2 className="mt-1 font-display text-2xl font-extrabold">Formação Esportiva e Conquistas</h2></div>
-            <Button asChild variant="outline" className="rounded-full"><Link to="/projetos/formacao-esportiva">Conhecer<ArrowRight aria-hidden="true" /></Link></Button>
+          <div className="text-center">
+            <div className="eyebrow text-vermelho">Outras iniciativas</div>
+            <h2 id="other-initiatives" className="mt-2 font-display text-2xl font-bold md:text-3xl">Projetos com identidade própria</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">Além das ações reunidas no Além da Ginga, a Motirô também desenvolve outras iniciativas com organização e propostas próprias.</p>
+          </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">{otherInitiatives.map(item => <CompactProjectCard key={item.key} item={item} />)}</div>
+
+          <div className="mt-12 grid gap-6 border-y border-border py-7 md:grid-cols-2">
+            <div className="flex gap-4"><Footprints className="mt-1 size-7 shrink-0 text-laranja" aria-hidden="true" /><div><h3 className="font-display text-xl font-bold">Da iniciação à formação esportiva</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Além da dimensão cultural e educativa, o Capoeira Motirô desenvolve a formação esportiva dos praticantes. Os atletas podem avançar da iniciação ao treinamento competitivo, participando de graduações, festivais e campeonatos em diferentes níveis.</p></div></div>
+            <div className="flex flex-col items-start justify-center gap-4 border-l-2 border-ouro pl-5"><p className="text-sm font-medium leading-relaxed">Atletas formados ou preparados no ambiente da Motirô já representaram José de Freitas e o Piauí em competições locais, estaduais, nacionais e internacionais.</p><Link to="/projetos/formacao-esportiva" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline underline-offset-4">Formação Esportiva e Conquistas<ArrowRight className="size-4" aria-hidden="true" /></Link></div>
           </div>
         </div>
       </section>
