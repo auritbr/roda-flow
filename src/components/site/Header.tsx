@@ -146,10 +146,7 @@ export function Header() {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2 group" aria-label={SITE.name}>
-            <LogoMark />
-            <span className="hidden sm:flex flex-col leading-tight">
-              <span className="font-display text-[13px] font-extrabold tracking-tight text-primary">PONTO DE CULTURA</span>
-            </span>
+            <LogoMark className="h-12 sm:h-14" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="Menu principal">
