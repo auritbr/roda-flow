@@ -94,7 +94,7 @@ export function Footer() {
                   <Link to={P} params={{ slug: "alem-da-ginga" }} className="block font-semibold text-primary-foreground hover:text-ouro transition-colors">Além da Ginga</Link>
                   <ul className="mt-1.5 space-y-1 border-l border-ouro/40 pl-3 text-[13px]">
                     {col.links.filter((l) => "member" in l).map((l) => (
-                      <li key={l.label}><Link to={l.to} params={"slug" in l ? { slug: l.slug } : undefined} className="hover:text-ouro transition-colors">{l.label}</Link></li>
+                      <li key={l.label}><Link to={P} params={{ slug: l.slug }} className="hover:text-ouro transition-colors">{l.label}</Link></li>
                     ))}
                   </ul>
                   <p className="mt-4 font-semibold text-primary-foreground">Outros projetos</p>
