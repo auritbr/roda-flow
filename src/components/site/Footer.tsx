@@ -140,8 +140,20 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="relative border-t border-primary-foreground/10 bg-primary-foreground/5 py-5 text-center text-xs text-primary-foreground/70">
-        © 2026 Motirô. Todos os direitos reservados.
+      <div className="relative border-t border-primary-foreground/10 bg-primary-foreground/5 py-5 px-4 text-center text-xs text-primary-foreground/70">
+        <p className="wrap-anywhere">32.317.768/0001-80 — Associação Cultural, Esportiva e Recreativa Motirô - ACERM</p>
+        <p className="mt-1">© 2026 Motirô. Todos os direitos reservados.</p>
+        <p className="mt-1">
+          Desenvolvido por{" "}
+          <a
+            href="https://www.aurit.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline-offset-2 hover:text-ouro hover:underline transition-colors"
+          >
+            Aurit
+          </a>
+        </p>
       </div>
     </footer>
   );
