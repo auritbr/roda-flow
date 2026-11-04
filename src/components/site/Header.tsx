@@ -287,5 +287,5 @@ export function Header() {
 }
 
 export function LogoMark({ className }: { className?: string }) {
-  return <img src="/images/logo-motiro.png" alt="Logo da Motirô" width={420} height={600} className={cn("h-11 w-auto object-contain", className)} />;
+  return <img src="/images/logo-motiro.png" alt="Logo da Motirô" width={458} height={600} className={cn("h-11 w-auto object-contain", className)} />;
 }
