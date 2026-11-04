@@ -30,3 +30,4 @@
 - Keep agenda records and date/filter logic in a browser-safe module with separate official and demonstrative feeds; share event cards and details with home previews so future CMS records cannot leak demonstrations into real programming.
 - Keep new homepage institutional previews in dedicated home modules and reuse approved tokens and cultural graphics; fictional gallery assets stay separate from official gallery records to preserve institutional accuracy.
 - Keep agenda period calculations in its browser-safe model and scope compact cards through an explicit prop, preserving the homepage event-card presentation; homepage-only news provenance flags must not mutate shared legacy records.
+- Keep brand assets in public for external hosts; size the shared logo to available space and version icon links to avoid stale caches.

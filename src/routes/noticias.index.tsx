@@ -7,8 +7,8 @@ import { useMemo, useState } from "react";
 export const Route = createFileRoute("/noticias/")({
   head: () => ({
     meta: [
-      { title: "Notícias — Ponto de Cultura Capoeira" },
-      { name: "description", content: "Acompanhe as notícias, projetos, eventos e ações do Ponto de Cultura." },
+      { title: "Notícias — Motirô" },
+      { name: "description", content: "Acompanhe as notícias, projetos, eventos e ações da Motirô." },
       { property: "og:title", content: "Notícias — Motirô" },
       { property: "og:description", content: "Acompanhe as notícias, projetos, eventos e ações da Motirô." },
       { property: "og:type", content: "website" },

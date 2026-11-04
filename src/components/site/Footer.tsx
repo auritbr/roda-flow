@@ -83,8 +83,8 @@ export function Footer() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">
         <div className="grid gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-[1fr_repeat(4,auto)] lg:gap-x-14">
-          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
-            <Link to="/" aria-label="Motirô — início" className="inline-flex"><LogoMark className="h-24 lg:h-28 invert" /></Link>
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1 min-w-0">
+            <Link to="/" aria-label="Motirô — início" className="inline-flex max-w-full"><LogoMark className="h-24 lg:h-28 invert" /></Link>
           </div>
           {COLUMNS.map((col) => (
             <nav key={col.title} aria-label={col.title}>
