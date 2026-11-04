@@ -54,4 +54,4 @@
 - [x] Revisar home com pilares amplos, trajetória, prévia de impacto e CTA; simplificar Parcerias e retirar seções repetitivas sem alterar páginas protegidas.
 - [x] Tornar Agenda semanal por padrão, alternância mensal, navegação por período e cards compactos somente nesta página.
 - [x] Testar datas e verificar fluxos, notícias demonstrativas e leitura desktop/mobile.
-- [ ] Substituir a logo compartilhada e os ícones do navegador, remover versões antigas e conferir tamanhos, navegação e carregamento em computador e celular.
+- [x] Substituir a logo compartilhada e os ícones do navegador, remover versões antigas e conferir tamanhos, navegação e carregamento em computador e celular.
