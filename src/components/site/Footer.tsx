@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { TikTokIcon } from "./TikTokIcon";
 import { Instagram, Facebook, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site-data";
 import { LogoMark } from "./Header";
@@ -57,6 +58,9 @@ export function Footer() {
             <div className="mt-5 flex items-center gap-3">
               <a href={SITE.social.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-ouro hover:text-primary transition">
                 <Instagram className="h-4 w-4" />
+              </a>
+              <a href={SITE.social.tiktok} aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-ouro hover:text-primary transition">
+                <TikTokIcon className="h-4 w-4" />
               </a>
               <a href={SITE.social.facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-ouro hover:text-primary transition">
                 <Facebook className="h-4 w-4" />

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { InternalHero } from "@/components/site/InternalHero";
 import { SITE } from "@/lib/site-data";
 import { Mail, Phone, MapPin, Clock, MessageCircle, Instagram, Facebook, Youtube, CheckCircle2 } from "lucide-react";
+import { TikTokIcon } from "@/components/site/TikTokIcon";
 import { useState } from "react";
 import { z } from "zod";
 
@@ -81,6 +82,7 @@ function Contato() {
             </ul>
             <div className="flex items-center gap-3">
               <a href={SITE.social.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary/90"><Instagram className="h-4 w-4" /></a>
+              <a href={SITE.social.tiktok} aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary/90"><TikTokIcon className="h-4 w-4" /></a>
               <a href={SITE.social.facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary/90"><Facebook className="h-4 w-4" /></a>
               <a href={SITE.social.youtube} aria-label="YouTube" target="_blank" rel="noopener noreferrer" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary/90"><Youtube className="h-4 w-4" /></a>
             </div>
