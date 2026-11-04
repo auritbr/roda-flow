@@ -1,8 +1,46 @@
 import { Link } from "@tanstack/react-router";
 import { TikTokIcon } from "./TikTokIcon";
-import { Instagram, Facebook, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import type React from "react";
+import { Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/site-data";
 import { LogoMark } from "./Header";
+
+const EMAIL = "acermotiro@gmail.com";
+const PHONE = "(86) 99449-0190";
+const WHATSAPP = `https://wa.me/5586994490190?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre a Motirô.")}`;
+const ADDRESS = "Rua Robert Freitas Júnior, 1214, Centro, José de Freitas-PI, CEP 64110-000";
+
+const P = "/projetos/$slug" as const;
+const COLUMNS = [
+  { title: "Institucional", links: [
+    { label: "Quem Somos", to: "/quem-somos" },
+    { label: "Equipe", to: "/quem-somos/equipe" },
+    { label: "Impacto Social", to: "/impacto-social" },
+    { label: "Parcerias e Transparência", to: "/quem-somos/parcerias-e-transparencia" },
+    { label: "Memória Institucional", to: "/memoria-institucional" },
+  ] },
+  { title: "Projetos", links: [
+    { label: "Além da Ginga", to: P, slug: "alem-da-ginga" },
+    { label: "Capoeira Motirô", to: P, slug: "capoeira-motiro" },
+    { label: "Teatro Motirô", to: P, slug: "teatro-motiro" },
+    { label: "Oficina da Leitura", to: P, slug: "oficina-da-leitura" },
+    { label: "Cine Motirô", to: P, slug: "cine-motiro" },
+    { label: "Dança, ritmo e tradição", to: P, slug: "danca" },
+    { label: "Handebol Motirô", to: P, slug: "handebol-motiro" },
+    { label: "Brincando e Crescendo Juntos", to: P, slug: "brincando-e-crescendo-juntos" },
+    { label: "Formação Esportiva e Conquistas", to: "/projetos/formacao-esportiva" },
+  ] },
+  { title: "Conteúdo", links: [
+    { label: "Notícias", to: "/noticias" },
+    { label: "Agenda", to: "/agenda" },
+    { label: "Galeria", to: "/galeria" },
+  ] },
+  { title: "Legal", links: [
+    { label: "Política de Privacidade", to: "/politica-de-privacidade" },
+    { label: "Termos de Uso", to: "/termos-de-uso" },
+  ] },
+] as const;
 
 export function Footer() {
   return (
@@ -43,78 +81,63 @@ export function Footer() {
         <path d="M0 20 Q 50 4 100 18 T 200 14 T 300 18 T 400 12" fill="none" stroke="var(--ouro)" strokeWidth="2" strokeLinecap="round" />
       </svg>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-        <div className="grid gap-10 md:grid-cols-4">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">
+        <div className="grid gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-[1fr_repeat(4,auto)] lg:gap-x-14">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
+            <Link to="/" aria-label="Motirô — início" className="inline-flex"><LogoMark className="h-12 w-12" /></Link>
+          </div>
+          {COLUMNS.map((col) => (
+            <nav key={col.title} aria-label={col.title}>
+              <h3 className="font-display font-bold text-sm eyebrow text-ouro mb-4">{col.title}</h3>
+              <ul className={cn("text-sm text-primary-foreground/85", col.title === "Projetos" ? "space-y-1.5" : "space-y-2")}>
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <Link to={l.to} params={"slug" in l ? { slug: l.slug } : undefined} className="hover:text-ouro transition-colors">{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+
+        <div className="mt-12 border-t border-primary-foreground/15 pt-10 pb-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <ContactBlock icon={Mail} title="E-mail">
+            <a href={`mailto:${EMAIL}`} className="hover:text-ouro transition-colors wrap-anywhere">{EMAIL}</a>
+          </ContactBlock>
+          <ContactBlock icon={Phone} title="Telefone / WhatsApp">
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="hover:text-ouro transition-colors">{PHONE}</a>
+          </ContactBlock>
+          <ContactBlock icon={MapPin} title="Endereço">
+            <address className="not-italic max-w-[16rem]">{ADDRESS}</address>
+          </ContactBlock>
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <LogoMark />
-              <div>
-                <div className="font-display font-extrabold text-sm tracking-tight">PONTO DE CULTURA</div>
-              </div>
-            </div>
-            <p className="text-sm text-primary-foreground/80 leading-relaxed">
-              Organização cultural dedicada à valorização da Capoeira, da cultura afro-brasileira e do fortalecimento comunitário.
-            </p>
-            <div className="mt-5 flex items-center gap-3">
+            <h3 className="font-display font-bold text-xs eyebrow text-ouro mb-3">Conecte-se</h3>
+            <div className="flex items-center gap-3">
               <a href={SITE.social.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-ouro hover:text-primary transition">
                 <Instagram className="h-4 w-4" />
               </a>
               <a href={SITE.social.tiktok} aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-ouro hover:text-primary transition">
                 <TikTokIcon className="h-4 w-4" />
               </a>
-              <a href={SITE.social.facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-ouro hover:text-primary transition">
-                <Facebook className="h-4 w-4" />
-              </a>
-              <a href={SITE.social.youtube} aria-label="YouTube" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-ouro hover:text-primary transition">
-                <Youtube className="h-4 w-4" />
-              </a>
             </div>
-          </div>
-
-          <div>
-            <h3 className="font-display font-bold text-sm eyebrow text-ouro mb-4">Institucional</h3>
-            <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="hover:text-ouro">Início</Link></li>
-              <li><Link to="/quem-somos" className="hover:text-ouro">Quem Somos</Link></li>
-              <li><Link to="/quem-somos/equipe" className="hover:text-ouro">Equipe</Link></li>
-              <li><Link to="/quem-somos/parcerias-e-transparencia" className="hover:text-ouro">Parcerias e Transparência</Link></li>
-              <li><Link to="/noticias" className="hover:text-ouro">Notícias</Link></li>
-              <li><Link to="/galeria" className="hover:text-ouro">Galeria</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-display font-bold text-sm eyebrow text-ouro mb-4">Projetos</h3>
-            <ul className="space-y-2 text-sm">
-              <li><Link to="/projetos" className="hover:text-ouro">Todos os projetos</Link></li>
-              <li><Link to="/projetos/$slug" params={{ slug: "alem-da-ginga" }} className="hover:text-ouro">Além da Ginga</Link></li>
-              <li><Link to="/projetos/$slug" params={{ slug: "capoeira-motiro" }} className="hover:text-ouro">Capoeira Motirô</Link></li>
-              <li><Link to="/projetos/$slug" params={{ slug: "teatro-motiro" }} className="hover:text-ouro">Teatro Motirô</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-display font-bold text-sm eyebrow text-ouro mb-4">Contato</h3>
-            <ul className="space-y-3 text-sm">
-              <li className="flex gap-2"><MapPin className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span>{SITE.address}</span></li>
-              <li className="flex gap-2"><Phone className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span>{SITE.phone}</span></li>
-              <li className="flex gap-2"><Mail className="h-4 w-4 shrink-0 text-ouro mt-0.5" /><span className="min-w-0 wrap-anywhere">{SITE.email}</span></li>
-            </ul>
-            <Link to="/contato" className="mt-5 inline-flex items-center rounded-full bg-ouro px-4 py-2 text-sm font-semibold text-primary hover:brightness-95">
-              Fale conosco
-            </Link>
-          </div>
-        </div>
-
-        <div className="mt-12 border-t border-primary-foreground/15 pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-primary-foreground/70">
-          <p>© {new Date().getFullYear()} {SITE.name}. Todos os direitos reservados.</p>
-          <div className="flex flex-wrap gap-4">
-            <Link to="/politica-de-privacidade" className="hover:text-ouro">Política de Privacidade</Link>
-            <Link to="/termos-de-uso" className="hover:text-ouro">Termos de Uso</Link>
-            <Link to="/quem-somos/parcerias-e-transparencia" className="hover:text-ouro">Parcerias e Transparência</Link>
           </div>
         </div>
       </div>
+      <div className="relative border-t border-primary-foreground/10 bg-primary-foreground/5 py-5 text-center text-xs text-primary-foreground/70">
+        © 2026 Motirô. Todos os direitos reservados.
+      </div>
     </footer>
+  );
+}
+
+function ContactBlock({ icon: Icon, title, children }: { icon: typeof Mail; title: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <h3 className="font-display font-bold text-xs eyebrow text-ouro mb-3">{title}</h3>
+      <div className="flex gap-2 text-sm text-primary-foreground/85">
+        <Icon className="h-4 w-4 shrink-0 text-ouro mt-0.5" aria-hidden />
+        <div className="min-w-0">{children}</div>
+      </div>
+    </div>
   );
 }
