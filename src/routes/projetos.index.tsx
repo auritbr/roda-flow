@@ -63,7 +63,6 @@ function Projetos() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
             <div>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-ouro px-3 py-1 text-xs font-bold uppercase tracking-wide text-ouro-foreground"><Sparkles className="size-3.5" aria-hidden="true" />Programa abrangente</span>
               <SectionTitle eyebrow="Programa abrangente" title="Além da Ginga" />
               <div className="mt-5"><Paragraphs paragraphs={programParagraphs} /></div>
               <p className="mt-5 border-l-2 border-ouro pl-4 text-sm leading-relaxed text-foreground">O Além da Ginga está associado à trajetória iniciada por volta do ano 2000 e à ampliação progressiva do trabalho comunitário da Motirô.</p>
