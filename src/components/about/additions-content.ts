@@ -11,7 +11,7 @@ export const spaces = [
   "A sede constitui um espaço de referência para as atividades culturais, educativas, administrativas e comunitárias da organização.",
   "Além desse espaço, a Motirô realiza atividades em diferentes locais do município, de acordo com as características de cada iniciativa e as articulações estabelecidas.",
 ];
-export const headquartersAddress = { street: "Rua Robert Freitas Júnior, 1214", neighborhood: "Centro", city: "José de Freitas – PI", postcode: "64110-000" };
+export const headquartersAddress = { street: "Rua Robert Freitas Júnior, 1214", neighborhood: "Centro", city: "José de Freitas-PI", postcode: "64110-000" };
 export const directionsUrl = SITE.mapsUrl;
 // Replace with authorized exterior/interior photos, never a different building.
 export const headquartersPhotos: { src: string; alt: string }[] = [];
