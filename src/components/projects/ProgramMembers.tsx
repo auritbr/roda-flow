@@ -5,6 +5,7 @@ import { SectionTitle } from "@/components/site/InternalHero";
 import { ActivityTags } from "./OverviewElements";
 import { ProjectImage } from "./ProjectImage";
 import { programActivities } from "./activities";
+import { initiativeForSlug } from "./detail-content";
 
 export function ProgramMembers({ otherFronts }: { otherFronts: readonly string[] }) {
   return <section className="relative overflow-hidden bg-ouro/10 py-16">
@@ -15,7 +16,7 @@ export function ProgramMembers({ otherFronts }: { otherFronts: readonly string[]
           <ProjectImage src={item.image} alt={item.alt} className="aspect-[16/10] w-full object-cover" />
           <div className="flex flex-1 flex-col p-5">
             <h3 className="font-display text-xl font-extrabold">{item.title}</h3>
-            {item.eyebrow && <p className="mt-1 text-sm text-muted-foreground">{item.eyebrow}</p>}
+            <p className="mt-1 text-sm text-muted-foreground">{initiativeForSlug(item.slug!)?.subtitle}</p>
             <Button asChild variant="link" className="mt-auto h-auto self-start p-0 pt-4"><Link to="/projetos/$slug" params={{ slug: item.slug! }}>Conhecer<ArrowRight aria-hidden="true" /></Link></Button>
           </div>
         </article>)}
