@@ -287,12 +287,5 @@ export function Header() {
 }
 
 export function LogoMark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 44 44" className={cn("h-10 w-10", className)} aria-hidden="true">
-      <circle cx="22" cy="22" r="20" fill="var(--primary)" />
-      <path d="M8 22a14 14 0 0 1 28 0" stroke="var(--ouro)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-      <path d="M12 26 L22 14 L32 26" stroke="var(--creme)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <circle cx="22" cy="30" r="2.2" fill="var(--laranja)" />
-    </svg>
-  );
+  return <img src="/images/logo-motiro.png" alt="Logo da Motirô" width={420} height={600} className={cn("h-11 w-auto object-contain", className)} />;
 }
