@@ -5,6 +5,7 @@ import { civicThemes, programInfo, programParagraphs } from "@/components/projec
 import { ProgramReach } from "@/components/projects/ProgramReach";
 import { Button } from "@/components/ui/button";
 import { ActivityList } from "@/components/projects/ActivityList";
+import { otherInitiatives, programActivities } from "@/components/projects/activities";
 import { ProjectImage } from "@/components/projects/ProjectImage";
 import { FinalCta } from "@/components/site/FinalCta";
 import { ArrowRight, CircleUserRound, HeartHandshake, MessagesSquare, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
@@ -77,11 +78,23 @@ function Projetos() {
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{programInfo.map((info, i) => <InformationCard key={info.title} {...info} icon={infoIcons[i]} />)}</div>
         </div>
+        <div className="mt-6">
+          <ActivityList nested items={programActivities} id="program-activities" label="projetos do Além da Ginga" eyebrow="Dentro do Além da Ginga" title="Projetos e atividades que integram o programa" description="O Além da Ginga reúne diferentes linguagens culturais, educativas e esportivas desenvolvidas pela Motirô, permitindo que os participantes encontrem diferentes formas de aprender, conviver e desenvolver suas capacidades." />
+        </div>
       </section>
 
       <ProgramReach overview />
 
-      <ActivityList />
+      <ActivityList items={otherInitiatives} id="other-initiatives" label="outras iniciativas" eyebrow="Outras iniciativas" title="Projetos com identidade própria" description="Além das ações reunidas no Além da Ginga, a Motirô também desenvolve outras iniciativas com organização e propostas próprias." />
+
+      <section className="pb-14">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-start gap-4 rounded-2xl border border-azul/30 bg-azul/10 p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div><div className="eyebrow text-azul">Página temática</div><h2 className="mt-1 font-display text-2xl font-extrabold">Formação Esportiva e Conquistas</h2></div>
+            <Button asChild variant="outline" className="rounded-full"><Link to="/projetos/formacao-esportiva">Conhecer<ArrowRight aria-hidden="true" /></Link></Button>
+          </div>
+        </div>
+      </section>
 
       <section className="relative overflow-hidden bg-vermelho/5 py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

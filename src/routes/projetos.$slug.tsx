@@ -6,7 +6,8 @@ import { initiativeForSlug, legacyProjectDestinations, legacyOverviewSlugs } fro
 import { ProgramReach } from "@/components/projects/ProgramReach";
 import { InitiativeGallery } from "@/components/projects/InitiativeGallery";
 import { ImageAttribution } from "@/components/projects/ImageAttribution";
-import { activities } from "@/components/projects/activities";
+import { activities, programSlugs } from "@/components/projects/activities";
+import { ProgramMembers } from "@/components/projects/ProgramMembers";
 import { Target, Users, MapPin, Compass, Sparkles, Music, HeartHandshake, BookOpen, Drum, History, GraduationCap, Feather, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/projetos/$slug")({
@@ -66,6 +67,7 @@ function ProjectDetail() {
         pattern={c.pattern}
       >
         <p className="max-w-2xl text-base leading-relaxed text-primary-foreground/90">{project.summary}</p>
+        {programSlugs.includes(project.slug) && <Link to="/projetos/$slug" params={{ slug: "alem-da-ginga" }} className="mt-4 mr-2 inline-flex rounded-full bg-primary-foreground/15 px-3 py-1 text-xs font-semibold underline-offset-4 hover:underline">Integra o Além da Ginga</Link>}
         {project.independent && <span className="mt-4 inline-flex rounded-full bg-primary-foreground/15 px-3 py-1 text-xs font-semibold">Iniciativa independente</span>}
         {credit && <div className="relative mt-4 h-10"><ImageAttribution {...credit} /></div>}
       </InternalHero>
@@ -120,7 +122,9 @@ function ProjectDetail() {
       )}
 
       {/* Experiências confirmadas de cada iniciativa */}
-      {details.practices && (
+      {project.slug === "alem-da-ginga" && <ProgramMembers otherFronts={["Musicalidade", "Samba de roda", "Maculelê", "Oficinas", "Ações educativas", "Formação cidadã"]} />}
+
+      {details.practices && project.slug !== "alem-da-ginga" && (
         <section className={`py-16 ${c.soft} relative overflow-hidden`}>
           <svg className="absolute -right-10 -top-10 h-64 w-64 opacity-30" viewBox="0 0 200 200" aria-hidden>
             <path d="M100 20 A 80 80 0 0 1 180 100" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className={c.text} />

@@ -20,15 +20,15 @@ const NAV = [
     label: "Projetos",
     to: "/projetos",
     children: [
-      { label: "Além da Ginga", to: "/projetos/$slug", params: { slug: "alem-da-ginga" } },
-      { label: "Capoeira Motirô", to: "/projetos/$slug", params: { slug: "capoeira-motiro" } },
-      { label: "Teatro Motirô", to: "/projetos/$slug", params: { slug: "teatro-motiro" } },
-      { label: "Oficina da Leitura", to: "/projetos/$slug", params: { slug: "oficina-da-leitura" } },
-      { label: "Cine Motirô", to: "/projetos/$slug", params: { slug: "cine-motiro" } },
-      { label: "Dança, ritmo e tradição", to: "/projetos/$slug", params: { slug: "danca" } },
+      { label: "Além da Ginga", to: "/projetos/$slug", params: { slug: "alem-da-ginga" }, primary: true },
+      { label: "Capoeira Motirô", to: "/projetos/$slug", params: { slug: "capoeira-motiro" }, nested: true },
+      { label: "Teatro Motirô", to: "/projetos/$slug", params: { slug: "teatro-motiro" }, nested: true },
+      { label: "Oficina da Leitura", to: "/projetos/$slug", params: { slug: "oficina-da-leitura" }, nested: true },
+      { label: "Cine Motirô", to: "/projetos/$slug", params: { slug: "cine-motiro" }, nested: true },
+      { label: "Dança, ritmo e tradição", to: "/projetos/$slug", params: { slug: "danca" }, nested: true },
       { label: "Handebol Motirô", to: "/projetos/$slug", params: { slug: "handebol-motiro" } },
       { label: "Brincando e Crescendo Juntos", to: "/projetos/$slug", params: { slug: "brincando-e-crescendo-juntos" } },
-      { label: "Formação esportiva e conquistas", to: "/projetos/formacao-esportiva" },
+      { label: "Formação Esportiva e Conquistas", to: "/projetos/formacao-esportiva" },
     ],
   },
   { label: "Impacto Social", to: "/impacto-social" },
@@ -96,7 +96,7 @@ export function Header() {
                           to={c.to}
                           params={"params" in c ? c.params : undefined}
                           activeProps={{ className: "bg-muted text-primary" }}
-                          className="block px-4 py-2.5 text-sm hover:bg-muted transition-colors"
+                          className={cn("block px-4 text-sm hover:bg-muted transition-colors", "nested" in c ? "ml-4 border-l border-ouro/60 py-1.5 pl-3 text-[13px] text-foreground/80" : "py-2.5", "primary" in c && "pt-3 pb-1.5 font-bold text-primary", c.label === "Handebol Motirô" && "mt-1.5 border-t border-border")}
                         >
                           {c.label}
                         </Link>
@@ -149,7 +149,7 @@ export function Header() {
                               to={c.to}
                               params={"params" in c ? c.params : undefined}
                               onClick={() => setOpen(false)}
-                              className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary"
+                              className={cn("block px-3 py-2 text-sm text-foreground/80 hover:text-primary", "nested" in c && "ml-3 border-l border-ouro/60 py-1.5 pl-3 text-[13px]", "primary" in c && "font-bold text-primary")}
                             >
                               {c.label}
                             </Link>

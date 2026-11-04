@@ -11,6 +11,8 @@ export type Activity = {
   accent: string;
   tags?: readonly string[];
   independent?: boolean;
+  /** True for projects that belong to the overarching Além da Ginga program. */
+  program?: boolean;
   audience?: string;
   highlights?: readonly { title?: string; text: string }[];
   slug?: string;
@@ -24,13 +26,13 @@ export const activities: readonly Activity[] = [
   {
     key: "capoeira", title: "Capoeira Motirô", eyebrow: "Tradição, formação e esporte",
     image: "/images/projetos/capoeira-motiro.jpg", alt: "Praticantes de capoeira com instrumentos em roda pública",
-    color: "bg-card", accent: "text-vermelho", slug: "capoeira-motiro",
+    color: "bg-card", accent: "text-vermelho", slug: "capoeira-motiro", program: true,
     paragraphs: [...capoeiraParagraphs, "Por meio das aulas e dos encontros, os participantes têm contato com movimentos, musicalidade, instrumentos, história, disciplina, respeito, cooperação, convivência, transmissão de saberes entre gerações e valorização da ancestralidade."],
     tags: capoeiraTags,
     highlights: [{ title: "Formação esportiva", text: "Além da dimensão cultural e educativa, o Capoeira Motirô possibilita o avanço da iniciação ao treinamento competitivo, com participação em graduações, festivais e campeonatos. Atletas formados ou preparados no ambiente da Motirô já representaram José de Freitas e o Piauí em competições locais, estaduais, nacionais e internacionais." }],
   },
   ...arts.map((art, index): Activity => ({
-    ...art, image: `/images/projetos/${images[index]}.jpg`, alt: alts[index], slug: ["teatro-motiro", "oficina-da-leitura", "cine-motiro", "danca"][index],
+    ...art, program: true, image: `/images/projetos/${images[index]}.jpg`, alt: alts[index], slug: ["teatro-motiro", "oficina-da-leitura", "cine-motiro", "danca"][index],
     highlights: art.key === "theatre" ? [
       { title: "Teatro e Consciência", text: "Iniciativa socioeducativa que utiliza a linguagem teatral para abordar questões relevantes à formação de crianças e adolescentes." },
       { title: "Entre a Ilusão e a Razão", text: theatreLaunchText },
@@ -67,9 +69,16 @@ export const activities: readonly Activity[] = [
   },
 ];
 
+export const programActivities = activities.filter(a => a.program);
+export const independentActivities = activities.filter(a => !a.program);
+// Future independent initiatives (e.g. amateur football) are added here only with official client content.
+export const futureIndependentInitiatives: readonly Activity[] = [];
+export const otherInitiatives: readonly Activity[] = [...independentActivities, ...futureIndependentInitiatives];
+export const programSlugs = programActivities.map(a => a.slug);
+
 export const ACTIVITIES_PER_PAGE = 3;
-export const activityPageCount = Math.ceil(activities.length / ACTIVITIES_PER_PAGE);
-export function activitiesForPage(page: number) {
-  if (!Number.isInteger(page) || page < 1 || page > activityPageCount) return [];
-  return activities.slice((page - 1) * ACTIVITIES_PER_PAGE, page * ACTIVITIES_PER_PAGE);
+export function pageCount(list: readonly Activity[]) { return Math.max(1, Math.ceil(list.length / ACTIVITIES_PER_PAGE)); }
+export function pageOf(list: readonly Activity[], page: number) {
+  if (!Number.isInteger(page) || page < 1 || page > pageCount(list)) return [];
+  return list.slice((page - 1) * ACTIVITIES_PER_PAGE, page * ACTIVITIES_PER_PAGE);
 }
