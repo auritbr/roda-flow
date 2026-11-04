@@ -9,8 +9,8 @@ import { z } from "zod";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Ponto de Cultura Capoeira" },
-      { name: "description", content: "Entre em contato com o Ponto de Cultura. Telefone, WhatsApp, e-mail, endereço e formulário." },
+      { title: "Contato — Motirô" },
+      { name: "description", content: "Entre em contato com a Motirô. Telefone, WhatsApp, e-mail, endereço e formulário." },
       { property: "og:title", content: "Contato — Motirô" },
       { property: "og:description", content: "Entre em contato com a Motirô para conversar sobre ações, projetos e parcerias." },
       { property: "og:type", content: "website" },

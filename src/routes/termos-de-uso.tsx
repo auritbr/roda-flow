@@ -4,8 +4,8 @@ import { InternalHero } from "@/components/site/InternalHero";
 export const Route = createFileRoute("/termos-de-uso")({
   head: () => ({
     meta: [
-      { title: "Termos de Uso — Ponto de Cultura Capoeira" },
-      { name: "description", content: "Termos de uso do site institucional do Ponto de Cultura." },
+      { title: "Termos de Uso — Motirô" },
+      { name: "description", content: "Termos de uso do site institucional da Motirô." },
       { property: "og:title", content: "Termos de Uso — Motirô" },
       { property: "og:description", content: "Termos de uso do site institucional da Motirô." },
       { property: "og:type", content: "website" },

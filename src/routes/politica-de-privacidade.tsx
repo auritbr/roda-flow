@@ -4,7 +4,7 @@ import { InternalHero } from "@/components/site/InternalHero";
 export const Route = createFileRoute("/politica-de-privacidade")({
   head: () => ({
     meta: [
-      { title: "Política de Privacidade — Ponto de Cultura Capoeira" },
+      { title: "Política de Privacidade — Motirô" },
       { name: "description", content: "Política de Privacidade e tratamento de dados pessoais em conformidade com a LGPD." },
       { property: "og:title", content: "Política de Privacidade — Motirô" },
       { property: "og:description", content: "Política de Privacidade e tratamento de dados pessoais da Motirô." },

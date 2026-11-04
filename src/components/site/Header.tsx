@@ -146,7 +146,7 @@ export function Header() {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2 group" aria-label={SITE.name}>
-            <LogoMark className="h-12 sm:h-14" />
+            <LogoMark className="h-12 sm:h-14 lg:max-w-[calc(100vw-59rem)]" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="Menu principal">
@@ -284,5 +284,5 @@ export function Header() {
 }
 
 export function LogoMark({ className }: { className?: string }) {
-  return <img src="/images/logo-motiro.png" alt="Logo da Motirô" width={458} height={600} className={cn("h-11 w-auto object-contain", className)} />;
+  return <img src="/images/motiro-logo-2026.png" alt="Logo da Motirô" width={1640} height={550} className={cn("h-11 w-auto max-w-full object-contain", className)} />;
 }
