@@ -74,10 +74,10 @@ function Contato() {
               <p className="mt-3 text-muted-foreground">Nossa equipe responderá o mais breve possível.</p>
             </div>
             <ul className="space-y-4">
-              <Contact icon={MapPin} label="Endereço" value={SITE.address} />
-              <Contact icon={Phone} label="Telefone" value={SITE.phone} />
-              <Contact icon={MessageCircle} label="WhatsApp" value="Clique no botão flutuante para conversar" />
-              <Contact icon={Mail} label="E-mail" value={SITE.email} />
+              <Contact icon={MapPin} label="Endereço" value={SITE.address} href={SITE.mapsUrl} external />
+              <Contact icon={Phone} label="Telefone" value={SITE.phone} href={SITE.phoneHref} />
+              <Contact icon={MessageCircle} label="WhatsApp" value={SITE.phone} href={SITE.whatsappUrl} external />
+              <Contact icon={Mail} label="E-mail" value={SITE.email} href={`mailto:${SITE.email}`} />
               <Contact icon={Clock} label="Atendimento" value={SITE.hours} />
             </ul>
             <div className="flex items-center gap-3">
@@ -88,8 +88,8 @@ function Contato() {
             </div>
             <div className="rounded-2xl overflow-hidden border border-border aspect-video">
               <iframe
-                title="Mapa"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-46.65%2C-23.56%2C-46.63%2C-23.55&layer=mapnik"
+                title="Mapa da sede da Motirô"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(SITE.address)}&output=embed`}
                 className="h-full w-full"
                 loading="lazy"
               />
@@ -143,7 +143,7 @@ function Contato() {
   );
 }
 
-function Contact({ icon: Icon, label, value }: { icon: any; label: string; value: string }) {
+function Contact({ icon: Icon, label, value, href, external }: { icon: any; label: string; value: string; href?: string; external?: boolean }) {
   return (
     <li className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
       <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-ouro/20 text-primary shrink-0">
@@ -151,7 +151,7 @@ function Contact({ icon: Icon, label, value }: { icon: any; label: string; value
       </div>
       <div className="min-w-0">
         <div className="eyebrow text-vermelho">{label}</div>
-        <div className="mt-0.5 text-sm font-semibold">{value}</div>
+        <div className="mt-0.5 text-sm font-semibold">{href ? <a href={href} className="hover:text-primary wrap-anywhere" {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{value}</a> : value}</div>
       </div>
     </li>
   );

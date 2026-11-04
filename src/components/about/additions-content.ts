@@ -1,3 +1,4 @@
+import { SITE } from "@/lib/site-data";
 export const leadership = [
   "A trajetória da Motirô está associada à atuação de Aerton Ezequiel Alves, conhecido na capoeira como Mestre Tingaúna, e ao trabalho coletivo de sua equipe, dos participantes, das famílias, dos parceiros e da comunidade.",
   "Além da coordenação do trabalho comunitário, Mestre Tingaúna possui experiência na gestão cultural e esportiva e na articulação de políticas públicas relacionadas à capoeira.",
@@ -10,7 +11,7 @@ export const spaces = [
   "A sede constitui um espaço de referência para as atividades culturais, educativas, administrativas e comunitárias da organização.",
   "Além desse espaço, a Motirô realiza atividades em diferentes locais do município, de acordo com as características de cada iniciativa e as articulações estabelecidas.",
 ];
-export const headquartersAddress = { street: "Rua Robert Freitas Júnior, 1214", neighborhood: "Centro", city: "José de Freitas – PI", postcode: "64110-000" };
-export const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(Object.values(headquartersAddress).join(", "))}`;
+export const headquartersAddress = { street: "Rua Robert Freitas Júnior, 1214", neighborhood: "Centro", city: "José de Freitas-PI", postcode: "64110-000" };
+export const directionsUrl = SITE.mapsUrl;
 // Replace with authorized exterior/interior photos, never a different building.
 export const headquartersPhotos: { src: string; alt: string }[] = [];
