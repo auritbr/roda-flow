@@ -22,14 +22,14 @@ const COLUMNS = [
   ] },
   { title: "Projetos", links: [
     { label: "Além da Ginga", to: P, slug: "alem-da-ginga" },
-    { label: "Capoeira Motirô", to: P, slug: "capoeira-motiro" },
-    { label: "Teatro Motirô", to: P, slug: "teatro-motiro" },
-    { label: "Oficina da Leitura", to: P, slug: "oficina-da-leitura" },
-    { label: "Cine Motirô", to: P, slug: "cine-motiro" },
-    { label: "Dança, ritmo e tradição", to: P, slug: "danca" },
-    { label: "Handebol Motirô", to: P, slug: "handebol-motiro" },
-    { label: "Brincando e Crescendo Juntos", to: P, slug: "brincando-e-crescendo-juntos" },
-    { label: "Formação Esportiva e Conquistas", to: "/projetos/formacao-esportiva" },
+    { label: "Capoeira Motirô", to: P, slug: "capoeira-motiro", member: true },
+    { label: "Teatro Motirô", to: P, slug: "teatro-motiro", member: true },
+    { label: "Oficina da Leitura", to: P, slug: "oficina-da-leitura", member: true },
+    { label: "Cine Motirô", to: P, slug: "cine-motiro", member: true },
+    { label: "Dança, ritmo e tradição", to: P, slug: "danca", member: true },
+    { label: "Handebol Motirô", to: P, slug: "handebol-motiro", other: true },
+    { label: "Brincando e Crescendo Juntos", to: P, slug: "brincando-e-crescendo-juntos", other: true },
+    { label: "Formação Esportiva e Conquistas", to: "/projetos/formacao-esportiva", other: true },
   ] },
   { title: "Conteúdo", links: [
     { label: "Notícias", to: "/noticias" },
@@ -89,13 +89,30 @@ export function Footer() {
           {COLUMNS.map((col) => (
             <nav key={col.title} aria-label={col.title}>
               <h3 className="font-display font-bold text-sm eyebrow text-ouro mb-4">{col.title}</h3>
-              <ul className={cn("text-sm text-primary-foreground/85", col.title === "Projetos" ? "space-y-1.5" : "space-y-2")}>
+              {col.title === "Projetos" ? (
+                <div className="text-sm text-primary-foreground/85">
+                  <Link to={P} params={{ slug: "alem-da-ginga" }} className="block font-semibold text-primary-foreground hover:text-ouro transition-colors">Além da Ginga</Link>
+                  <ul className="mt-1.5 space-y-1 border-l border-ouro/40 pl-3 text-[13px]">
+                    {col.links.filter((l) => "member" in l).map((l) => (
+                      <li key={l.label}><Link to={P} params={{ slug: l.slug }} className="hover:text-ouro transition-colors">{l.label}</Link></li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 font-semibold text-primary-foreground">Outros projetos</p>
+                  <ul className="mt-1.5 space-y-1 pl-3 text-[13px]">
+                    {col.links.filter((l) => "other" in l).map((l) => (
+                      <li key={l.label}><Link to={l.to} params={"slug" in l ? { slug: l.slug } : undefined} className="hover:text-ouro transition-colors">{l.label}</Link></li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+              <ul className={cn("text-sm text-primary-foreground/85", "space-y-2")}>
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <Link to={l.to} params={"slug" in l ? { slug: l.slug } : undefined} className="hover:text-ouro transition-colors">{l.label}</Link>
                   </li>
                 ))}
               </ul>
+              )}
             </nav>
           ))}
         </div>
