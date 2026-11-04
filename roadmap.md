@@ -55,5 +55,5 @@
 - [x] Tornar Agenda semanal por padrão, alternância mensal, navegação por período e cards compactos somente nesta página.
 - [x] Testar datas e verificar fluxos, notícias demonstrativas e leitura desktop/mobile.
 - [x] Substituir a logo compartilhada e os ícones do navegador, remover versões antigas e conferir tamanhos, navegação e carregamento em computador e celular.
-- [ ] Reduzir somente a logo do footer mais 15% a 20% e conferir três tamanhos de tela.
-- [ ] Atualizar favicon ICO e PNG com símbolo branco transparente e conferir arquivos e carregamento; manter apple-touch específico para iOS.
+- [x] Reduzir somente a logo do footer mais 15% a 20% e conferir três tamanhos de tela.
+- [x] Atualizar favicon ICO e PNG com símbolo branco transparente e conferir arquivos e carregamento; manter apple-touch específico para iOS. Deploy real na Vercel não disponível para verificação.
